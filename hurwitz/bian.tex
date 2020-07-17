@@ -1,0 +1,140 @@
+%% Based on a TeXnicCenter-Template by Tino Weinkauf.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OPTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% ATTENTION: You need a main file to use this one here.
+%%            Use the command "\input{filename}" in your
+%%            main file to include this file.
+%%
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{url,amsfonts,fancyhdr}
+
+
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.15in}
+\fancyhead[L]{DJP}
+\fancyhead[R]{10/Aug/2010}
+\fancyhead[C]{Hurwitz Calculator Notes}
+\newcommand{\N}{{\sf N\hspace*{-1.0ex}
+\rule{0.15ex}{1.3ex}\hspace*{1.0ex}}}
+
+Bian
+
+Here are some notes on how to use the Hurwitz function calculator. The basic steps are:-
+\begin{itemize}
+\item Determine an exactly representable number close to the desired eigenvalue(s)
+\item Edit z\_file.gp to call the PARI function zeta\_file once for each eigenvalue.
+\item gp z\_file.gp
+\item ed zetas1.txt $<$ ed.txt (repeat for each eigenvalue file produced)
+\item ./l-func-mpfi-1.2 200 100 100 3150 0 16384 zetas1.txt bian1.dat 31 3150 30 (repeat for each eigenvalue file produced)
+\end{itemize}
+which results in the data file bian1.dat (etc. for each eigenvalue).
+
+\subsection{Representable numbers}
+
+It is important that the eigenvalues specified in the call to zeta\_file are exactly representable in IEEE double precision. This is what was causing us the problems earlier on with loss of accuracy. Thus $30.66365967$ is no good so I use $30.6636596700000012560849427245557308197021484375$ instead. A simple C++ program called double-rep will read a double precision number from the command line and print out an exactly representable one instead which should not be too far away. e.g.
+\begin{verbatim}
+dave@dave-desktop:$ g++ double-rep.cpp -odouble-rep
+dave@dave-desktop:$ ./double-rep 18.90241257
+Argument is 1.8902412569999999192305040196515619754791259765625000000000e+01
+dave@dave-desktop:$ 
+\end{verbatim}
+
+\subsection{The PARI code}
+
+We use Pari to create a file of Gamma and Zeta values (my code used the Gamma values but yours won't). The Pari source file z\_file.gp defines a function zeta\_file and calls it twice (once for each of two eigenvalues). The arguments to zeta\_file are:-
+\begin{itemize}
+\item N: The number of zeta values per s to print (use 101)
+\item num\_s: The number of s to process (always 1 for you)
+\item im\_s: The imaginary part of s (your eigenvalue). Must be exactly representable (see above)
+\item step: The step between different s values (not used so 0.0 is ok)
+\item fname: The file name to create e.g. zetas1.txt
+\end {itemize}
+
+The output file consists of the number of zeta values (101) followed by the eigenvalue followed by intervals representing
+\begin{itemize}
+\item $\Re\Gamma((1.0+i*im\_s)/2)$ (Not relevant to you)
+\item $\Im\Gamma((1.0+i*im\_s)/2)$ (Not relevant to you)
+\item $\Re\Gamma((2.0+i*im\_s)/2)$ (Not relevant to you)
+\item $\Im\Gamma((2.0+i*im\_s)/2)$ (Not relevant to you)
+\item $\Re\zeta(1.0+n+i*im\_s)$ for $n=0\ldots N-1$
+\item $\Im\zeta(1.0+n+i*im\_s)$ for $n=0\ldots N-1$
+\end{itemize}
+
+\subsection{The ed step}
+
+Unfortunately Pari and MPFI disagree slightly on format rules and we need to replace every occurance of a space followed by capital E with just capital E. I use the Unix ed command with the file ed.txt. e.g.
+\begin{verbatim}
+dave@dave-desktop:$ ed zetas2.dat < ed.txt 
+90591
+90178
+dave@dave-desktop:$
+\end{verbatim}
+
+\subsection{l-func step}
+
+The program l-func-mpfi-1.2.c is compiled with
+\begin{verbatim}
+dave@dave-desktop:$ gcc -O1 -static -march=core2 -ol-func-mpfi-1.2\
+ l-func-mpfi-1.2.c -lmpfi -lmpfr -lgmp -lm
+dave@dave-desktop:$
+\end{verbatim}
+You might get some warnings about redefining FAILURE and unused return values from fscanf but you can safely ignore those. The executable takes the following parameters.
+\begin{itemize}
+\item prec: number of bits of precision to use (use 200)
+\item N: number of terms to use in taylor approximation (max 100) (use 100)
+\item M: number of terms to calculate via Taylor (as opposed to simply summing the series) (use 100, i.e. calculate ALL terms by Taylor)
+\item RN: internally work with $\zeta(s,\alpha)=\sum\limits_{n=RN}^{\infty}(n+\alpha)^{-s}$ (we use 3150 but can vary it if you like)
+\item N\_SUM: how many terms to use when summing. Irrelevant because we do ALL terms via Tayor. (use 0)
+\item NO\_GAPS: $\alpha$ steps from $1.0$ to $0.0$ in steps of $\frac{1}{NO\_GAPS}$ (use 16384)
+\item data file: file from previous step (zetas1.dat)
+\item out file: output file (e.g. bian1.dat)
+\item N\_OUT: how many hurwitz values per alpha to output (31)
+\item RN\_OUT: the values stored are $\zeta(s,\alpha)=\sum\limits_{n=RN\_OUT}^{\infty}(n+\alpha)^{-s}$. We use the same value for RN\_OUT as for RN (3150).
+\item NUM\_DIG: how many decimal digits to output (30)
+\end{itemize}
+
+For example (output slightly reformatted)
+\begin{verbatim}
+dave@dave-desktop:$ time ./l-func-mpfi-1.2 200 100 100 3150 0 16384\
+> zetas1.dat bian1.dat 31 3150 30
+
+Running with prec=200 N=100 M=100 RN=3150 N_SUM=0 NO_GAPS=16384.
+N_OUT=31 RN_OUT=3150.
+Processing Im(s)=3.066365967000000126e+01
+H_1(s,0.25)=
+[-3.0247275475413589839223718941489212605356516557347945742748573e-2,
+-3.0247275475413589839223718941489212605356516557347945742509511e-2] +
+[1.2192059562072135024161146760075489356490474932310730057821686e-2,
+1.2192059562072135024161146760075489356490474932310730057941626e-2]i
+H_1(s,0.5)=
+[-3.0217513845235411259982008217054903254861613049217476815669188e-2,
+-3.0217513845235411259982008217054903254861613049217476815669168e-2] +
+[1.2265636784546623482992656864886498840154951758264549431847219e-2,
+1.2265636784546623482992656864886498840154951758264549431847230e-2]i
+H_1(s,0.75)=
+[-3.0187575620252984903781476602052188051155772599992038610187314e-2,
+-3.0187575620252984903781476602052188051155772599992038609948174e-2] +
+[1.2339135527093785718217485685286336022541883404972147629366870e-2,
+1.2339135527093785718217485685286336022541883404972147629486713e-2]i
+ 56 55 56 55 55 56 55 56 55 55 56 55 55 56 55 55 56 55 56 55 55 56 55 
+55 56 55 55 56 55 55 56.
+Completed.
+
+real	4m40.664s
+user	4m39.920s
+sys	0m0.680s
+dave@dave-desktop:$ 
+\end{verbatim}
+The program prints the values of $\zeta_1(s,1/4)$, $\zeta_1(s,1/2)$ and $\zeta_1(s,3/4)$ and the relative accuracy in decimal places of the output at $\alpha=1/4$ which is where I'd expect the least accuracy. Here we are getting $>50$ places and only outputting $30$ of them (NUM\_DIG) to the data file so all is well.
+
+The output file consists of decimal intervals for $\zeta(s+n,\alpha)$, real part then imaginary part, where $n$ goes from $0\ldots N\_OUT-1$ and $\alpha$ goes from $1.0$ down to $0.0$ in steps of $\frac{1}{NO\_GAPS}$ so the first three entries are $\Re\zeta_1(s,1.0)$, $\Im\zeta_1(s,1.0)$ and $\Re\zeta_1(s+1,1.0)$ with $\zeta_1(s,\alpha):=\sum\limits_{n=RN\_OUT}^\infty(n+\alpha)^{-s}$.
+
+\end{document}

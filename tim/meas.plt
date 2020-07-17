@@ -1,0 +1,4 @@
+set xlabel "lambda"
+set ylabel "log(meas(alpha in [0,1] : |T(alpha)| >= lambda*L))"
+set xrange [0.6:1.0]
+plot "meas_10.txt" using ($1):(log($2)) with lines title "L=10","meas_11.txt" using ($1):(log($2)) with lines title "L=11","meas_12.txt" using ($1):(log($2)) with lines title "L=12","meas_13.txt" using ($1):(log($2)) with lines title "L=13","meas_14.txt" using ($1):(log($2)) with lines title "L=14","meas_15.txt" using ($1):(log($2)) with lines title "L=15","meas_16.txt" using ($1):(log($2)) with lines title "L=16","meas_17.txt" using ($1):(log($2)) with lines title "L=17","meas_18.txt" using ($1):(log($2)) with lines title "L=18","meas_19.txt" using ($1):(log($2)) with lines title "L=19","meas_20.txt" using ($1):(log($2)) with lines title "L=20"

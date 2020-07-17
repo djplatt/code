@@ -1,0 +1,2 @@
+1. Use the new inlined vector type "double4" to replace the previously simulated type.
+2. Release another version with the interval memory layout. The performance is expected to be better, but the library may not be easy to use as the current version.

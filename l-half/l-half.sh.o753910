@@ -1,0 +1,70 @@
+job started
+Thu Jun 16 16:47:01 BST 2011
+u04n037
+/local/madjp.753910
+Thu Jun 16 16:47:01 BST 2011
+n=11 pr=2 phi(n)=10
+Thu Jun 16 16:47:01 BST 2011
+Thu Jun 16 16:47:01 BST 2011
+Calculating L(1/2) for modulus=1162261467 with phi=774840978 using pr=2
+n=1162261467 pr=2 phi(n)=774840978
+Thu Jun 16 16:59:54 BST 2011
+rm: cannot remove `absz': No such file or directory
+rm: cannot remove `absz.cpp': No such file or directory
+rm: cannot remove `absz.cpp~': No such file or directory
+rm: cannot remove `bar.txt': No such file or directory
+rm: cannot remove `bar.txt~': No such file or directory
+rm: cannot remove `convert': No such file or directory
+rm: cannot remove `convert.cpp': No such file or directory
+rm: cannot remove `extrema': No such file or directory
+rm: cannot remove `extrema.cpp': No such file or directory
+rm: cannot remove `foo.txt': No such file or directory
+rm: cannot remove `imlog': No such file or directory
+rm: cannot remove `imlog.cpp': No such file or directory
+rm: cannot remove `int-l-func-half': No such file or directory
+rm: cannot remove `int-l-func-half1.0': No such file or directory
+rm: cannot remove `int-l-func-half1.0.cpp': No such file or directory
+rm: cannot remove `int-l-func-half1.0.cpp~': No such file or directory
+rm: cannot remove `int-l-func-half.cpp': No such file or directory
+rm: cannot remove `l_1000000007_abs.txt': No such file or directory
+rm: cannot remove `l_1000000007_re_new.txt': No such file or directory
+rm: cannot remove `l_1000000007_re.txt': No such file or directory
+rm: cannot remove `l_100000007_re_new.txt': No such file or directory
+rm: cannot remove `l_100000007_re.txt': No such file or directory
+rm: cannot remove `l_10000019_re.txt': No such file or directory
+rm: cannot remove `l_1000003_re.txt': No such file or directory
+rm: cannot remove `l_100003_re.old': No such file or directory
+rm: cannot remove `l_100003_re.txt': No such file or directory
+rm: cannot remove `l_2_34.txt': No such file or directory
+rm: cannot remove `lcalc_100003.txt': No such file or directory
+rm: cannot remove `l_half_double': No such file or directory
+rm: cannot remove `l_half_double.cpp': No such file or directory
+rm: cannot remove `l_half_double.cpp~': No such file or directory
+rm: cannot remove `l-half-fftw': No such file or directory
+rm: cannot remove `l-half-fftw1': No such file or directory
+rm: cannot remove `l-half-fftw1.cpp': No such file or directory
+rm: cannot remove `l-half-fftw.cpp': No such file or directory
+rm: cannot remove `l-half-fftw.cpp~': No such file or directory
+rm: cannot remove `l_half_high': No such file or directory
+rm: cannot remove `l_half_high.c': No such file or directory
+rm: cannot remove `l_half_high.c~': No such file or directory
+rm: cannot remove `l-half.sh.o613229': No such file or directory
+rm: cannot remove `l-half.sh.o613234': No such file or directory
+rm: cannot remove `l-half.sh.o613243': No such file or directory
+rm: cannot remove `l-half.sh.o613376': No such file or directory
+rm: cannot remove `list': No such file or directory
+rm: cannot remove `list.cpp': No such file or directory
+rm: cannot remove `list-hurwitz': No such file or directory
+rm: cannot remove `list-hurwitz.cpp': No such file or directory
+rm: cannot remove `reimlog': No such file or directory
+rm: cannot remove `reimlog.cpp': No such file or directory
+rm: cannot remove `relog': No such file or directory
+rm: cannot remove `relog.cpp': No such file or directory
+rm: cannot remove `relog.cpp~': No such file or directory
+rm: cannot remove `temp': No such file or directory
+rm: cannot remove `temp1': No such file or directory
+rm: cannot remove `temp1.cpp': No such file or directory
+rm: cannot remove `temp.cpp': No such file or directory
+rm: cannot remove `temp.txt': No such file or directory
+rm: cannot remove `test_fftw3': No such file or directory
+rmdir: /local/madjp.753910: Directory not empty

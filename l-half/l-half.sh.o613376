@@ -1,0 +1,19 @@
+job started
+Fri Mar 25 17:00:23 GMT 2011
+u04n038
+/local/madjp.613376
+Fri Mar 25 17:00:23 GMT 2011
+Trying Q=17179869209
+Fri Mar 25 20:13:09 GMT 2011
+cp: cannot stat `int-l-func-half1.0': No such file or directory
+cp: cannot stat `int-l-func-half1.0.cpp': No such file or directory
+cp: cannot stat `int-l-func-half1.0.cpp~': No such file or directory
+cp: cannot stat `int-l-func-half.cpp': No such file or directory
+cp: cannot stat `int-l-func-half.cpp~': No such file or directory
+cp: cannot stat `l-half-fftw1.cpp': No such file or directory
+cp: cannot stat `l-half-fftw1.cpp~': No such file or directory
+cp: cannot stat `l-half-fftw.cpp': No such file or directory
+cp: cannot stat `l-half-fftw.cpp~': No such file or directory
+cp: cannot stat `l-half.sh.o613229': No such file or directory
+cp: cannot stat `l-half.sh.o613234': No such file or directory
+cp: cannot stat `l-half.sh.o613243': No such file or directory

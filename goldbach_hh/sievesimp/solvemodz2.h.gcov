@@ -1,0 +1,291 @@
+        -:    0:Source:solvemodz2.h
+        -:    0:Graph:sievesimp.gcno
+        -:    0:Data:sievesimp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:
+        -:    2:typedef struct intlist intlist;
+        -:    3:
+        -:    4:struct intlist {
+        -:    5:  long a, q, end;   /* a, a+q, a+2q... while terms <=end */
+        -:    6:  intlist *next;
+        -:    7:};
+        -:    8:
+        -:    9:inline long longceil(mpq_class x)
+        -:   10:{
+        -:   11:  mpz_class res;
+        -:   12:  
+    #####:   13:  mpz_cdiv_q(res.get_mpz_t(), x.get_num_mpz_t(), x.get_den_mpz_t());
+        -:   14:
+    #####:   15:  return res.get_si();
+        -:   16:}
+        -:   17:
+    #####:   18:inline long longfloor(mpq_class x)
+        -:   19:{
+        -:   20:  mpz_class res;
+        -:   21:    
+    #####:   22:  mpz_fdiv_q(res.get_mpz_t(), x.get_num_mpz_t(), x.get_den_mpz_t());
+        -:   23:
+    #####:   24:  return res.get_si();
+        -:   25:}
+        -:   26:
+    #####:   27:intlist *inclist(long a, long q, long end, intlist *l)
+        -:   28:{
+        -:   29:  intlist *head;
+        -:   30:
+        -:   31:
+    #####:   32:  head = (intlist *) malloc(sizeof(intlist));
+    #####:   33:  if(!head)
+    #####:   34:    exit(1);
+    #####:   35:  head->a = a;   head->q = q;   head->end = end;
+    #####:   36:  head->next = l; 
+        -:   37:
+        -:   38:
+    #####:   39:  return head;
+        -:   40:}
+        -:   41:
+    #####:   42:intlist *intintertolist(long Imin, long Iplu)
+        -:   43:  /* returns the list of integers in the closed interval [Imin, Iplu] */
+        -:   44:{
+        -:   45:  intlist *head;
+        -:   46:
+    #####:   47:  if(Imin>Iplu)
+    #####:   48:    return NULL;
+        -:   49:  else 
+    #####:   50:    return inclist(Imin,1,Iplu,NULL);
+        -:   51:}
+        -:   52:
+    #####:   53:void killlist(intlist *l)
+        -:   54:{
+    #####:   55:  if(l) {
+    #####:   56:    killlist(l->next);
+    #####:   57:    free(l);
+        -:   58:  }
+    #####:   59:}
+        -:   60:
+    #####:   61:intlist *lastlist(intlist *l)
+        -:   62:{
+        -:   63:  intlist *last;
+        -:   64:
+    #####:   65:  if(!l)
+    #####:   66:    return NULL;
+        -:   67:
+    #####:   68:  for(last=l; last->next; last = last->next)
+        -:   69:    ;
+    #####:   70:  return last;
+        -:   71:}
+        -:   72:
+    #####:   73:intlist *appendlist(intlist *l1, intlist *l2)
+        -:   74:{
+        -:   75:  intlist *l;
+        -:   76:  
+    #####:   77:  if(!l1)
+    #####:   78:    return l2;
+        -:   79:  else {
+    #####:   80:    l=lastlist(l1);
+    #####:   81:    l->next = l2;
+    #####:   82:    return l1;
+        -:   83:  }
+        -:   84:}
+        -:   85:
+        -:   86:/*intlist *mergelist(intlist *l1, intlist *l2)*/
+        -:   87:  /* merge two lists already in increasing order */
+        -:   88:/*{
+        -:   89:  if(!l1)
+        -:   90:    return l2;
+        -:   91:  if(!l2)
+        -:   92:    return l1;
+        -:   93:  
+        -:   94:  if(l1->it<=l2->it) {
+        -:   95:    if(l1->it==l2->it) {
+        -:   96:      l1->next = mergelist(l1->next,l2->next);
+        -:   97:      free(l2);
+        -:   98:    } else
+        -:   99:      l1->next = mergelist(l1->next,l2);
+        -:  100:    return l1;
+        -:  101:  } else {
+        -:  102:    l2->next = mergelist(l2->next,l1);
+        -:  103:    return l2;
+        -:  104:  } 
+        -:  105:}
+        -:  106:*/
+        -:  107:
+    #####:  108:intlist *intertolist(mpq_class Imin, mpq_class Iplu)
+        -:  109:/* returns the list of integers in the closed interval [Imin, Iplu] */
+        -:  110:{
+        -:  111:  /*  gmp_fprintf(stderr,"from %Qd to %Qd\n",Imin.get_mpq_t(),Iplu.get_mpq_t());
+        -:  112:   */
+    #####:  113:   if(cmp(Imin,Iplu)<=0)
+        -:  114:     return intintertolist(longceil(Imin),
+    #####:  115:			   longfloor(Iplu));
+        -:  116:   else {
+        -:  117:     /*     fprintf(stderr,"forget it\n");*/
+    #####:  118:     return NULL;
+        -:  119:   }
+        -:  120:}
+        -:  121:
+        -:  122:/*void printlist(intlist *l, long i)
+        -:  123:{
+        -:  124:  if(l) {
+        -:  125:     printf("%ld\t",l->it);
+        -:  126:     printlist(l->next,i+1);
+        -:  127:  } else
+        -:  128:    printf("\n");
+        -:  129:    }*/
+        -:  130:
+        -:  131:int loud=0;
+        -:  132:
+    #####:  133:intlist *SolveInR(mpq_class alph1, mpq_class alph0,
+        -:  134:		  mpq_class Imin, mpq_class Iplu,
+        -:  135:		  mpq_class Jmin, mpq_class Jplu)
+        -:  136:{
+        -:  137:  mpq_class xmin, xplu;
+        -:  138:
+    #####:  139:  if(loud)
+        -:  140:    gmp_fprintf(stderr,"SolveInR: %Qd %Qd %Qd %Qd %Qd %Qd\n",
+        -:  141:		alph1.get_mpq_t(),alph0.get_mpq_t(),
+        -:  142:	      Imin.get_mpq_t(),Iplu.get_mpq_t(),
+    #####:  143:	      Jmin.get_mpq_t(),Jplu.get_mpq_t());
+        -:  144:
+    #####:  145:  if(sgn(alph1)==0) {
+    #####:  146:    if(cmp(Jmin,alph0)<=0 && cmp(alph0,Jplu)<=0) {
+    #####:  147:	return intertolist(Imin,Iplu);
+        -:  148:      }
+        -:  149:    else {
+    #####:  150:      return NULL;
+        -:  151:    }
+        -:  152:  } else {
+    #####:  153:    if(sgn(alph1)>=0) {
+    #####:  154:      xmin = Jmin - alph0;  xplu = Jplu - alph0;
+        -:  155:    } else {
+    #####:  156:       xplu = Jmin - alph0;  xmin = Jplu - alph0;
+        -:  157:    }
+        -:  158:    xmin /= alph1;  xplu /= alph1;
+        -:  159:    
+        -:  160:    return intertolist((cmp(Imin, xmin)>0 ? Imin : xmin),
+    #####:  161:		       (cmp(Iplu, xplu)<0 ? Iplu: xplu));
+        -:  162:  }
+        -:  163:}
+        -:  164:
+    #####:  165:intlist *SmallSolveModZ(mpq_class alph1, mpq_class alph0,
+        -:  166:			mpq_class Imin, mpq_class Iplu,
+        -:  167:			mpq_class eta)
+        -:  168:{
+        -:  169:  mpq_class Lmin, Lplu, xmin, xplu;
+        -:  170:  mpz_class nmin, nplu;
+        -:  171:  intlist *r, *l;
+        -:  172:
+    #####:  173:  if(loud)
+        -:  174:    gmp_fprintf(stderr,"SmallSolveModZ: %Qd %Qd %Qd %Qd %Qd\n",
+        -:  175:		alph1.get_mpq_t(),alph0.get_mpq_t(),
+    #####:  176:		Imin.get_mpq_t(),Iplu.get_mpq_t(),eta.get_mpq_t()); 
+        -:  177:
+    #####:  178:  if(sgn(alph1)>=0) {
+    #####:  179:    Lmin = alph1*Imin+alph0;    Lplu = alph1*Iplu+alph0;
+        -:  180:  } else {
+    #####:  181:    Lplu = alph1*Imin+alph0;    Lmin = alph1*Iplu+alph0;
+        -:  182:  }
+        -:  183:
+    #####:  184:  if(loud)
+        -:  185:    gmp_fprintf(stderr,"%.10g %.10g\n",
+    #####:  186:		Lmin.get_d(),Lplu.get_d());
+        -:  187:  Lmin += eta; Lplu +=eta;
+        -:  188:  mpz_fdiv_q(nmin.get_mpz_t(),
+        -:  189:	     Lmin.get_num_mpz_t(),
+    #####:  190:	     Lmin.get_den_mpz_t());
+        -:  191:  mpz_fdiv_q(nplu.get_mpz_t(),
+        -:  192:	     Lplu.get_num_mpz_t(),
+    #####:  193:	     Lplu.get_den_mpz_t());
+    #####:  194:  if(loud)
+        -:  195:    gmp_fprintf(stderr,"%Zd %Zd\n",
+    #####:  196:		nmin.get_mpz_t(),nplu.get_mpz_t());
+    #####:  197:  r = SolveInR(alph1,alph0,Imin,Iplu,nmin-eta,nmin+eta);
+    #####:  198:  if(cmp(nplu, nmin)>0) {
+    #####:  199:    l = lastlist(r);
+    #####:  200:    if(l) 
+    #####:  201:      l->next = SolveInR(alph1,alph0,Imin,Iplu,nplu-eta,nplu+eta);
+        -:  202:    else
+    #####:  203:            r = SolveInR(alph1,alph0,Imin,Iplu,nplu-eta,nplu+eta);
+        -:  204:  }
+        -:  205:  
+    #####:  206:  return r;
+        -:  207:}
+        -:  208:
+        -:  209:
+        -:  210:
+    #####:  211:intlist *SolveModZ(rat alpha1, rat alpha0,
+        -:  212:		   long R, mpq_class eta)
+        -:  213:{
+        -:  214:  long a, ainv, q, j, rho, prerho, k, c, rl;
+        -:  215:  intlist *r, *r2, *s, *head;
+    #####:  216:  mpq_class alph1(alpha1.num, alpha1.den);
+    #####:  217:  mpq_class alph0(alpha0.num, alpha0.den);
+    #####:  218:  mpq_class half(1,2);
+        -:  219:  mpq_class delta;
+        -:  220:  mpz_class res, resrat;
+        -:  221:  
+    #####:  222:  diophappr(alpha1, 2*R, &a, &ainv, &q);
+    #####:  223:  if(loud)
+    #####:  224:    fprintf(stderr,"a = %ld, ainv = %ld, q = %ld\n",a,ainv,q); 
+        -:  225:  mpz_fdiv_r(res.get_mpz_t(),
+    #####:  226:	     alph0.get_num_mpz_t(), alph0.get_den_mpz_t());
+    #####:  227:  mpq_class alph0frac(res, alph0.get_den());
+        -:  228:
+        -:  229:  
+    #####:  230:  resrat = alph0frac*q+half;
+    #####:  231:  c = longfloor(resrat);
+    #####:  232:  delta = q*alph1 - a;
+    #####:  233:  k = longfloor(eta*q);
+        -:  234:
+    #####:  235:  if(loud) 
+        -:  236:    fprintf(stderr,"c = %ld, k = %ld, delta = %g\n",c,k,
+    #####:  237:	    delta.get_d());
+    #####:  238:  r = NULL; r2 = NULL;
+        -:  239:    
+    #####:  240:  for(j=-k-1; j<=k+1; j++) {
+    #####:  241:    prerho = -ainv*(c+j); rho = mod(prerho,q);
+    #####:  242:    if(loud)
+        -:  243:      fprintf(stderr,"j = %ld\t prerrho = %ld\t rho = %ld\n",
+    #####:  244:	      j, prerho, rho);
+        -:  245:    /*        fprintf(stderr,"j = %ld, k = %ld, c = %ld, rho = %ld\n",j,k,c,rho);*/
+    #####:  246:    if(j>=-k+1 && j<=k-1) {
+    #####:  247:      rl = div(-R-rho,q)*q+rho; if(rl<-R) rl+=q;
+    #####:  248:      r = inclist(rl,q,R,r);
+        -:  249:    } else {
+    #####:  250:      mpq_class Imin(-R-rho, q);
+    #####:  251:      mpq_class Iplu(R-rho,q);
+        -:  252:      Imin.canonicalize(); Iplu.canonicalize();
+        -:  253:      
+    #####:  254:      s = SmallSolveModZ(delta, rho*alph1+alph0, Imin, Iplu, eta);
+    #####:  255:      for(head=s; head; head = head->next)
+    #####:  256:	r2=inclist(q*(head->a)+rho,q*(head->q),q*(head->end)+rho,r2);
+    #####:  257:      if(s)
+    #####:  258:	killlist(s);
+        -:  259:    }
+        -:  260:  }
+    #####:  261:  r =   appendlist(r,r2);
+    #####:  262:  return r;
+        -:  263:}
+        -:  264:
+        -:  265:/*void printxylist(intlist *list, mpq_class alph1, mpq_class alph0)
+        -:  266:{
+        -:  267:  long r;
+        -:  268:  mpq_class res;
+        -:  269:  mpz_class red;
+        -:  270:  double resd;
+        -:  271:  
+        -:  272:  for(; list; list = list->next) {
+        -:  273:    r = list->it;
+        -:  274:    res =alph1*r+alph0;
+        -:  275:    
+        -:  276:    mpz_fdiv_r(red.get_mpz_t(), res.get_num_mpz_t(), res.get_den_mpz_t());
+        -:  277:    res.get_num() = red;
+        -:  278:    if((res.get_den()).get_si())
+        -:  279:      resd = ((double) (res.get_num()).get_si())/
+        -:  280:	(res.get_den()).get_si();
+        -:  281:    else
+        -:  282:	  fprintf(stderr,"waaaaah\n");
+        -:  283:    gmp_printf("%ld %g\n",r,resd);
+        -:  284:  }
+        -:  285:}
+        -:  286:*/

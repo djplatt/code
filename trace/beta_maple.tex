@@ -1,0 +1,235 @@
+%% Created by Maple 2015.1, Linux
+%% Source Worksheet: beta.mw
+%% Generated: Tue Dec 01 15:52:35 GMT 2015
+\documentclass{article}
+\usepackage{maplestd2e}
+\def\emptyline{\vspace{12pt}}
+\begin{document}
+\pagestyle{empty}
+\DefineParaStyle{Maple Heading 1}
+\DefineParaStyle{Maple Text Output}
+\DefineParaStyle{Maple Dash Item}
+\DefineParaStyle{Maple Bullet Item}
+\DefineParaStyle{Maple Normal}
+\DefineParaStyle{Maple Heading 4}
+\DefineParaStyle{Maple Heading 3}
+\DefineParaStyle{Maple Heading 2}
+\DefineParaStyle{Maple Warning}
+\DefineParaStyle{Maple Title}
+\DefineParaStyle{Maple Error}
+\DefineCharStyle{Maple Hyperlink}
+\DefineCharStyle{Maple 2D Math}
+\DefineCharStyle{Maple Maple Input}
+\DefineCharStyle{Maple 2D Output}
+\DefineCharStyle{Maple 2D Input}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{with(inttrans)}{\[{\it with} \left( {\it inttrans} \right) \]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{[addtable, fourier, fouriercos, fouriersin, hankel, hilbert, invfourier, invhilbert, invlaplace, invmellin, laplace, mellin, savetable]}{\[\displaystyle [{\it addtable},{\it fourier},{\it fouriercos},{\it fouriersin}\\
+\mbox{},{\it hankel},{\it hilbert},{\it invfourier},{\it invhilbert}\\
+\mbox{},{\it invlaplace},{\it invmellin},{\it laplace},{\it mellin}\\
+\mbox{},{\it savetable}]\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{betahat := proc (r) options operator, arrow; c*sin(a*Pi*r)^8*(b^2-r^2)/(a^8*Pi^8*r^8) end proc}{\[{\it betahat}\, := \,r\mapsto 630\,{\frac { \left( \sin \left( a\,\pi \,r \right)  \right) ^{8} \left( {b}^{2}-{r}^{2} \right) }{{\pi }^{6}{a}^{5} \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}{r}^{8}}}\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{betahat := proc (r) options operator, arrow; c*sin(a*Pi*r)^8*(b^2-r^2)/(a^8*Pi^8*r^8) end proc}{\[\displaystyle {\it betahat}\, := \,r\mapsto 630\,{\frac { \left( \sin \left( a\,\pi \,r \right)  \right) ^{8} \left( {b}^{2}-{r}^{2} \right) }{{\pi }^{6}{a}^{5} \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}{r}^{8}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{beta := proc (t) options operator, arrow; invfourier(betahat((1/2)*r/Pi), r, t) end proc}{\[\beta\, := \,t\mapsto 1/16\,{\frac {-70\,{t}^{5} \left( 2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t \right) \\
+\mbox{}- \left( t+4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}+16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-4\,a \right) +8\, \left( t+3\,a \right) ^{5} \left( 18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-3\,a \right) -28\, \left( t+2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}+8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-2\,a \right) +56\, \left( t+a \right) ^{5} \left( 2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-a \right) -56\, \left( t-a \right) ^{5} \left( -2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+a \right) \\
+\mbox{}-28\, \left( t-2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}-8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+2\,a \right) -8\, \left( t-3\,a \right) ^{5} \left( -18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) {\it Heaviside} \left( -t+3\,a \right) - \left( t-4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}-16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t+4\,a \right) }{{a}^{5} \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}}}\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{beta := proc (t) options operator, arrow; invfourier(betahat((1/2)*r/Pi), r, t) end proc}{\[\displaystyle \beta\, := \,t\mapsto 1/16\,{\frac {-70\,{t}^{5} \left( 2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t \right) \\
+\mbox{}- \left( t+4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}+16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-4\,a \right) +8\, \left( t+3\,a \right) ^{5} \left( 18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-3\,a \right) -28\, \left( t+2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}+8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-2\,a \right) +56\, \left( t+a \right) ^{5} \left( 2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-a \right) -56\, \left( t-a \right) ^{5} \left( -2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+a \right) \\
+\mbox{}-28\, \left( t-2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}-8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+2\,a \right) -8\, \left( t-3\,a \right) ^{5} \left( -18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) {\it Heaviside} \left( -t+3\,a \right) - \left( t-4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}-16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t+4\,a \right) }{{a}^{5} \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{c := 630*Pi^2*a^3/(302*Pi^2*a^2*b^2-105)}{\[c\, := \,630\,{\frac {{\pi }^{2}{a}^{3}}{302\,{\pi }^{2}{a}^{2}{b}^{2}-105}}\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{c := 630*Pi^2*a^3/(302*Pi^2*a^2*b^2-105)}{\[\displaystyle c\, := \,630\,{\frac {{\pi }^{2}{a}^{3}}{302\,{\pi }^{2}{a}^{2}{b}^{2}-105}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(a > 0); 1; limit(beta(t), t = 0)}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{1}{\[\displaystyle 1\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(0 < t and t < a); 1; factor(simplify(beta(t))); 1; limit(beta(t)*(cosh(Pi*t)-1)/(2*(Pi*t)^2), t = 0)}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{(1/16)*(4832*Pi^2*a^7*b^2-3360*Pi^2*a^5*b^2*t^2+1120*Pi^2*a^3*b^2*t^4-280*Pi^2*a*b^2*t^6+70*Pi^2*b^2*t^7-1680*a^5+3360*a^3*t^2-2100*a*t^4+735*t^5)/((302*Pi^2*a^2*b^2-105)*a^5)}{\[\displaystyle 1/16\,{\frac {4832\,{\pi }^{2}{a}^{7}{b}^{2}-3360\,{\pi }^{2}{a}^{5}{b}^{2}{t}^{2}+1120\,{\pi }^{2}{a}^{3}{b}^{2}{t}^{4}-280\,{\pi }^{2}a{b}^{2}{t}^{6}\\
+\mbox{}+70\,{\pi }^{2}{b}^{2}{t}^{7}-1680\,{a}^{5}+3360\,{a}^{3}{t}^{2}-2100\,a{t}^{4}+735\,{t}^{5}}{ \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}{a}^{5}}}\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{1/4}{\[\displaystyle 1/4\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(a < t and t < 2*a); 1; factor(simplify(beta(t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{(1/16)*(4944*Pi^2*a^7*b^2-784*Pi^2*a^6*b^2*t-1008*Pi^2*a^5*b^2*t^2-3920*Pi^2*a^4*b^2*t^3+5040*Pi^2*a^3*b^2*t^4-2352*Pi^2*a^2*b^2*t^5+504*Pi^2*a*b^2*t^6-42*Pi^2*b^2*t^7-504*a^5-5880*a^4*t+15120*a^3*t^2-11760*a^2*t^3+3780*a*t^4-441*t^5)/((302*Pi^2*a^2*b^2-105)*a^5)}{\[\displaystyle 1/16\,{\frac {4944\,{\pi }^{2}{a}^{7}{b}^{2}-784\,{\pi }^{2}{a}^{6}{b}^{2}t-1008\,{\pi }^{2}{a}^{5}{b}^{2}{t}^{2}-3920\,{\pi }^{2}{a}^{4}{b}^{2}{t}^{3}\\
+\mbox{}+5040\,{\pi }^{2}{a}^{3}{b}^{2}{t}^{4}-2352\,{\pi }^{2}{a}^{2}{b}^{2}{t}^{5}+504\,{\pi }^{2}a{b}^{2}{t}^{6}-42\,{\pi }^{2}{b}^{2}{t}^{7}-504\,{a}^{5}-5880\,{a}^{4}t\\
+\mbox{}+15120\,{a}^{3}{t}^{2}-11760\,{a}^{2}{t}^{3}+3780\,a{t}^{4}-441\,{t}^{5}}{ \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}{a}^{5}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(2*a < t and t < 3*a); 1; factor(simplify(beta(t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{-(1/16)*(2224*Pi^2*a^7*b^2-24304*Pi^2*a^6*b^2*t+38640*Pi^2*a^5*b^2*t^2-27440*Pi^2*a^4*b^2*t^3+10640*Pi^2*a^3*b^2*t^4-2352*Pi^2*a^2*b^2*t^5+280*Pi^2*a*b^2*t^6-14*Pi^2*b^2*t^7+19320*a^5-41160*a^4*t+31920*a^3*t^2-11760*a^2*t^3+2100*a*t^4-147*t^5)/((302*Pi^2*a^2*b^2-105)*a^5)}{\[\displaystyle -1/16\,{\frac {2224\,{\pi }^{2}{a}^{7}{b}^{2}-24304\,{\pi }^{2}{a}^{6}{b}^{2}t+38640\,{\pi }^{2}{a}^{5}{b}^{2}{t}^{2}-27440\,{\pi }^{2}{a}^{4}{b}^{2}{t}^{3}\\
+\mbox{}+10640\,{\pi }^{2}{a}^{3}{b}^{2}{t}^{4}-2352\,{\pi }^{2}{a}^{2}{b}^{2}{t}^{5}+280\,{\pi }^{2}a{b}^{2}{t}^{6}-14\,{\pi }^{2}{b}^{2}{t}^{7}+19320\,{a}^{5}\\
+\mbox{}-41160\,{a}^{4}t+31920\,{a}^{3}{t}^{2}-11760\,{a}^{2}{t}^{3}+2100\,a{t}^{4}-147\,{t}^{5}}{ \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}{a}^{5}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(3*a < t and t < 4*a); 1; factor(simplify(beta(t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{(1/16)*(-t+4*a)^5*(32*Pi^2*a^2*b^2-16*Pi^2*a*b^2*t+2*Pi^2*b^2*t^2+21)/((302*Pi^2*a^2*b^2-105)*a^5)}{\[\displaystyle 1/16\,{\frac { \left( -t+4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}-16\,{\pi }^{2}a{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}}{ \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) {a}^{5}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{h2hat := proc (t) options operator, arrow; (1/2)*(1-beta(t))/(t^2*Pi^2) end proc}{\[{\it h2hat}\, := \,t\mapsto 1/2\,{\frac {1}{{t}^{2}{\pi }^{2}} \left( 1-1/16\,{\frac {-70\,{t}^{5} \left( 2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t \right) \\
+\mbox{}- \left( t+4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}+16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-4\,a \right) +8\, \left( t+3\,a \right) ^{5} \left( 18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-3\,a \right) -28\, \left( t+2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}+8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-2\,a \right) +56\, \left( t+a \right) ^{5} \left( 2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-a \right) -56\, \left( t-a \right) ^{5} \left( -2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+a \right) \\
+\mbox{}-28\, \left( t-2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}-8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+2\,a \right) -8\, \left( t-3\,a \right) ^{5} \left( -18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) {\it Heaviside} \left( -t+3\,a \right) - \left( t-4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}-16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t+4\,a \right) }{{a}^{5} \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}}} \right) }\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{h2hat := proc (t) options operator, arrow; (1/2)*(1-beta(t))/(t^2*Pi^2) end proc}{\[\displaystyle {\it h2hat}\, := \,t\mapsto 1/2\,{\frac {1}{{t}^{2}{\pi }^{2}} \left( 1-1/16\,{\frac {-70\,{t}^{5} \left( 2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t \right) \\
+\mbox{}- \left( t+4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}+16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-4\,a \right) +8\, \left( t+3\,a \right) ^{5} \left( 18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t-3\,a \right) -28\, \left( t+2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}+8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-2\,a \right) +56\, \left( t+a \right) ^{5} \left( 2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t-a \right) -56\, \left( t-a \right) ^{5} \left( -2\,{\pi }^{2}{a}^{2}{b}^{2}+4\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+a \right) \\
+\mbox{}-28\, \left( t-2\,a \right) ^{5} \left( 8\,{\pi }^{2}{a}^{2}{b}^{2}-8\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) \\
+\mbox{}{\it Heaviside} \left( -t+2\,a \right) -8\, \left( t-3\,a \right) ^{5} \left( -18\,{\pi }^{2}{a}^{2}{b}^{2}+12\,{\pi }^{2}a\,{b}^{2}t-2\,{\pi }^{2}{b}^{2}{t}^{2}-21 \right) {\it Heaviside} \left( -t+3\,a \right) - \left( t-4\,a \right) ^{5} \left( 32\,{\pi }^{2}{a}^{2}{b}^{2}-16\,{\pi }^{2}a\,{b}^{2}t+2\,{\pi }^{2}{b}^{2}{t}^{2}+21 \right) {\it Heaviside} \left( -t+4\,a \right) }{{a}^{5} \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) \\
+\mbox{}}} \right) }\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(0 < t and t < a); 1; factor(simplify((diff(h2hat(t), t))/sinh(Pi*t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{-(35/32)*t*(64*Pi^2*a^3*b^2-32*Pi^2*a*b^2*t^2+10*Pi^2*b^2*t^3-120*a+63*t)/((302*Pi^2*a^2*b^2-105)*a^5*Pi^2*sinh(Pi*t))}{\[\displaystyle -{\frac {35\,t \left( 64\,{\pi }^{2}{a}^{3}{b}^{2}-32\,{\pi }^{2}a{b}^{2}{t}^{2}+10\,{\pi }^{2}{b}^{2}{t}^{3}-120\,a+63\,t \right) }{ \left( 9664\,{\pi }^{2}{a}^{2}{b}^{2}-3360 \right) \\
+\mbox{}{a}^{5}{\pi }^{2}\sinh \left( \pi \,t \right) }}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(a < t and t < 2*a); 1; factor(simplify((diff(h2hat(t), t))/sinh(Pi*t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{(7/32)*(32*Pi^2*a^7*b^2-112*Pi^2*a^6*b^2*t+560*Pi^2*a^4*b^2*t^3-1440*Pi^2*a^3*b^2*t^4+1008*Pi^2*a^2*b^2*t^5-288*Pi^2*a*b^2*t^6+30*Pi^2*b^2*t^7+336*a^5-840*a^4*t+1680*a^2*t^3-1080*a*t^4+189*t^5)/((302*Pi^2*a^2*b^2-105)*a^5*t^3*Pi^2*sinh(Pi*t))}{\[\displaystyle {\frac {224\,{\pi }^{2}{a}^{7}{b}^{2}-784\,{\pi }^{2}{a}^{6}{b}^{2}t+3920\,{\pi }^{2}{a}^{4}{b}^{2}{t}^{3}-10080\,{\pi }^{2}{a}^{3}{b}^{2}{t}^{4}\\
+\mbox{}+7056\,{\pi }^{2}{a}^{2}{b}^{2}{t}^{5}-2016\,{\pi }^{2}a{b}^{2}{t}^{6}+210\,{\pi }^{2}{b}^{2}{t}^{7}+2352\,{a}^{5}-5880\,{a}^{4}t+11760\,{a}^{2}{t}^{3}\\
+\mbox{}-7560\,a{t}^{4}+1323\,{t}^{5}}{ \left( 9664\,{\pi }^{2}{a}^{2}{b}^{2}-3360 \right) {a}^{5}{t}^{3}{\pi }^{2}\sinh \left( \pi \,t \right) \\
+\mbox{}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(2*a < t and t < 3*a); 1; factor(simplify((diff(h2hat(t), t))/sinh(Pi*t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{-(7/32)*(2016*Pi^2*a^7*b^2-3472*Pi^2*a^6*b^2*t+3920*Pi^2*a^4*b^2*t^3-3040*Pi^2*a^3*b^2*t^4+1008*Pi^2*a^2*b^2*t^5-160*Pi^2*a*b^2*t^6+10*Pi^2*b^2*t^7+5040*a^5-5880*a^4*t+1680*a^2*t^3-600*a*t^4+63*t^5)/((302*Pi^2*a^2*b^2-105)*a^5*t^3*Pi^2*sinh(Pi*t))}{\[\displaystyle -{\frac {14112\,{\pi }^{2}{a}^{7}{b}^{2}-24304\,{\pi }^{2}{a}^{6}{b}^{2}t+27440\,{\pi }^{2}{a}^{4}{b}^{2}{t}^{3}-21280\,{\pi }^{2}{a}^{3}{b}^{2}{t}^{4}\\
+\mbox{}+7056\,{\pi }^{2}{a}^{2}{b}^{2}{t}^{5}-1120\,{\pi }^{2}a{b}^{2}{t}^{6}+70\,{\pi }^{2}{b}^{2}{t}^{7}+35280\,{a}^{5}-41160\,{a}^{4}t+11760\,{a}^{2}{t}^{3}\\
+\mbox{}-4200\,a{t}^{4}+441\,{t}^{5}}{ \left( 9664\,{\pi }^{2}{a}^{2}{b}^{2}-3360 \right) {a}^{5}{t}^{3}{\pi }^{2}\sinh \left( \pi \,t \right) \\
+\mbox{}}}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(3*a < t and t < 4*a); 1; factor(simplify((diff(h2hat(t), t))/sinh(Pi*t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{(1/32)*(55872*Pi^2*a^7*b^2-57344*Pi^2*a^6*b^2*t+17920*Pi^2*a^4*b^2*t^3-8960*Pi^2*a^3*b^2*t^4+2016*Pi^2*a^2*b^2*t^5-224*Pi^2*a*b^2*t^6+10*Pi^2*b^2*t^7+46368*a^5-26880*a^4*t+3360*a^2*t^3-840*a*t^4+63*t^5)/((302*Pi^2*a^2*b^2-105)*a^5*t^3*Pi^2*sinh(Pi*t))}{\[\displaystyle 1/32\,{\frac {55872\,{\pi }^{2}{a}^{7}{b}^{2}-57344\,{\pi }^{2}{a}^{6}{b}^{2}t+17920\,{\pi }^{2}{a}^{4}{b}^{2}{t}^{3}-8960\,{\pi }^{2}{a}^{3}{b}^{2}{t}^{4}\\
+\mbox{}+2016\,{\pi }^{2}{a}^{2}{b}^{2}{t}^{5}-224\,{\pi }^{2}a{b}^{2}{t}^{6}+10\,{\pi }^{2}{b}^{2}{t}^{7}+46368\,{a}^{5}-26880\,{a}^{4}t+3360\,{a}^{2}{t}^{3}\\
+\mbox{}-840\,a{t}^{4}+63\,{t}^{5}}{ \left( 302\,{\pi }^{2}{a}^{2}{b}^{2}-105 \right) {a}^{5}{t}^{3}{\pi }^{2}\sinh \left( \pi \,t \right) }}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{assume(4*a < t and t < 5*a); 1; factor(simplify((diff(h2hat(t), t))/sinh(Pi*t)))}{\[\]}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{-1/(t^3*Pi^2*sinh(Pi*t))}{\[\displaystyle -{\frac {1}{{t}^{3}{\pi }^{2}\sinh \left( \pi \,t \right) }}\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{2d}{}{\[\]}
+\end{mapleinput}
+\end{maplegroup}
+\end{document}

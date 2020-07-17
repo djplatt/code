@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+#PBS -l walltime=360:00:00,nodes=1:ppn=8
+#PBS -q long
+#
+#---------------------------------------------
+# you would edit this section
+# 
+#
+#---------------------------------------------
+#   everything from here on is standard
+#
+#  get name for scratch directory and create it
+#
+echo "job started on"
+hostname
+date
+$HOME/code/skewes/check_li1.2 9700000000000000 9800000000000000 271091969073361 273808176380030 256 &
+$HOME/code/skewes/check_li1.2 9800000000000000 9900000000000000 273808176380030 276523631752529 256 &
+$HOME/code/skewes/check_li1.2 9900000000000000 10000000000000000 276523631752529 279238341033925 256 &
+$HOME/code/skewes/check_li1.2 10000000000000000 10100000000000000 279238341033925 281952314626716 256 &
+$HOME/code/skewes/check_li1.2 10100000000000000 10200000000000000 281952314626716 284665559556332 256 &
+$HOME/code/skewes/check_li1.2 10200000000000000 10300000000000000 284665559556332 287378081126626 256 &
+$HOME/code/skewes/check_li1.2 10300000000000000 10400000000000000 287378081126626 290089890632238 256 &
+wait
+date

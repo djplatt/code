@@ -1,0 +1,179 @@
+        -:    0:Source:simplesieve.h
+        -:    0:Graph:sievesimp.gcno
+        -:    0:Data:sievesimp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:short *smallprime=NULL;
+        -:    2:unsigned long smallM;
+        -:    3:
+        2:    4:void SimpleSiev(short *p, unsigned long N)
+        -:    5:/* assumes an array of length >=N+1 is allocated at p */
+        -:    6:/* ensures: for 1<=n<=N, p[n]=1 if n is prime, p[n}=0 otherwise*/
+        -:    7:{
+        -:    8:  unsigned long n,m;
+        -:    9:
+        2:   10:  if(N<1) return;
+        2:   11:  p[1]=0;
+        2:   12:  if(N<2) return;
+        2:   13:  p[2]=1;
+        2:   14:  if(N<3) return;
+        -:   15:  
+    17890:   16:  for(n=3; n<=N-1;) {
+    17886:   17:    p[n++]=1; p[n++]=0;
+        -:   18:  }
+        2:   19:  if(n==N)
+        1:   20:    p[n]=1;
+        -:   21:
+        2:   22:  m=3; n=m*m;
+      136:   23:  for(; n<=N;) {
+    32863:   24:    for(; n<=N ; n+=2*m)
+    32863:   25:      p[n]=0;
+      132:   26:    m+=2; n = m*m;
+        -:   27:  }
+        -:   28:}
+        -:   29:
+    17890:   30:void AllocSimpleSiev(unsigned long M)
+        -:   31:{
+    17890:   32:  if(!smallprime || smallM<M) {
+        2:   33:    if(smallprime) free(smallprime);
+        2:   34:    smallprime = (short *) calloc(M+1,sizeof(short));
+        2:   35:    smallM= M;
+        2:   36:    SimpleSiev(smallprime,M);
+        -:   37:  }
+    17890:   38:}
+        -:   39:
+    17889:   40:void SimpleSegSiev(short *s, unsigned long n, unsigned long D, unsigned long M)
+        -:   41:/* assumes D+1 units of memory allocated at s */
+        -:   42:/* ensures, for 0<=j<=D, that
+        -:   43:  s[j] = 1   if n+j is coprime to all m<=M, 
+        -:   44:  s[j] = 0   otherwise */
+        -:   45:{
+        -:   46:  unsigned long j, m;
+        -:   47:  unsigned long np;
+        -:   48:  short bn;
+        -:   49:  
+    17889:   50:  if(M<=1) {
+    #####:   51:    for(j=0; j<=D; j++)
+    #####:   52:      s[j] = 1;
+        -:   53:    return;
+        -:   54:  }
+        -:   55:
+        -:   56:  /* we start by setting s[j]=1 for n+j odd and s[j]=0 for n+j even */
+    17889:   57:  bn = n%2;
+160034994:   58:  for(j=0; j<=D-1;) {
+159999216:   59:    s[j++] = bn; s[j++]= !bn;
+        -:   60:  }
+    17889:   61:  if(j==D) s[j]=bn;
+        -:   62:
+    17889:   63:  if(n==0) {
+    #####:   64:    if(D>=1) s[1]=0; /* since 1 is not a prime */
+    #####:   65:    if(D>=2) s[2]=1; /* since 2 is a prime */
+        -:   66:  }
+        -:   67:
+    17889:   68:  if(n==1) {
+        1:   69:    s[0]=0; /* since 1 is not a prime */
+        1:   70:    if(D>=1) s[1]=1; /* since 2 is a prime */
+        -:   71:  }
+        -:   72:
+    17889:   73:  AllocSimpleSiev(M);
+        -:   74:
+106676566:   75:  for(m=3; m<=M; m+=2)
+106658677:   76:    if(smallprime[m]) {
+ 25441624:   77:      np = m*((n+(m-1))/m); /* smallest multiple >=n of m */
+ 25441624:   78:      if(np<=m)
+       31:   79:	  np = 2*m;             /* don't sieve out p itself! */
+ 25441624:   80:      if(!(np%2))
+ 12721581:   81:	np+=m;
+318439139:   82:      for(; np<=n+D; np += 2*m) {
+318439139:   83:	s[np-n]=0;
+        -:   84:      }
+        -:   85:    }
+        -:   86:}
+        -:   87:
+    17889:   88:void SimpleSegSievP(short *s, unsigned long n, unsigned long D)
+        -:   89:{
+        -:   90:  unsigned long M;
+        -:   91:  mpz_class sqt;
+    17889:   92:  mpz_class npD(n+D);
+        -:   93:
+    17889:   94:  mpz_sqrt(sqt.get_mpz_t(), npD.get_mpz_t());
+    17889:   95:  M = sqt.get_ui();
+        -:   96:
+    17889:   97:  SimpleSegSiev(s,n,D,M);
+    17889:   98:}
+        -:   99:
+        1:  100:void SubSegSiev(short *s, unsigned long n, long D, long M)
+        -:  101:/* assumes D+1 units of memory allocated at s */
+        -:  102:/* ensures, for 0<=j<=D, that
+        -:  103:  s[j] = 1   if n+j is coprime to all m<=M, 
+        -:  104:  s[j] = 0   otherwise */
+        -:  105:{
+        -:  106:  mpz_class sqt;
+        1:  107:  mpz_class Mp1(M+1);
+        -:  108:  unsigned long Dp,Mp,j,p;
+        -:  109:  unsigned long np;
+        -:  110:  short *P, bn;
+        -:  111:
+        -:  112:  /*  fprintf(stderr,"%ld %ld %ld\n",n,D,M);*/
+        1:  113:  if(M<=1) {
+    #####:  114:    for(j=0; j<=D; j++)
+    #####:  115:      s[j] = 1;
+        -:  116:    return;
+        -:  117:  }
+        -:  118:  /* we start by setting s[j]=1 for n+j odd and s[j]=0 for n+j even,
+        -:  119:        just as in SimpleSegSiev */
+        1:  120:  bn = n%2;
+ 40000002:  121:  for(j=0; j<=D-1;) {
+ 40000000:  122:    s[j++] = bn; s[j++]= !bn;
+        -:  123:  }
+        1:  124:  if(j==D) s[j]=bn;
+        -:  125:
+        1:  126:  if(n==0) {
+        -:  127:    s[0]==0;
+    #####:  128:    if(D>=1) s[1]=0; /* since 1 is not a prime */
+    #####:  129:    if(D>=2) s[2]=1; /* since 2 is a prime */
+        -:  130:  }
+        -:  131:
+        1:  132:  if(n==1) {
+    #####:  133:    s[0]=0; /* since 1 is not a prime */
+    #####:  134:    if(D>=1) s[1]=1; /* since 2 is a prime */
+        -:  135:  }
+        -:  136:
+        -:  137:  
+        1:  138:  mpz_sqrt(sqt.get_mpz_t(), Mp1.get_mpz_t());
+        1:  139:  Dp = sqt.get_ui();                     /* Dp = (int) sqrt(M) */
+        -:  140:
+        -:  141:  /*  fprintf(stderr,"%ld\n",Dp);*/
+        -:  142:    
+        1:  143:  P = (short *) calloc(Dp+1,sizeof(short));
+        -:  144:
+        1:  145:  AllocSimpleSiev(Dp);
+    17890:  146:  for(Mp=1; Mp<=M; Mp+=Dp+1) {
+        -:  147:    /*    fprintf(stderr,"%ld\n",Mp);*/
+    17889:  148:    SimpleSegSievP(P,Mp,Dp);
+160017889:  149:    for(p=(Mp%2 ? Mp : Mp+1); p<=Mp+Dp && p<=M; p+=2)
+160000000:  150:      if(P[p-Mp]) {
+ 17275205:  151:	np = p*((n+p-1)/p); 	/* smallest multiple >=n of p */
+ 17275205:  152:	if(np<=p)
+    #####:  153:	  np = 2*p;             /* don't sieve out p itself! */
+ 17275205:  154:	if(!(np%2))
+  8641734:  155:	  np+=p;
+109445353:  156:	for(; np<=n+D; np += 2*p)
+109445353:  157:	  s[np-n]=0;
+        -:  158:      }
+        -:  159:  }
+        1:  160:  free(P);
+        -:  161:}
+        -:  162:
+    #####:  163:void SegSiev(short *s, unsigned long n, unsigned long D)
+        -:  164:{
+        -:  165:  unsigned long M;
+        -:  166:  mpz_class sqt;
+    #####:  167:  mpz_class npD(n+D);
+        -:  168:
+    #####:  169:  mpz_sqrt(sqt.get_mpz_t(), npD.get_mpz_t());
+    #####:  170:  M = sqt.get_ui();
+        -:  171:
+    #####:  172:  SubSegSiev(s,n,D,M);
+    #####:  173:}
+        -:  174:

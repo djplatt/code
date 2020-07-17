@@ -1,0 +1,7 @@
+#define _FPU_GETCW(cw) __asm__ ("rfs %0" : "=r" (cw))
+
+#define setfpucw(cw)    asm("fldcw %0" : : "m" (cw))
+
+
+#define _FPU_GETCW(cw) __asm__ ("fnstcw %0" : "=m" (*&cw))
+#define _FPU_SETCW(cw) __asm__ ("fldcw %0" : : "m" (*&cw))

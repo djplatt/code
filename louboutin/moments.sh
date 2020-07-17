@@ -1,0 +1,31 @@
+#!/bin/bash
+rm -f moments.log
+./moments 2 1 2 >> moments.log
+./moments 3 3 2 >> moments.log
+./moments 4 1 3 >> moments.log
+./moments 5 5 2 >> moments.log
+./moments 6 3 2 >> moments.log
+./moments 7 3 2 >> moments.log
+./moments 8 1 3 >> moments.log
+./moments 9 9 3 >> moments.log
+./moments 10 7 14 >> moments.log
+./moments 11 5 2 >> moments.log
+./moments 12 3 2 >> moments.log
+./moments 13 17 7 >> moments.log
+./moments 14 27 3 >> moments.log
+./moments 15 3 2 >> moments.log
+./moments 16 1 3 >> moments.log
+./moments 17 29 17 >> moments.log
+./moments 18 3 2 >> moments.log
+./moments 19 21 2 >> moments.log
+./moments 20 7 5 >> moments.log
+./moments 21 17 47 >> moments.log
+./moments 22 15 3 >> moments.log
+./moments 23 9 3 >> moments.log
+./moments 24 43 2 >> moments.log
+./moments 25 35 2 >> moments.log
+./moments 26 15 3 >> moments.log
+./moments 27 29 5 >> moments.log
+./moments 28 3 2 >> moments.log
+./moments 29 11 3 >> moments.log
+./moments 30 3 2 >> moments.log

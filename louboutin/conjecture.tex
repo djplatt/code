@@ -1,0 +1,101 @@
+%In this one we work with n \geq 10^20.
+
+\documentclass[12pt]{extarticle}
+
+\usepackage[margin=1.5in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{framed}
+\usepackage{verbatim}
+\usepackage{url}
+
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+
+\begin{document}
+
+
+\nocite{*}
+
+\title{\bf On a Conjecture of Louboutin}
+
+\author{\textsc{David J. Platt} \\ 
+ Heilbronn Institute for Mathematical Research\\
+University of Bristol, Bristol, UK \\ 
+\texttt{dave.platt@bris.ac.uk}}
+\date{}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+Here is a computational challenge that you might be able to tackle.
+Let $\chi$ range over the $(p-1)/2$ odd Dirichlet character mod a large prime $p$.
+For $k\geq 1$ a positive integer,
+set
+$$S_{2k}^-(p):=\sum_{\chi\in X_p^-}\vert\theta (1,\chi)\vert^{2k}$$
+where
+$$\theta (x,\chi)=\sum_{n\geq 1} n\chi (n)e^{-\pi n^2x/p}.$$
+My student and I proved (see the reprint below):
+$$S_2^-(p)\sim {p^{5/2}\over 16\pi\sqrt 2}$$
+and
+$$S_4^-(p)\sim {3p^4\log p\over 512\pi^3}$$
+(asympotics as $p$ goes to infinity).
+
+It seems reasonable to conjecture that for each $k$ there exist $C_k>0$ and $f(k)$ quadratic in $k$ such that
+$$S_{2k}^-(p)\sim C_kp^{1+3k/2}\log^{f(k)} p.$$
+
+We tried some numerical computation to guess what $f(k)$ should be
+but could not go far enough to be confident that $f(k) =(k-1)^2$ should be the right answer.
+
+
+Do you think you could do much more extended computations to guess the right answer for $f(k)$?
+
+The idea is that approximating each $\theta (1,\chi)$ by the finite sum $\sum_{1\leq n\leq p-1} n\chi (n)e^{-\pi n^2/p}$
+is much more that enough to compute $S_{2k}^-$ accurately.
+
+
+
+%\bibliographystyle{plain}
+
+%\bibliography{biblio}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

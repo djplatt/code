@@ -1,0 +1,422 @@
+//
+// Solutions to Del Pezzo surfaces of degree 1
+//
+// w^2-ax^6=bx^6+z^3
+//
+#include "inttypes.h"
+#include "stdio.h"
+#include <stdlib.h>
+#include <malloc.h>
+#include <iostream>
+#include <assert.h>
+#include <math.h>
+
+long int H; // runs to height<=H
+
+// 128 bit unsigned built in to GCC (efficiency?)
+typedef __int128_t bigint;
+
+// a node in our heap
+typedef struct{
+  //unsigned int node_no;
+  __attribute__ ((aligned(16)))
+  long int a;
+  long int b;
+  bigint pq;
+} node;
+
+
+void print_bigint_pos(bigint i)
+{
+  if(i<10)
+    printf("%1d",i);
+  else
+    {
+      print_bigint_pos(i/10);
+      printf("%1d",i%10);
+    }
+}
+
+void print_bigint(bigint i)
+{
+  if(i<0)
+    {
+      printf("-");
+      i=-i;
+    }
+  print_bigint_pos(i);
+}
+
+void print_node(node *n)
+{
+  printf("[%ld,%ld,",n->a+1,n->b+1);
+  print_bigint(n->pq);
+  printf("]\n");
+}
+
+void print_heap(node *heap, int last_one)
+{
+  for(int i=0;i<=last_one;i++)
+    print_node(heap+i);
+}
+
+inline long int gcd (long int a, long int b)
+/* Euclid algorithm gcd */
+{
+	int c;
+	while(a!=0)
+	{
+		c=a;
+		a=b%a;
+		b=c;
+	};
+	return(b);
+};
+
+inline long int gcd (long int a, long int b,
+			      long int c)
+{
+  return(gcd(gcd(a,b),c));
+}
+
+inline long int gcd (long int a, long int b,
+			      long int c, long int d)
+{
+  return(gcd(gcd(a,b),gcd(c,d)));
+}
+
+#define max(a,b) (a>b ? a : b)
+
+long int solution_count=0;
+
+void print_solution(node *n1, node *n2)
+{
+  if(gcd(n1[0].a+1,n1[0].b+1,n2[0].a+1,n2[0].b+1)==1)
+    {
+      printf("solution %ld found\n",++solution_count);
+      print_node(n1);
+      print_node(n2);
+      printf("Height= %ld.\n",max(max(n1->a+1,n1->b+1),max(n2->a+1,n2->b+1)));
+      //printf("Terminating search.\n");
+      //exit(0);
+    }
+}
+
+// res<-a*x^4
+inline bigint p(long int x, long int a)
+{
+  bigint res=x;
+  res*=res;
+  res*=res;
+  res*=a;
+  return(res);
+}
+
+// returns 0 if top <left and top < right
+// returns 1 if top > left < right
+// returns -1 if top > right < left
+inline int comp_nodes(node top, node left, node right)
+{
+  if(left.pq<=right.pq) // left <= right
+    {
+      if(top.pq<=left.pq) // top <= left <= right
+	return(0);
+      else // top > left and top <= right
+	return(1); // so swap left
+    }
+  // right < left
+  if(top.pq<=right.pq) // top <= right < left
+    return(0);
+  else
+    return(-1);
+} 
+
+// use the 128 bit XMM registers to swap two nodes
+#define swap_node(x,y)						\
+  {								\
+    __asm(							\
+	  "movapd %0,%%XMM0\n\t"				\
+	  "movapd %1,%%XMM1\n\t"				\
+	  "movapd %%XMM0,%1\n\t"				\
+	  "movapd %%XMM1,%0\n\t"				\
+	  "movapd %2,%%XMM0\n\t"				\
+	  "movapd %3,%%XMM1\n\t"				\
+	  "movapd %%XMM0,%3\n\t"				\
+	  "movapd %%XMM1,%2"					\
+	  : "=m" (x), "=m" (y), "=m" (x.pq), "=m" (y.pq)	\
+	  :							\
+	  : "xmm0","xmm1");					\
+  }
+
+inline void balance_heap (node *heap, int heap_end)
+{
+  int this_ptr=0,left_ptr,right_ptr,cmp;
+  while(true)
+    {
+      left_ptr=(this_ptr<<1)+1;
+      right_ptr=(this_ptr+1)<<1;
+      if(left_ptr<=heap_end) // it has a left child
+	{
+	  if(right_ptr<=heap_end) // it has a left and right children
+	    {
+	      cmp=comp_nodes(heap[this_ptr],heap[left_ptr],heap[right_ptr]);
+	      //printf("comp of %d %d %d returned %d\n",this_ptr,left_ptr,right_ptr,cmp);
+	      if(cmp>0) // swap with left
+		{
+		  swap_node(heap[this_ptr],heap[left_ptr]);
+		  this_ptr=left_ptr;
+		  continue;
+		}
+	      if(cmp<0) // swap with right
+		{
+		  swap_node(heap[this_ptr],heap[right_ptr]);
+		  this_ptr=right_ptr;
+		  continue;
+		}
+	      // parent node is in right place so stop
+	      return;
+	    }
+	  else // this node only has a left child
+	    {
+	      if(heap[left_ptr].pq<heap[this_ptr].pq) // left<this
+		swap_node(heap[this_ptr],heap[left_ptr]);
+	      return; // tree is balanced
+	    }
+	}
+      else // this node is at bottom
+	return;
+    }
+}
+
+#define pop_node(heap,heap_end){heap[0]=heap[heap_end];\
+    heap_end--;\
+balance_heap(heap,heap_end);}
+
+void check_eqn(node *lnodes, node *rnodes,
+	       bigint *squares, bigint *cubes, bigint *as, bigint *bs, long int *As)
+{
+  int cmp;
+  bigint temp,temp1;
+
+  // set up heaps
+  for(long int i=0;i<H;i++)
+    {
+      lnodes[i].a=0;
+      lnodes[i].b=H-i-1;
+      lnodes[i].pq=squares[0]-as[H-i-1];
+    }
+  int left_end=H-1;
+  bigint min_right=As[1];
+  min_right-=cubes[H-1];
+  double dmin=(double) min_right;
+  printf("RHS must be at least ");print_bigint(min_right);printf("\n");
+  while(lnodes[0].pq<min_right)
+    {
+      //print_node(lnodes);
+      double dtarget_a=ceil(exp(log(dmin-(double)lnodes[0].pq+1)*0.5))-1;
+      //printf("b=%ld target a=%f\n",lnodes[0].b,dtarget_a);
+      if(dtarget_a>=H)
+	{
+	  //printf("popping...\n");
+	  pop_node(lnodes,left_end);
+	  balance_heap(lnodes,left_end);
+	}
+      else
+	break;
+      /*
+	{
+	  long int target_a=dtarget_a;
+	  if(target_a==0) target_a=1;
+	  lnodes[0].a=target_a;
+	  lnodes[0].pq=squares[target_a]-as[lnodes[0].b];
+	}
+      */
+    }
+  
+  for(long int i=0;i<H;i++)
+    {
+      rnodes[i].a=0;
+      rnodes[i].b=H-i-1;
+      rnodes[i].pq=bs[0]-cubes[H-i-1];
+    }
+
+  int right_end=H-1;
+
+  while(true)
+    {
+      //printf("Iterating with left=");print_node(lnodes);
+      //printf("          and right=");print_node(rnodes);
+      //printf("\n");
+      if(lnodes[0].pq<rnodes[0].pq) // left<right
+	{
+	  if(lnodes[0].a<H-1) // more left nodes to add
+	    {
+	      lnodes[0].a++;
+	      lnodes[0].pq=squares[lnodes[0].a]-as[lnodes[0].b];
+	      //printf("L Pushing ");print_node(lnodes[0]);
+	      balance_heap(lnodes,left_end);
+	      //print_heap(lnodes,H-1);
+	    }
+	  else // no more left nodes, so just pop
+	    {
+	      pop_node(lnodes,left_end);
+	      if(left_end<0) // heap empty
+		{
+		  //print_node(rnodes[0]);
+		  printf("Heap max reached.\n");
+		  return;
+		}
+	    }
+	  continue;
+	}
+      if(lnodes[0].pq>rnodes[0].pq) // right<left
+	{
+	  if(rnodes[0].a<H-1)
+	    {
+	      rnodes[0].a++;
+	      rnodes[0].pq=bs[rnodes[0].a]-cubes[rnodes[0].b];
+	      //printf("R Pushing ");print_node(rnodes[0]);
+	      balance_heap(rnodes,right_end);
+	      //print_heap(rnodes,H-1);
+	    }
+	  else
+	    {
+	      pop_node(rnodes,right_end);
+	      if(right_end<0)
+		{
+		  //print_node(lnodes[0]);
+		  printf("Heap max reached.\n");
+		  return;
+		}
+	    }
+	  continue;
+	}
+      // right=left
+      //if(gcd(lnodes[0].a,lnodes[0].b,rnodes[0].a,rnodes[0].b)==1)
+      print_solution(lnodes,rnodes);//exit(0);
+      bool left_duplicate=false;
+      if(left_end>0)
+	{
+	  if(lnodes[0].pq==lnodes[1].pq)
+	    left_duplicate=true;
+	  else
+	    {
+	      if(left_end>1)
+		left_duplicate=(lnodes[0].pq==lnodes[2].pq);
+	    }
+	}
+      bool right_duplicate=false;
+      if(right_end>0)
+	{
+	  if(rnodes[0].pq==rnodes[1].pq)
+	    right_duplicate=true;
+	  else
+	    {
+	      if(right_end>1)
+		right_duplicate=(rnodes[0].pq==rnodes[2].pq);
+	    }
+	}
+      if(left_duplicate)
+	{
+	  if(right_duplicate) // this has got to be rare?
+	    {
+	      printf("Fatal error ");
+	      print_bigint(lnodes[0].pq);
+	      printf(" can be formed 2 or more ways on both sides. Exiting.\n");
+	      exit(0);
+	    }
+	  else
+	    {
+	      if(lnodes[0].a<H-1) // more left nodes to add
+		{
+		  lnodes[0].a++;
+		  lnodes[0].pq=squares[lnodes[0].a]-as[lnodes[0].b];
+		  //printf("L Pushing ");print_node(lnodes[0]);
+		  balance_heap(lnodes,left_end);
+		  //print_heap(lnodes,H-1);
+		}
+	      else // no more room on this lnode, so pop it
+		pop_node(lnodes,left_end);
+	    }
+	}
+      else
+	{
+	  if(right_duplicate)
+	    {
+	      if(rnodes[0].a<H-1) // more right nodes to add
+		{
+		  rnodes[0].a++;
+		  rnodes[0].pq=bs[rnodes[0].a]-cubes[rnodes[0].b];
+		  //printf("L Pushing ");print_node(lnodes[0]);
+		  balance_heap(rnodes,right_end);
+		  //print_heap(lnodes,H-1);
+		}
+	      else // no more room on this lnode, so pop it and move RHS on
+		pop_node(rnodes,right_end);
+	    }
+	  else // no duplicates
+	    {
+	      if(lnodes[0].a<H-1) // more left nodes to add
+		{
+		  lnodes[0].a++;
+		  lnodes[0].pq=squares[lnodes[0].a]-as[lnodes[0].b];
+		  //printf("L Pushing ");print_node(lnodes[0]);
+		  balance_heap(lnodes,left_end);
+		  //print_heap(lnodes,H-1);
+		}
+	      else // no more room on this lnode, so pop it
+		{
+		  pop_node(lnodes,left_end);
+		  if(left_end<0)
+		  printf("Heap max reached.\n");
+		  return;
+		}
+	    }
+	}
+
+
+
+
+    }
+}
+
+int main(int argc, char **argv)
+{
+  node *lnodes,*rnodes,left_node,right_node;
+  bigint *squares,*cubes,*as,*bs;
+  int cmp;
+  long int As[2]; // this defines the equation
+
+  if(argc!=4)
+    {
+      printf("Incorrect command line:- %s H a b.\n",argv[0]);
+      exit(0);
+    }
+
+  H=atoi(argv[1]);
+
+  for(int i=0;i<2;i++)
+    As[i]=atoi(argv[i+2]);
+
+  printf("RHS max H set to %ld.\n",H);
+
+  assert(lnodes=(node *) memalign(16,H*sizeof(node)));
+  assert(rnodes=(node *) memalign(16,H*sizeof(node)));
+  assert(squares=(bigint *) malloc(H*sizeof(bigint)));
+  assert(cubes=(bigint *) malloc(H*sizeof(bigint)));
+  assert(as=(bigint *) malloc(H*sizeof(bigint)));
+  assert(bs=(bigint *) malloc(H*sizeof(bigint)));
+
+
+  printf("Looking for solutions to w^2-%ldx^6=%ldy^6-z^3 in (Z>0)^4 to height %ld\n",
+	 As[0],As[1],H);
+  for(int i=0;i<H;i++)
+    {
+      squares[i]=i+1;squares[i]*=i+1;
+      cubes[i]=squares[i]*(i+1);
+      bigint sixth=cubes[i]*cubes[i];
+      as[i]=As[0]*sixth;
+      bs[i]=As[1]*sixth;
+    }
+  check_eqn(lnodes,rnodes,squares,cubes,as,bs,As);
+}

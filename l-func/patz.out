@@ -1,0 +1,8 @@
+rcf:(0+sqrt(45))/1
+(X,Y) = (161, 24); X^2-45*Y^2=1
+Fundamental solution for x^2-45y^2=1: (x,y)=(161,24)
+--------------------------
+X^2-45*Y^2=-1 is insoluble
+--------------------------
+X^2-45*Y^2=1 is soluble
+Fundamental solution (161,24)

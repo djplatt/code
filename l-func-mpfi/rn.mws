@@ -1,0 +1,27 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Maple Output" 0 11 1 
+{CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }3 3 0 -1 -1 -1 0 
+0 0 0 0 0 -1 0 }{PSTYLE "" 11 12 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 }1 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 138 "h_rn:=proc(s,alpha,
+rn) if alpha=0 then Zeta(0,s)-add(n^(-s),n=1..rn-1) else Zeta(0,s,alph
+a)-add((n+alpha)^(-s),n=0..rn-1) end if end proc;" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%%h_rnGf*6%%\"sG%&alphaG%#rnG6\"F*F*@%/9%\"\"!,&-%%Zet
+aG6$F.9$\"\"\"-%$addG6$)%\"nG,$F3!\"\"/F9;F4,&9&F4F4F;F;,&-F16%F.F3F-F
+4-F66$),&F9F4F-F4F:/F9;F.F>F;F*F*F*" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 25 "h_rn(1.5,0,10)-10^(-1.5);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#$\"?1_(R(o#)Gm))R`&)Qqh!#I" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 15 "h_rn(0.5,1,10);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#
+$!?PYCq&R8LD-\"3CN\"['!#H" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 
+"" }}{PARA 11 "" 1 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 50 "zeta_sum:=proc(s,i,j) add(n^(-s),n=i..j) end proc;" }
+}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%)zeta_sumGf*6%%\"sG%\"iG%\"jG6\"F*F
+*-%$addG6$)%\"nG,$9$!\"\"/F/;9%9&F*F*F*" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 25 "zeta_sum(9.5+4000*I,2,9);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#^$$!?A'o'oZ,7ZA%f)>3!4#!#L$!?zd!QI(Gt&3h%y?k&Q\"!#K" }}
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "2 0 0" 0 }
+{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

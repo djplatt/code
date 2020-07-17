@@ -1,0 +1,122 @@
+In main
+Found 2 CUDA devices.
+Allocating device memory for sin_table
+2.180000 seconds elapsed.
+735.350000 seconds elapsed.
+Setting up host sin_table
+Copying host sin_table to device
+735.350000 seconds elapsed.
+Setting up cos_table
+735.350000 seconds elapsed.
+Copying cos_table
+735.350000 seconds elapsed.
+Allocating other device memory.
+735.350000 seconds elapsed.
+Doing 1 iterations on file /gpfs/cluster/math/madjp/zeros1/zeros_14.dat.
+Processing zero 1 to 4520=4520 in total.
+Invoking GPU with first zero at 14.134725
+Last zero at 478.942182
+735.350000 seconds elapsed.
+First result was -0.001965
+Last result was -0.000373
+735.350000 seconds elapsed.
+Invoking GPU with first zero at 481.830339
+Last zero at 826.905811
+735.350000 seconds elapsed.
+First result was -0.000383
+Last result was -0.000050
+735.360000 seconds elapsed.
+Invoking GPU with first zero at 828.340174
+Last zero at 1145.485328
+735.360000 seconds elapsed.
+First result was -0.000037
+Last result was -0.000005
+735.370000 seconds elapsed.
+Invoking GPU with first zero at 1146.576815
+Last zero at 1447.226227
+735.370000 seconds elapsed.
+First result was 0.000002
+Last result was -0.000154
+735.380000 seconds elapsed.
+Invoking GPU with first zero at 1448.323854
+Last zero at 1737.893885
+735.380000 seconds elapsed.
+First result was -0.000159
+Last result was -0.000095
+735.390000 seconds elapsed.
+Invoking GPU with first zero at 1738.783238
+Last zero at 2019.884367
+735.390000 seconds elapsed.
+First result was -0.000098
+Last result was -0.000081
+735.400000 seconds elapsed.
+Invoking GPU with first zero at 2021.196043
+Last zero at 2296.115091
+735.400000 seconds elapsed.
+First result was -0.000100
+Last result was -0.000037
+735.420000 seconds elapsed.
+Invoking GPU with first zero at 2296.998522
+Last zero at 2565.975270
+735.420000 seconds elapsed.
+First result was -0.000043
+Last result was 0.000114
+735.430000 seconds elapsed.
+Invoking GPU with first zero at 2566.557558
+Last zero at 2831.128425
+735.430000 seconds elapsed.
+First result was 0.000114
+Last result was -0.000109
+735.440000 seconds elapsed.
+Invoking GPU with first zero at 2832.416551
+Last zero at 3092.687667
+735.440000 seconds elapsed.
+First result was -0.000109
+Last result was 0.000091
+735.460000 seconds elapsed.
+Invoking GPU with first zero at 3093.185446
+Last zero at 3349.856252
+735.460000 seconds elapsed.
+First result was 0.000092
+Last result was 0.000014
+735.480000 seconds elapsed.
+Invoking GPU with first zero at 3350.803704
+Last zero at 3604.754984
+735.480000 seconds elapsed.
+First result was 0.000008
+Last result was -0.000106
+735.490000 seconds elapsed.
+Invoking GPU with first zero at 3605.494475
+Last zero at 3856.703867
+735.490000 seconds elapsed.
+First result was -0.000112
+Last result was -0.000083
+735.510000 seconds elapsed.
+Invoking GPU with first zero at 3857.610583
+Last zero at 4105.512853
+735.510000 seconds elapsed.
+First result was -0.000083
+Last result was 0.000024
+735.520000 seconds elapsed.
+Invoking GPU with first zero at 4107.327219
+Last zero at 4353.700190
+735.520000 seconds elapsed.
+First result was 0.000026
+Last result was 0.000066
+735.540000 seconds elapsed.
+Invoking GPU with first zero at 4354.220758
+Last zero at 4597.820812
+735.540000 seconds elapsed.
+First result was 0.000065
+Last result was 0.000080
+735.560000 seconds elapsed.
+Invoking GPU with first zero at 4599.373672
+Last zero at 4841.064724
+735.560000 seconds elapsed.
+First result was 0.000070
+Last result was 0.000070
+735.580000 seconds elapsed.
+Invoking GPU with first zero at 4842.043505
+Last zero at 4999.329681
+First result was 0.000070
+Last result was 0.000068

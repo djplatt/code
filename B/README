@@ -1,0 +1,11 @@
+This directory contains files to compute the constants b(chi)
+described in Ramare's "Explicit Estimates: from $\Lambda(n)$..."
+paper.
+
+B_odd computes them for odd characters
+
+B_even for even
+
+DJ Platt
+
+May 2012

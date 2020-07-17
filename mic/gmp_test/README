@@ -1,0 +1,25 @@
+These files run a quick test on the Xeon Phi processor
+
+We first build a version of GMP cross compiled for the Xeon Phi
+
+I used version 5.1.3 build using Intels icc (lives in /opt/intel/bin/)
+
+  $ ./configure CC=icc --host=x86_64 CFLAGS=-mmic --disable-assembly
+
+I then did make
+
+The program test.c is then built using the makefile and copied to the xeon phi
+using sftp mic0
+
+The (sh) script run_test.sh is also copied over. This creates 227 instantiations of test and waits for them all to complete.
+
+and either run locally by
+ssh mic0 'time ./run_test.sh'
+
+or after ssh'ing to mic0
+
+I got a run time of ~44 seconds with 152' 35" of User time (about x208)
+
+
+
+

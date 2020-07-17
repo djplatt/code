@@ -1,0 +1,124 @@
+        -:    0:Source:sievesimp.cpp
+        -:    0:Graph:sievesimp.gcno
+        -:    0:Data:sievesimp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <gmpxx.h>
+        -:    4:#include <math.h>
+        -:    5:#include <time.h>
+        -:    6:#include "diophappr.h"
+        -:    7:#include "solvemodz2.h"
+        -:    8:#include "simplesieve.h"
+        -:    9:/*  Compile using
+        -:   10:g++ sievesimp.cpp -osievesimp -O3 -frounding-math -finline-functions -lgmp */
+        -:   11:
+        1:   12:void NewSegSiev(short *s, unsigned long n, long D, long K, long quot)
+        -:   13:/* ensure: s[j] = (n-D+j is prime) for 0<=j<=2 D */
+        -:   14:/* parameter kappa = 1/quot */
+        -:   15:{
+        -:   16:  mpz_class sqt, M2kap, sqtR, kmpz;
+        1:   17:  mpz_class npD(n+D);
+        -:   18:  long M, Mp, R, m, m0, x;
+        -:   19:  unsigned long np;
+        -:   20:  rat alpha0, alpha1;
+        -:   21:  mpq_class eta, etaq;
+        -:   22:  long c,cainv,a,ainv,q,k,r0,j;
+        -:   23:  
+        1:   24:  mpz_sqrt(sqt.get_mpz_t(), npD.get_mpz_t());
+        1:   25:  x = sqt.get_si();                     /* x = (int) sqrt(n+D) */
+        -:   26:  		  
+        1:   27:  SubSegSiev(s,n-D,2*D,K*D);
+   687365:   28:  for(M = K*D+1; M <=x; M+=(2*R+1)) {
+  2749456:   29:     M2kap = ((((((mpz_class) M)*M)*D)/quot)/n);  /* (M^2)*D/(quot*n) */
+   687364:   30:    mpz_sqrt(sqtR.get_mpz_t(), M2kap.get_mpz_t());
+   687364:   31:    R = sqtR.get_si();  /* (int) (M*sqrt(kappa*D/n)) */
+        -:   32:    
+   687364:   33:    m0 = M+R; Mp = M+2*R;
+   687364:   34:    alpha0.num = n%m0; alpha0.den = m0;
+   687364:   35:    alpha1.den = m0*m0; alpha1.num = (alpha1.den-n%alpha1.den);
+  3436820:   36:    eta = (((mpq_class) D)/((mpq_class) M))*(1+1/((mpq_class) quot)); /* eta = 3D/2M */
+        -:   37:
+   687364:   38:    diophappr(alpha1,2*R,&a,&ainv,&q);
+  1374728:   39:    etaq = eta*q;
+  1374728:   40:    kmpz = etaq.get_num()/etaq.get_den(); k=kmpz.get_si();
+   687364:   41:    c = (alpha0.num*q+m0/2)/m0;
+   687364:   42:    cainv  = (ainv*c)%q;
+ 47331139:   43:    for(r0= -cainv, j=0; j <= k+1; j++, r0 -= ainv) {
+ 46643775:   44:      if(r0 <= -q)
+ 22990931:   45:	r0 += q;
+101112821:   46:      for(m= m0+r0; m>=M; m-=q)
+ 54469046:   47:	if(m%2) {
+ 27237886:   48:	  np = ((n+D)/m)*m;
+ 27237886:   49:	  if(np>=n-D && np<=n+D && np>m) 
+ 21733345:   50:	    s[np-(n-D)]=0;		
+        -:   51:	}
+101061352:   52:      for(m=m0+r0+q; m<=Mp; m+=q)
+ 54417577:   53:	if(m%2) {
+ 27206531:   54:	  np = ((n+D)/m)*m;
+ 27206531:   55:	  if(np>=n-D && np<=n+D && np>m) 
+ 21718376:   56:	    s[np-(n-D)]=0;	
+        -:   57:	}
+        -:   58:    }
+ 46643775:   59:    for(r0= -cainv+ainv, j = -1; j >= -(k+1); j--, r0+=ainv) {
+ 45956411:   60:      if(r0>0)
+ 22990958:   61:	r0 -=q;
+ 96835674:   62:      for(m= m0+r0; m>=M; m-=q)
+ 50879263:   63:	if(m%2) {
+ 25447299:   64:	  np = ((n+D)/m)*m;
+ 25447299:   65:	  if(np>=n-D && np<=n+D && np>m) 
+ 17253733:   66:	    s[np-(n-D)]=0;
+        -:   67:	}
+ 96784339:   68:      for(m=m0+r0+q; m<=Mp; m+=q)
+ 50827928:   69:	if(m%2) {
+ 25421103:   70:	  np = ((n+D)/m)*m;
+ 25421103:   71:	  if(np>=n-D && np<=n+D && np>m) 
+ 17241419:   72:	    s[np-(n-D)]=0;
+        -:   73:	}
+        -:   74:    }
+        -:   75:  }
+        1:   76:}
+        -:   77:
+        1:   78:int main(int argc, char *argv[])
+        -:   79:{
+        -:   80:  unsigned long n, D, j;
+        -:   81:  short *s;
+        -:   82:  clock_t tstart, tend;
+        -:   83:  double cpu_time_used;
+        -:   84:
+        1:   85:  if(argc<=3) {
+        1:   86:    if(argc<2) {
+        1:   87:      n= 5000000000000000000;
+        1:   88:      D=40000000;
+        -:   89:    } else {
+    #####:   90:      n = atol(argv[1]);
+    #####:   91:      if(argc<3)
+    #####:   92:	D = 40000000;
+        -:   93:      else
+    #####:   94:	D = atol(argv[2]);
+        -:   95:    }
+        -:   96:
+        1:   97:    tstart = clock();
+        1:   98:    s = (short *) calloc(2*D+1,sizeof(short));
+        1:   99:    NewSegSiev(s,n,D,8,4);
+        1:  100:    tend = clock();
+        -:  101:  } else {
+        -:  102:    /* call sieve2 400000000000 2000000 dummy
+        -:  103:       (say) for control */
+    #####:  104:    n = atol(argv[1]);
+    #####:  105:    D = atol(argv[2]);
+        -:  106:    
+    #####:  107:    tstart = clock();
+    #####:  108:    s = (short *) calloc(2*D+1,sizeof(short));
+    #####:  109:    SegSiev(s,n-D,2*D);
+    #####:  110:    tend = clock();
+        -:  111:  }
+        -:  112:  
+ 80000002:  113:  for(j=0; j<=2*D; j++)
+ 80000001:  114:    if(s[j])
+  1857538:  115:      printf("%lu\n",n-D+j);
+        -:  116:
+        1:  117:  cpu_time_used = ((double) (tend-tstart))/CLOCKS_PER_SEC;
+        1:  118:  fprintf(stderr,"Seconds: %g\n",cpu_time_used);
+        -:  119:}

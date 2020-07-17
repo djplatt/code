@@ -1,0 +1,35 @@
+*** GQD 1.1 ***
+
+
+1. INTRODCUTION
+
+GQD provides an easy-to-use, efficient extended precision library for GPGPU. It has implemented double-double (around 31 decimal digits) and quad-double precision (around 62 decimal digits.). Current released version contains following functions with extended precision: arithmetic operator (+, -, *, /), sqrt, exp, log, sin, cos, comparision operators. Most functions are implemented using operator and function override, and thus have good portability and feasibility. Since GPU kerenl functions cannot be compiled to a library, the source code needs to be merged to your projects when using the library. To use the library, you should include the file "gdd.cu" (double-double) or "gqd.cu" (quad-double). Overall, compared with OpenMP-based CPU implementations on a quad-core CPU, our library has achieved the speedup of around 10-20x.
+
+
+2. Usage
+
+Most arithmetic operators and math functions are overloaded, thus it is very similar to use the extended precision as the native precision on GPUs. The type names for double-double and quad-double precision are GPU_dd and GPU_qd, respectively. Examples of using extended precision can be found in the "test" directory.
+
+
+3. TEST
+
+We have provided test cases to demonstrate the use and efficiency of the library. To run the test program, you should have supported OpenMP and QD library [1]. To run the test program, just use the command
+
+sh test.sh
+
+It may take several minutes to compile the GPU library. It will show the speedup and relative difference compared with CPU QD.The abstract of relative error should be zero or smaller than 10^(-31) and 10^(-62) for double-double and quad-double precision, respectively. 
+
+
+4. IMPORTANT NOTES
+
+Algorithms implemented are mainly ported from the QD library on the CPU [1]. Thus any redistribution of the library should also agree to the BSD-LBNL-License [2].
+
+
+5. REFERENCE
+[1]. http://crd.lbl.gov/~dhbailey/mpdist/
+[2]. http://crd.lbl.gov/~dhbailey/mpdist/BSD-LBNL-License.doc
+
+
+Mian Lu
+July 11, 2010
+lumianph@gmail.com

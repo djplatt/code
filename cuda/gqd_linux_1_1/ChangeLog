@@ -1,0 +1,6 @@
+*** GQD 1.1 ***
+1. Fix bugs appeared in recently released CUDA versions, the current GQD version can obtain correct results in CUDA 3.0 and CUDA 3.1.
+2. GQD has been tested in both 32bit- and 64bit- platforms.
+3. The file organization is improved.
+4. The bash file test.sh has been rewritten.
+

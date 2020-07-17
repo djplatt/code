@@ -1,0 +1,1 @@
+xlim=200;for(r=2,10000,ab=r*r-1;fordiv(ab,a,if(a>=r-1,break);b=ab/a;N=b-a;if(b<=a+a,for(x=1,xlim,ylim=floor((b*x*x-N)/a);for(y=1,ylim,if(b*x^2-a*y^2==N,print(r," ",a," ",b," ",x," ",y)))))));

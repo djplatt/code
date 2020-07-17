@@ -1,0 +1,41 @@
+        -:    0:Source:diophappr.h
+        -:    0:Graph:sievesimp.gcno
+        -:    0:Data:sievesimp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:typedef struct {
+        -:    2:  long num, den;
+        -:    3:} rat;
+        -:    4:
+        -:    5:#define mod(x,y) ((x)>=0 ? ((x)%(y)) : ((y)-1) - ((-(x)-1)%(y)))
+        -:    6:#define div(x,y) ((x)>=0 ? ((x)/(y)) : -1-(-(x)-1)/(y))
+        -:    7:
+   687364:    8:void diophappr(rat alph, long Q, long *a, long *ainv, long *qout)
+        -:    9:/* precondition: alph.num>=0, alph.den>=0 */
+        -:   10:/* constructs approximation a/q, q<=Q, to alph */
+        -:   11:/* sets ainv to a^{-1} mo q */
+        -:   12:{
+        -:   13:  long b, p, q, pmin, qmin, pplus, qplus, nummodb, flip;
+        -:   14:  int s;
+        -:   15:
+   687364:   16:  b = alph.num/alph.den;
+   687364:   17:  p = b; q = 1; pmin = 1; qmin = 0; s = 1;
+  6620851:   18:  while(q<=Q) {
+        -:   19:    /*    printf("%ld %ld\n",p,q);*/
+  5246123:   20:    nummodb = alph.num%alph.den;
+  5246123:   21:    if(nummodb==0) {
+    #####:   22:      flip = (s==1 ? -qmin : qmin);
+    #####:   23:      *a = p; *ainv = mod(flip,q); *qout = q; return;
+        -:   24:    }
+  5246123:   25:    alph.num = alph.den; alph.den = nummodb;
+  5246123:   26:    b = alph.num/alph.den;
+        -:   27:
+  5246123:   28:    pplus = b*p+pmin; qplus = b*q + qmin;
+        -:   29:
+  5246123:   30:    pmin = p; qmin = q; p = pplus; q = qplus; s = - s;
+        -:   31:  }
+        -:   32:
+   687364:   33:  flip = (s==1 ? q : - q);
+   687364:   34:  *a = pmin; *ainv = mod(flip,qmin); *qout = qmin;
+        -:   35:}
+        -:   36:
