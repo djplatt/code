@@ -1,0 +1,4 @@
+saouter.cpp:- Investigate sum 1<=i<=k log(1-1/p_i) in support of refereeing of Saouter's submission to Math Comp.
+
+makefile:- simple makefile for the same
+

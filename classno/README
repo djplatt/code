@@ -1,0 +1,12 @@
+PQA.gp: pari program to compute fundamental units of Q(\sqrt(d)) with d a fundamental discriminant. Uses PQA algorithm by Lagrange
+
+class_no_t.txt
+
+t d l cl x y
+
+t=int
+dl^2=t^2-4 with d fundamental
+cl=class number of d
+x^2=dy^2=4
+
+L(1,chi_d)=log(0.5(x+y*sqrt(d)))*cl/sqrt(d)

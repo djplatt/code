@@ -1,0 +1,5 @@
+q2i(max_b)={ans=0;max_a=max_b/4;max_ab=max_a*max_b;R=ceil(sqrt(max_ab+1));print("checking r<=",R);for(r=2,R,ab=r*r-1;fordiv(ab,a,if(a>r-2,break);b=ab/a;if((b<=max_b)&&(b>4*a),for(c=4*a*b+a+b,b^1.5,if(issquare(a*c+1)&&issquare(b*c+1),d=a+b+c+2*(a*b*c+r*floor(sqrt((a*c+1)*(b*c+1))));if((d>=b^2)&&(d<=b^5),ans++;print(a," ",b," ",c," ",d)))))));print("Total solutions= ",ans)}
+
+q2ii(max_b)={ans=0;max_a=max_b/4;max_ab=max_a*max_b;R=ceil(sqrt(max_ab+1));print("checking r<=",R);for(r=2,R,ab=r*r-1;fordiv(ab,a,if(a>r-2,break);b=ab/a;if((b<=max_b)&&(b>4*a),c=a+b+r+r;d=a+b+c+2*(a*b*c+r*floor(sqrt((a*c+1)*(b*c+1))));if((d>=b^2)&&(d<=b^5),ans++;print(a," ",b," ",c," ",d)))));print("Total solutions= ",ans)}
+
+q2iv(max_b)={ans=0;max_a=max_b/4;max_ab=max_a*max_b;R=ceil(sqrt(max_ab+1));print("checking r<=",R);for(r=2,R,ab=r*r-1;fordiv(ab,a,if(a>r-2,break);b=ab/a;if((b<=max_b)&&(b<4*a),c=a+b+r+r;if(c>4*a,d=a+b+c+2*(a*b*c+r*floor(sqrt((a*c+1)*(b*c+1))));if((d>=c^2)&&(d<=c^5),ans++;print(a," ",b," ",c," ",d))))));print("Total solutions= ",ans)}

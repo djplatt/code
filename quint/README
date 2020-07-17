@@ -1,0 +1,14 @@
+This directory contains the code used to eliminate all type 1 Diophantine quadruples
+
+The file factors_fast.gp simply factors each r^2-1 using (r-1)(r+1). The output is piped to quintuples6. (quintuples7 is a version that exploits d+=a+b+c+2abc+2rst but it is both slower and produces duplicates that need to be removed later.
+
+The output from quintuples6 consists of 
+
+    10,811,572 potential solutions e.g.
+    Solution found 8 15 21736 10476753
+    These have survived Lara, but are then tested using test_ds2.gp and this eliminates them all.
+
+    13,598 extra solutions. These are solutions to X^2-Dy^2=N other than the "structural" one X=r,y=g. These are actually tested by quintuples6 and in every case give rise to non-integral solutions to c,d but we use test_extras.gp to check them again.
+
+    3,885 where X^2-Dy^2=-1 has a solution. If X^2-Dy^2=-N also has a solution, then these give rise to new solutions. minus_ones.gp checks these and each one gives exactly two possible a,b,c,d (minus_ones.lst) but lara removes all but 245 of those and test_ds2.gp eliminates all the rest.
+

@@ -1,0 +1,1000 @@
+First Zero 103047903013 is at  [3.039794600012619781e+10,3.039794600012620926e+10]
+Last Zero 103055356171 is at  [3.040004599969983673e+10,3.040004599969984818e+10]
+Largest possible absolute gap seen is at least  1.048599952249624767e+00
+There is an absolute gap at least as large as   1.048599952249624101e+00
+Smallest possible absolute gap seen is at least 5.694873518404592510e-04
+There is an absolute gap at least as small as   5.694873518404595762e-04
+Largest possible relative gap seen is at least  4.028335499898207495e+00
+There is an relative gap at least as large as   4.028335499898202166e+00
+Smallest possible relative gap seen is at least 2.187761019864294110e-03
+There is an relative gap at least as small as   2.187761019864296712e-03
+First Zero 103055356172 is at  [3.040004600030550003e+10,3.040004600030551147e+10]
+Last Zero 103062809352 is at  [3.040214599986732483e+10,3.040214599986733627e+10]
+Largest possible absolute gap seen is at least  9.951683585493643625e-01
+There is an absolute gap at least as large as   9.951683585493640294e-01
+Smallest possible absolute gap seen is at least 4.532956126317594256e-05
+There is an absolute gap at least as small as   4.532956126317596289e-05
+Largest possible relative gap seen is at least  3.823081262166939442e+00
+There is an relative gap at least as large as   3.823081262166936334e+00
+Smallest possible relative gap seen is at least 1.741398756464397103e-04
+There is an relative gap at least as small as   1.741398756464399001e-04
+First Zero 103062809353 is at  [3.040214600014917755e+10,3.040214600014918900e+10]
+Last Zero 103070262558 is at  [3.040424599999806595e+10,3.040424599999807739e+10]
+Largest possible absolute gap seen is at least  1.016698708204376800e+00
+There is an absolute gap at least as large as   1.016698708204376134e+00
+Smallest possible absolute gap seen is at least 3.164780474836611829e-04
+There is an absolute gap at least as small as   3.164780474836613455e-04
+Largest possible relative gap seen is at least  3.905802551099287534e+00
+There is an relative gap at least as large as   3.905802551099283093e+00
+Smallest possible relative gap seen is at least 1.215796900748598863e-03
+There is an relative gap at least as small as   1.215796900748600381e-03
+First Zero 103070262559 is at  [3.040424600027544022e+10,3.040424600027545166e+10]
+Last Zero 103077715784 is at  [3.040634599950632858e+10,3.040634599950634003e+10]
+Largest possible absolute gap seen is at least  1.036606991059257465e+00
+There is an absolute gap at least as large as   1.036606991059256799e+00
+Smallest possible absolute gap seen is at least 1.781566395905979656e-04
+There is an absolute gap at least as small as   1.781566395905980469e-04
+Largest possible relative gap seen is at least  3.982291171732281310e+00
+There is an relative gap at least as large as   3.982291171732277313e+00
+Smallest possible relative gap seen is at least 6.844169788448666806e-04
+There is an relative gap at least as small as   6.844169788448674395e-04
+First Zero 103077715785 is at  [3.040634600007692719e+10,3.040634600007693863e+10]
+Last Zero 103085169036 is at  [3.040844599991493988e+10,3.040844599991495132e+10]
+Largest possible absolute gap seen is at least  1.052652871969188775e+00
+There is an absolute gap at least as large as   1.052652871969188109e+00
+Smallest possible absolute gap seen is at least 3.258675340613593477e-04
+There is an absolute gap at least as small as   3.258675340613595103e-04
+Largest possible relative gap seen is at least  4.043946844700482046e+00
+There is an relative gap at least as large as   4.043946844700476717e+00
+Smallest possible relative gap seen is at least 1.251877696338856566e-03
+There is an relative gap at least as small as   1.251877696338858084e-03
+First Zero 103085169037 is at  [3.040844600006911087e+10,3.040844600006912231e+10]
+Last Zero 103092622310 is at  [3.041054599985867310e+10,3.041054599985868454e+10]
+Largest possible absolute gap seen is at least  1.015211655137003177e+00
+There is an absolute gap at least as large as   1.015211655137002511e+00
+Smallest possible absolute gap seen is at least 2.543533710166464104e-04
+There is an absolute gap at least as small as   2.543533710166465730e-04
+Largest possible relative gap seen is at least  3.900124113978107765e+00
+There is an relative gap at least as large as   3.900124113978102880e+00
+Smallest possible relative gap seen is at least 9.771452791613015072e-04
+There is an relative gap at least as small as   9.771452791613028082e-04
+First Zero 103092622311 is at  [3.041054600000003433e+10,3.041054600000004578e+10]
+Last Zero 103100075606 is at  [3.041264599951212311e+10,3.041264599951213455e+10]
+Largest possible absolute gap seen is at least  9.973310060334537042e-01
+There is an absolute gap at least as large as   9.973310060334533711e-01
+Smallest possible absolute gap seen is at least 1.545303105478639671e-05
+There is an absolute gap at least as small as   1.545303105478640688e-05
+Largest possible relative gap seen is at least  3.831445975795568337e+00
+There is an relative gap at least as large as   3.831445975795564340e+00
+Smallest possible relative gap seen is at least 5.936588959938930937e-05
+There is an relative gap at least as small as   5.936588959938938391e-05
+First Zero 103100075607 is at  [3.041264600008177185e+10,3.041264600008178329e+10]
+Last Zero 103107528928 is at  [3.041474599991236496e+10,3.041474599991237640e+10]
+Largest possible absolute gap seen is at least  1.007060528383749709e+00
+There is an absolute gap at least as large as   1.007060528383749043e+00
+Smallest possible absolute gap seen is at least 3.768064792108598337e-04
+There is an absolute gap at least as small as   3.768064792108599963e-04
+Largest possible relative gap seen is at least  3.868833859537973208e+00
+There is an relative gap at least as large as   3.868833859537968323e+00
+Smallest possible relative gap seen is at least 1.447581804857346654e-03
+There is an relative gap at least as small as   1.447581804857348171e-03
+First Zero 103107528929 is at  [3.041474600018686676e+10,3.041474600018687820e+10]
+Last Zero 103114982271 is at  [3.041684599996765518e+10,3.041684599996766663e+10]
+Largest possible absolute gap seen is at least  1.053867989004674266e+00
+There is an absolute gap at least as large as   1.053867989004673600e+00
+Smallest possible absolute gap seen is at least 2.632822837515467183e-04
+There is an absolute gap at least as small as   2.632822837515468809e-04
+Largest possible relative gap seen is at least  4.048666282904387792e+00
+There is an relative gap at least as large as   4.048666282904382463e+00
+Smallest possible relative gap seen is at least 1.011456790270918137e-03
+There is an relative gap at least as small as   1.011456790270919221e-03
+First Zero 103114982272 is at  [3.041684600014094925e+10,3.041684600014096069e+10]
+Last Zero 103122435636 is at  [3.041894599994295120e+10,3.041894599994296265e+10]
+Largest possible absolute gap seen is at least  1.009898332935707410e+00
+There is an absolute gap at least as large as   1.009898332935706744e+00
+Smallest possible absolute gap seen is at least 2.803826417173448170e-04
+There is an absolute gap at least as small as   2.803826417173449796e-04
+Largest possible relative gap seen is at least  3.879756037808443470e+00
+There is an relative gap at least as large as   3.879756037808439029e+00
+Smallest possible relative gap seen is at least 1.077155550130220237e-03
+There is an relative gap at least as small as   1.077155550130221538e-03
+First Zero 103122435637 is at  [3.041894600007306671e+10,3.041894600007307816e+10]
+Last Zero 103129889026 is at  [3.042104599983892441e+10,3.042104599983893585e+10]
+Largest possible absolute gap seen is at least  1.076929812391464347e+00
+There is an absolute gap at least as large as   1.076929812391463681e+00
+Smallest possible absolute gap seen is at least 8.054359129083242281e-05
+There is an absolute gap at least as small as   8.054359129083246346e-05
+Largest possible relative gap seen is at least  4.137283760216441841e+00
+There is an relative gap at least as large as   4.137283760216437400e+00
+Smallest possible relative gap seen is at least 3.094271312709872754e-04
+There is an relative gap at least as small as   3.094271312709876006e-04
+First Zero 103129889027 is at  [3.042104600004829788e+10,3.042104600004830933e+10]
+Last Zero 103137342438 is at  [3.042314599988996124e+10,3.042314599988997269e+10]
+Largest possible absolute gap seen is at least  1.064773425841106347e+00
+There is an absolute gap at least as large as   1.064773425841105681e+00
+Smallest possible absolute gap seen is at least 3.168986324552938933e-04
+There is an absolute gap at least as small as   3.168986324552940559e-04
+Largest possible relative gap seen is at least  4.090592246238134777e+00
+There is an relative gap at least as large as   4.090592246238129448e+00
+Smallest possible relative gap seen is at least 1.217443987792880388e-03
+There is an relative gap at least as small as   1.217443987792881689e-03
+First Zero 103137342439 is at  [3.042314600010123825e+10,3.042314600010124969e+10]
+Last Zero 103144795874 is at  [3.042524599987208939e+10,3.042524599987210083e+10]
+Largest possible absolute gap seen is at least  1.095189306780447458e+00
+There is an absolute gap at least as large as   1.095189306780446792e+00
+Smallest possible absolute gap seen is at least 1.024527701450420194e-04
+There is an absolute gap at least as small as   1.024527701450420600e-04
+Largest possible relative gap seen is at least  4.207458858723780892e+00
+There is an relative gap at least as large as   4.207458858723775563e+00
+Smallest possible relative gap seen is at least 3.935989258193718448e-04
+There is an relative gap at least as small as   3.935989258193722242e-04
+First Zero 103144795875 is at  [3.042524600006501770e+10,3.042524600006502914e+10]
+Last Zero 103152249333 is at  [3.042734599986265564e+10,3.042734599986266708e+10]
+Largest possible absolute gap seen is at least  1.001986982950912930e+00
+There is an absolute gap at least as large as   1.001986982950912264e+00
+Smallest possible absolute gap seen is at least 3.962763676517379096e-06
+There is an absolute gap at least as small as   3.962763676517381638e-06
+Largest possible relative gap seen is at least  3.849405317215373046e+00
+There is an relative gap at least as large as   3.849405317215368161e+00
+Smallest possible relative gap seen is at least 1.522401814053426815e-05
+There is an relative gap at least as small as   1.522401814053428848e-05
+First Zero 103152249334 is at  [3.042734600020958328e+10,3.042734600020959473e+10]
+Last Zero 103159702815 is at  [3.042944599999169922e+10,3.042944599999171066e+10]
+Largest possible absolute gap seen is at least  1.032344718676273310e+00
+There is an absolute gap at least as large as   1.032344718676272644e+00
+Smallest possible absolute gap seen is at least 4.819756229085217123e-05
+There is an absolute gap at least as small as   4.819756229085219156e-05
+Largest possible relative gap seen is at least  3.966042781962800579e+00
+There is an relative gap at least as large as   3.966042781962795249e+00
+Smallest possible relative gap seen is at least 1.851645325509408777e-04
+There is an relative gap at least as small as   1.851645325509410675e-04
+First Zero 103159702816 is at  [3.042944600028384018e+10,3.042944600028385162e+10]
+Last Zero 103167156319 is at  [3.043154599972468948e+10,3.043154599972470093e+10]
+Largest possible absolute gap seen is at least  1.082106447818902639e+00
+There is an absolute gap at least as large as   1.082106447818901973e+00
+Smallest possible absolute gap seen is at least 1.950196252441692619e-04
+There is an absolute gap at least as small as   1.950196252441693432e-04
+Largest possible relative gap seen is at least  4.157234873521932883e+00
+There is an relative gap at least as large as   4.157234873521927554e+00
+Smallest possible relative gap seen is at least 7.492250751002495429e-04
+There is an relative gap at least as small as   7.492250751002503019e-04
+First Zero 103167156320 is at  [3.043154600008285904e+10,3.043154600008287048e+10]
+Last Zero 103174609847 is at  [3.043364599973111725e+10,3.043364599973112869e+10]
+Largest possible absolute gap seen is at least  1.065372592619678427e+00
+There is an absolute gap at least as large as   1.065372592619677761e+00
+Smallest possible absolute gap seen is at least 4.226980358569729871e-04
+There is an absolute gap at least as small as   4.226980358569731497e-04
+Largest possible relative gap seen is at least  4.092956191269927047e+00
+There is an relative gap at least as large as   4.092956191269922606e+00
+Smallest possible relative gap seen is at least 1.623925873770325212e-03
+There is an relative gap at least as small as   1.623925873770326947e-03
+First Zero 103174609848 is at  [3.043364600016753769e+10,3.043364600016754913e+10]
+Last Zero 103182063398 is at  [3.043574599981937408e+10,3.043574599981938553e+10]
+Largest possible absolute gap seen is at least  1.026682699137716925e+00
+There is an absolute gap at least as large as   1.026682699137716259e+00
+Smallest possible absolute gap seen is at least 4.142413874762371651e-04
+There is an absolute gap at least as small as   4.142413874762373278e-04
+Largest possible relative gap seen is at least  3.944328115794345724e+00
+There is an relative gap at least as large as   3.944328115794340839e+00
+Smallest possible relative gap seen is at least 1.591438005313002783e-03
+There is an relative gap at least as small as   1.591438005313004301e-03
+First Zero 103182063399 is at  [3.043574600004605103e+10,3.043574600004606247e+10]
+Last Zero 103189516972 is at  [3.043784599997722626e+10,3.043784599997723770e+10]
+Largest possible absolute gap seen is at least  1.037212917139988200e+00
+There is an absolute gap at least as large as   1.037212917139987534e+00
+Smallest possible absolute gap seen is at least 4.978254045148941407e-05
+There is an absolute gap at least as small as   4.978254045148943440e-05
+Largest possible relative gap seen is at least  3.984794242467872394e+00
+There is an relative gap at least as large as   3.984794242467867509e+00
+Smallest possible relative gap seen is at least 1.912559395313903881e-04
+There is an relative gap at least as small as   1.912559395313905778e-04
+First Zero 103189516973 is at  [3.043784600028766251e+10,3.043784600028767395e+10]
+Last Zero 103196970569 is at  [3.043994599997632599e+10,3.043994599997633743e+10]
+Largest possible absolute gap seen is at least  1.067183925478887963e+00
+There is an absolute gap at least as large as   1.067183925478887296e+00
+Smallest possible absolute gap seen is at least 2.221732382477027506e-04
+There is an absolute gap at least as small as   2.221732382477028319e-04
+Largest possible relative gap seen is at least  4.099947989112205704e+00
+There is an relative gap at least as large as   4.099947989112200375e+00
+Smallest possible relative gap seen is at least 8.535527692382348939e-04
+There is an relative gap at least as small as   8.535527692382356528e-04
+First Zero 103196970570 is at  [3.043994600031016159e+10,3.043994600031017303e+10]
+Last Zero 103204424189 is at  [3.044204599997698212e+10,3.044204599997699356e+10]
+Largest possible absolute gap seen is at least  1.038623394794410792e+00
+There is an absolute gap at least as large as   1.038623394794410126e+00
+Smallest possible absolute gap seen is at least 5.701221207301441850e-05
+There is an absolute gap at least as small as   5.701221207301443883e-05
+Largest possible relative gap seen is at least  3.990240007925806243e+00
+There is an relative gap at least as large as   3.990240007925801358e+00
+Smallest possible relative gap seen is at least 2.190321609743669466e-04
+There is an relative gap at least as small as   2.190321609743671634e-04
+First Zero 103204424190 is at  [3.044204600026899338e+10,3.044204600026900482e+10]
+Last Zero 103211877832 is at  [3.044414599971628952e+10,3.044414599971630096e+10]
+Largest possible absolute gap seen is at least  1.044515733742673369e+00
+There is an absolute gap at least as large as   1.044515733742672703e+00
+Smallest possible absolute gap seen is at least 6.628759904471202054e-04
+There is an absolute gap at least as small as   6.628759904471205307e-04
+Largest possible relative gap seen is at least  4.012883431252368460e+00
+There is an relative gap at least as large as   4.012883431252364019e+00
+Smallest possible relative gap seen is at least 2.546678733046831705e-03
+There is an relative gap at least as small as   2.546678733046835175e-03
+First Zero 103211877833 is at  [3.044414600012509155e+10,3.044414600012510300e+10]
+Last Zero 103219331497 is at  [3.044624599965309906e+10,3.044624599965311050e+10]
+Largest possible absolute gap seen is at least  1.060355046632872833e+00
+There is an absolute gap at least as large as   1.060355046632872167e+00
+Smallest possible absolute gap seen is at least 5.477034154621823140e-04
+There is an absolute gap at least as small as   5.477034154621826393e-04
+Largest possible relative gap seen is at least  4.073747353088863044e+00
+There is an relative gap at least as large as   4.073747353088857714e+00
+Smallest possible relative gap seen is at least 2.104207330476619460e-03
+There is an relative gap at least as small as   2.104207330476622062e-03
+First Zero 103219331498 is at  [3.044624600004900360e+10,3.044624600004901505e+10]
+Last Zero 103226785188 is at  [3.044834599986301804e+10,3.044834599986302948e+10]
+Largest possible absolute gap seen is at least  1.013246820414327454e+00
+There is an absolute gap at least as large as   1.013246820414326788e+00
+Smallest possible absolute gap seen is at least 1.708191698170536267e-04
+There is an absolute gap at least as small as   1.708191698170537080e-04
+Largest possible relative gap seen is at least  3.892778803073418725e+00
+There is an relative gap at least as large as   3.892778803073413396e+00
+Smallest possible relative gap seen is at least 6.562675871504391458e-04
+There is an relative gap at least as small as   6.562675871504400132e-04
+First Zero 103226785189 is at  [3.044834600026892471e+10,3.044834600026893616e+10]
+Last Zero 103234238899 is at  [3.045044599975576401e+10,3.045044599975577545e+10]
+Largest possible absolute gap seen is at least  1.016873114575982395e+00
+There is an absolute gap at least as large as   1.016873114575981729e+00
+Smallest possible absolute gap seen is at least 7.045715386705557253e-04
+There is an absolute gap at least as small as   7.045715386705560506e-04
+Largest possible relative gap seen is at least  3.906715303647772863e+00
+There is an relative gap at least as large as   3.906715303647767978e+00
+Smallest possible relative gap seen is at least 2.706892607703265553e-03
+There is an relative gap at least as small as   2.706892607703268588e-03
+First Zero 103234238900 is at  [3.045044600010073090e+10,3.045044600010074234e+10]
+Last Zero 103241692635 is at  [3.045254599990909576e+10,3.045254599990910721e+10]
+Largest possible absolute gap seen is at least  1.031879485444763489e+00
+There is an absolute gap at least as large as   1.031879485444762823e+00
+Smallest possible absolute gap seen is at least 3.355162664559360823e-06
+There is an absolute gap at least as small as   3.355162664559362093e-06
+Largest possible relative gap seen is at least  3.964377618050739738e+00
+There is an relative gap at least as large as   3.964377618050735297e+00
+Smallest possible relative gap seen is at least 1.289019805153493315e-05
+There is an relative gap at least as small as   1.289019805153494501e-05
+First Zero 103241692636 is at  [3.045254600014301682e+10,3.045254600014302826e+10]
+Last Zero 103249146393 is at  [3.045464599963688278e+10,3.045464599963689423e+10]
+Largest possible absolute gap seen is at least  1.069460014134451686e+00
+There is an absolute gap at least as large as   1.069460014134451020e+00
+Smallest possible absolute gap seen is at least 6.664786447390443842e-06
+There is an absolute gap at least as small as   6.664786447390446383e-06
+Largest possible relative gap seen is at least  4.108775752786073099e+00
+There is an relative gap at least as large as   4.108775752786067770e+00
+Smallest possible relative gap seen is at least 2.560552104997993952e-05
+There is an relative gap at least as small as   2.560552104997996324e-05
+First Zero 103249146394 is at  [3.045464600001251221e+10,3.045464600001252365e+10]
+Last Zero 103256600174 is at  [3.045674599986185837e+10,3.045674599986186981e+10]
+Largest possible absolute gap seen is at least  1.008496064686115412e+00
+There is an absolute gap at least as large as   1.008496064686114746e+00
+Smallest possible absolute gap seen is at least 1.601830388330819537e-04
+There is an absolute gap at least as small as   1.601830388330820350e-04
+Largest possible relative gap seen is at least  3.874562926440181077e+00
+There is an relative gap at least as large as   3.874562926440176192e+00
+Smallest possible relative gap seen is at least 6.154109127743418329e-04
+There is an relative gap at least as small as   6.154109127743424834e-04
+First Zero 103256600175 is at  [3.045674600019033051e+10,3.045674600019034195e+10]
+Last Zero 103264053978 is at  [3.045884599964830780e+10,3.045884599964831924e+10]
+Largest possible absolute gap seen is at least  1.066088652324776342e+00
+There is an absolute gap at least as large as   1.066088652324775676e+00
+Smallest possible absolute gap seen is at least 5.200664064440268901e-04
+There is an absolute gap at least as small as   5.200664064440272153e-04
+Largest possible relative gap seen is at least  4.095841365091183128e+00
+There is an relative gap at least as large as   4.095841365091177799e+00
+Smallest possible relative gap seen is at least 1.998063567190826867e-03
+There is an relative gap at least as small as   1.998063567190829469e-03
+First Zero 103264053979 is at  [3.045884600001773834e+10,3.045884600001774979e+10]
+Last Zero 103271507806 is at  [3.046094599957168198e+10,3.046094599957169342e+10]
+Largest possible absolute gap seen is at least  1.010029146197082950e+00
+There is an absolute gap at least as large as   1.010029146197082284e+00
+Smallest possible absolute gap seen is at least 5.113112484840987189e-04
+There is an absolute gap at least as small as   5.113112484840990441e-04
+Largest possible relative gap seen is at least  3.880479453513628663e+00
+There is an relative gap at least as large as   3.880479453513623778e+00
+Smallest possible relative gap seen is at least 1.964431842476917645e-03
+There is an relative gap at least as small as   1.964431842476920247e-03
+First Zero 103271507807 is at  [3.046094600005585480e+10,3.046094600005586624e+10]
+Last Zero 103278961657 is at  [3.046304599993972778e+10,3.046304599993973923e+10]
+Largest possible absolute gap seen is at least  1.180057326204152490e+00
+There is an absolute gap at least as large as   1.180057326204151824e+00
+Smallest possible absolute gap seen is at least 2.064995142229149436e-04
+There is an absolute gap at least as small as   2.064995142229150249e-04
+Largest possible relative gap seen is at least  4.533731402970338387e+00
+There is an relative gap at least as large as   4.533731402970333058e+00
+Smallest possible relative gap seen is at least 7.933619283415366957e-04
+There is an relative gap at least as small as   7.933619283415376715e-04
+First Zero 103278961658 is at  [3.046304600009464264e+10,3.046304600009465408e+10]
+Last Zero 103286415530 is at  [3.046514599959849548e+10,3.046514599959850693e+10]
+Largest possible absolute gap seen is at least  1.006728275083894175e+00
+There is an absolute gap at least as large as   1.006728275083893509e+00
+Smallest possible absolute gap seen is at least 9.377401704628758605e-04
+There is an absolute gap at least as small as   9.377401704628761858e-04
+Largest possible relative gap seen is at least  3.867822928340147293e+00
+There is an relative gap at least as large as   3.867822928340142408e+00
+Smallest possible relative gap seen is at least 3.602773494876276329e-03
+There is an relative gap at least as small as   3.602773494876279799e-03
+First Zero 103286415531 is at  [3.046514600002938080e+10,3.046514600002939224e+10]
+Last Zero 103293869427 is at  [3.046724599980585098e+10,3.046724599980586243e+10]
+Largest possible absolute gap seen is at least  1.049085451936313307e+00
+There is an absolute gap at least as large as   1.049085451936312641e+00
+Smallest possible absolute gap seen is at least 1.849094529151032093e-04
+There is an absolute gap at least as small as   1.849094529151032906e-04
+Largest possible relative gap seen is at least  4.030562188115936806e+00
+There is an relative gap at least as large as   4.030562188115932365e+00
+Smallest possible relative gap seen is at least 7.104192958525487340e-04
+There is an relative gap at least as small as   7.104192958525494929e-04
+First Zero 103293869428 is at  [3.046724600001414490e+10,3.046724600001415634e+10]
+Last Zero 103301323347 is at  [3.046934599996770096e+10,3.046934599996771240e+10]
+Largest possible absolute gap seen is at least  1.025848261114166382e+00
+There is an absolute gap at least as large as   1.025848261114165716e+00
+Smallest possible absolute gap seen is at least 1.212513862682808243e-04
+There is an absolute gap at least as small as   1.212513862682808649e-04
+Largest possible relative gap seen is at least  3.941303766733774250e+00
+There is an relative gap at least as large as   3.941303766733769809e+00
+Smallest possible relative gap seen is at least 4.658473028413515245e-04
+There is an relative gap at least as small as   4.658473028413519039e-04
+First Zero 103301323348 is at  [3.046934600015945053e+10,3.046934600015946198e+10]
+Last Zero 103308777290 is at  [3.047144599986983871e+10,3.047144599986985016e+10]
+Largest possible absolute gap seen is at least  1.030815784952985315e+00
+There is an absolute gap at least as large as   1.030815784952984648e+00
+Smallest possible absolute gap seen is at least 2.615632255439813078e-04
+There is an absolute gap at least as small as   2.615632255439814704e-04
+Largest possible relative gap seen is at least  3.960396778342309965e+00
+There is an relative gap at least as large as   3.960396778342304636e+00
+Smallest possible relative gap seen is at least 1.004926952945590013e-03
+There is an relative gap at least as small as   1.004926952945591314e-03
+First Zero 103308777291 is at  [3.047144600009321594e+10,3.047144600009322739e+10]
+Last Zero 103316231255 is at  [3.047354599974489594e+10,3.047354599974490738e+10]
+Largest possible absolute gap seen is at least  1.056843899420670807e+00
+There is an absolute gap at least as large as   1.056843899420670141e+00
+Smallest possible absolute gap seen is at least 8.554895176743450627e-05
+There is an absolute gap at least as small as   8.554895176743454693e-05
+Largest possible relative gap seen is at least  4.060411663140759408e+00
+There is an relative gap at least as large as   4.060411663140754079e+00
+Smallest possible relative gap seen is at least 3.286800848321247545e-04
+There is an relative gap at least as small as   3.286800848321251339e-04
+First Zero 103316231256 is at  [3.047354600025184631e+10,3.047354600025185776e+10]
+Last Zero 103323685244 is at  [3.047564599983486176e+10,3.047564599983487320e+10]
+Largest possible absolute gap seen is at least  1.037018478745525440e+00
+There is an absolute gap at least as large as   1.037018478745524774e+00
+Smallest possible absolute gap seen is at least 7.820808384771084571e-05
+There is an absolute gap at least as small as   7.820808384771088637e-05
+Largest possible relative gap seen is at least  3.984249294722941759e+00
+There is an relative gap at least as large as   3.984249294722936874e+00
+Smallest possible relative gap seen is at least 3.004771399988072551e-04
+There is an relative gap at least as small as   3.004771399988075803e-04
+First Zero 103323685245 is at  [3.047564600014849091e+10,3.047564600014850235e+10]
+Last Zero 103331139256 is at  [3.047774599988349152e+10,3.047774599988350296e+10]
+Largest possible absolute gap seen is at least  1.051745516583125761e+00
+There is an absolute gap at least as large as   1.051745516583125095e+00
+Smallest possible absolute gap seen is at least 3.609414326879774874e-05
+There is an absolute gap at least as small as   3.609414326879776906e-05
+Largest possible relative gap seen is at least  4.040849674306389971e+00
+There is an relative gap at least as large as   4.040849674306384642e+00
+Smallest possible relative gap seen is at least 1.386752101134000907e-04
+There is an relative gap at least as small as   1.386752101134002533e-04
+First Zero 103331139257 is at  [3.047774600030836487e+10,3.047774600030837631e+10]
+Last Zero 103338593290 is at  [3.047984599973984146e+10,3.047984599973985291e+10]
+Largest possible absolute gap seen is at least  1.019911316447446259e+00
+There is an absolute gap at least as large as   1.019911316447445593e+00
+Smallest possible absolute gap seen is at least 1.729764507452706762e-04
+There is an absolute gap at least as small as   1.729764507452707576e-04
+Largest possible relative gap seen is at least  3.918543786912295879e+00
+There is an relative gap at least as large as   3.918543786912290994e+00
+Smallest possible relative gap seen is at least 6.645841662453081744e-04
+There is an relative gap at least as small as   6.645841662453089334e-04
+First Zero 103338593291 is at  [3.047984600007206345e+10,3.047984600007207489e+10]
+Last Zero 103346047349 is at  [3.048194599991524506e+10,3.048194599991525650e+10]
+Largest possible absolute gap seen is at least  9.985913769231591353e-01
+There is an absolute gap at least as large as   9.985913769231588022e-01
+Smallest possible absolute gap seen is at least 3.078534251594188963e-05
+There is an absolute gap at least as small as   3.078534251594190995e-05
+Largest possible relative gap seen is at least  3.836642089069889128e+00
+There is an relative gap at least as large as   3.836642089069885575e+00
+Smallest possible relative gap seen is at least 1.182791771828474925e-04
+There is an relative gap at least as small as   1.182791771828476551e-04
+First Zero 103346047350 is at  [3.048194600012968063e+10,3.048194600012969208e+10]
+Last Zero 103353501429 is at  [3.048404599997993851e+10,3.048404599997994995e+10]
+Largest possible absolute gap seen is at least  1.043986701318383226e+00
+There is an absolute gap at least as large as   1.043986701318382559e+00
+Smallest possible absolute gap seen is at least 6.416156037761368096e-05
+There is an absolute gap at least as small as   6.416156037761372162e-05
+Largest possible relative gap seen is at least  4.011067420054546417e+00
+There is an relative gap at least as large as   4.011067420054541977e+00
+Smallest possible relative gap seen is at least 2.465131462501647728e-04
+There is an relative gap at least as small as   2.465131462501650981e-04
+First Zero 103353501430 is at  [3.048404600004457092e+10,3.048404600004458237e+10]
+Last Zero 103360955534 is at  [3.048614599983761597e+10,3.048614599983762741e+10]
+Largest possible absolute gap seen is at least  1.029987611505397416e+00
+There is an absolute gap at least as large as   1.029987611505396750e+00
+Smallest possible absolute gap seen is at least 1.444251196981118286e-04
+There is an absolute gap at least as small as   1.444251196981119099e-04
+Largest possible relative gap seen is at least  3.957300261753459836e+00
+There is an relative gap at least as large as   3.957300261753454951e+00
+Smallest possible relative gap seen is at least 5.548922219433057197e-04
+There is an relative gap at least as small as   5.548922219433063702e-04
+First Zero 103360955535 is at  [3.048614600028059387e+10,3.048614600028060532e+10]
+Last Zero 103368409661 is at  [3.048824599998905563e+10,3.048824599998906708e+10]
+Largest possible absolute gap seen is at least  9.994178290174746682e-01
+There is an absolute gap at least as large as   9.994178290174743351e-01
+Smallest possible absolute gap seen is at least 5.708022390381303551e-04
+There is an absolute gap at least as small as   5.708022390381306804e-04
+Largest possible relative gap seen is at least  3.839858995941947573e+00
+There is an relative gap at least as large as   3.839858995941943576e+00
+Smallest possible relative gap seen is at least 2.193073496053089041e-03
+There is an relative gap at least as small as   2.193073496053091643e-03
+First Zero 103368409662 is at  [3.048824600027645493e+10,3.048824600027646637e+10]
+Last Zero 103375863810 is at  [3.049034599973901749e+10,3.049034599973902893e+10]
+Largest possible absolute gap seen is at least  1.052394760985026823e+00
+There is an absolute gap at least as large as   1.052394760985026156e+00
+Smallest possible absolute gap seen is at least 2.156957214914897493e-04
+There is an absolute gap at least as small as   2.156957214914898306e-04
+Largest possible relative gap seen is at least  4.043405534105734667e+00
+There is an relative gap at least as large as   4.043405534105729338e+00
+Smallest possible relative gap seen is at least 8.287261352423710200e-04
+There is an relative gap at least as small as   8.287261352423717789e-04
+First Zero 103375863811 is at  [3.049034600010821915e+10,3.049034600010823059e+10]
+Last Zero 103383317984 is at  [3.049244599997830200e+10,3.049244599997831345e+10]
+Largest possible absolute gap seen is at least  1.027915072358539295e+00
+There is an absolute gap at least as large as   1.027915072358538628e+00
+Smallest possible absolute gap seen is at least 3.781819774257526973e-04
+There is an absolute gap at least as small as   3.781819774257528599e-04
+Largest possible relative gap seen is at least  3.949369873856522606e+00
+There is an relative gap at least as large as   3.949369873856517721e+00
+Smallest possible relative gap seen is at least 1.453019252810527125e-03
+There is an relative gap at least as small as   1.453019252810528643e-03
+First Zero 103383317985 is at  [3.049244600040903091e+10,3.049244600040904236e+10]
+Last Zero 103390772179 is at  [3.049454599984857941e+10,3.049454599984859085e+10]
+Largest possible absolute gap seen is at least  1.060091054803126154e+00
+There is an absolute gap at least as large as   1.060091054803125488e+00
+Smallest possible absolute gap seen is at least 3.445409955235838751e-04
+There is an absolute gap at least as small as   3.445409955235840377e-04
+Largest possible relative gap seen is at least  4.073000232535771481e+00
+There is an relative gap at least as large as   4.073000232535766152e+00
+Smallest possible relative gap seen is at least 1.323768743575470417e-03
+There is an relative gap at least as small as   1.323768743575472152e-03
+First Zero 103390772180 is at  [3.049454600016298294e+10,3.049454600016299438e+10]
+Last Zero 103398226397 is at  [3.049664599965381622e+10,3.049664599965382767e+10]
+Largest possible absolute gap seen is at least  1.108594406138932564e+00
+There is an absolute gap at least as large as   1.108594406138931898e+00
+Smallest possible absolute gap seen is at least 3.524637243289847205e-04
+There is an absolute gap at least as small as   3.524637243289848831e-04
+Largest possible relative gap seen is at least  4.259370311498306805e+00
+There is an relative gap at least as large as   4.259370311498300588e+00
+Smallest possible relative gap seen is at least 1.354212968576557104e-03
+There is an relative gap at least as small as   1.354212968576558405e-03
+First Zero 103398226398 is at  [3.049664600003253937e+10,3.049664600003255081e+10]
+Last Zero 103405680640 is at  [3.049874599986607361e+10,3.049874599986608505e+10]
+Largest possible absolute gap seen is at least  1.088663077971546267e+00
+There is an absolute gap at least as large as   1.088663077971545601e+00
+Smallest possible absolute gap seen is at least 5.047637162800155302e-04
+There is an absolute gap at least as small as   5.047637162800158554e-04
+Largest possible relative gap seen is at least  4.182805687742613188e+00
+There is an relative gap at least as large as   4.182805687742607859e+00
+Smallest possible relative gap seen is at least 1.939375674501478452e-03
+There is an relative gap at least as small as   1.939375674501480837e-03
+First Zero 103405680641 is at  [3.049874600003628159e+10,3.049874600003629303e+10]
+Last Zero 103413134905 is at  [3.050084599990068436e+10,3.050084599990069580e+10]
+Largest possible absolute gap seen is at least  1.057255734788160151e+00
+There is an absolute gap at least as large as   1.057255734788159485e+00
+Smallest possible absolute gap seen is at least 7.030520090778900682e-05
+There is an absolute gap at least as small as   7.030520090778904748e-05
+Largest possible relative gap seen is at least  4.062137548428703226e+00
+There is an relative gap at least as large as   4.062137548428697897e+00
+Smallest possible relative gap seen is at least 2.701238552813115283e-04
+There is an relative gap at least as small as   2.701238552813118535e-04
+First Zero 103413134906 is at  [3.050084600017923355e+10,3.050084600017924500e+10]
+Last Zero 103420589193 is at  [3.050294599990972137e+10,3.050294599990973282e+10]
+Largest possible absolute gap seen is at least  1.134641305540633027e+00
+There is an absolute gap at least as large as   1.134641305540632361e+00
+Smallest possible absolute gap seen is at least 7.047451373253079202e-04
+There is an absolute gap at least as small as   7.047451373253082454e-04
+Largest possible relative gap seen is at least  4.359484025381399341e+00
+There is an relative gap at least as large as   4.359484025381394900e+00
+Smallest possible relative gap seen is at least 2.707752340785944938e-03
+There is an relative gap at least as small as   2.707752340785947974e-03
+First Zero 103420589194 is at  [3.050294600005891037e+10,3.050294600005892181e+10]
+Last Zero 103428043504 is at  [3.050504599969055176e+10,3.050504599969056320e+10]
+Largest possible absolute gap seen is at least  9.865404178598042861e-01
+There is an absolute gap at least as large as   9.865404178598039531e-01
+Smallest possible absolute gap seen is at least 1.394754184449695537e-04
+There is an absolute gap at least as small as   1.394754184449696350e-04
+Largest possible relative gap seen is at least  3.790460499770778924e+00
+There is an relative gap at least as large as   3.790460499770775815e+00
+Smallest possible relative gap seen is at least 5.358893952416572248e-04
+There is an relative gap at least as small as   5.358893952416578753e-04
+First Zero 103428043505 is at  [3.050504600029202271e+10,3.050504600029203415e+10]
+Last Zero 103435497838 is at  [3.050714599967273331e+10,3.050714599967274475e+10]
+Largest possible absolute gap seen is at least  1.076249537620582508e+00
+There is an absolute gap at least as large as   1.076249537620581842e+00
+Smallest possible absolute gap seen is at least 9.795340393985208942e-06
+There is an absolute gap at least as small as   9.795340393985214024e-06
+Largest possible relative gap seen is at least  4.135159047542416033e+00
+There is an relative gap at least as large as   4.135159047542410704e+00
+Smallest possible relative gap seen is at least 3.763555138750691626e-05
+There is an relative gap at least as small as   3.763555138750695691e-05
+First Zero 103435497839 is at  [3.050714600017265701e+10,3.050714600017266846e+10]
+Last Zero 103442952196 is at  [3.050924599997333145e+10,3.050924599997334290e+10]
+Largest possible absolute gap seen is at least  9.938119668323712741e-01
+There is an absolute gap at least as large as   9.938119668323709410e-01
+Smallest possible absolute gap seen is at least 3.910715144179793476e-05
+There is an absolute gap at least as small as   3.910715144179795509e-05
+Largest possible relative gap seen is at least  3.818424109444294334e+00
+There is an relative gap at least as large as   3.818424109444290337e+00
+Smallest possible relative gap seen is at least 1.502575556011240222e-04
+There is an relative gap at least as small as   1.502575556011242119e-04
+First Zero 103442952197 is at  [3.050924600019907379e+10,3.050924600019908524e+10]
+Last Zero 103450406575 is at  [3.051134599979248428e+10,3.051134599979249573e+10]
+Largest possible absolute gap seen is at least  1.045127103297752047e+00
+There is an absolute gap at least as large as   1.045127103297751381e+00
+Smallest possible absolute gap seen is at least 4.113124343493969391e-04
+There is an absolute gap at least as small as   4.113124343493971017e-04
+Largest possible relative gap seen is at least  4.015596227805670715e+00
+There is an relative gap at least as large as   4.015596227805665386e+00
+Smallest possible relative gap seen is at least 1.580351232489092669e-03
+There is an relative gap at least as small as   1.580351232489094404e-03
+First Zero 103450406576 is at  [3.051134600018400192e+10,3.051134600018401337e+10]
+Last Zero 103457860978 is at  [3.051344599986173248e+10,3.051344599986174393e+10]
+Largest possible absolute gap seen is at least  1.018212692834763011e+00
+There is an absolute gap at least as large as   1.018212692834762345e+00
+Smallest possible absolute gap seen is at least 2.385639319360224517e-04
+There is an absolute gap at least as small as   2.385639319360225330e-04
+Largest possible relative gap seen is at least  3.912202367829318295e+00
+There is an relative gap at least as large as   3.912202367829313410e+00
+Smallest possible relative gap seen is at least 9.166155638047427659e-04
+There is an relative gap at least as small as   9.166155638047436332e-04
+First Zero 103457860979 is at  [3.051344600002311325e+10,3.051344600002312469e+10]
+Last Zero 103465315404 is at  [3.051554599977374268e+10,3.051554599977375412e+10]
+Largest possible absolute gap seen is at least  1.046159806700807549e+00
+There is an absolute gap at least as large as   1.046159806700806882e+00
+Smallest possible absolute gap seen is at least 2.851047414994886681e-05
+There is an absolute gap at least as small as   2.851047414994887697e-05
+Largest possible relative gap seen is at least  4.019587672502926701e+00
+There is an relative gap at least as large as   4.019587672502922260e+00
+Smallest possible relative gap seen is at least 1.095437980008969749e-04
+There is an relative gap at least as small as   1.095437980008970698e-04
+First Zero 103465315405 is at  [3.051554600000499725e+10,3.051554600000500870e+10]
+Last Zero 103472769853 is at  [3.051764599990840912e+10,3.051764599990842056e+10]
+Largest possible absolute gap seen is at least  1.023893675478439125e+00
+There is an absolute gap at least as large as   1.023893675478438459e+00
+Smallest possible absolute gap seen is at least 1.317253257925547348e-04
+There is an absolute gap at least as small as   1.317253257925548161e-04
+Largest possible relative gap seen is at least  3.934046826582775935e+00
+There is an relative gap at least as large as   3.934046826582770606e+00
+Smallest possible relative gap seen is at least 5.061207839413402144e-04
+There is an relative gap at least as small as   5.061207839413408649e-04
+First Zero 103472769854 is at  [3.051764600016703033e+10,3.051764600016704178e+10]
+Last Zero 103480224325 is at  [3.051974599975146103e+10,3.051974599975147247e+10]
+Largest possible absolute gap seen is at least  1.034824795038360890e+00
+There is an absolute gap at least as large as   1.034824795038360223e+00
+Smallest possible absolute gap seen is at least 7.776628595266565371e-07
+There is an absolute gap at least as small as   7.776628595266568547e-07
+Largest possible relative gap seen is at least  3.976060272697403253e+00
+There is an relative gap at least as large as   3.976060272697398368e+00
+Smallest possible relative gap seen is at least 2.987982049876262380e-06
+There is an relative gap at least as small as   2.987982049876265768e-06
+First Zero 103480224326 is at  [3.051974600006575775e+10,3.051974600006576920e+10]
+Last Zero 103487678821 is at  [3.052184599990729523e+10,3.052184599990730667e+10]
+Largest possible absolute gap seen is at least  1.063671548691050628e+00
+There is an absolute gap at least as large as   1.063671548691049962e+00
+Smallest possible absolute gap seen is at least 1.412329581267715854e-04
+There is an absolute gap at least as small as   1.412329581267716668e-04
+Largest possible relative gap seen is at least  4.086905339876441445e+00
+There is an relative gap at least as large as   4.086905339876436116e+00
+Smallest possible relative gap seen is at least 5.426540570918957172e-04
+There is an relative gap at least as small as   5.426540570918962593e-04
+First Zero 103487678822 is at  [3.052184600022557449e+10,3.052184600022558594e+10]
+Last Zero 103495133338 is at  [3.052394599955206680e+10,3.052394599955207825e+10]
+Largest possible absolute gap seen is at least  1.019492174822055341e+00
+There is an absolute gap at least as large as   1.019492174822054675e+00
+Smallest possible absolute gap seen is at least 5.616920111266393524e-04
+There is an absolute gap at least as small as   5.616920111266396776e-04
+Largest possible relative gap seen is at least  3.917168631451965144e+00
+There is an relative gap at least as large as   3.917168631451959815e+00
+Smallest possible relative gap seen is at least 2.158178539828668925e-03
+There is an relative gap at least as small as   2.158178539828671527e-03
+First Zero 103495133339 is at  [3.052394600008579254e+10,3.052394600008580399e+10]
+Last Zero 103502587880 is at  [3.052604599988779831e+10,3.052604599988780975e+10]
+Largest possible absolute gap seen is at least  1.050290448884551475e+00
+There is an absolute gap at least as large as   1.050290448884550809e+00
+Smallest possible absolute gap seen is at least 2.386849728854216045e-04
+There is an absolute gap at least as small as   2.386849728854216859e-04
+Largest possible relative gap seen is at least  4.035516456879459923e+00
+There is an relative gap at least as large as   4.035516456879455482e+00
+Smallest possible relative gap seen is at least 9.170962537324541582e-04
+There is an relative gap at least as small as   9.170962537324552424e-04
+First Zero 103502587881 is at  [3.052604600007820892e+10,3.052604600007822037e+10]
+Last Zero 103510042443 is at  [3.052814599976914597e+10,3.052814599976915741e+10]
+Largest possible absolute gap seen is at least  9.982112253844340755e-01
+There is an absolute gap at least as large as   9.982112253844337424e-01
+Smallest possible absolute gap seen is at least 2.589464503980083016e-04
+There is an absolute gap at least as small as   2.589464503980084642e-04
+Largest possible relative gap seen is at least  3.835428779762536156e+00
+There is an relative gap at least as large as   3.835428779762532159e+00
+Smallest possible relative gap seen is at least 9.949486204198201757e-04
+There is an relative gap at least as small as   9.949486204198214768e-04
+First Zero 103510042444 is at  [3.052814600009587860e+10,3.052814600009589005e+10]
+Last Zero 103517497030 is at  [3.053024599968708420e+10,3.053024599968709564e+10]
+Largest possible absolute gap seen is at least  1.017740932312767965e+00
+There is an absolute gap at least as large as   1.017740932312767299e+00
+Smallest possible absolute gap seen is at least 9.346855915432726784e-06
+There is an absolute gap at least as small as   9.346855915432731866e-06
+Largest possible relative gap seen is at least  3.910477629808248423e+00
+There is an relative gap at least as large as   3.910477629808243094e+00
+Smallest possible relative gap seen is at least 3.591355181348282650e-05
+There is an relative gap at least as small as   3.591355181348286716e-05
+First Zero 103517497031 is at  [3.053024600004886246e+10,3.053024600004887390e+10]
+Last Zero 103524951641 is at  [3.053234599981709290e+10,3.053234599981710434e+10]
+Largest possible absolute gap seen is at least  9.955219741381324816e-01
+There is an absolute gap at least as large as   9.955219741381321485e-01
+Smallest possible absolute gap seen is at least 9.504181217826436685e-05
+There is an absolute gap at least as small as   9.504181217826440751e-05
+Largest possible relative gap seen is at least  3.825111277879934324e+00
+There is an relative gap at least as large as   3.825111277879931215e+00
+Smallest possible relative gap seen is at least 3.651810083839151025e-04
+There is an relative gap at least as small as   3.651810083839154820e-04
+First Zero 103524951642 is at  [3.053234600014183426e+10,3.053234600014184570e+10]
+Last Zero 103532406274 is at  [3.053444599992782211e+10,3.053444599992783356e+10]
+Largest possible absolute gap seen is at least  1.105006555418687419e+00
+There is an absolute gap at least as large as   1.105006555418686753e+00
+Smallest possible absolute gap seen is at least 3.216507847212291167e-04
+There is an absolute gap at least as small as   3.216507847212292793e-04
+Largest possible relative gap seen is at least  4.245802479796703999e+00
+There is an relative gap at least as large as   4.245802479796698670e+00
+Smallest possible relative gap seen is at least 1.235888322138899414e-03
+There is an relative gap at least as small as   1.235888322138900932e-03
+First Zero 103532406275 is at  [3.053444600024301147e+10,3.053444600024302292e+10]
+Last Zero 103539860930 is at  [3.053654599997440338e+10,3.053654599997441483e+10]
+Largest possible absolute gap seen is at least  1.016182596214376010e+00
+There is an absolute gap at least as large as   1.016182596214375344e+00
+Smallest possible absolute gap seen is at least 2.120955867424899295e-05
+There is an absolute gap at least as small as   2.120955867424900311e-05
+Largest possible relative gap seen is at least  3.904518251231214876e+00
+There is an relative gap at least as large as   3.904518251231210435e+00
+Smallest possible relative gap seen is at least 8.149449408747941543e-05
+There is an relative gap at least as small as   8.149449408747951029e-05
+First Zero 103539860931 is at  [3.053654600020280457e+10,3.053654600020281601e+10]
+Last Zero 103547315609 is at  [3.053864599993334961e+10,3.053864599993336105e+10]
+Largest possible absolute gap seen is at least  1.057459057680956160e+00
+There is an absolute gap at least as large as   1.057459057680955494e+00
+Smallest possible absolute gap seen is at least 7.796748504537302825e-05
+There is an absolute gap at least as small as   7.796748504537306891e-05
+Largest possible relative gap seen is at least  4.063137790596952570e+00
+There is an relative gap at least as large as   4.063137790596948129e+00
+Smallest possible relative gap seen is at least 2.995786722945246268e-04
+There is an relative gap at least as small as   2.995786722945249520e-04
+First Zero 103547315610 is at  [3.053864600046612930e+10,3.053864600046614075e+10]
+Last Zero 103554770310 is at  [3.054074599974335098e+10,3.054074599974336243e+10]
+Largest possible absolute gap seen is at least  9.962846903963969991e-01
+There is an absolute gap at least as large as   9.962846903963966660e-01
+Smallest possible absolute gap seen is at least 8.796791080222399889e-04
+There is an absolute gap at least as small as   8.796791080222403142e-04
+Largest possible relative gap seen is at least  3.828085856095910344e+00
+There is an relative gap at least as large as   3.828085856095906792e+00
+Smallest possible relative gap seen is at least 3.380051192500842759e-03
+There is an relative gap at least as small as   3.380051192500845795e-03
+First Zero 103554770311 is at  [3.054074600003103256e+10,3.054074600003104401e+10]
+Last Zero 103562225036 is at  [3.054284599992610550e+10,3.054284599992611694e+10]
+Largest possible absolute gap seen is at least  1.028192936330697638e+00
+There is an absolute gap at least as large as   1.028192936330696972e+00
+Smallest possible absolute gap seen is at least 7.500284026519783243e-05
+There is an absolute gap at least as small as   7.500284026519787308e-05
+Largest possible relative gap seen is at least  3.950699237755311621e+00
+There is an relative gap at least as large as   3.950699237755306292e+00
+Smallest possible relative gap seen is at least 2.881892332299171517e-04
+There is an relative gap at least as small as   2.881892332299174227e-04
+First Zero 103562225037 is at  [3.054284600023647690e+10,3.054284600023648834e+10]
+Last Zero 103569679783 is at  [3.054494599976210403e+10,3.054494599976211548e+10]
+Largest possible absolute gap seen is at least  1.050404654013165517e+00
+There is an absolute gap at least as large as   1.050404654013164851e+00
+Smallest possible absolute gap seen is at least 4.781968943268247955e-04
+There is an absolute gap at least as small as   4.781968943268249581e-04
+Largest possible relative gap seen is at least  4.036066597032013981e+00
+There is an relative gap at least as large as   4.036066597032007763e+00
+Smallest possible relative gap seen is at least 1.837419594144008590e-03
+There is an relative gap at least as small as   1.837419594144010324e-03
+First Zero 103569679784 is at  [3.054494600002695084e+10,3.054494600002696228e+10]
+Last Zero 103577134555 is at  [3.054704599995835114e+10,3.054704599995836258e+10]
+Largest possible absolute gap seen is at least  1.049061734667316115e+00
+There is an absolute gap at least as large as   1.049061734667315449e+00
+Smallest possible absolute gap seen is at least 1.505670412572439830e-04
+There is an absolute gap at least as small as   1.505670412572440644e-04
+Largest possible relative gap seen is at least  4.030908390597641500e+00
+There is an relative gap at least as large as   4.030908390597636171e+00
+Smallest possible relative gap seen is at least 5.785378845435203057e-04
+There is an relative gap at least as small as   5.785378845435208478e-04
+First Zero 103577134556 is at  [3.054704600023173523e+10,3.054704600023174667e+10]
+Last Zero 103584589349 is at  [3.054914599994012070e+10,3.054914599994013214e+10]
+Largest possible absolute gap seen is at least  1.128861681642228332e+00
+There is an absolute gap at least as large as   1.128861681642227666e+00
+Smallest possible absolute gap seen is at least 2.215225844621969398e-05
+There is an absolute gap at least as small as   2.215225844621970415e-05
+Largest possible relative gap seen is at least  4.337545709001018324e+00
+There is an relative gap at least as large as   4.337545709001012995e+00
+Smallest possible relative gap seen is at least 8.511811288096094710e-05
+There is an relative gap at least as small as   8.511811288096104197e-05
+First Zero 103584589350 is at  [3.054914600016836548e+10,3.054914600016837692e+10]
+Last Zero 103592044165 is at  [3.055124599994301224e+10,3.055124599994302368e+10]
+Largest possible absolute gap seen is at least  1.019439815077887390e+00
+There is an absolute gap at least as large as   1.019439815077886724e+00
+Smallest possible absolute gap seen is at least 2.761816453455108802e-04
+There is an absolute gap at least as small as   2.761816453455110429e-04
+Largest possible relative gap seen is at least  3.917113289688447963e+00
+There is an relative gap at least as large as   3.917113289688443079e+00
+Smallest possible relative gap seen is at least 1.061207354375675498e-03
+There is an relative gap at least as small as   1.061207354375676799e-03
+First Zero 103592044166 is at  [3.055124600025078201e+10,3.055124600025079346e+10]
+Last Zero 103599499005 is at  [3.055334599986377716e+10,3.055334599986378860e+10]
+Largest possible absolute gap seen is at least  9.930879814249193860e-01
+There is an absolute gap at least as large as   9.930879814249190529e-01
+Smallest possible absolute gap seen is at least 2.276992785306596533e-04
+There is an absolute gap at least as small as   2.276992785306597347e-04
+Largest possible relative gap seen is at least  3.815872453158875022e+00
+There is an relative gap at least as large as   3.815872453158871913e+00
+Smallest possible relative gap seen is at least 8.749182987844561889e-04
+There is an relative gap at least as small as   8.749182987844570563e-04
+First Zero 103599499006 is at  [3.055334600016977310e+10,3.055334600016978455e+10]
+Last Zero 103606953867 is at  [3.055544599983111954e+10,3.055544599983113098e+10]
+Largest possible absolute gap seen is at least  1.030128159145640820e+00
+There is an absolute gap at least as large as   1.030128159145640154e+00
+Smallest possible absolute gap seen is at least 4.075740169845728646e-06
+There is an absolute gap at least as small as   4.075740169845731187e-06
+Largest possible relative gap seen is at least  3.958209084535500022e+00
+There is an relative gap at least as large as   3.958209084535495581e+00
+Smallest possible relative gap seen is at least 1.566078739244507775e-05
+There is an relative gap at least as small as   1.566078739244509808e-05
+First Zero 103606953868 is at  [3.055544600010008240e+10,3.055544600010009384e+10]
+Last Zero 103614408754 is at  [3.055754599999005508e+10,3.055754599999006653e+10]
+Largest possible absolute gap seen is at least  1.037662349232483239e+00
+There is an absolute gap at least as large as   1.037662349232482573e+00
+Smallest possible absolute gap seen is at least 3.894045640962780306e-04
+There is an absolute gap at least as small as   3.894045640962781932e-04
+Largest possible relative gap seen is at least  3.987172963308013074e+00
+There is an relative gap at least as large as   3.987172963308009077e+00
+Smallest possible relative gap seen is at least 1.496268335241465915e-03
+There is an relative gap at least as small as   1.496268335241467433e-03
+First Zero 103614408755 is at  [3.055754600023470306e+10,3.055754600023471451e+10]
+Last Zero 103621863662 is at  [3.055964599960638809e+10,3.055964599960639954e+10]
+Largest possible absolute gap seen is at least  1.047823978707875359e+00
+There is an absolute gap at least as large as   1.047823978707874693e+00
+Smallest possible absolute gap seen is at least 1.747276497031240194e-04
+There is an absolute gap at least as small as   1.747276497031241007e-04
+Largest possible relative gap seen is at least  4.026230589770873891e+00
+There is an relative gap at least as large as   4.026230589770869450e+00
+Smallest possible relative gap seen is at least 6.713841769368560303e-04
+There is an relative gap at least as small as   6.713841769368567892e-04
+First Zero 103621863663 is at  [3.055964600006058884e+10,3.055964600006060028e+10]
+Last Zero 103629318594 is at  [3.056174599997990036e+10,3.056174599997991180e+10]
+Largest possible absolute gap seen is at least  9.960577784004507329e-01
+There is an absolute gap at least as large as   9.960577784004503998e-01
+Smallest possible absolute gap seen is at least 2.001782180428275475e-04
+There is an absolute gap at least as small as   2.001782180428276288e-04
+Largest possible relative gap seen is at least  3.827329520964144915e+00
+There is an relative gap at least as large as   3.827329520964141363e+00
+Smallest possible relative gap seen is at least 7.691805789003817919e-04
+There is an relative gap at least as small as   7.691805789003825508e-04
+First Zero 103629318595 is at  [3.056174600022970200e+10,3.056174600022971344e+10]
+Last Zero 103636773549 is at  [3.056384599986341095e+10,3.056384599986342239e+10]
+Largest possible absolute gap seen is at least  1.088034101706507828e+00
+There is an absolute gap at least as large as   1.088034101706507162e+00
+Smallest possible absolute gap seen is at least 6.713057071620538198e-04
+There is an absolute gap at least as small as   6.713057071620541450e-04
+Largest possible relative gap seen is at least  4.180759295773884610e+00
+There is an relative gap at least as large as   4.180759295773880169e+00
+Smallest possible relative gap seen is at least 2.579482705772043801e-03
+There is an relative gap at least as small as   2.579482705772046403e-03
+First Zero 103636773550 is at  [3.056384600021771240e+10,3.056384600021772385e+10]
+Last Zero 103644228527 is at  [3.056594599996617508e+10,3.056594599996618652e+10]
+Largest possible absolute gap seen is at least  1.015117003241606364e+00
+There is an absolute gap at least as large as   1.015117003241605698e+00
+Smallest possible absolute gap seen is at least 5.067463826453280510e-04
+There is an absolute gap at least as small as   5.067463826453283762e-04
+Largest possible relative gap seen is at least  3.900581629298640163e+00
+There is an relative gap at least as large as   3.900581629298635278e+00
+Smallest possible relative gap seen is at least 1.947173797697821385e-03
+There is an relative gap at least as small as   1.947173797697823554e-03
+First Zero 103644228528 is at  [3.056594600027239609e+10,3.056594600027240753e+10]
+Last Zero 103651683527 is at  [3.056804599980203629e+10,3.056804599980204773e+10]
+Largest possible absolute gap seen is at least  1.033523576399915544e+00
+There is an absolute gap at least as large as   1.033523576399914878e+00
+Smallest possible absolute gap seen is at least 2.079912744178952081e-04
+There is an absolute gap at least as small as   2.079912744178952894e-04
+Largest possible relative gap seen is at least  3.971317741794222478e+00
+There is an relative gap at least as large as   3.971317741794217593e+00
+Smallest possible relative gap seen is at least 7.992085947708787433e-04
+There is an relative gap at least as small as   7.992085947708797190e-04
+First Zero 103651683528 is at  [3.056804600011245728e+10,3.056804600011246872e+10]
+Last Zero 103659138550 is at  [3.057014599967672348e+10,3.057014599967673492e+10]
+Largest possible absolute gap seen is at least  1.021287485529361438e+00
+There is an absolute gap at least as large as   1.021287485529360772e+00
+Smallest possible absolute gap seen is at least 6.731678572013685225e-05
+There is an absolute gap at least as small as   6.731678572013689290e-05
+Largest possible relative gap seen is at least  3.924314460582323250e+00
+There is an relative gap at least as large as   3.924314460582318365e+00
+Smallest possible relative gap seen is at least 2.586659558177062238e-04
+There is an relative gap at least as small as   2.586659558177065491e-04
+First Zero 103659138551 is at  [3.057014600004913330e+10,3.057014600004914474e+10]
+Last Zero 103666593597 is at  [3.057224599993323517e+10,3.057224599993324661e+10]
+Largest possible absolute gap seen is at least  1.004214091489492144e+00
+There is an absolute gap at least as large as   1.004214091489491478e+00
+Smallest possible absolute gap seen is at least 3.944581351554668253e-04
+There is an absolute gap at least as small as   3.944581351554669879e-04
+Largest possible relative gap seen is at least  3.858720620624263020e+00
+There is an relative gap at least as large as   3.858720620624258579e+00
+Smallest possible relative gap seen is at least 1.515718639448425950e-03
+There is an relative gap at least as small as   1.515718639448427468e-03
+First Zero 103666593598 is at  [3.057224600015536499e+10,3.057224600015537643e+10]
+Last Zero 103674048666 is at  [3.057434599981515503e+10,3.057434599981516647e+10]
+Largest possible absolute gap seen is at least  9.937297149785150330e-01
+There is an absolute gap at least as large as   9.937297149785146999e-01
+Smallest possible absolute gap seen is at least 6.420376316572588664e-04
+There is an absolute gap at least as small as   6.420376316572591916e-04
+Largest possible relative gap seen is at least  3.818449774872254121e+00
+There is an relative gap at least as large as   3.818449774872250124e+00
+Smallest possible relative gap seen is at least 2.467054634570059034e-03
+There is an relative gap at least as small as   2.467054634570062070e-03
+First Zero 103674048667 is at  [3.057434600004987335e+10,3.057434600004988480e+10]
+Last Zero 103681503759 is at  [3.057644599995006561e+10,3.057644599995007706e+10]
+Largest possible absolute gap seen is at least  1.026725594240492478e+00
+There is an absolute gap at least as large as   1.026725594240491812e+00
+Smallest possible absolute gap seen is at least 9.388805840216999342e-04
+There is an absolute gap at least as small as   9.388805840217002594e-04
+Largest possible relative gap seen is at least  3.945245898751327918e+00
+There is an relative gap at least as large as   3.945245898751323477e+00
+Smallest possible relative gap seen is at least 3.607696631911377037e-03
+There is an relative gap at least as small as   3.607696631911380940e-03
+First Zero 103681503760 is at  [3.057644600000393295e+10,3.057644600000394440e+10]
+Last Zero 103688958874 is at  [3.057854599985506058e+10,3.057854599985507202e+10]
+Largest possible absolute gap seen is at least  1.026611310626501794e+00
+There is an absolute gap at least as large as   1.026611310626501128e+00
+Smallest possible absolute gap seen is at least 2.528817907282390645e-04
+There is an absolute gap at least as small as   2.528817907282392271e-04
+Largest possible relative gap seen is at least  3.944819691779919424e+00
+There is an relative gap at least as large as   3.944819691779914983e+00
+Smallest possible relative gap seen is at least 9.717129265585929898e-04
+There is an relative gap at least as small as   9.717129265585940740e-04
+First Zero 103688958875 is at  [3.057854600011143875e+10,3.057854600011145020e+10]
+Last Zero 103696414013 is at  [3.058064599988290787e+10,3.058064599988291931e+10]
+Largest possible absolute gap seen is at least  1.039871498010262796e+00
+There is an absolute gap at least as large as   1.039871498010262130e+00
+Smallest possible absolute gap seen is at least 2.004204435882360306e-04
+There is an absolute gap at least as small as   2.004204435882361119e-04
+Largest possible relative gap seen is at least  3.995780446382850570e+00
+There is an relative gap at least as large as   3.995780446382846129e+00
+Smallest possible relative gap seen is at least 7.701295650196381039e-04
+There is an relative gap at least as small as   7.701295650196388629e-04
+First Zero 103696414014 is at  [3.058064600009461594e+10,3.058064600009462738e+10]
+Last Zero 103703869174 is at  [3.058274599989677429e+10,3.058274599989678574e+10]
+Largest possible absolute gap seen is at least  1.023024327732382499e+00
+There is an absolute gap at least as large as   1.023024327732381833e+00
+Smallest possible absolute gap seen is at least 4.085758280728433111e-04
+There is an absolute gap at least as small as   4.085758280728434737e-04
+Largest possible relative gap seen is at least  3.931061547369203435e+00
+There is an relative gap at least as large as   3.931061547369198994e+00
+Smallest possible relative gap seen is at least 1.569984981345681546e-03
+There is an relative gap at least as small as   1.569984981345683064e-03
+First Zero 103703869175 is at  [3.058274600006394958e+10,3.058274600006396103e+10]
+Last Zero 103711324358 is at  [3.058484599977388382e+10,3.058484599977389526e+10]
+Largest possible absolute gap seen is at least  1.023614234393435796e+00
+There is an absolute gap at least as large as   1.023614234393435130e+00
+Smallest possible absolute gap seen is at least 1.458401348874242820e-04
+There is an absolute gap at least as small as   1.458401348874243633e-04
+Largest possible relative gap seen is at least  3.933333027645776081e+00
+There is an relative gap at least as large as   3.933333027645771196e+00
+Smallest possible relative gap seen is at least 5.604044422514192119e-04
+There is an relative gap at least as small as   5.604044422514198624e-04
+First Zero 103711324359 is at  [3.058484600003300858e+10,3.058484600003302002e+10]
+Last Zero 103718779566 is at  [3.058694599987885666e+10,3.058694599987886810e+10]
+Largest possible absolute gap seen is at least  1.020154101413261571e+00
+There is an absolute gap at least as large as   1.020154101413260905e+00
+Smallest possible absolute gap seen is at least 7.125631404435930764e-05
+There is an absolute gap at least as small as   7.125631404435934829e-05
+Largest possible relative gap seen is at least  3.920046178417929461e+00
+There is an relative gap at least as large as   3.920046178417924576e+00
+Smallest possible relative gap seen is at least 2.738098723619768388e-04
+There is an relative gap at least as small as   2.738098723619771641e-04
+First Zero 103718779567 is at  [3.058694600016015625e+10,3.058694600016016769e+10]
+Last Zero 103726234795 is at  [3.058904599993741989e+10,3.058904599993743134e+10]
+Largest possible absolute gap seen is at least  1.061866111924666622e+00
+There is an absolute gap at least as large as   1.061866111924665956e+00
+Smallest possible absolute gap seen is at least 8.864742053377207479e-06
+There is an absolute gap at least as small as   8.864742053377212561e-06
+Largest possible relative gap seen is at least  4.080345873274496604e+00
+There is an relative gap at least as large as   4.080345873274492163e+00
+Smallest possible relative gap seen is at least 3.406382901138722976e-05
+There is an relative gap at least as small as   3.406382901138727042e-05
+First Zero 103726234796 is at  [3.058904600010894775e+10,3.058904600010895920e+10]
+Last Zero 103733690049 is at  [3.059114599981537628e+10,3.059114599981538773e+10]
+Largest possible absolute gap seen is at least  1.041757969395436412e+00
+There is an absolute gap at least as large as   1.041757969395435746e+00
+Smallest possible absolute gap seen is at least 1.526507672119181247e-04
+There is an absolute gap at least as small as   1.526507672119182060e-04
+Largest possible relative gap seen is at least  4.003089917949567145e+00
+There is an relative gap at least as large as   4.003089917949561816e+00
+Smallest possible relative gap seen is at least 5.865795733556638863e-04
+There is an relative gap at least as small as   5.865795733556645368e-04
+First Zero 103733690050 is at  [3.059114600028810883e+10,3.059114600028812027e+10]
+Last Zero 103741145325 is at  [3.059324599989914703e+10,3.059324599989915848e+10]
+Largest possible absolute gap seen is at least  1.036087671219985795e+00
+There is an absolute gap at least as large as   1.036087671219985129e+00
+Smallest possible absolute gap seen is at least 5.404306032286937227e-04
+There is an absolute gap at least as small as   5.404306032286940479e-04
+Largest possible relative gap seen is at least  3.981308157190806440e+00
+There is an relative gap at least as large as   3.981308157190802000e+00
+Smallest possible relative gap seen is at least 2.076680173558748989e-03
+There is an relative gap at least as small as   2.076680173558751157e-03
+First Zero 103741145326 is at  [3.059324600023420715e+10,3.059324600023421860e+10]
+Last Zero 103748600623 is at  [3.059534599968370056e+10,3.059534599968371201e+10]
+Largest possible absolute gap seen is at least  1.020785252765737949e+00
+There is an absolute gap at least as large as   1.020785252765737283e+00
+Smallest possible absolute gap seen is at least 1.794682726242668406e-04
+There is an absolute gap at least as small as   1.794682726242669219e-04
+Largest possible relative gap seen is at least  3.922519308171518393e+00
+There is an relative gap at least as large as   3.922519308171513508e+00
+Smallest possible relative gap seen is at least 6.896337718373693427e-04
+There is an relative gap at least as small as   6.896337718373701017e-04
+First Zero 103748600624 is at  [3.059534600007851791e+10,3.059534600007852936e+10]
+Last Zero 103756055945 is at  [3.059744599972214890e+10,3.059744599972216034e+10]
+Largest possible absolute gap seen is at least  1.086469183822597717e+00
+There is an absolute gap at least as large as   1.086469183822597051e+00
+Smallest possible absolute gap seen is at least 3.758556805502868861e-04
+There is an absolute gap at least as small as   3.758556805502870487e-04
+Largest possible relative gap seen is at least  4.174932932742810188e+00
+There is an relative gap at least as large as   4.174932932742803970e+00
+Smallest possible relative gap seen is at least 1.444287509851941093e-03
+There is an relative gap at least as small as   1.444287509851942611e-03
+First Zero 103756055946 is at  [3.059744600002525330e+10,3.059744600002526474e+10]
+Last Zero 103763511290 is at  [3.059954599977737045e+10,3.059954599977738190e+10]
+Largest possible absolute gap seen is at least  1.004231546983497037e+00
+There is an absolute gap at least as large as   1.004231546983496370e+00
+Smallest possible absolute gap seen is at least 3.151824214039753596e-04
+There is an absolute gap at least as small as   3.151824214039755222e-04
+Largest possible relative gap seen is at least  3.858936113084681097e+00
+There is an relative gap at least as large as   3.858936113084676212e+00
+Smallest possible relative gap seen is at least 1.211141530140461041e-03
+There is an relative gap at least as small as   1.211141530140462342e-03
+First Zero 103763511291 is at  [3.059954600012036133e+10,3.059954600012037277e+10]
+Last Zero 103770966658 is at  [3.060164599989273453e+10,3.060164599989274597e+10]
+Largest possible absolute gap seen is at least  1.035799552612965524e+00
+There is an absolute gap at least as large as   1.035799552612964858e+00
+Smallest possible absolute gap seen is at least 3.418802888009317637e-04
+There is an absolute gap at least as small as   3.418802888009319263e-04
+Largest possible relative gap seen is at least  3.980245093772714959e+00
+There is an relative gap at least as large as   3.980245093772710074e+00
+Smallest possible relative gap seen is at least 1.313738754089090492e-03
+There is an relative gap at least as small as   1.313738754089092010e-03
+First Zero 103770966659 is at  [3.060164600008097839e+10,3.060164600008098984e+10]
+Last Zero 103778422049 is at  [3.060374599978504944e+10,3.060374599978506088e+10]
+Largest possible absolute gap seen is at least  1.062605180059045695e+00
+There is an absolute gap at least as large as   1.062605180059045029e+00
+Smallest possible absolute gap seen is at least 4.505034945257967161e-04
+There is an absolute gap at least as small as   4.505034945257968787e-04
+Largest possible relative gap seen is at least  4.083264678028320382e+00
+There is an relative gap at least as large as   4.083264678028315053e+00
+Smallest possible relative gap seen is at least 1.731148629763043425e-03
+There is an relative gap at least as small as   1.731148629763044943e-03
+First Zero 103778422050 is at  [3.060374600012502289e+10,3.060374600012503433e+10]
+Last Zero 103785877462 is at  [3.060584599972412491e+10,3.060584599972413635e+10]
+Largest possible absolute gap seen is at least  1.036254429154698675e+00
+There is an absolute gap at least as large as   1.036254429154698009e+00
+Smallest possible absolute gap seen is at least 2.414596043477287824e-04
+There is an absolute gap at least as small as   2.414596043477288637e-04
+Largest possible relative gap seen is at least  3.982023084001450108e+00
+There is an relative gap at least as large as   3.982023084001445223e+00
+Smallest possible relative gap seen is at least 9.278583999108449372e-04
+There is an relative gap at least as small as   9.278583999108456961e-04
+First Zero 103785877463 is at  [3.060584600005654526e+10,3.060584600005655670e+10]
+Last Zero 103793332900 is at  [3.060794599992871094e+10,3.060794599992872238e+10]
+Largest possible absolute gap seen is at least  1.084792426568971013e+00
+There is an absolute gap at least as large as   1.084792426568970347e+00
+Smallest possible absolute gap seen is at least 6.752018075242207726e-06
+There is an absolute gap at least as small as   6.752018075242210267e-06
+Largest possible relative gap seen is at least  4.168549315553145007e+00
+There is an relative gap at least as large as   4.168549315553139678e+00
+Smallest possible relative gap seen is at least 2.594607265622094641e-05
+There is an relative gap at least as small as   2.594607265622097012e-05

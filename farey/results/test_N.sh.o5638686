@@ -1,0 +1,13 @@
+Sat May  6 00:19:13 BST 2017
+node33-043
+Old SSE Control Register was 1F80
+New SSE Control Register is 3F80
+Command line:- /panfs/panasas01/math/madjp/code/farey/farey_threads_int 10000028 16
+m=30396528517014
+|p/q-l/m| = [ 2.920209983241236387e+02 , 2.920471517160424355e+02 ]  [ 9.234501864710877028e-02 , 9.235328906423047324e-02 ]
+(p/q-l/m)^2 = [ 6.966922478221251214e-08 , 6.967667322516392368e-08 ]  [ 6.966941985604189203e-01 , 6.967686831984896134e-01 ]
+
+real	1291m4.370s
+user	20011m17.454s
+sys	0m2.730s
+Sat May  6 21:50:17 BST 2017

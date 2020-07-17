@@ -1,0 +1,14 @@
+Fri May  5 00:24:19 BST 2017
+node36-031
+Old SSE Control Register was 1F80
+New SSE Control Register is 3F80
+Command line:- /panfs/panasas01/math/madjp/code/farey/farey_threads_int 10000003 16
+m=30396378011222
+|p/q-l/m| = [ 2.908296283833533380e+02 , 2.908556862333622348e+02 ]  [ 9.196838987991751146e-02 , 9.197663009437703763e-02 ]
+(p/q-l/m)^2 = [ 6.964143713528110608e-08 , 6.964888405183740383e-08 ]  [ 6.964145802771224414e-01 , 6.964890494650262109e-01 ]
+
+real	1202m18.558s
+user	18665m56.134s
+sys	0m2.478s
+Fri May  5 20:26:37 BST 2017
+Warning: Permanently added 'node36-031,10.131.3.31' (RSA) to the list of known hosts.

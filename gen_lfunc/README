@@ -1,0 +1,24 @@
+Code to implement a rigourous generic L-function calculator.
+
+test_convolve3.gp is a non-rigorous implementation of the basic idea (using convolution to compute Taylor series efficiently).
+
+
+The family file defines a family of L-functions that share the same GAMMA factors
+e.g. all Dirichlet L-functions from odd primitive characters of modulus 11. It includes the gamma factors, the poles and residues, growth bounds on coefficients etc.
+
+
+The computation file defines a particular set of paramaters for a computation. Its defining file will set N (the size of the FFT), B (the length of the critical line), A(=N/B) the sample rate. It will set M, the number of G values and the number of coefficients a_n and K the number of derivatives of G supplied.
+
+The G values consist of
+
+G^(k)(n/B)/k! n=0..N/2-1 having been FFT'd with e(nm/N)
+
+
+
+The function file contains the specific coefficients for that L-function.
+
+Note on computing epsilon.
+
+If we compute F_hat by equation 5-2 and 5-3 but without the epsilon, then we can uncover epsilon by looking at F_hat(0) as this should be real to make F real.
+
+
