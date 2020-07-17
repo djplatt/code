@@ -1,0 +1,2 @@
+#!/bin/sh
+awk '/zeros.RS/{n=$0;gsub(/RS/," "); print$3 " " n}' | sort -n | awk '{print$2}'

@@ -1,0 +1,20 @@
+zero_stream.c provides a routine to read the zeros from hard disk. It expects
+a file listing the filenames of the zero-files in their right order. Such a
+list can be generated using the shell-script sort-zero-files. The example file
+"fzeros" was created like this:
+
+janka@janka-Lenovo-H520S:~/Programs/zstream$ find /media/7cfb73e4-7514-498e-b2eb-7d489627ece7/ZetaZeros/* | ./sort-zero-files > fzeros
+
+The program zeta-zeros will output some zeros on stdout like this
+
+janka@janka-Lenovo-H520S:~/Programs/zstream$ ./zeta-zeros 1 10 fzeros 
+1	14.134725141734693790424
+2	21.022039638771554992598
+3	25.010857580145688763167
+4	30.424876125859513210275
+5	32.935061587739189690625
+6	37.586178158825671257208
+7	40.918719012147495187363
+8	43.327073280914999519491
+9	48.005150881167159727903
+10	49.773832477672302181885

@@ -1,0 +1,4 @@
+Fri Sep 14 01:52:16 BST 2018
+node32-022
+/cm/local/apps/torque/4.2.4.1/spool/mom_priv/jobs/7434616.master.cm.cluster.SC: line 10: 51675 Bus error               ./zeta-zeros btmp djp_zeros > check.log
+Mon Sep 17 02:18:50 BST 2018

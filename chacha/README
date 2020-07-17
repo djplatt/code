@@ -1,0 +1,28 @@
+Code for Chacha at RIKEN
+
+Count zeros of L'(chi,.) in rectangle 0->1/2->1/2+t0i->t0i->0
+where t0>6/log(q)
+
+Uses argument principle so computes
+1/2 pi i int L''/L' (s) ds
+
+Since L' and L'' are entire (chi non principal) this counts zeros.
+
+Uses arb for interval arithmetic and Molin's rigorous double 
+exponential quadrature.
+
+Will fail if a zero lives on contour, e.g. chi_11(10,.)
+
+results2 contains output for primitive characters, q in [3,215]
+
+output is parsed into zerofind_even.gp and zerofind_odd.gp
+
+These are then read by current*/maple/chacha/zerofind.gp (amended to
+read odd then even) with output to bar with 3 blank lines in between.
+zerofind.gp uses 10 its of N-R at default precision starting from z=0 
+to find zeros.
+
+The entry for chi_11(10,.) is added by hand (0.173809.... 0.0)
+
+bar is then ploted by pyxplot chacha.pyx to create pyxplot.eps
+this is converted to pdf by epstopdf
