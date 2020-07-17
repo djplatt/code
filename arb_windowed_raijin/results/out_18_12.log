@@ -1,0 +1,153 @@
+Aiming to do 20 iteration(s) starting at t=9.90005745600e+10.
+Total Taylor Error set to (0 + 0j)  +/-  (7.2e-36, 7.2e-36j)
+Final bucket used is at 10634.
+Time to (re-)initialise = 2 seconds.
+Time to convolve = 23 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212679051-354212670104=8947 zeros
+In resolve_stat_points at 74455 74456 74457.
+In resolve_stat_points at 123506 123507 123508.
+All 8947 zeros found in region 99000574560.000000 to 99000576954.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212687997-354212679051=8946 zeros
+In resolve_stat_points at 125758 125759 125760.
+All 8946 zeros found in region 99000576954.000000 to 99000579348.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212696943-354212687997=8946 zeros
+In resolve_stat_points at 143220 143221 143222.
+In resolve_stat_points at 157845 157846 157847.
+All 8946 zeros found in region 99000579348.000000 to 99000581742.000000 using stat points.
+Time to isolate zeros = 1 seconds.
+Time to (re-)initialise = 0 seconds.
+Time to convolve = 27 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212705890-354212696943=8947 zeros
+In resolve_stat_points at 117005 117006 117007.
+In resolve_stat_points at 174652 174653 174654.
+In resolve_stat_points at 189195 189196 189197.
+All 8947 zeros found in region 99000581742.000000 to 99000584136.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212714836-354212705890=8946 zeros
+All 8946 zeros found in region 99000584136.000000 to 99000586530.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212723783-354212714836=8947 zeros
+All 8947 zeros found in region 99000586530.000000 to 99000588924.000000 using stat points.
+Time to isolate zeros = 1 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212732729-354212723783=8946 zeros
+In resolve_stat_points at 74427 74428 74429.
+In resolve_stat_points at 123480 123481 123482.
+In resolve_stat_points at 132780 132781 132782.
+All 8946 zeros found in region 99000588924.000000 to 99000591318.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212741676-354212732729=8947 zeros
+In resolve_stat_points at 117222 117223 117224.
+In resolve_stat_points at 177689 177690 177691.
+All 8947 zeros found in region 99000591318.000000 to 99000593712.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212750623-354212741676=8947 zeros
+In resolve_stat_points at 102461 102462 102463.
+All 8947 zeros found in region 99000593712.000000 to 99000596106.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 2 seconds.
+looking for 354212759569-354212750623=8946 zeros
+In resolve_stat_points at 86619 86620 86621.
+In resolve_stat_points at 174242 174243 174244.
+All 8946 zeros found in region 99000596106.000000 to 99000598500.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212768516-354212759569=8947 zeros
+All 8947 zeros found in region 99000598500.000000 to 99000600894.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212777462-354212768516=8946 zeros
+In resolve_stat_points at 105657 105658 105659.
+In resolve_stat_points at 151676 151677 151678.
+In resolve_stat_points at 179350 179351 179352.
+All 8946 zeros found in region 99000600894.000000 to 99000603288.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 2 seconds.
+looking for 354212786408-354212777462=8946 zeros
+In resolve_stat_points at 169053 169054 169055.
+All 8946 zeros found in region 99000603288.000000 to 99000605682.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212795354-354212786408=8946 zeros
+In resolve_stat_points at 99394 99395 99396.
+All 8946 zeros found in region 99000605682.000000 to 99000608076.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212804301-354212795354=8947 zeros
+In resolve_stat_points at 106388 106389 106390.
+In resolve_stat_points at 135656 135657 135658.
+In resolve_stat_points at 162685 162686 162687.
+All 8947 zeros found in region 99000608076.000000 to 99000610470.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212813248-354212804301=8947 zeros
+In resolve_stat_points at 143379 143380 143381.
+All 8947 zeros found in region 99000610470.000000 to 99000612864.000000 using stat points.
+Time to isolate zeros = 1 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 24 seconds.
+Time for final iFFT = 2 seconds.
+looking for 354212822194-354212813248=8946 zeros
+All 8946 zeros found in region 99000612864.000000 to 99000615258.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212831141-354212822194=8947 zeros
+In resolve_stat_points at 84347 84348 84349.
+In resolve_stat_points at 101787 101788 101789.
+In resolve_stat_points at 115018 115019 115020.
+All 8947 zeros found in region 99000615258.000000 to 99000617652.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 1 seconds.
+looking for 354212840088-354212831141=8947 zeros
+In resolve_stat_points at 92874 92875 92876.
+All 8947 zeros found in region 99000617652.000000 to 99000620046.000000 using stat points.
+Time to isolate zeros = 0 seconds.
+Time to (re-)initialise = 1 seconds.
+Time to convolve = 25 seconds.
+Time for final iFFT = 2 seconds.
+looking for 354212849034-354212840088=8946 zeros
+In resolve_stat_points at 125990 125991 125992.
+All 8946 zeros found in region 99000620046.000000 to 99000622440.000000 using stat points.
+Time to isolate zeros = 0 seconds.
