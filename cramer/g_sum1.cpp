@@ -136,17 +136,17 @@ int main(int argc, char ** argv)
 	      t+=del_t;
 	      zeros[zz-1]=t+err;
 	    }
-	  if(zz>N)
-	    break;
 	}
-      if(zz>N)
-	break;
     }
-  if(zz!=N+1)
+
+  //printf("zz=%lu\n",zz);
+  
+  if(zz<N)
     {
-      printf("Ran out of zeros at %lu\n",zz);
+      printf("Ran out of zeros after %lu\n",zz);
       exit(0);
     }
+  
   printf("The %lu'th zero is ",N);
   print_int_double_str("",zeros[N-1]);
   int_double res=g_sum(zeros,N);
