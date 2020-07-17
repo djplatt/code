@@ -1,4 +1,8 @@
-#include "../../includes/int_double14.2.h"
+//
+// compute a bound for A(T) in N(T)=T/2pi*log(T/2pi e)+7/8+A log(T)
+//
+
+#include "../includes/int_double15.0.h"
 
 // read our 13 byte structure representing a zero gap
 // into an int_double

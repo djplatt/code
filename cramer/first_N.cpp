@@ -1,3 +1,9 @@
+// compute the sum over zeros |g1|,|g2|<=T
+// abs value of 
+//2^(2+i(g1-g2))-1 divided by rho1*conj(rho2)*(2+i(g1-g2))
+//
+// Brent_Platt_Trudgian_Cramer
+
 #include "../includes/int_double15.0.h"
 
 // read our 13 byte structure representing a zero gap

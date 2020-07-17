@@ -31,35 +31,11 @@ int_double in_bytes(FILE *infile)
   return(int_double(r1)+r2);
 }
 
-int_double B;
-
-int_double g(int_double t)
+int_double recip_sum(int_double *gammas, uint64_t N)
 {
-  static bool init=false;
-  static int_double alpha;
-  if(!init)
-    {
-      init=true;
-      alpha=log(int_double(2.0))/6.0;
-    }
-  int_double s,c,at;
-  at=alpha*t;
-  sin_cos(at,&s,&c);
-  at=s/at;
-  int_double res=at*at*at*(1.0-t/B);
-  if(res.left>=0.0)
-    return res;
-  return -res;
-}
-
-int_double g_sum(int_double *gammas, uint64_t N)
-{
-  int_double res=sqrt(1.0/(0.25+gammas[0]*gammas[0]));
-  //print_int_double_str("1/|rho_1|=",res);
-  res-=g(-2.0*gammas[0])*res;
-  //print_int_double_str("after n=1 term ",res);
-  for(uint64_t n=1;n<N;n++)
-    res-=(g(gammas[n]-gammas[0])+g(-gammas[n]-gammas[0]))/sqrt(0.25+gammas[n]*gammas[n]);
+  int_double res=0.0;
+  for(int64_t n=N-1;n>=0;n--)
+    res+=1.0/gammas[n];
   return res;
 }
 
@@ -74,7 +50,7 @@ int main(int argc, char ** argv)
 
   if(argc!=5)
     {
-      printf("Usage:- %s <zeros file list> <N> <B num> <B den>\n",argv[0]);
+      printf("Usage:- %s <zeros file list> <N> <T num> <T den>\n",argv[0]);
       exit(0);
     }
   FILE *lfile=fopen(argv[1],"rb");
@@ -90,9 +66,9 @@ int main(int argc, char ** argv)
       printf("Failed to allocate memeory for zeros. Exiting.\n");
       exit(0);
     }
-  B=atol(argv[3]);
-  B/=atol(argv[4]);
-  print_int_double_str("B set to ",B);
+  int_double T=atol(argv[3]);
+  T/=atol(argv[4]);
+  print_int_double_str("T (not checked against N) set to ",T);
   uint64_t zz=0;
   double OP_ACC=1.0;
   for(long int i=0;i<102;i++)
@@ -161,8 +137,12 @@ int main(int argc, char ** argv)
   
   printf("The %lu'th zero is ",N);
   print_int_double_str("",zeros[N-1]);
-  int_double res=g_sum(zeros,N);
-  print_int_double_str("sigma = ",res);
+  int_double res=recip_sum(zeros,N),c1,four_pi;
+  c1=d_two_pi*exp(int_double(1.0));
+  four_pi=2.0*d_two_pi;
+  print_int_double_str("sum 1/gamma = ",res);
+  res=res-N/T-(sqr(log(T/c1))+1)/four_pi+(7.0/8.0)/T;
+  print_int_double_str("H estimate = ",res);
   return 0;
 }
 

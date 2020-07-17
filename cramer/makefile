@@ -1,3 +1,5 @@
+all:	g_sum g_sum1 A_T first_N hassani hassani_arb
+
 g_sum:	g_sum.cpp
 	g++ -finline-functions -fomit-frame-pointer -frounding-math -mfpmath=387 -o g_sum g_sum.cpp -lcrlibm
 
@@ -10,3 +12,9 @@ A_T:	A_T.cpp
 
 first_N:	first_N.cpp
 	g++ -finline-functions -fomit-frame-pointer -frounding-math -mfpmath=387 -o first_N first_N.cpp -lcrlibm
+
+hassani:	hassani.cpp
+	g++ -finline-functions -fomit-frame-pointer -frounding-math -mfpmath=387 -o hassani hassani.cpp -lcrlibm
+
+hassani_arb:	hassani_arb.c
+	gcc -O2 hassani_arb.c -o hassani_arb -larb
