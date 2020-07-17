@@ -18,6 +18,9 @@ bc3.lst
 willie_wu
 sorenson
 
+#ignore this as its a repository in its own right
+lfunctions
+
 # -*- mode: gitignore; -*-
 *~
 \#*\#
