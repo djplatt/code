@@ -67,9 +67,9 @@ int main(int argc, char ** argv)
     printf("%s ",argv[i]);
   printf("\n");
 
-  if(argc!=6)
+  if(argc!=4)
     {
-      printf("Usage:- %s <zeros file list> <N> <T num> <T den> <prec>\n",argv[0]);
+      printf("Usage:- %s <zeros file list> <N> <prec>\n",argv[0]);
       exit(0);
     }
   FILE *lfile=fopen(argv[1],"rb");
@@ -89,9 +89,7 @@ int main(int argc, char ** argv)
     arb_init(zeros[n]);
   arb_t T;
   arb_init(T);
-  arb_set_ui(T,atol(argv[3]));
-  int64_t prec=atol(argv[5]);
-  arb_div_ui(T,T,atol(argv[4]),prec);
+  int64_t prec=atol(argv[3]);
   uint64_t zz=0;
   char fname[1024];
   arb_t del_t,t;
@@ -101,7 +99,7 @@ int main(int argc, char ** argv)
   arb_mul_2exp_si(z_err,z_err,-OP_ACC-1);
   while((zz<N)&&(fscanf(lfile,"%s\n",fname)==1))
     {
-      printf("Processing file %s\n",fname);
+      //printf("Processing file %s\n",fname);
       FILE *zfile=fopen(fname,"rb");
       if(zfile == NULL)
 	{
@@ -124,7 +122,7 @@ int main(int argc, char ** argv)
 	    continue;
 	  arb_set_d(t,st[0]);
 	  fread(&zs[1],sizeof(long int),1,zfile);
-	  printf("Processing zero %ld to %ld=%ld in total.\n",zs[0]+1,zs[1],zs[1]-zs[0]);
+	  //printf("Processing zero %ld to %ld=%ld in total.\n",zs[0]+1,zs[1],zs[1]-zs[0]);
 	  for(long int z=zs[0]+1;z<=zs[1];z++)
 	    {
 	      zz++;
@@ -159,6 +157,7 @@ int main(int argc, char ** argv)
       exit(0);
     }
 
+  arb_set(T,zeros[N-1]);
   printf("%lu'th is at ",N);
   arb_printd(zeros[N-1],20);
   printf("\n");
