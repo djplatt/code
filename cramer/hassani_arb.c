@@ -79,14 +79,6 @@ int main(int argc, char ** argv)
       exit(0);
     }
   uint64_t N=atol(argv[2]);
-  arb_t *zeros=(arb_t *)malloc(sizeof(arb_t)*N);
-  if(zeros == NULL)
-    {
-      printf("Failed to allocate memeory for zeros. Exiting.\n");
-      exit(0);
-    }
-  for(uint64_t n=0;n<N;n++)
-    arb_init(zeros[n]);
   arb_t T;
   arb_init(T);
   int64_t prec=atol(argv[3]);
@@ -97,6 +89,8 @@ int main(int argc, char ** argv)
   arb_t z_err;
   arb_set_ui(z_err,1);
   arb_mul_2exp_si(z_err,z_err,-OP_ACC-1);
+  arb_t res,tmp,tmp1;
+  arb_init(res);arb_init(tmp);arb_init(tmp1);  
   while((zz<N)&&(fscanf(lfile,"%s\n",fname)==1))
     {
       //printf("Processing file %s\n",fname);
@@ -140,8 +134,10 @@ int main(int argc, char ** argv)
 		  exit(0);
 		}
 	      arb_add(t,t,del_t,prec);
-	      arb_set(zeros[zz-1],t);
-	      arb_add_error(zeros[zz-1],z_err);
+	      arb_set(tmp,t);
+	      arb_add_error(tmp,z_err);
+	      arb_inv(tmp1,tmp,prec);
+	      arb_add(res,res,tmp1,prec);
 	    }
 	  if(zz>N)
 	    break;
@@ -157,19 +153,15 @@ int main(int argc, char ** argv)
       exit(0);
     }
 
-  arb_set(T,zeros[N-1]);
+  arb_set(T,tmp);
   printf("%lu'th is at ",N);
-  arb_printd(zeros[N-1],20);
+  arb_printd(T,20);
   printf("\n");
 
-  arb_t res;
-  arb_init(res);  
-  recip_sum(res,zeros,N,prec);
   printf("sum 1/gamma =");arb_printd(res,20);printf("\n");
-  arb_t c1,four_pi,tmp1,tmp2,tmp3;
+  arb_t c1,four_pi,tmp2,tmp3;
   arb_init(c1);
   arb_init(four_pi);
-  arb_init(tmp1);
   arb_init(tmp2);
   arb_init(tmp3);
   arb_const_pi(tmp1,prec);
