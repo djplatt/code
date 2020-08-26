@@ -31,10 +31,13 @@ uint64_t arb_sum(arb_ptr res, int64_t prec, fmpz_t a, fmpz_t b, fmpz_t e)
       arf_set_fmpz(r,b);
       arf_mul_2exp_fmpz(l,l,e);
       arf_mul_2exp_fmpz(r,r,e);
+      //arf_printd(l,30);printf("\n");
+      //arf_printd(r,30);printf("\n");
       arb_set_interval_arf(tmp,l,r,prec);
       arb_add(res,res,tmp,prec);
-      printf("%lu ",st);arb_printd(res,30);printf("\n");
     }
+  printf("%lu ",st);arb_printd(res,100);printf("\n");
+
   arb_get_interval_fmpz_2exp(a,b,e,res);
 
   arb_clear(tmp);
