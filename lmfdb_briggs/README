@@ -1,0 +1,24 @@
+Files related to Robin's inequality
+
+see also saouter_robin on bluecrystal
+
+Rt.cpp:- compute Rt(N_n) for Morrill Platt paper "t-free"
+         NB in doubt due to inability to show that Rt(N_n) is decreasing in n
+
+Rt_*.log:- output from various runs
+
+ca_ieee.cpp:- check Robin's inequality on a given n specified by its prime factorisation (see comments in code for format)
+
+55440.dat:- 55440 in the right format
+
+ca.c:- ARB version of above
+
+ca2_ieee.cpp:- compute successive CA numbers using Brigg's algorithm and check Robin's inequality at each one.
+
+ca2.c:- ARB version of above
+
+NB Built a new version of PARI into ${HOME}/local to get round linking issues
+
+pari.c:- C-Pari interface from Andy Booker.
+
+makefile:- a makefile
