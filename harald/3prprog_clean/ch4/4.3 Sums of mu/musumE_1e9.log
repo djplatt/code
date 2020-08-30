@@ -1,0 +1,6 @@
+There are 32 threads
+Mertens at 1000000000: -222
+Time spent: 4.13676 seconds
+m(1000000000) lies in [3.18132451874182e-07 3.18132606102694e-07]
+For 3<=x<=1000000000, |m(x)| sqrt(x) is at most
+	0.461713373404595

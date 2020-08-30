@@ -1,0 +1,341 @@
+Chapter 5
+
+Section 5.1--5.3 involve no computations.
+
+Section 5.4, "The sum \tilde{m}_d"
+
+./tildem N v M flag
+
+finds (for v=1 or v=2) bounds of the form
+
+\tilde{m}_v(x) \leq c_0/sqrt(x) + c_1/x^(3/4)
+
+valid for all x<=N, where
+
+\tilde{m}_v(x) = \sum_{n\leq x: (n,v)=1} mu(n) log(x/n)/sigma(n)
+
+Here mu(n) and sigma(n) are computed by means of a sieve working on blocks
+of size M.
+
+If flag is non-zero, the program also outputs information useful for debugging.
+
+Default values: N=1000000, v=1, M=10000, flag = 0
+If only N and v are specified, M is set to about twice sqrt(N)
+                               and flag is set to 0.
+
+Examples used in the text:
+
+----------
+./tildem 1000000000000 1
+
+Output:
+
+Let tildem_v(x) = \sum_{n\leq x: (n,v)=1} mu(n) log(x/n)/sigma(n)
+For x\leq 1000000000000
+	|tildem_1(x) - pi^2/6|\leq 1.346030596/sqrt(x)
+	|tildem_1(x) - pi^2/6|\leq 1.8/x^(3/4) + 0.01442866057/sqrt(x)
+---------
+./tildem 1000000000000 2
+
+Output:
+
+Let tildem_v(x) = \sum_{n\leq x: (n,v)=1} mu(n) log(x/n)/sigma(n)
+For x\leq 1000000000000
+	|m_2(x) - pi^2/4|\leq 2.370814137/sqrt(x)
+	|m_2(x) - pi^2/4|\leq 3.9877/x^(3/4) + 0.006533371756/sqrt(x)
+
+---------------------------------------------------------
+
+The Sage file boundk.sage computes
+
+k(beta) = \prod_p (1 + p^{-(beta+1)}/((1+p^{-1})(1-p^{-beta})))
+
+for several values of beta>0.
+
+Output:
+k(1-1/log(10^12)) is at most 1.692392
+k(4/7) is at most 2.942346
+k(8/15) is at most 3.243633
+k(1/2) is at most 3.574861
+
+Section 5.5, "Bounds on the sum \mathbb{h}_v"
+
+./boldh_semian N v j M 
+
+gives bounds on the quantity
+
+\sum_{d\leq y: (d,v)=1} (\mu^2(d)/d^{(4-j)/4}) \prod_{p|d} f_j(p),
+
+valid for all 2\leq y\leq N. Here j = 0, 1 or 2, and
+
+f_0(p) = (p/(p-sqrt(p)+1))^2
+f_1(p) = (p/(p-sqrt(p)+1)) (p/(p-p^(3/4)+1))
+f_2(p) = (p/(p-p^(3/4)+1))^2
+
+(As usual, v is either 1 or 2.)
+
+The program uses a sieve working on blocks of size M.
+
+The default values are
+N=1000000, v=1, j=0, M=10000
+If only N, v and j are specified, M is set to 2 sqrt(N) rounded up
+
+Examples:
+./boldh_semian 1000000000000 1 0
+Output:
+The bound is 1 + 1.41811638 log y
+
+./boldh_semian 1000000000000 1 1
+Output:
+The bound is 14.19576243 y^(1/4)
+
+./boldh_semian 1000000000000 1 2
+Output:
+The bound is 22.1042813 sqrt(y)
+
+./boldh_semian 1000000000000 2 0
+Output:
+The bound is 1 + 0.7828167328 log y
+
+./boldh_semian 1000000000000 2 1
+Output:
+The bound is 7.25779644 y^(1/4)
+
+./boldh_semian 1000000000000 2 2
+Output:
+The bound is 10.28358099 sqrt(y)
+------------------------------------------------------
+
+The Sage file boundkap.sage computes
+
+kap(beta_1, beta_2)
+ = \prod_p (1 + p^{-(beta_1+beta_2)}/
+                 ((1-p^(-beta_1)+p^(-1))*(1-p^(-beta_2)+p^(-1))))
+
+for various values of beta_1 and beta_2.
+
+Output:
+
+kap(1,1-1/log(10^12)) is at most 1.552738
+kap(1-1/log(10^12),1-1/log(10^12)) is at most 1.588493
+kap(1,1/2) is at most 2.620185
+kap(1-1/log(10^12),1/2) is at most 2.791671
+kap(1,1/4) is at most 6.761469
+kap(8/15,8/15) is at most 19.82414
+kap(4/7,1/2) is at most 18.50841
+
+Section 5.6, "Computing h_v for small arguments"
+
+Subsection 5.6.1, "Computing h_v(y_1,y_2) for y_1, y_2 small"
+
+./boundhvxy N r v flag
+
+computes various bounds on
+f_{r,v}(x) = \inf_{r x\leq y\leq N} \sqrt{x y} h_v(x,y)
+for 1<=x<=N/r,
+where r is an integer >= 1 and v = 1 or 2,
+and h_v(x,y) = \sum_{d: (d,v)=1} mu(d)/sigma(d)
+                            (\tilde{m}_{d v}(x/d) - zeta(2) sigma(dv)/dv)
+		            (\tilde{m}_{d v}(y/d) - zeta(2) sigma(dv)/dv),
+as usual.
+			    
+Default values: N=100000, r=1, v=1, flag=0;
+	    as usual, the user may specify no values, or only N, r and v,
+	    or all of them
+
+Examples used in the text:
+
+./boundhvxy 1000000 1 1
+Output:
+min: -1.542131773
+minrat: -0.4681636593 at 2
+integ: -0.7804306743
+neginteg: -0.7812438307
+mininteg: -0.8689343038
+
+./boundhvxy 1000000 1 2
+Output:
+min: -4.07843742
+minrat: -0.4310163289 at 5
+integ: -1.011644465
+neginteg: -1.01193428
+mininteg: -1.034883548
+
+./boundhvxy 1000000 5 1
+Output:
+
+Subsection 5.6.2, "Computing h_v(y) for y small or moderate"
+
+./hvofy n0 N v
+
+computes the following quantities (for v=1 or v=2):
+
+The integral of h_v(t)/t from 1 to N,
+the integral of \dot{h}_v(t)/t from 1 to N,  (\dot{h}(t) is defined in S 5.7)
+a bound on the maximum of t h_v(t) on [n0,N],
+a bound on the integral of (t h_v(t))' from 1 to N,
+a bound on that last integral plus N h_v(N).
+
+We need to run:
+
+./hvofy 1000000 1000000000 1
+./hvofy 1000000 1000000000 2
+
+give all numerical results stated in subsection 5.6.2. Running time should
+be at most a couple of hours in either case.
+
+The output of the two calls reads:
+----------------------------
+The integral of h_1(t)/t from 1 to 1000000000 lies in [-0.0495100146363 -0.0495100043809]
+The integral of \dot{h}_1(t)/t from 1 to 1000000000 lies in [0.724970140514 0.724970252531]
+The maximum of h_1(t)/t from 1000000 to 1000000000 is at most 0.04547751029
+The integral of |(t h_1)'| from 1 to 1000000000 is at most: [7.012358591 7.034022551]
+If we add |1000000000 h_1(1000000000)| to that, we obtain at most: 7.049495205
+----------------------------
+The integral of h_2(t)/t from 1 to 1000000000 lies in [2.63481249177 2.63481271383]
+The integral of \dot{h}_2(t)/t from 1 to 1000000000 lies in [1.44232816757 1.44232827893]
+The maximum of h_2(t)/t from 1000000 to 1000000000 is at most 0.09773372982
+The integral of |(t h_2)'| from 1 to 1000000000 is at most: [17.59226478 17.60841791]
+If we add |1000000000 h_2(1000000000)| to that, we obtain at most: 17.6346278
+-----------------------------
+
+(Note: It might seem clearer to output
+
+"The integral of |(t h_1)'| from 1 to 1000000000 is at most: 7.034022551",
+
+say, since that is the meaning of the output. As it stands, the program
+outputs an interval so as to give an idea of how error terms accumulate.)
+
+_________________________________________________________________
+
+./hboldvofy N v flag
+
+bounds \mathbf{h}_v(y,y) for all y\leq N.
+
+If flag=1 (default value: 0), the program outputs values of \mathbf{h}_v(y,y)
+for many values of y\leq N.
+
+The algorithm is not particularly clever; it runs in time O(N^2) and space
+O(N log N), whereas time O(N) and space O(\sqrt{N}) should be possible.
+
+Examples:
+
+./hboldvofy 1000000 1
+Output:
+Let boldh_v(y,y) = sum_{d: (d,v)=1} mu^2(d)/sigma(d)^2
+                               (tildem_{dv}(y/d) - zeta(2) sigma(d v)/d v)^2 
+For all y<=1000000,
+boldh_v(y,y) <= 9.395565599/y
+boldh_v(y,y) <= (4.112339279 + 0.858 log y)/y
+
+./hboldvofy 1000000 2 
+Output:
+Let boldh_v(y,y) = sum_{d: (d,v)=1} mu^2(d)/sigma(d)^2
+                               (tildem_{dv}(y/d) - zeta(2) sigma(d v)/d v)^2 
+For all y<=1000000,
+boldh_v(y,y) <= 18.33611067/y
+boldh_v(y,y) <= (7.716944705 + 1.75 log y)/y
+
+Section 5.7, "Excursus on the Dress-Iwaniec-Tenenbaum constant"
+
+We compute the integral \int_1^{10^9} \dot{h}(t) dt/t using the program hvofy
+(section 5.7). Other than that, this section involves no new computations,
+beyond trivial bookkeeping carried out in Sage code embedded in the .tex file.
+
+Section 5.8, "Cross-terms: y_1 large, y_2 small"
+
+Again, no new computations.
+
+Section 5.9, "Estimating the main term"
+
+./Hv N v flag
+
+bounds
+sum_{1<=s<=Y: (s,v)=1} h_v(Y/s)/s    and
+sum_{1<=s<=Y: (s,v)=1} (h_v(Y/s)-(zeta(2) sigma(v)/phi(v)))/s
+
+for all 2<=Y<=N.
+
+Here v=1 or v=2, as usual.
+If flag=1 (default value: 0),
+the program outputs values of the sums for many 1<=Y<=N.
+
+Examples:
+./Hv 1000000 1 
+Output:
+
+./Hv 1000000 2 
+Output:
+
+
+Section 5.10, "Remainder terms"
+
+./zetashortinteg
+
+computes the integrals
+
+1/(2 pi i) int |P_{19}(s+1/2) P_{19}(s+1)| |zeta(s+1/2) zeta(s+1)/s^2| ds
+   on a straight path from -8i - 1/4 to -8i - 1/4
+
+1/(2 pi i) int |P_{11}(s+1/2) P_{11}(s+1)| |zeta(s+1/2) zeta(s+1/4)/s^2| ds
+   on straight paths from -200i to -0.005 and then to 200i
+
+The output also describes the command-line options.
+
+The output reads:
+
+Compute integrals using subdivision and Gauss-Legendre quadrature.
+Usage: quadrature [-prec p] [-tol eps] [-twice]
+
+-prec p    - precision in bits (default p = 333)
+-tol eps   - approximate absolute error goal (default 2^-p)
+-twice     - run twice (to see overhead of computing nodes)
+
+
+Computing I = 1/(2 pi i) int |P_{19}(s+1/2) P_{19}(s+1)| |zeta(s+1/2) zeta(s+1)/s^2| ds
+	(straight path from -8i - 1/4 to -8i - 1/4)
+cpu/wall(s): 1.082 1.082
+I = [1.062703031892010378576890606769076043668358020046322816102350032299515897077273077624311145400744 +/- 6.00e-97]
+
+Computing I = 1/(2 pi i) int |P_{11}(s+1/2) P_{11}(s+1)| |zeta(s+1/2) zeta(s+1/4)/s^2| ds
+	(straight paths from -200i to -0.005 to 200i)
+cpu/wall(s): 7.17 7.171
+I = [0.685046394902281984659578323592463337890433665540571159101615349752037769796658341961383398117849 +/- 4.12e-97]
+
+----------------------------------------------------------------
+
+./zetalonginteg m c1 c2 sigma k0 k1
+
+computes
+I = 1/(2 pi i) int |P_m(s+c1) P_m(s+c2)| |zeta(s+c1) zeta(s+c2)/s^2| ds
+
+on a path consisting of the vertical segment from sigma - k1 i to sigma - k0 i
+                                         and from sigma + k0 i to sigma + k0 i
+
+(Of course, that is just twice the integral on the first segment.)
+
+Here m, k0 and k1 are non-negative integers, and c1, c2 and sigma are real.
+
+Here P_m(s) = \prod_{p\leq m} (1-p^{-s})
+
+Default values:
+m=19, c1=1.0, c2=0.5, sigma=-0.25, k0=8, k1=40000
+
+--------------------------
+We need to run:
+
+./zetalonginteg 11 0.25 0.5 0.0 200 40000
+./zetalonginteg 19 1.0  0.5 -0.25 8 40000
+
+The output is long - it is meant to keep track of the computation's progress.
+(It is an overnight computation.) The result is given by the last line.
+In the two cases above, the last line is:
+
+[0.0092693764454452320933 +/- 1.92e-6]
+[0.073690118617378175259 +/- 3.43e-7]
+
+respectively.
+
+Section 5.11, "Conclusion"
+
+  There is simply some bookkeeping, carried out in Sage within the text file.

@@ -1,0 +1,9 @@
+Let T_0(x) = m_2(x),
+Let T_1(x) = \check{m}_2(x) - 2,
+    T_2(x) = \check{\check{m}}_2(x) - 4\log(x/2) + 4 \gamma.
+For x\leq 1000000000000
+	|T_1(x)|\leq 2.9/x + 0.01346398873/sqrt(x)
+	|T_2(x)|\leq 5.77/x + 0.001812332853/sqrt(x)
+For 1423\leq x\leq 1000000000000:	 |T_0(x)|\leq 0.3900551317/sqrt(x) 
+For 19341\leq x\leq 1000000000000:	 |T_1(x)|\leq 0.02535769352/sqrt(x) 
+For 77580\leq x\leq 1000000000000:	 |T_2(x)|\leq 0.01997976448/sqrt(x) 

@@ -1,0 +1,18 @@
+Compute integrals using subdivision and Gauss-Legendre quadrature.
+Usage: quadrature [-prec p] [-tol eps] [-twice]
+
+-prec p    - precision in bits (default p = 333)
+-tol eps   - approximate absolute error goal (default 2^-p)
+-twice     - run twice (to see overhead of computing nodes)
+
+
+Computing I = 1/(2 pi i) int |P_{19}(s+1/2) P_{19}(s+1)| |zeta(s+1/2) zeta(s+1)/s^2| ds
+	(straight path from -8i - 1/4 to -8i - 1/4)
+cpu/wall(s): 2.13 2.133
+I = [1.062703031892010378576890606769076043668358020046322816102350032299515897077273077624311145400744 +/- 6.00e-97]
+
+Computing I = 1/(2 pi i) int |P_{11}(s+1/2) P_{11}(s+1)| |zeta(s+1/2) zeta(s+1/4)/s^2| ds
+	(straight paths from -200i to -0.005 to 200i)
+cpu/wall(s): 13.69 13.689
+I = [0.685046394902281984659578323592463337890433665540571159101615349752037769796658341961383398117849 +/- 4.12e-97]
+

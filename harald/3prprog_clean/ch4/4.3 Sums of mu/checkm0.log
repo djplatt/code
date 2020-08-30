@@ -1,0 +1,9 @@
+Let T_0(x) = m_1(x),
+Let T_1(x) = \check{m}_1(x) - 1,
+    T_2(x) = \check{\check{m}}_1(x) - 2\log x + 2 \gamma.
+For x\leq 1000000
+	|T_1(x)|\leq 1/x + 0.01998230204/sqrt(x)
+	|T_2(x)|\leq 1.15443/x + 0.0007491798977/sqrt(x)
+For 2\leq x\leq 1000000:	 |T_0(x)|\leq 0.8660254038/sqrt(x) 
+For 2\leq x\leq 1000000:	 |T_1(x)|\leq 0.4339556359/sqrt(x) 
+For 2\leq x\leq 1000000:	 |T_2(x)|\leq 0.3515595006/sqrt(x) 

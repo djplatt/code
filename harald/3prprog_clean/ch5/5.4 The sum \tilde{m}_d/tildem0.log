@@ -1,0 +1,6 @@
+Let tildem_v(x) = \sum_{n\leq x: (n,v)=1} mu(n) log(x/n)/sigma(n)
+For x\leq 1000000000000
+	|tildem_1(x) - pi^2/6|\leq 1.346030596/sqrt(x)
+	|tildem_1(x) - pi^2/6|\leq 1.8/x^(3/4) + 0.01442866057/sqrt(x)
+785647.80user 17.82system 218:28:57elapsed 99%CPU (0avgtext+0avgdata 38888maxresident)k
+0inputs+8outputs (0major+2937minor)pagefaults 0swaps

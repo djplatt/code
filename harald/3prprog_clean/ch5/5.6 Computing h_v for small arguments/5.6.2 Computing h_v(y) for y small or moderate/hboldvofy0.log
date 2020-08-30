@@ -1,0 +1,7 @@
+Let boldh_v(y,y) = sum_{d: (d,v)=1} mu^2(d)/sigma(d)^2
+                               (tildem_{dv}(y/d) - zeta(2) sigma(d v)/d v)^2 
+For all y<=1000000,
+boldh_v(y,y) <= 9.395565599/y
+boldh_v(y,y) <= (4.112339279 + 0.858 log y)/y
+405434.79user 9.23system 112:43:09elapsed 99%CPU (0avgtext+0avgdata 534064maxresident)k
+0inputs+8outputs (0major+115111minor)pagefaults 0swaps

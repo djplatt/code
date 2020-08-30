@@ -1,0 +1,5 @@
+The integral of h_1(t)/t from 1 to 1000000000 lies in [-0.0495100146363 -0.0495100043809]
+The integral of \dot{h}_1(t)/t from 1 to 1000000000 lies in [0.724970140514 0.724970252531]
+The maximum of h_1(t)/t from 1000000 to 1000000000 is at most 0.04547751029
+The integral of |(t h_1)'| from 1 to 1000000000 is at most: [7.012358591 7.034022551]
+If we add |1000000000 h_1(1000000000)| to that, we obtain at most: 7.049495205

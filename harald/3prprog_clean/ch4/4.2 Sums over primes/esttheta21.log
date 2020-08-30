@@ -1,0 +1,3 @@
+theta(10000000000) lies in [9999939650 9999940012]
+min of (theta(x)-x)/sqrt(x) for 1<=x<=10000000000 is at least -2.052817802
+max of (theta(x)/x)/sqrt(x) for 1<=x<=10000000000 is at most  -0.2604333652

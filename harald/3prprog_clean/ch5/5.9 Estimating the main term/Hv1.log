@@ -1,0 +1,6 @@
+For 2<=Y<=1000000, v=2,
+	 sum_{1<=s<=Y: (s,v)=1} h_v(Y/s)/s <= 1.31742 + 3.143498953/Y
+and sum_{1<=s<=Y: (s,v)=1} (h_v(Y/s)-(zeta(2) sigma(v)/phi(v)))/s is at most
+	  - (zeta(2) sigma(v)/v) log y - 1.817075 (1 - y^(-4/3))
+130382.47user 2.84system 36:14:31elapsed 99%CPU (0avgtext+0avgdata 714932maxresident)k
+0inputs+8outputs (0major+143936minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+Let S(x) be the sum of Lambda(n) n from 1 to x.
+Then S(3000000) lies in [4500023737623.7 4500023737671.1]
+min of S(x)/(x^2/2) for 1<=x<=3000000 is at least 0
+max of S(x)/(x^2/2) for 1<=x<=3000000 is at most  1.2401527609228

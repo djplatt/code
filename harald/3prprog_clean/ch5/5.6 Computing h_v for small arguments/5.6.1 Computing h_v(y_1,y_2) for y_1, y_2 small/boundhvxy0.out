@@ -1,0 +1,9 @@
+The following bounds concern f_{1,1}(x), defined as
+	 inf_{r x <= y <= 1000000} sqrt(x y) h_1(x,y) for r=1.
+Then, for 1<=x<=1000000/r, where r=1,
+f_{1,1}(x) >= -1.542131773
+and f_{1,1}(x)/x >= -0.4681636593; that value may be reached near x=2
+The integral of f_{1,1}/x^2 from 0 to infty is at least -0.7804306743
+The integral of min(0,f_{1,1})/x^2 from 0 to infty is at least -0.7812438307
+Define F_{1,1}(x) = max_{1<=t<=x} (-f_{1,1}(t)).
+Then the integral of F_{1,1}(x)/x^2 from 0 to infty is at most  0.8689343038
