@@ -1,0 +1,33 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" 0 11 
+1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }3 3 0 -1 -1 -1 
+0 0 0 0 0 0 -1 0 }{PSTYLE "" 11 12 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 }1 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 58 "f:=proc(M,q,h,B) pri
+nt(f1(M,q,h,B,10^5/q,2*M+2)) end proc;" }}{PARA 11 "" 1 "" {XPPMATH 
+20 "6#>%\"fGf*6&%\"MG%\"qG%\"hG%\"BG6\"F+F+-%&printG6#-%#f1G6(9$9%9&9'
+,$*&\"'++5\"\"\"F3!\"\"F9,&*&\"\"#F9F2F9F9F=F9F+F+F+" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 203 "f1:=proc(M,q,h,B,t0,sigma) evalf(4*Zeta(
+sigma)*(q/Pi)^(sigma/2)*sqrt(2*Pi)*exp((sigma-0.5)^2/2/h^2)*exp(-2*Pi*
+B*(sigma-0.5))*int(mul(2*m+1+t,m=0..M)*exp(-(t-t0)^2/2/h^2),t=-infinit
+y..infinity)) end proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%#f1Gf*6(%
+\"MG%\"qG%\"hG%\"BG%#t0G%&sigmaG6\"F-F--%&evalfG6#,$*0\"\"%\"\"\"-%%Ze
+taG6#9)F4)*&9%F4%#PiG!\"\",$*&#F4\"\"#F4F8F4F4F4-%%sqrtG6#,$*&FAF4F<F4
+F4F4-%$expG6#,$*&F@F4*&,&F8F4$\"\"&F=F=FA9&!\"#F4F4F4-FH6#,$**FAF4F<F4
+9'F4,&F8F4FNF=F4F=F4-%$intG6$*&-%$mulG6$,(*&FAF4%\"mGF4F4F4F4%\"tGF4/F
+[o;\"\"!9$F4-FH6#,$*&#F4FAF4*&,&F\\oF49(F=FAFPFQF4F=F4/F\\o;,$%)infini
+tyGF=F\\pF4F4F-F-F-" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 16 "f(1,
+100,0.25,8);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+OSu-**!#M" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 7 "9/128.;" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#$\"+++DJq!#6" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+6 "1/16.;" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#$\"++++]i!#6" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+39 "evalf(1000/2/Pi*log(10^8/2/Pi/exp(1)));" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#$\"+K-3![#!\"'" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 12 "1000000/24.;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+nmmmT!\"&" }
+}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "7 0 0" 0 }
+{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

@@ -1,0 +1,76 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 1 12 255 0 0 1 2 1 2 
+2 1 2 0 0 0 1 }{CSTYLE "2D Output" -1 20 "Times" 1 12 0 0 255 1 2 2 2 
+2 2 2 0 0 0 1 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 
+0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 2 0 2 0 2 2 0 1 }{PSTYLE "Map
+le Output" -1 11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 
+1 1 1 1 }3 1 0 0 0 0 2 0 2 0 2 2 0 1 }{PSTYLE "Left Justified Maple Ou
+tput" -1 12 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 
+1 }1 1 0 0 0 0 2 0 2 0 2 2 0 1 }{PSTYLE "Maple Plot" -1 13 1 {CSTYLE "
+" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 1 0 0 0 0 2 0 2 0 
+2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 141 "x:=100000;lnx:=eval
+f(ln(x));lambda:=0.1;lam_sqr_by_2:=lambda^2/2;one_over_two_pi:=evalf(1
+/2/Pi);C:=evalf(Pi*(1+erf(lnx/lambda/sqrt(2))))*I/2;" }}{PARA 11 "" 1 
+"" {XPPMATH 20 "6#>%\"xG\"'++5" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$l
+nxG$\"+YDH^6!\")" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%'lambdaG$\"\"\"!
+\"\"" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%-lam_sqr_by_2G$\"+++++]!#7" 
+}}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%0one_over_two_piG$\"+I%\\:f\"!#5" 
+}}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"CG^#$\"+aEfTJ!\"*" }}}{EXCHG 
+{PARA 12 "" 1 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 82 "G1:=Im(evalf(Int(exp(lam_sqr_by_2*(1+I*t)^2+lnx*(1+I*t))/(1+I*t)
+,t=0..infinity)));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%#G1G$\"+m5bp'*
+!\"'" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 98 "G_rho:=im->2*Im(eva
+lf(Int(exp(lam_sqr_by_2*(1/2+I*t)^2+lnx*(1/2+I*t))/(1/2+I*t),t=im..inf
+inity)));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%&G_rhoGf*6#%#imG6\"6$%)
+operatorG%&arrowGF(,$*&\"\"#\"\"\"-%#ImG6#-%&evalfG6#-%$IntG6$*&-%$exp
+G6#,&*&%-lam_sqr_by_2GF/),&#F/F.F/*&%\"tGF/^#F/F/F/F.F/F/*&%$lnxGF/FAF
+/F/F/FA!\"\"/FD;9$%)infinityGF/F/F(F(F(" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 49 "zeros:=readdata(\"v:\\\\galway\\\\zeros1.txt\",float)
+:;" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 17 "G_rho(zeros[10]);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+snC(e%!#:" }}}{EXCHG {PARA 0 "> " 
+0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 11 "" 1 "" {TEXT -1 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 98 "pi_star:=proc(n) (add(evalf(
+1/i*(numtheory[pi](floor(n^(1/i))))),i=1..floor(log[2](n)))) end proc;
+" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 13 "pi_star(100);" }}{PARA 11 "" 1 
+"" {XPPMATH 20 "6#>%(pi_starGf*6#%\"nG6\"F(F(-%$addG6$-%&evalfG6#*&%\"
+iG!\"\"-&%*numtheoryG6#%#piG6#-%&floorG6#)9$*&\"\"\"F>F0F1F>/F0;F>-F96
+#-&%$logG6#\"\"#6#F<F(F(F(" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+MLL`
+G!\")" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 143 "phi:=proc (u,x,la
+mbda) if u<x then evalf(1-1/2*(erfc(ln(u/x)/sqrt(2)/lambda))) else eva
+lf(-1/2*(erfc(ln(u/x)/sqrt(2)/lambda))) end if end proc;" }}{PARA 11 "
+" 1 "" {XPPMATH 20 "6#>%$phiGf*6%%\"uG%\"xG%'lambdaG6\"F*F*@%29$9%-%&e
+valfG6#,&\"\"\"F3*&#F3\"\"#F3-%%erfcG6#*(-%#lnG6#*&F-F3F.!\"\"F3-%%sqr
+tG6#F6F?9&F?F3F?-F06#,$*&#F3F6F3F7F3F?F*F*F*" }}}{EXCHG {PARA 0 "> " 
+0 "" {MPLTEXT 1 0 221 "del:=proc(x,lambda,sieve_width) local sum,i,j,t
+op; sum:=0;top:=x*sieve_width-1;for i from 2 to top do if isprime(i) t
+hen for j from 1 while i^j<top do sum:=sum+1/j*phi(i^j,x,lambda); end \+
+do; end if; end do; sum; end proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#
+>%$delGf*6%%\"xG%'lambdaG%$facG6&%$sumG%\"iG%\"jG%$topG6\"F/C&>8$\"\"!
+>8',&*&9$\"\"\"9&F9F9F9!\"\"?(8%\"\"#F9F5%%trueG@$-%(isprimeG6#F=?(8&F
+9F9F/2)F=FEF5>F2,&F2F9*&FEF;-%$phiG6%FGF89%F9F9F2F/F/F/" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 125 "est_pi_star:=proc (n_zeros,sieve_width) G1-ln(2.)-su
+m(2*Re(G_rho(zeros[i])),i=1..n_zeros)+del(x,lambda,sieve_width) end pr
+oc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%,est_pi_starGf*6$%(n_zerosG%,
+sieve_widthG6\"F)F),*%#G1G\"\"\"-%#lnG6#$\"\"#\"\"!!\"\"-%$sumG6$,$*&F
+1F,-%#ReG6#-%&G_rhoG6#&%&zerosG6#%\"iGF,F,/FB;F,9$F3-%$delG6%%\"xG%'la
+mbdaG9%F,F)F)F)" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 36 "evalf(pi
+_star(x)-est_pi_star(10,2));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$!'7n*
+)!\"'" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 21 "w:=est_pi_star(10,
+2);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"wG$\"+LfmM'*!\"'" }}}
+{EXCHG {PARA 11 "" 1 "" {XPPMATH 20 "6#$!+-$\\&)f$!\")" }}{PARA 13 "" 
+1 "" {GLPLOT2D 509 509 509 {PLOTDATA 2 "6%-%'CURVESG6$7,7$$\"\"\"\"\"!
+$\"+!yG:F)!#67$$\"\"#F*$\"+c[I)4\"F-7$$\"\"$F*$\"+IaL*H'!#77$$\"\"%F*$
+\"+PZVy7F87$$\"\"&F*$\"+IhQ4[!#87$$\"\"'F*$!+I0l$*R!#97$$\"\"(F*$\"+RH
+!)*e\"!#:7$$\"\")F*$!+iG=b#)FO7$$\"\"*F*$\"+y_([f)!#;7$$\"#5F*$!+vX1,5
+!#<-%'COLOURG6&%$RGBG$Fgn!\"\"$F*F*Fao-%+AXESLABELSG6$Q!6\"Feo-%%VIEWG
+6$%(DEFAULTGFjo" 1 2 0 1 10 0 2 9 1 4 2 1.000000 45.000000 45.000000 
+0 0 "Curve 1" }}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 "w;" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+LfmM'*!\"'" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 15 "100000.^(1/17);" }}{PARA 11 "" 1 "" {XPPMATH 
+20 "6#$\"+Z%>%o>!\"*" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "9 0 0" 0 }
+{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

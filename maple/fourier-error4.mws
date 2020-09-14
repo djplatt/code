@@ -1,0 +1,62 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 
+11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 
+0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 12 1 {CSTYLE "" -1 
+-1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 2 2 
+0 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 55 "P:=(h,t0)->evalf(Pi*h*(h/sqrt(2*Pi)+t0+(4+sq
+rt(2))/4));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"PGf*6$%\"hG%#t0G6\"
+6$%)operatorG%&arrowGF)-%&evalfG6#*(%#PiG\"\"\"9$F2,**&F3F2-%%sqrtG6#,
+$*&\"\"#F2F1F2F2!\"\"F29%F2F2F2*&#F2\"\"%F2-F76#F;F2F2F2F)F)F)" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 133 "err1:=proc (a,h,t0,q,B) loc
+al M; M:=5/2-a; return(evalf(2*(q/Pi)^(M/2)*Zeta(0,M+1/2)*exp(M^2/2/h^
+2-2*Pi*B*M)*P(h,t0)/M/Pi)) end proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "
+6#>%%err1Gf*6'%\"aG%\"hG%#t0G%\"qG%\"BG6#%\"MG6\"F.C$>8$,&#\"\"&\"\"#
+\"\"\"9$!\"\"O-%&evalfG6#,$*0F5F6)*&9'F6%#PiGF8,$*&#F6F5F6F1F6F6F6-%%Z
+etaG6$\"\"!,&F1F6FEF6F6-%$expG6#,&*&FEF6*&F1F59%!\"#F6F6**F5F6FBF69(F6
+F1F6F8F6-%\"PG6$FQ9&F6F1F8FBF8F6F.F.F." }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 76 "G:=(n,h,t0,B,N)->(1.5+t0+(N+n)/2/B)^(9/16)*exp(-(N+n)
+^2/8/B^2/h^2)/Pi/(N+n);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"GGf*6'%
+\"nG%\"hG%#t0G%\"BG%\"NG6\"6$%)operatorG%&arrowGF,**,($\"#:!\"\"\"\"\"
+9&F5,$*&#F5\"\"#F5*&,&9(F59$F5F59'F4F5F5F5#\"\"*\"#;-%$expG6#,$*&#F5\"
+\")F5*(F<F:F?!\"#9%FKF5F4F5%#PiGF4F<F4F,F,F," }}}{EXCHG {PARA 0 "> " 
+0 "" {MPLTEXT 1 0 126 "err2:=(h,t0,q,B,N)->evalf(sqrt(Pi)*Zeta(0,9/8)*
+exp(1/6)*2^1.25*(q/2/Pi)^(5/16)*G(0,h,t0,B,N)/(1-G(1,h,t0,B,N)/G(0,h,t
+0,B,N)));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%%err2Gf*6'%\"hG%#t0G%\"
+qG%\"BG%\"NG6\"6$%)operatorG%&arrowGF,-%&evalfG6#,$*&#\"\"\"\"\"#F6*2-
+%%sqrtG6#%#PiGF6-%%ZetaG6$\"\"!#\"\"*\"\")F6-%$expG6##F6\"\"'F6)F7$\"$
+D\"!\"#F6F7#\"#6\"#;*&9&F6F<!\"\"#\"\"&FO-%\"GG6'F@9$9%9'9(F6,&F6F6*&-
+FV6'F6FXFYFZFenF6FUFRFRFRF6F6F,F,F," }}}{EXCHG {PARA 11 "" 1 "" 
+{XPPMATH 20 "6#$!\"\"\"\"!" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+31 "err2(7/32,1280,100000,32/5,20);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6
+#$\"SM]%Q=Urr-.<&>T0\\w20V5h)yo-(!#e" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 59 "all_err:=(a,h,t0,q,B,N)->err1(a,h,t0,q,B)+err2(h,t0,q
+,B,N);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%(all_errGf*6(%\"aG%\"hG%#t
+0G%\"qG%\"BG%\"NG6\"6$%)operatorG%&arrowGF-,&-%%err1G6'9$9%9&9'9(\"\"
+\"-%%err2G6'F6F7F8F99)F:F-F-F-" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 11 "Digits:=50;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%'DigitsG\"#]
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 77 "max(all_err(0,7/32,1280
+,100000,32/5,20),all_err(1,7/32,1280,100000,32/5,20));" }}{PARA 11 "" 
+1 "" {XPPMATH 20 "6#$\"S@PD*p#*o<VEc:[DpF@9hc(3Q$RZ'!#d" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 75 "max(all_err(0,7/32,2030,80000,32/5,
+20),all_err(1,7/32,2030,80000,32/5,20));" }}{PARA 11 "" 1 "" {XPPMATH 
+20 "6#$\"SItx1Mkaxr<([_n`e$oRn.Gr7rx!#d" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 75 "max(all_err(0,7/32,2530,50000,32/5,20),all_err(1,7/32
+,2530,50000,32/5,20));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"S4;S#\\+&
+Gtv@mm[%*o9\"zFF%>80Bc!#d" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+75 "max(all_err(0,7/32,3370,40000,32/5,20),all_err(1,7/32,3370,40000,3
+2/5,20));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"S**)>gd:+eesYvL,;(4n?!
+\\v>*3Rd!#d" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 75 "max(all_err(
+0,7/32,4030,30000,32/5,20),all_err(1,7/32,4030,30000,32/5,20));" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"Sf.[9&H'>qs)*>Tw%e$4$Gkp@6?)\\\\!#d
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 75 "max(all_err(0,7/32,5030
+,25000,32/5,20),all_err(1,7/32,5030,25000,32/5,20));" }}{PARA 0 "> " 
+0 "" {MPLTEXT 1 0 0 "" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"SC.<eK(eKJ
+_Ca=3RZ2'pKTT<p))\\!#d" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" 
+}}}}{MARK "15 0 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 
+0 1 2 33 1 1 }

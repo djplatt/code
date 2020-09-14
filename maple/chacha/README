@@ -1,0 +1,13 @@
+see also BC3  directory ~/code/chacha/
+
+L.gp uses argument principle to locate zeros of L' in box
+0>1/2->1/2+t0*I->t0*I->0
+t0>=max(3,6/log(q))
+
+zerofind.gp uses N-R to locate zeros of L' in the box
+run reading zerofind_odd.gp > bar
+then echo 3 blank lines >> bar
+run reading zerofind_even.gp >> bar
+add record for L(chi_11(10,.),.) at top (to make 4 odd records in total) 
+then plot data in bar using pyxplot plot.pyx to create pyxplot.eps
+

@@ -1,0 +1,91 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 
+11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 
+0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "" 11 12 1 {CSTYLE "" -1 -1 "" 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 }1 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 35 "chi_3_0:=n-> `if`(n \+
+mod 3 = 0,0,1);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%(chi_3_0Gf*6#%\"n
+G6\"6$%)operatorG%&arrowGF(-%#ifG6%/-%$modG6$9$\"\"$\"\"!F5\"\"\"F(F(F
+(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 11 "chi_3_0(3);" }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#\"\"!" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 56 "L:=(s,q,chi)->q^(-s)*add(chi(n)*Zeta(0,s,n/q),n=1..q-1);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"LGf*6%%\"sG%\"qG%$chiG6\"6$%)opera
+torG%&arrowGF**&)9%,$9$!\"\"\"\"\"-%$addG6$*&-9&6#%\"nGF4-%%ZetaG6%\"
+\"!F2*&F<F4F0F3F4/F<;F4,&F0F4F4F3F4F*F*F*" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 22 "L(0.5+10*I,3,chi_3_0);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#^$$\"+l'Qn[\"!\"*$!+`;(y+\"F&" }}}{EXCHG {PARA 0 "> " 
+0 "" {MPLTEXT 1 0 14 "s:=0.5+10.0*I;" }}{PARA 11 "" 1 "" {XPPMATH 20 "
+6#>%\"sG^$$\"\"&!\"\"$\"$+\"F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 14 "Zeta(0,s,1/3);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$!+c;h:(*!
+#5$!+SMkpB!\"*" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 5 "q:=3;" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"qG\"\"$" }}}{EXCHG {PARA 0 "> " 0 
+"" {MPLTEXT 1 0 7 "q^(-s);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$!+.wo
+ca!#7$\"+B[Ctd!#5" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 56 "chi_3_
+1:=n-> `if`(n mod 3 = 0,0,`if`(n mod 3 = 1,1,-1));" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#>%(chi_3_1Gf*6#%\"nG6\"6$%)operatorG%&arrowGF(-%#ifG6
+%/-%$modG6$9$\"\"$\"\"!F5-F-6%/F0\"\"\"F9!\"\"F(F(F(" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 22 "L(0.5+10*I,3,chi_3_1);" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#^$$\"+\"pq*f7!\"*$!+FL'z!))!#6" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 36 "chi_101_0:=n->`if`(n=0 mod 101,0,1);" }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#>%*chi_101_0Gf*6#%\"nG6\"6$%)operatorG%&arro
+wGF(-%#ifG6%/9$-%$modG6$\"\"!\"$,\"F4\"\"\"F(F(F(" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 27 "L(0.5+10.*I,101,chi_101_0);" }}{PARA 11 "" 
+1 "" {XPPMATH 20 "6#^$$\"+I!Q4k\"!\"*$\"++%ezB&!#7" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 16 "nextprime(1000);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#\"%45" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 38 "chi
+_1009_0:=n->`if`(n=0 mod 1009,0,1);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6
+#>%+chi_1009_0Gf*6#%\"nG6\"6$%)operatorG%&arrowGF(-%#ifG6%/9$-%$modG6$
+\"\"!\"%45F4\"\"\"F(F(F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 37 
+"time(L(0.5+1000.*I,1009,chi_1009_0));" }}{PARA 11 "" 1 "" {XPPMATH 
+20 "6#$\"'#R%>!\"$" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 31 "L(0.5
++1000.*I,1009,chi_1009_0);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$\"+Zq
+LnP!#5$\"+u)363*F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 5 "2^17;
+" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"'s58" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 26 "evalf(exp(-5*2*Pi*I/10.));" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#^$$!\"\"\"\"!$\"+:w1-T!#>" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 12 "s:=0.5+10*I;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"s
+G^$$\"\"&!\"\"$\"#5\"\"!" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 39 
+"101^(-s)*add(Zeta(0,s,a/101),a=1..100);" }}{PARA 11 "" 1 "" {XPPMATH 
+20 "6#^$$\"+I!Q4k\"!\"*$\"++%ezB&!#7" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 66 "L_0:=(s,q)->q^(-s)*add(`if`(gcd(a,q)=1,Zeta(0,s,a/q),
+0),a=1..q-1);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$L_0Gf*6$%\"sG%\"qG
+6\"6$%)operatorG%&arrowGF)*&)9%,$9$!\"\"\"\"\"-%$addG6$-%#ifG6%/-%$gcd
+G6$%\"aGF/F3-%%ZetaG6%\"\"!F1*&F>F3F/F2FB/F>;F3,&F/F3F3F2F3F)F)F)" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 11 "L_0(s,101);" }}{PARA 11 "" 
+1 "" {XPPMATH 20 "6#^$$\"+I!Q4k\"!\"*$\"++%ezB&!#7" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 26 "x:=numtheory[primroot](8);" }}{PARA 11 "" 
+1 "" {XPPMATH 20 "6#>%\"xG%%FAILG" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 39 "evalf(`if`(numtheory[primroot]>0,1,0));" }}{PARA 11 "
+" 1 "" {XPPMATH 20 "6#-%#ifG6%2\"\"!%)primrootG\"\"\"F'" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 7 "x=FAIL;" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#/%%FAILGF$" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+18 "`if`(x<>FAIL,1,0);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"\"!" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 246 "L:=proc (s,q,ind) local pr,
+theta; pr:=numtheory[primroot](q); if pr=FAIL then return(0) end if; t
+heta:=evalf(-2*Pi*I/numtheory[phi](q)); return(q^(-s)*add(`if`(gcd(a,q
+)=1,exp(theta*(a-1)*ind)*Zeta(0,s,((pr^(a-1)) mod q)/q),0),a=1..q-1)) \+
+end proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%\"LGf*6%%\"sG%\"qG%$ind
+G6$%#prG%&thetaG6\"F-C&>8$-&%*numtheoryG6#%)primrootG6#9%@$/F0%%FAILGO
+\"\"!>8%-%&evalfG6#*(^#!\"#\"\"\"%#PiGFE-&F36#%$phiGF6!\"\"O*&)F7,$9$F
+KFE-%$addG6$-%#ifG6%/-%$gcdG6$%\"aGF7FE*&-%$expG6#*(F>FE,&FenFEFEFKFE9
+&FEFE-%%ZetaG6%F<FP*&-%$modG6$)F0F[oF7FEF7FKFEF</Fen;FE,&F7FEFEFKFEF-F
+-F-" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 37 "time(print(L(0.5+100
+.*I,10007,101)));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$\"+wNtIM!\"*$
+\"+(pBI)Q!#5" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"'z#[#!\"$" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 20 "L(0.5+50*I,10007,4);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$\"+')>*Q+&!#5$!+0mWfK!\"*" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 37 "3^(-s)*(Zeta(0,s,1/3)-Zeta(0
+,s,2/3));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$\"+\"pq*f7!\"*$!+FL'z!
+))!#6" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 17 "nextprime(10000);
+" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"&2+\"" }}}{EXCHG {PARA 0 "> " 0 
+"" {MPLTEXT 1 0 19 "18000/3600*1200/24;" }}{PARA 11 "" 1 "" {XPPMATH 
+20 "6#\"$]#" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 15 "1500*50/24./
+24;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+LL3-8!\"(" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 19 "Zeta(0,0.5+10*I,1);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#^$$\"+?_*[a\"!\"*$!+`YO`6!#5" }}}{EXCHG {PARA 0 "> " 0 
+"" {MPLTEXT 1 0 0 "" }}}}{MARK "32 0 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 
+1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

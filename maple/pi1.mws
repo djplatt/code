@@ -1,0 +1,41 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 
+0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Error
+" -1 8 1 {CSTYLE "" -1 -1 "Courier" 1 10 255 0 255 1 2 2 2 2 2 1 1 1 
+3 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 11 1 
+{CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 0 0 
+0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 12 1 {CSTYLE "" -1 -1 "Ti
+mes" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 2 2 0 1 }
+{PSTYLE "Maple Plot" -1 13 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 
+2 2 2 2 2 1 1 1 1 }3 1 0 0 0 0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 67 "with(numtheory);lam:
+=0.1;sig:=2;x:=1000;assume(t,real);n_zeros:=25;" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 66 "f:=t->1/(2*Pi)*exp(lam^2*(sig+I*t)^2/2+ln(x)*(
+sig+I*t))/(sig+I*t);" }}{PARA 11 "" 1 "" {TEXT -1 0 "" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 61 "zeros:=readdata(\"c:\\\\dave\\\\bristol\\\\pi1\\\\zer
+os1.txt\",float):;" }}}{EXCHG {PARA 12 "" 1 "" {TEXT -1 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 126 "g:=proc (u) if u<x then eva
+lf(1-1/2*(erfc(ln(u/x)/sqrt(2)/lam))) else evalf(-1/2*(erfc(ln(u/x)/sq
+rt(2)/lam))) end if end proc;" }}{PARA 11 "" 1 "" {TEXT -1 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 180 "del:=proc() local sum,i,j,top; sum:=0;top:=x*2-1;f
+or i from 2 to top do if isprime(i) then for j from 1 while i^j<top do
+ sum:=sum+1/j*g(i^j); end do; end if; end do; sum; end proc;" }}{PARA 
+0 "> " 0 "" {MPLTEXT 1 0 0 "" }}{PARA 12 "" 1 "" {TEXT -1 0 "" }}}
+{EXCHG {PARA 13 "" 1 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 309 "st:=time():;res:=evalf(int(f(t)*(sig+I*t)*ln(Pi)/2,t
+=-infinity..infinity,epsilon=0.005))+evalf(Int(f(t)*ln(1/2),t=-infinit
+y..infinity,epsilon=0.005))-evalf(Int(f(t)*ln(sig+I*t-1),t=-infinity..
+infinity,epsilon=0.005))-evalf(Int(f(t)*lnGAMMA((sig+I*t)/2+1),t=-infi
+nity..infinity,epsilon=0.005))+del();time()-st;" }}{PARA 11 "" 1 "" 
+{TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 160 "st:=time()
+:;zres:=evalf(Int(f(t)*add(ln((1-(sig+I*t)/(0.5+I*zeros[i]))*(1-(sig+I
+*t)/(0.5-I*zeros[i]))),i=1..n_zeros),t=-infinity..infinity));time()-st
+;res+zres;" }}}{EXCHG {PARA 8 "" 1 "" {TEXT -1 59 "Error, (in numtheor
+y:-pi) argument must be of type integer\n" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 47 "evalf(add(1/i*(pi(floor(1000^(1/i)))),i=1..9));" }}
+{PARA 11 "" 1 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 0 "" }}}}{MARK "5 1 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }

@@ -1,0 +1,59 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 
+11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 
+0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "" 11 12 1 {CSTYLE "" -1 -1 "" 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 }1 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 90 "x:=100;lambda:=1.;ln
+x:=evalf(ln(x));twopi:=evalf(1/2/Pi);sigma:=1.1;l2:=evalf(lambda^2/2);
+" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"xG\"$+\"" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%'lambdaG$\"\"\"\"\"!" }}{PARA 11 "" 1 "" {XPPMATH 20 
+"6#>%$lnxG$\"+'=q^g%!\"*" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%&twopiG$
+\"+I%\\:f\"!#5" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%&sigmaG$\"#6!\"\"
+" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%#l2G$\"+++++]!#5" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 131 "st:=time():;evalf(Int(twopi*exp(l2
+*(sigma+I*t)^2+lnx*(sigma+I*t))*lnGAMMA(sigma+I*t)/(sigma+I*t),t=-infi
+nity..infinity));time()-st;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$\"+Y
+iku?!\"*$\"\"!F(" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"&)**\\!\"$" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 128 "st:=time():;evalf(Int(twopi
+*exp(l2*(sigma+I*t)^2+lnx*(sigma+I*t))*ln(sigma-1+I*t)/(sigma+I*t),t=-
+infinity..infinity));time()-st;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$
+!+xq1SS!\")$\"\"!F(" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"$])!\"$" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 120 "st:=time():;evalf(Int(twopi
+*exp(l2*(sigma+I*t)^2+lnx*(sigma+I*t))*ln(1/2)/(sigma+I*t),t=-infinity
+..infinity));time()-st;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$!+@vXJp!
+#5$\"\"!F(" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"$5\"!\"$" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 109 "st:=time():;evalf(Int(twopi*exp(l2
+*(sigma+I*t)^2+lnx*(sigma+I*t))*ln(Pi)/2,t=-infinity..infinity));time(
+)-st;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$\"+m*yxm&!#:$\"\"!F(" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"##)!\"$" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 61 "zeros:=readdata(\"c:\\\\dave\\\\bristol\\\\pi1\\\\z
+eros1.txt\",float):;" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 247 "n_
+zeros:=1:;st:=time():;zres:=0:;for i to n_zeros do zi:=zeros[i]*I;zres
+:=zres+evalf(Int(twopi*exp(l2*(sigma+I*t)^2+lnx*(sigma+I*t))*ln((1-(si
+gma+I*t)/(0.5+zi))*(1-(sigma+I*t)/(0.5-zi)))/(sigma+I*t),t=-infinity..
+infinity)); end do; zres;time()-st;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6
+#>%#ziG^#$\"+9DZ89!\")" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%%zresG^$$!
+)/mCE!#9$\"\"!F*" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#^$$!)/mCE!#9$\"\"!
+F(" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"%y()!\"$" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 55 "evalf(add(1/i*(numtheory[pi](floor(x^(1/i)))
+),i=1..9));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+LLL`G!\")" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 132 "g:=proc (u) if u<x then eva
+lf(1-1/2*(erfc(ln(u/x)/sqrt(2)/lambda))) else evalf(-1/2*(erfc(ln(u/x)
+/sqrt(2)/lambda))) end if end proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6
+#>%\"gGj+6#%\"uG6\"F(F(@%29$%\"xG-%&evalfG6#,&\"\"\"F1*&#F1\"\"#F1-%%e
+rfcG6#*(-%#lnG6#*&F+F1F,!\"\"F1-%%sqrtG6#F4F=%'lambdaGF=F1F=-F.6#,$*&#
+F1F4F1F5F1F=F(F(F(6#\"\"!" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 
+"" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 182 "del:=proc() local sum
+,i,j,top; sum:=0;top:=x*200-1;for i from 2 to top do if isprime(i) the
+n for j from 1 while i^j<top do sum:=sum+1/j*g(i^j); end do; end if; e
+nd do; sum; end proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%$delGj+6\"6
+&%$sumG%\"iG%\"jG%$topGF&F&C&>8$\"\"!>8',&*&\"$+#\"\"\"%\"xGF5F5F5!\"
+\"?(8%\"\"#F5F1%%trueG@$-%(isprimeG6#F9?(8&F5F5F&2)F9FAF1>F.,&F.F5*&FA
+F7-%\"gG6#FCF5F5F.F&F&F&6\"" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+6 "del();" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$!+I?V<6!\")" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "5 0 0" 0 }{VIEWOPTS 1 
+1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

@@ -1,0 +1,73 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 
+11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 
+0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "" 11 12 1 {CSTYLE "" -1 -1 "" 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 }1 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 40 "assume(t,real);assum
+e(h>0);assume(t0>0);" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 116 "si
+mplify(sqrt(2*Pi)*(int((1+t)*exp(-(t-t0)^2/2/h^2),t=0..infinity)+int((
+1-t)*exp(-(t-t0)^2/2/h^2),t=-infinity..0)));" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#*,\"\"##\"\"\"F$%#PiGF%%#h|irGF&-%$expG6#,$*(F$!\"\"F(!
+\"#%$t0|irGF$F.F&,(*&F$F&F(F&F&*,F0F&F'F%F$F%-%$erfG6#,$**F$F.F(F.F0F&
+F$F%F&F&-F*6#,$*(F$F.F(F/F0F$F&F&F&*(F$F%F'F%F9F&F&F&" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 157 "evalf(eval(simplify(int((1+t)*(3+t
+)*(5+t)*exp(-(t-t0)^2/2/h^2),t=0..infinity)+int((1-t)*(3-t)*(5+t)*exp(
+-(t-t0)^2/2/h^2),t=-infinity..0)),\{t0=1000,h=5/16\}));" }}{PARA 11 "
+" 1 "" {XPPMATH 20 "6#$\"+g[*Q!z!\"\"" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 36 "evalf(Pi*5/16/2*(25/256+1001*1003));" }}{PARA 11 "" 
+1 "" {XPPMATH 20 "6#$\"+\"o)QG\\!\"%" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 17 "evalf(erf(1000));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#
+$\"\"\"\"\"!" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 240 "evalf(eval
+(2*(100000/Pi)^((2*m+1/2-a)/2)*Zeta(2*m+1-a)*exp((2*m+1/2-a)^2/2/h^2-2
+*Pi*B*(2*m+1/2-a))*(int((1+t)*(3+t)*exp(-(t-t0)^2/2/h^2),t=0..infinity
+)+int((1-t)*(3-t)*exp(-(t-t0)^2/2/h^2),t=-infinity..0)),\{B=32/5,t0=10
+00,h=5/16,m=2,a=1\}));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+]vV#o\"!
+#H" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 102 "P:=m->sqrt(2*Pi)*int
+(mul((2*n-1+t)/2,n=1..m)*exp(-(t-t0)^2/2/h^2),t=-infinity..infinity)+G
+AMMA(m+1/2);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"PGf*6#%\"mG6\"6$%)
+operatorG%&arrowGF(,&*&-%%sqrtG6#,$*&\"\"#\"\"\"%#PiGF4F4F4-%$intG6$*&
+-%$mulG6$,(%\"nGF4#F4F3!\"\"*&F3F@%\"tGF4F4/F>;F49$F4-%$expG6#,$*(F3F@
+,&FBF4%#t0GF@F3%\"hG!\"#F@F4/FB;,$%)infinityGF@FRF4F4-%&GAMMAG6#,&FEF4
+#F4F3F4F4F(F(F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 147 "E:=(Q,T
+0,H,B,A,M)->evalf(2*(Q/Pi)^((2*M+1/2-A)/2)*Zeta(2*M+1-A)*exp((2*M+1/2-
+A)^2/2/H^2-2*Pi*B*(2*M+1/2-A))/Pi/(2*M+1/2-A)*eval(P(M),\{t0=T0,h=H\})
+);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"EGf*6(%\"QG%#T0G%\"HG%\"BG%
+\"AG%\"MG6\"6$%)operatorG%&arrowGF--%&evalfG6#,$*0\"\"#\"\"\")*&9$F7%#
+PiG!\"\",(9)F7#F7\"\"%F7*&#F7F6F79(F7F<F7-%%ZetaG6#,(*&F6F7F>F7F7F7F7F
+CF<F7-%$expG6#,&*&#F7F6F7*&,(*&F6F7F>F7F7FNF7FCF<F69&!\"#F7F7**F6F7F;F
+79'F7FPF7F<F7F;F<FPF<-%%evalG6$-%\"PG6#F><$/%\"hGFR/%#t0G9%F7F7F-F-F-
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 29 "E(100000,1000,5/16,32/5
+,0,1);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+&4F7@#!#J" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 15 "simplify(P(1));" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#,.*&#\"\"\"\"\"#F&*(%#PiGF&%#h|irGF&-%$erfG6#,$**F'!
+\"\"F*F0%$t0|irGF&F'F%F&F&F&F&*&F%F&**F'F%F)F%)F*F'F&-%$expG6#,$*(F'F0
+F*!\"#F1F'F0F&F&F&*&F%F&**F)F&F*F&F1F&F+F&F&F&*(F'F0F)F&F*F&F&**F'F0F)
+F&F*F&F1F&F&*&F'F0F)F%F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 11 
+"GAMMA(5/2);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,$*(\"\"$\"\"\"\"\"%!
+\"\"%#PiG#F&\"\"#F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 15 "simp
+lify(P(2));" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,8*&#\"\"$\"\"%\"\"\"*(
+%#PiGF(%#h|irGF(-%$erfG6#,$**\"\"#!\"\"F+F2%$t0|irGF(F1#F(F1F(F(F(F(*&
+#F(F'F(**F*F(F+F()F3F1F(F,F(F(F(**F1F4F*F4)F+F1F(-%$expG6#,$*(F1F2F+!
+\"#F3F1F2F(F(*&F6F(*,F1F4F*F4F:F(F;F(F3F(F(F(**F*F(F+F(F3F(F,F(F(*&F6F
+(*(F*F()F+F&F(F,F(F(F(**F&F(F'F2F*F(F+F(F(**F'F2F*F(F+F(F3F1F(*(F*F(F+
+F(F3F(F(*(F'F2F*F(F+F&F(-%'GAMMA1G6##\"\"&F1F(" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 113 "evalf(eval(simplify(int((1-t)/2*sqrt(2*Pi)*ex
+p(Pi*t/2)*exp(-(t-t0)^2/2/h^2),t=-infinity..0)),\{t0=-1000,h=5/16\}));
+" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"+(4OD>(!$*o" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 69 "simplify(int(sqrt(2*Pi)*(1+t)/2*exp(-(t-t0)
+^2/2/h^2),t=0..infinity));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,$*&#\"
+\"\"\"\"#F&*(%#h|irGF&,,*(%#PiGF&-%$erfG6#,$**F'!\"\"F)F2%$t0|irGF&F'F
+%F&F&-%$expG6#,$*(F'F2F)!\"#F3F'F&F&F&*(F'F%F,F%F)F&F&**F,F&F3F&F-F&F4
+F&F&*&F,F&F4F&F&*(F,F&F3F&F4F&F&F&-F56#,$*(F'F2F)F9F3F'F2F&F&F&" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 42 "diff(1/sqrt(cosh(Pi*t/2))*ex
+p(-Pi*t/4),t);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,&*&#\"\"\"\"\"%F&**
+-%%coshG6#,$*(\"\"#!\"\"%#PiGF&%#t|irGF&F&#!\"$F.-%$expG6#,$*(F'F/F0F&
+F1F&F/F&-%%sinhGF+F&F0F&F&F/*&#F&F'F&*(F)#F/F.F0F&F4F&F&F/" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 21 "Psi(3./2)*GAMMA(3/2);" }}{PARA 11 "
+" 1 "" {XPPMATH 20 "6#,$*&$\"+*p)\\C=!#6\"\"\"%#PiG#F(\"\"#F(" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "16 0 0" 0 }
+{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

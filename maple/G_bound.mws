@@ -1,0 +1,33 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 
+11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 
+0 0 0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 123 "K:=(t0,h,sigma)->2^
+((7-sigma)/4)*sqrt(Pi)*exp((1-2*sigma)^2/8/h^2+1/2/sigma)*(sigma^((sig
+ma+1)/2)+myint((sigma-1)/2,t0,h));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#
+>%\"KGf*6%%#t0G%\"hG%&sigmaG6\"6$%)operatorG%&arrowGF***)\"\"#,&#\"\"(
+\"\"%\"\"\"*&#F5F4F59&F5!\"\"F5-%%sqrtG6#%#PiGF5-%$expG6#,&*&#F5\"\")F
+5*&,&F5F5*&F0F5F8F5F9F09%!\"#F5F5*&#F5F0F5*&F5F5F8F9F5F5F5,&)F8,&*&FKF
+5F8F5F5FKF5F5-%&myintG6%,&*&FKF5F8F5F5#F5F0F99$FHF5F5F*F*F*" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 108 "myint:=(n,t0,h)->GAMMA(n+1)
+*sum(t0^(n-m)/GAMMA(m+1)/GAMMA(n-m+1)*GAMMA((m+1)/2)*2^((m-1)/2)*h^(m+
+1),m=0..n);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%&myintGf*6%%\"nG%#t0G
+%\"hG6\"6$%)operatorG%&arrowGF**&-%&GAMMAG6#,&9$\"\"\"F4F4F4-%$sumG6$*
+.)9%,&F3F4%\"mG!\"\"F4-F06#,&F<F4F4F4F=-F06#,(F3F4F<F=F4F4F=-F06#,&*&
+\"\"#F=F<F4F4#F4FHF4F4)FH,&*&FHF=F<F4F4#F4FHF=F4)9&F@F4/F<;\"\"!F3F4F*
+F*F*" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 60 "G:=(u,t0,h,sigma)->
+exp((1-2*sigma)*abs(u)*Pi)*K(t0,h,sigma);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%\"GGf*6&%\"uG%#t0G%\"hG%&sigmaG6\"6$%)operatorG%&arro
+wGF+*&-%$expG6#*(,&\"\"\"F5*&\"\"#F59'F5!\"\"F5-%$absG6#9$F5%#PiGF5F5-
+%\"KG6%9%9&F8F5F+F+F+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 87 "M_
+error:=(M,q,t0,h,sigma)->K(t0,h,sigma)*(q/Pi)^((2*sigma-1)/4)*M^(-sigm
+a-1)/(sigma+1);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%(M_errorGf*6'%\"M
+G%\"qG%#t0G%\"hG%&sigmaG6\"6$%)operatorG%&arrowGF,**-%\"KG6%9&9'9(\"\"
+\")*&9%F7%#PiG!\"\",&*&#F7\"\"#F7F6F7F7#F7\"\"%F<F7)9$,&F6F<F7F<F7,&F6
+F7F7F7F<F,F,F," }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}
+{MARK "4 0 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 
+33 1 1 }

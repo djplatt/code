@@ -1,0 +1,13 @@
+set multiplot
+set xrange [0:0.5]
+set yrange [0:1]
+set xlabel "$\Re \rho$"
+set ylabel "$\Im \rho$"
+set grid
+set title "Zeros of $L'(\chi,\cdot)$"
+plot "bar" index 0 with pointsize 0.2 pointtype 4 color red title "Odd $\chi$", "bar" index 1 with pointsize 0.2 pointtype 5 color blue title "Even $\chi$"
+set fontsize 0.3
+text "$\chi_{11}(6,\cdot)$" at 4.1,0.3
+text "$\chi_{11}(10,\cdot)$" at 2.5,-0.15
+text "$\chi_{9}(5,\cdot)$" at 4.4,2.2
+text "$\chi_{7}(5,\cdot)$" at 2.6,3.6

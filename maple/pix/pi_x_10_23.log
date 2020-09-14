@@ -1,0 +1,34 @@
+                                                                                   GP/PARI CALCULATOR Version 2.3.4 (released)
+                                                                                amd64 running linux (x86-64 kernel) 64-bit version
+                                                                 compiled: Feb 17 2011, gcc-4.4.1 [gcc-4_4-branch revision 150839] (SUSE Linux) 
+                                                                                 (readline v6.0 enabled, extended help available)
+
+                                                                                      Copyright (C) 2000-2006 The PARI Group
+
+PARI/GP is free software, covered by the GNU General Public License, and comes WITHOUT ANY WARRANTY WHATSOEVER.
+
+Type ? for help, \q to quit.
+Type ?12 for how to get moral (and possibly technical) support.
+
+parisize = 8000000, primelimit = 500000
+Assuming 1st 900000000000.00000000000000000000000000 zeros respect RH.
+  ie RH holds to t=241929423851.85802063026837999192235594
+Zeros found to height 11155646000.000000000000000000000000000
+Using about 36037434436 zeros.
+x=100000000000000000000000
+lambda=6224003264759175*2^-83
+lambda=2^(-30.533235759609252284386488223256123621)
+initial x0=99999999411387818026742
+Sieve start =99999998816650610606081
+sieve width =1183349389393920
+We need 68880 2^34 sieves in total.
+i.e. we need 41 jobs, each doing 1680 iterations.
+final x0=99999999408325305303041
+final sieve start =99999998816650610606081
+total error from zeros=0.24799999929409884266122361644726833866
+   zeros error 1=-1.0223839749573642348838333429121293620 E-20
+   zeros error 2=-4.0892339030388701082066727216691515283 E-5262
+   zeros error 3=0.24799231348154772646519232989642830101
+   -1 int error =0.0000076858125511162062551263004136799979455
+total sieving error=0.16946702566837825686864774218987748973
+Goodbye!

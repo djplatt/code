@@ -1,0 +1,10 @@
+zerofind(209,79);
+zerofind(100,87);
+zerofind(101,13);
+zerofind(101,17);
+zerofind(101,21);
+zerofind(101,23);
+zerofind(101,33);
+zerofind(101,45);
+zerofind(101,76);
+zerofind(101,78);
