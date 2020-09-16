@@ -1,0 +1,17 @@
+DJ Platt Sept 2020
+
+Directory contains code to compute S1(t)-N1(t)-T-1/pi int_0^t theta(w) dw
+
+where theta is the Riemann Siegel theta and N1(t) = int N(t) dt with N(t) counting non-trivial zeros of zeta
+
+S168_pi computes S1(168 pi)
+
+S1_v1 computes |S1(t)| or |S1(t)-S1(168 pi)| from t=0 to 530 (>168 pi)
+in small intervals checking that it doesn't exceed A0 + A1 log t
+
+with A0=2.067 and A1=0.059
+
+No attempt made to make it efficient as its a once in a lifetime calculation.
+
+If we want to go much higher than 530, some work may be needed as the width of the intervals needed decreases with t, so the run time increases accordingly.
+
