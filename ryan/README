@@ -1,0 +1,23 @@
+Stuff for Kieran Ryan
+
+His email (see replies)
+
+Dear Dave,
+
+ 
+
+I hope you are well. My name’s Kieran Ryan, I’m a PhD student at Queen Mary University of London.
+
+ 
+
+I have a question which, if you have time, I hope you might help me with. I have a fairly innocuous inequality which I’m trying to prove. I can prove it with an extremely prolonged series of taylor expansions, but I am wondering if there is some accessible way to achieve a computer-assisted proof of a problem like this? I realise it is not a huge problem, I am just inexperienced with such proofs!
+
+ 
+
+3/2 + (1+5z)*log(z)/(4(1-z)) + log((-z*log(z))/(3(1-z)+(1+z)*log(z))) > 0 for 0<z<1; (the function is zero at z=1).
+
+ 
+
+Many thanks,
+
+Kieran
