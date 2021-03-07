@@ -1,0 +1,2 @@
+Compute a maximum for Q(t)=N(t)-t/2 pi log(t/2 pi e)-7/8
+over a file of zeros.
