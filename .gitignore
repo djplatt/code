@@ -15,6 +15,9 @@ bc2.lst
 bc3.lst
 zero_stats/*.out
 zero_stats/*.sh
+zero_stats/artur_Q
+zero_stats/artur_sep_20
+zero_stats/artur_voros_z
 *.sh.o*
 cramer/*.sh
 cramer/*.out
@@ -22,6 +25,12 @@ harald/apr_20/data/
 harald/apr_20/*.sh
 harald/apr_20/*.out
 harald/apr_20/test*
+harald/apr_20/*.lst
+l-func-hi/print_zeros
+L1/L1.1
+L1/Louboutin
+L1/data/
+
 
 # ignore this as it refers to a refereed paper
 willie_wu
