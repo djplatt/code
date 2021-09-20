@@ -13,6 +13,15 @@ bar.*
 bletch.*
 bc2.lst
 bc3.lst
+zero_stats/*.out
+zero_stats/*.sh
+*.sh.o*
+cramer/*.sh
+cramer/*.out
+harald/apr_20/data/
+harald/apr_20/*.sh
+harald/apr_20/*.out
+harald/apr_20/test*
 
 # ignore this as it refers to a refereed paper
 willie_wu
