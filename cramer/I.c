@@ -9,7 +9,7 @@ compute int_X^2X |psi(x)-x|2 dx/X^2
 #include "primesieve.h" // use Kim Walisch's primesieve
 #include "math.h"
 
-#define MAX_X (1000000000)
+#define MAX_X (200000000)
 
 int main(int argc, char **argv)
 {
