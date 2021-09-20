@@ -1,10 +1,19 @@
-all: zero_stats debug start_end sum more_sums buethe_check zero_gaps artur artur_sums artur_ints artur_arb_sum yet_more_sums sum_g2_arb
+all: zero_stats debug start_end sum more_sums buethe_check zero_gaps artur artur_sums artur_ints artur_arb_sum yet_more_sums sum_g2_arb artur_sep_20 artur_voros_z artur_Q
 
 artur_sums: artur_sums.cpp
 	g++ artur_sums.cpp -o artur_sums -O2 -finline-functions -fomit-frame-pointer -I /panfs/panasas01/math/madjp/gmp-5.1.3 -I /panfs/panasas01/math/madjp/mpfr-3.1.2/src -I /panfs/panasas01/math/madjp/arb-2.15.1/ -I /panfs/panasas01/math/madjp/flint2-trunk -L /panfs/panasas01/math/madjp/arb-2.15.1 -larb
 
 sum_g2_arb: sum_g2_arb.c
 	gcc sum_g2_arb.c -o sum_g2_arb -O2 -finline-functions -fomit-frame-pointer -I /panfs/panasas01/math/madjp/gmp-5.1.3 -I /panfs/panasas01/math/madjp/mpfr-3.1.2/src -I /panfs/panasas01/math/madjp/arb-2.15.1/ -I /panfs/panasas01/math/madjp/flint2-trunk -L /panfs/panasas01/math/madjp/arb-2.15.1 -larb
+
+artur_sep_20: artur_sep_20.c
+	gcc artur_sep_20.c -o artur_sep_20 -O2 -finline-functions -fomit-frame-pointer -I /panfs/panasas01/math/madjp/gmp-5.1.3 -I /panfs/panasas01/math/madjp/mpfr-3.1.2/src -I /panfs/panasas01/math/madjp/arb-2.15.1/ -I /panfs/panasas01/math/madjp/flint2-trunk -L /panfs/panasas01/math/madjp/arb-2.15.1 -larb
+
+artur_voros_z: artur_voros_z.c
+	gcc artur_voros_z.c -o artur_voros_z -O2 -finline-functions -fomit-frame-pointer -I /panfs/panasas01/math/madjp/gmp-5.1.3 -I /panfs/panasas01/math/madjp/mpfr-3.1.2/src -I /panfs/panasas01/math/madjp/arb-2.15.1/ -I /panfs/panasas01/math/madjp/flint2-trunk -L /panfs/panasas01/math/madjp/arb-2.15.1 -larb
+
+artur_Q: artur_Q.c
+	gcc artur_Q.c -o artur_Q -O2 -finline-functions -fomit-frame-pointer -I /panfs/panasas01/math/madjp/gmp-5.1.3 -I /panfs/panasas01/math/madjp/mpfr-3.1.2/src -I /panfs/panasas01/math/madjp/arb-2.15.1/ -I /panfs/panasas01/math/madjp/flint2-trunk -L /panfs/panasas01/math/madjp/arb-2.15.1 -larb
 
 artur_arb_sum: artur_arb_sum.cpp
 	g++ artur_arb_sum.cpp -o artur_arb_sum -O2 -finline-functions -fomit-frame-pointer -I /panfs/panasas01/math/madjp/gmp-5.1.3 -I /panfs/panasas01/math/madjp/mpfr-3.1.2/src -I /panfs/panasas01/math/madjp/arb-2.15.1/ -I /panfs/panasas01/math/madjp/flint2-trunk -L /panfs/panasas01/math/madjp/arb-2.15.1 -larb
@@ -43,4 +52,4 @@ yet_more_sums: yet_more_sums.cpp ../includes/int_double14.2.h
 
 
 clean:
-	rm -f zero_stats  debug start_end sum more_sums artur_ints artur_arb_sum yet_more_sums
+	rm -f zero_stats  debug start_end sum more_sums artur_ints artur_arb_sum yet_more_sums artur_sep_20 artur_voros_z

@@ -1,6 +1,6 @@
 #include "inttypes.h"
 #include "acb_dirichlet.h"
-#define MAX_Q (10)
+#define MAX_Q (4000)
 
 uint64_t gcd (uint64_t a, uint64_t b)
 /* Euclid algorithm gcd */

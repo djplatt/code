@@ -274,15 +274,15 @@ inline int_double imag (const int_complex &z)
 const int_double d_half=int_double(0.5,0.5);
 //
 // Pi
-int _i_pi[2]={1413754136,1074340347};   // this is what double pi less a bit looks like
-int _i_pi2[2]={1413754137,1074340347};  // this is double pi plus a bit
+unsigned int _i_pi[2]={1413754136,1074340347};   // this is what double pi less a bit looks like
+unsigned int _i_pi2[2]={1413754137,1074340347};  // this is double pi plus a bit
 double *_d_pi=(double *)&_i_pi;
 double *_d_pi2=(double *)&_i_pi2;
 int_double d_pi=int_double(_d_pi[0],_d_pi2[0]);
 //
 // Euler gamma
-int _i_gamma[2]={0xfc6fb618,0x3fe2788c};
-int _i_gamma2[2]={0xfc6fb619,0x3fe2788c};
+unsigned int _i_gamma[2]={0xfc6fb618,0x3fe2788c};
+unsigned int _i_gamma2[2]={0xfc6fb619,0x3fe2788c};
 double *_d_gamma=(double *)&_i_gamma;
 double *_d_gamma2=(double *)&_i_gamma2;
 int_double d_gamma=int_double(_d_gamma[0],_d_gamma2[0]);

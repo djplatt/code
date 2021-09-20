@@ -48,6 +48,9 @@ inline void next_rho(arb_t del_t, FILE *infile, int64_t prec)
   in_bytes(del_t,infile,prec);
 }
 
+// compute 1/zeta'(s) for s=1/2+i gamma
+// checks that 1/2+i gamma is a zero of zeta
+// outputs gamma, Re(1/zeta'), Im(1/zeta')
 inline void do_rho(acb_t res, arb_t gamma, FILE *outfile, int64_t prec)
 {
   //printf("Here I would do something with the zero at ");
@@ -77,7 +80,9 @@ inline void do_rho(acb_t res, arb_t gamma, FILE *outfile, int64_t prec)
     }
 
   acb_inv(res,zeta+1,prec); // 1/zeta'(s) = residue at 1/2+i gamma
-  
+
+  arb_dump_file(outfile,gamma);
+  fprintf(outfile,"\n");  
   arb_dump_file(outfile,acb_realref(res));
   fprintf(outfile,"\n");
   arb_dump_file(outfile,acb_imagref(res));
@@ -92,6 +97,7 @@ int main(int argc, char **argv)
   for(i=0;i<argc;i++)
     printf("%s ",argv[i]);
   printf("\n");
+  fflush(stdout);
   if(argc!=4)
     {
       printf("Fatal error in %s: usage %s <prec> <zeros file> <out file>. Exiting.\n",argv[0],argv[0]);
@@ -116,7 +122,6 @@ int main(int argc, char **argv)
   arb_t gamma,pm1,del_t,t,max_so_far;
   acb_t res;
   arb_init(gamma);arb_init(pm1);arb_init(del_t);arb_init(t);
-  arb_init(max_so_far);
   acb_init(res);
   arb_set_ui(gamma,1);
   arb_mul_2exp_si(gamma,gamma,-OP_ACC-1); // 2^{-102}
@@ -150,15 +155,10 @@ int main(int argc, char **argv)
 	  arb_add(t,t,del_t,prec); // exact, used to avoid accumulation of +/- 2^-(OP_ACC+1)
 
 	  arb_add(gamma,t,pm1,prec); // not exact
-
-	  //printf("Zeros %lu ",z);arb_printd(gamma,20);printf(" ");
-	  do_rho(res,gamma,outfile,prec);
-	  acb_abs(del_t,res,prec);
-	  arb_max(max_so_far,max_so_far,del_t,prec);
+	  do_rho(res,gamma,outfile,prec); // do something with this zero
 	}
     }
-  printf("We processed %ld zeros.\nMax seen was ",n_zeros);
-  arb_printd(max_so_far,20);printf("\n");
+  printf("We processed %ld zeros.\n",n_zeros);
   return 0;
 }
 

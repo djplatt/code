@@ -17,19 +17,6 @@ using namespace std;
 #define fname (argv[1])
 #define SUCCESS (0)
 #define FAILURE (-1)
-mpfi_t pm1; // this is the absolute error in each zero
-
-void init_in_bytes()
-{
-  mpfi_t tmp;
-  mpfi_init(tmp);
-  mpfi_init(pm1);
-  mpfi_set_ui(pm1,1);
-  mpfi_neg(tmp,pm1);
-  mpfi_put(pm1,tmp);
-  mpfi_div_2ui(pm1,pm1,ZPREC);
-  mpfi_clear(tmp);
-}
 
 int in_bytes(mpfi_ptr t, FILE *infile)
 {
@@ -78,8 +65,16 @@ int main(int argc, char **argv)
     }
 
   mpfr_set_default_prec(150);
-  mpfi_t rho1,rho,del;
+  mpfi_t rho1,rho,del,pm1;
   mpfi_init(rho1);mpfi_init(rho);mpfi_init(del);
+  mpfi_t tmp;
+  mpfi_init(tmp);
+  mpfi_init(pm1);
+  mpfi_set_ui(pm1,1);
+  mpfi_neg(tmp,pm1);
+  mpfi_put(pm1,tmp);
+  mpfi_div_2ui(pm1,pm1,ZPREC);
+  mpfi_clear(tmp);
 
   uint64_t q,index,num_zeros;
 
@@ -119,6 +114,7 @@ int main(int argc, char **argv)
 	    printf("\n");
 	  }
     }
-  mpfi_clear(del);mpfi_clear(rho);mpfi_clear(rho1);mpfi_clear(pm1);
+  mpfi_clear(del);mpfi_clear(rho);mpfi_clear(rho1);
+  mpfi_clear(pm1);
   return(0);
 }
