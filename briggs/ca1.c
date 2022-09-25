@@ -135,11 +135,11 @@ void check_Robin(arb_t lhs, arb_t rhs, int64_t prec, int verbosep)
 
   arb_log(tmp1,rhs,prec); // log log n
   arb_mul(tmp2,egamma,tmp1,prec); // exp(gamma) log log n
-  //printf("lhs=");arb_printd(lhs,30);printf("\n");
-  //printf("rhs=");arb_printd(tmp2,30);printf("\n");
   arb_sub(tmp3,lhs,tmp2,prec);
   if(verbosep)
-    {printf("log log n = ");arb_printd(tmp1,20);printf(" lhs-rhs=");arb_printd(tmp3,20);printf("\n");fflush(stdout);}
+    {
+      printf("log log n = ");arb_printd(tmp1,20);printf(" lhs-rhs=");arb_printd(tmp3,20);printf("\n");fflush(stdout);
+    }
   if(!arb_is_negative(tmp3))
     {
       printf("Robin check failed.\n");
@@ -155,6 +155,8 @@ void check_Robin(arb_t lhs, arb_t rhs, int64_t prec, int verbosep)
 }
 
 // find the largest epsilon in the database
+// simple linear search. Very few entries in practice
+// but even so a heap might be quicker.
 int64_t find_biggest(entry_t *entries, uint64_t next_entry, int64_t prec)
 {
   static int init=false;
@@ -176,7 +178,7 @@ int64_t find_biggest(entry_t *entries, uint64_t next_entry, int64_t prec)
 	  ptr=i;
 	}
       else
-	if(!arb_is_positive(tmp))
+	if(!arb_is_positive(tmp)) // not enough precision to tell eps's apart
 	  {
 	    printf("Floating point comparison failed. Use more bits. Exiting.\n");
 	    exit(0);
@@ -327,7 +329,6 @@ int main(int argc, char **argv)
 	  arb_log(tmp1,tmp2,prec); // log(p)
 	  arb_mul_ui(tmp2,tmp1,e,prec); // log(p^e)
 	  arb_add(rhs,rhs,tmp2,prec);
-	  //printf("p= %lu lhs=",tp);arb_printd(lhs,30);printf("\n");
 	  tp=primesieve_next_prime(&it);
 	}
     }
@@ -384,9 +385,14 @@ int main(int argc, char **argv)
 	  arb_add(rhs,rhs,ca.entries[ptr].log_p1,prec); // increase log(n)
 	  arb_sig_del(lhs,ca.entries[ptr].p1,ca.entries[ptr].e,prec);
 	  ca.entries[ptr-1].p2=ca.entries[ptr].p1;
+	  // we now want the next prime after entries[ptr].p1
+	  // but the primesieve iterator could be pointing anywhere
+	  // so we use pari's nextprime instead
+	  // strictly, this returns a pseudoprime but there are no
+	  // composite pseudoprimes < 2^64
 	  char buff[1024];
 	  sprintf(buff,"nextprime(%lu)",ca.entries[ptr].p1+1);
-	  ca.entries[ptr].p1=parilong(buff);
+	  ca.entries[ptr].p1=parilong(buff); // call pari to do nextprime
 	  arb_log_ui(ca.entries[ptr].log_p1,ca.entries[ptr].p1,prec);
 	  if(ca.entries[ptr].e==1)
 	    eps_inc(ca.entries+ptr,prec);
