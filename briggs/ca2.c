@@ -297,7 +297,7 @@ int main(int argc, char **argv)
   // setup primesieve
   primesieve_iterator it;
   primesieve_init(&it);
-
+  
   arb_t pe,pe1,lhs,tmp1,tmp2,tmp3,rhs;
   arb_init(pe);arb_init(pe1);arb_init(lhs);arb_init(rhs);
   arb_set_ui(lhs,1); // will hold prod sigma(p^e)/p^e
