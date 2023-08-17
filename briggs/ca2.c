@@ -20,16 +20,13 @@ D.J.Platt 2018
 #include "stdlib.h"
 #include "primesieve.h" // use Kim Walisch's primesieve
 #include "arb.h" // and Fredrik's arb
-#undef ulong
-#include "pari/pari.h"
-#include "pari.c"
-#undef ulong
+#include <pari/pari.h>
 
 #define false (1==0)
 #define true (0==0)
 
 // data structure for n
-// p1 p2 e represents prod p in[p1,p2] p^e
+// p1 p2 e represents prod p in [p1,p2] p^e
 // log_p1 is log(p1) so we can compute log_p easily
 // eps is the epsilon in Briggs
 typedef struct
@@ -62,6 +59,7 @@ typedef struct
 
 
 // compute a new epsilon for a new prime = log_p(1+1/p)
+// Note Briggs has log_p(1+p) but this looks like a typo
 void eps_ext(entry_t *ent, int64_t prec) // new prime (exponent == 0)
 {
   static int init=false;
@@ -72,6 +70,14 @@ void eps_ext(entry_t *ent, int64_t prec) // new prime (exponent == 0)
       arb_init(tmp);
       arb_init(tmp1);
     }
+  /*
+  arb_set_ui(tmp,ent->p1+1);
+  arb_log(tmp1,tmp,prec);
+  arb_div(ent->eps,tmp,ent->log_p1,prec);
+  return;
+  */
+
+
   arb_set_ui(tmp,ent->p1);
   arb_inv(tmp1,tmp,prec);
   arb_log1p(tmp,tmp1,prec);
@@ -89,10 +95,10 @@ void eps_inc(entry_t *ent, int64_t prec) // exponent == 1
       arb_init(tmp1);
     }
   arb_set_ui(tmp,ent->p1+1);
-  arb_mul_ui(tmp1,tmp,ent->p1,prec); // p^2+1
+  arb_mul_ui(tmp1,tmp,ent->p1,prec); // p^2+p
   arb_inv(tmp,tmp1,prec);
   arb_log1p(tmp1,tmp,prec);
-  arb_div(ent->eps,tmp1,ent->log_p1,prec);
+  arb_div(ent->eps,tmp1,ent->log_p1,prec); //log_p((p+1+1/p)/(p+1))
 }
 
 void eps_max(entry_t *ent, int64_t prec) // exponent > 1
@@ -271,6 +277,8 @@ int main(int argc, char **argv)
       printf("Failed to open file %s for input. Exiting.\n",argv[1]);
       return 0;
     }
+  pari_init(500000,0);
+  
   uint64_t prec=atol(argv[2]); // working prec for arb.
   uint64_t n_its=atol(argv[3]); // how many iterations
 
@@ -289,7 +297,7 @@ int main(int argc, char **argv)
   // setup primesieve
   primesieve_iterator it;
   primesieve_init(&it);
-
+  
   arb_t pe,pe1,lhs,tmp1,tmp2,tmp3,rhs;
   arb_init(pe);arb_init(pe1);arb_init(lhs);arb_init(rhs);
   arb_set_ui(lhs,1); // will hold prod sigma(p^e)/p^e
@@ -390,9 +398,8 @@ int main(int argc, char **argv)
 	  // so we use pari's nextprime instead
 	  // strictly, this returns a pseudoprime but there are no
 	  // composite pseudoprimes < 2^64
-	  char buff[1024];
-	  sprintf(buff,"nextprime(%lu)",ca.entries[ptr].p1+1);
-	  ca.entries[ptr].p1=parilong(buff); // call pari to do nextprime
+
+	  ca.entries[ptr].p1=unextprime(ca.entries[ptr].p1+1); // call pari to do nextprime
 	  arb_log_ui(ca.entries[ptr].log_p1,ca.entries[ptr].p1,prec);
 	  if(ca.entries[ptr].e==1)
 	    eps_inc(ca.entries+ptr,prec);
@@ -417,9 +424,9 @@ int main(int argc, char **argv)
 	      arb_swap(ca.entries[ptr1+1].eps,ca.entries[ptr1].eps);
 	    }
 	  // now remove the first prime from the original record
-	  char buff[1024];
-	  sprintf(buff,"nextprime(%lu)",ca.entries[ptr].p1+1);
-	  ca.entries[ptr+1].p1=parilong(buff);
+	  //char buff[1024];
+	  //sprintf(buff,"nextprime(%lu)",ca.entries[ptr].p1+1);
+	  ca.entries[ptr+1].p1=unextprime(ca.entries[ptr].p1+1);
 	  ca.entries[ptr+1].p2=ca.entries[ptr].p2;
 	  ca.entries[ptr+1].e=ca.entries[ptr].e;
 	  arb_log_ui(ca.entries[ptr+1].log_p1,ca.entries[ptr+1].p1,prec);
@@ -440,6 +447,8 @@ int main(int argc, char **argv)
   for(uint64_t i=0;i<ca.next_entry-1;i++)
     printf("%lu %lu %lu\n",ca.entries[i].p1,ca.entries[i].p2,ca.entries[i].e);
 
+  pari_close();
+  
   return 0;
 }
 

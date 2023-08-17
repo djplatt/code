@@ -69,7 +69,7 @@ inline void do_rho(acb_t res, arb_t gamma, FILE *outfile, int64_t prec)
 
   arb_set(acb_imagref(s),gamma);
 
-  acb_dirichlet_zeta_jet(zeta,s,0,2,100);
+  acb_dirichlet_zeta_jet_rs(zeta,s,2,100); // compute zeta and zeta'
 
   if((!arb_contains_zero(acb_realref(zeta)))||(!arb_contains_zero(acb_imagref(zeta))))
     {
@@ -79,14 +79,33 @@ inline void do_rho(acb_t res, arb_t gamma, FILE *outfile, int64_t prec)
       exit(0);
     }
 
-  acb_inv(res,zeta+1,prec); // 1/zeta'(s) = residue at 1/2+i gamma
+  printf("using jet_rs.\n");
+  printf("Zeta at gamma = ");arb_printd(gamma,20);
+  printf(" is\n   ");acb_printd(zeta,20);printf("\n");
+  
+  printf("Differential at gamma = ");arb_printd(gamma,20);
+  printf(" is\n   ");acb_printd(zeta+1,20);printf("\n");
 
+  acb_dirichlet_zeta_jet(zeta,s,0,2,100); // compute zeta and zeta'
+
+  printf("using jet.\n");
+  printf("Zeta at gamma = ");arb_printd(gamma,20);
+  printf(" is\n   ");acb_printd(zeta,20);printf("\n");
+  
+  printf("Differential at gamma = ");arb_printd(gamma,20);
+  printf(" is\n   ");acb_printd(zeta+1,20);printf("\n");
+
+  exit(0);
+
+  //acb_inv(res,zeta+1,prec); // 1/zeta'(s) = residue at 1/2+i gamma
+  acb_set(res,zeta+1);
   arb_dump_file(outfile,gamma);
   fprintf(outfile,"\n");  
   arb_dump_file(outfile,acb_realref(res));
   fprintf(outfile,"\n");
   arb_dump_file(outfile,acb_imagref(res));
   fprintf(outfile,"\n");
+  
 }
 
 int main(int argc, char **argv)
@@ -130,24 +149,19 @@ int main(int argc, char **argv)
   long int num_its,it,z;
   double st[2];
   long int zs[2],n_zeros=0;
-  int rval;
-  rval=fread(&num_its,sizeof(long int),1,infile);
+  fread(&num_its,sizeof(long int),1,infile);
   //printf("Doing %ld iterations.\n",num_its);
   for(it=0;it<num_its;it++)
     {
-      rval=fread(st,sizeof(double),2,infile); // starting/ending t, exact
-      rval=fread(zs,sizeof(long int),1,infile); // starting zero number
+      fread(st,sizeof(double),2,infile); // starting/ending t, exact
+      fread(&zs[0],sizeof(long int),1,infile); // starting zero number
       if(st[0]==0.0)
-	{
-	  printf("Iteration %lu empty.\n",it);
-	  continue;
-	}
-      rval=fread(zs+1,sizeof(long int),1,infile); // ending zero number
+	continue;
+      fread(&zs[1],sizeof(long int),1,infile); // ending zero number
       //printf("processing zeros %ld to %ld inclusive\n",zs[0]+1,zs[1]);
       n_zeros+=zs[1]-zs[0];
       arb_set_d(gamma,st[0]);
       arb_set(t,gamma);
-      //printf("doing t from %f to %f zeros from %ld to %ld\n",st[0],st[1],zs[0],zs[1]);
       for(z=zs[0]+1;z<=zs[1];z++)
 	{
 	  next_rho(del_t,infile,prec); // distance to next gamma
