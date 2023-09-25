@@ -1,0 +1,20 @@
+Code to check Dirichlet L-functions of real characters for
+exceptional (Siegel) zeros. Uses the glfunc package.
+
+Four versions:
+
+dir_long: multiplies L_even by L_3 to get a degree 2 L-function
+dir7_long: multiplies by L_7
+
+dir_long_odd: L_odd times L_3
+dir7_long_odd: L_odd times L_7
+
+list_even_q.gp: writes factorisations of positive fundamental discriminants
+list_odd_q.gp: writes factorisations of negative fundamental discriminants
+
+Note: to do negative, use the method of Low, Purdey and Watkins to "quickly"
+eliminate most candidates, then use dir[7]_long_odd to bayonet the wounded.
+See directory tim/watkins
+
+
+
