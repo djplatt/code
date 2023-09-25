@@ -1,0 +1,1 @@
+g++ -O1 -frounding-math -msse2 -mfpmath=387 -fomit-frame-pointer -finline-functions watkins_seg_int_double1.0.cpp -o watkins_seg_int_double -I ../../includes/ -I ~/crlibm-master -L ~/crlibm-master -lcrlibm
