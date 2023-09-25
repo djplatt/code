@@ -20,7 +20,7 @@ D.J.Platt 2018
 #include "stdlib.h"
 #include "primesieve.h" // use Kim Walisch's primesieve
 #include "arb.h" // and Fredrik's arb
-#include <pari/pari.h>
+#include "pari.h"
 
 #define false (1==0)
 #define true (0==0)

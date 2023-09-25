@@ -34,7 +34,11 @@ if(!infile)
       printf("%4d term = ",i+1);arb_printd(term,30);printf("\n");
       arb_add(total,total,term,prec);
     }
+  arb_mul_2exp_si(total,total,1); // * 2
   printf("Sum = ");arb_printd(total,30);printf("\n");
+  arb_clear(tmp);arb_clear(quarter);arb_clear(rho_bit);
+  arb_clear(term);arb_clear(total);
+  acb_clear(residue);
   return 0;
 }
 
