@@ -1,4 +1,4 @@
-//#include <pari/pari.h>
+#include <pari/pari.h>
 #include "primesieve.h"
 #include "arb.h"
 #include "inttypes.h"
@@ -17,7 +17,7 @@ int main(int argc, char** argv)
       return 0;
     }
   
-  //pari_init(500000,0);
+  pari_init(500000,0);
   uint64_t prec=atol(argv[1]);
   uint64_t start=atol(argv[2]);
   uint64_t end=atol(argv[3]);
@@ -46,10 +46,10 @@ int main(int argc, char** argv)
   printf("\n");
   arb_dump_file(stdout,sig);
   printf("\n");
-  //arb_printd(n,40);printf("\n");
-  //arb_printd(sig,40);printf("\n");
+  arb_printd(n,40);printf("\n");
+  arb_printd(sig,40);printf("\n");
   arb_clear(n);
   arb_clear(sig);
-  //pari_close();
+  pari_close();
   return 0;
 }

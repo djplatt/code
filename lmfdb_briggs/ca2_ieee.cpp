@@ -26,7 +26,7 @@ D.J.Platt 2018
 #include "pari/pari.h"
 #include "pari.c"
 #undef ulong
-#include "../includes/int_double14.0.h"
+#include "../includes/int_double14.2.h"
 
 
 // data structure for n

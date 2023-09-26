@@ -1,4 +1,4 @@
-IEEE_FLAGS=-O1 -frounding-math -fomit-frame-pointer -finline-functions -mfpmath=387 -I ${HOME}/local/include -I ${HOME}/crlibm/ -I ${HOME}/primesieve-5.4.2/include -L ${HOME}/local/lib -L ${HOME}/crlibm/ -L ~/primesieve-5.4.2/.libs -lprimesieve -lcrlibm -lm  -lpari
+IEEE_FLAGS=-O1 -frounding-math -fomit-frame-pointer -finline-functions -mfpmath=387 -I ${HOME}/local/include -I ${HOME}/crlibm-master/ -I ${HOME}/primesieve-5.4.2/include -L ${HOME}/local/lib -L ${HOME}/crlibm-master/ -L ~/primesieve-5.4.2/.libs -lprimesieve -lcrlibm -lm  -lpari
 ARB_FLAGS=-O3 -std=c99 -I ${HOME}/local/include -I ${HOME}/primesieve-5.4.2/include/ -I /data/local/include -L ${HOME}/local/lib -L ${HOME}/primesieve-5.4.2/.libs -L /data/local/lib -larb -lprimesieve -lpari
 all:	ca1 ca2 ca2_ieee test Rt primorials_ieee
 

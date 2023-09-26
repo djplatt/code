@@ -15,7 +15,7 @@ D.J.Platt 2018
 #include "stdlib.h"
 #include "primesieve.h" // use Kim Walisch's primesieve
 #undef ulong
-#include "../includes/int_double14.0.h"
+#include "../includes/int_double14.2.h"
 
 
 #define STACK_LEN (128)
