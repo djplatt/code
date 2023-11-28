@@ -1,17 +1,17 @@
+// identify square-free numbers
+// then printout n in [start,end] where n-p^2 is square-free
+// for all prime p in [2,sqrt(n)]
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "stdbool.h"
+#include "math.h"
 #include "primesieve.h"
 
-void set_bit(uint64_t ptr, uint64_t *sieve, uint64_t *bits)
-{
-  sieve[ptr>>6]|=bits[ptr&63];
-}
-
-int test_bit(uint64_t ptr, uint64_t *sieve, uint64_t *bits)
-{
-  return sieve[ptr>>6]&bits[ptr&63];
-}
+// set_bit sets the ptr'th bit of sieve to 1
+// test_bit returns > 0 iff ptr'th bit of sieve is set
+#define set_bit(ptr,sieve,bits) sieve[ptr>>6]|=bits[ptr&63]
+#define test_bit(ptr,sieve,bits) ((uint64_t) sieve[ptr>>6]&bits[ptr&63])
 
 int main (int argc, char** argv)
 {
@@ -39,6 +39,10 @@ int main (int argc, char** argv)
       exit(0);
     }
 
+  size_t n_primes;
+  
+  int* primes = (int*) primesieve_generate_primes(2, sqrt((double) end)+1, &n_primes, INT_PRIMES);
+  
   for(uint64_t n=0;n<sieve_len;n++)
     sieve[n]=0; // 0 = square free, 1 = not
 
@@ -47,17 +51,10 @@ int main (int argc, char** argv)
   for(uint64_t n=1;n<64;n++)
     bits[n]=bits[n-1]<<1;
 
-  primesieve_iterator it;
-  primesieve_init(&it);
-
-  uint64_t prime,p2;
-
-  while (true)
+  for(uint64_t n=0;n<n_primes;n++)
     {
-      prime = primesieve_next_prime(&it);
-      p2=prime*prime;
-      if(p2>end)
-	break;
+      uint64_t prime=primes[n];
+      uint64_t p2=prime*prime;
       uint64_t ptr=p2;
       while(ptr<=end)
 	{
@@ -66,16 +63,26 @@ int main (int argc, char** argv)
 	}
     }
 
-  for(uint64_t n=start;n<=end;n++)
-    if(test_bit(n,sieve,bits)==0)
-      printf("%lu is square free.\n",n);
-
-  for(uint64_t n=0;n<sieve_len;n++)
-    printf("sieve[%lu]=%lX\n",n,sieve[n]);
-  for(uint64_t n=0;n<64;n++)
-    printf("bits[%lu]=%lX\n",n,bits[n]);
+  // only need to check n = {2,3} mod 4
+  // but {0,1} get eliminated by p=2,3 resp. anyway
   
-  primesieve_free_iterator(&it);
+  for(uint64_t n=start;n<=end;n++)
+    for(uint64_t nthp=0;;nthp++)
+      {
+	uint64_t p=primes[nthp];
+	uint64_t p2=p*p;
+	if(p2>n)
+	  {
+	    printf("%lu passed.\n",n);
+	    break;
+	  }
+	if(test_bit(n-p2,sieve,bits))
+	  break;
+	else
+	  continue;
+      }
+  
+
 
   return 0;
 
