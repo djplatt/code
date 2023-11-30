@@ -4,14 +4,13 @@
 
 #include "stdio.h"
 #include "stdlib.h"
-#include "stdbool.h"
-#include "math.h"
-#include "primesieve.h"
+#include "math.h" // for sqrt
+#include "primesieve.h" // Thank you KW
 
 // set_bit sets the ptr'th bit of sieve to 1
-// test_bit returns > 0 iff ptr'th bit of sieve is set
+// square_full returns > 0 iff ptr'th bit of sieve is set
 #define set_bit(ptr,sieve,bits) sieve[ptr>>6]|=bits[ptr&63]
-#define test_bit(ptr,sieve,bits) ((uint64_t) sieve[ptr>>6]&bits[ptr&63])
+#define square_full(ptr,sieve,bits) ((uint64_t) sieve[ptr>>6]&bits[ptr&63])
 
 int main (int argc, char** argv)
 {
@@ -39,7 +38,7 @@ int main (int argc, char** argv)
       exit(0);
     }
 
-  size_t n_primes;
+  size_t n_primes; // number of primes <=sqrt(end)+1
   
   int* primes = (int*) primesieve_generate_primes(2, sqrt((double) end)+1, &n_primes, INT_PRIMES);
   
@@ -55,28 +54,28 @@ int main (int argc, char** argv)
     {
       uint64_t prime=primes[n];
       uint64_t p2=prime*prime;
-      uint64_t ptr=p2;
+      uint64_t ptr=p2; // start at p^2
       while(ptr<=end)
 	{
-	  set_bit(ptr,sieve,bits);
-	  ptr+=p2;
+	  set_bit(ptr,sieve,bits); // divisible by p^2 so set bit
+	  ptr+=p2; // step by p^2
 	}
     }
 
   // only need to check n = {2,3} mod 4
-  // but {0,1} get eliminated by p=2,3 resp. anyway
+  // but 0,1 get eliminated by p=2,3 resp. anyway
   
   for(uint64_t n=start;n<=end;n++)
     for(uint64_t nthp=0;;nthp++)
       {
-	uint64_t p=primes[nthp];
+	uint64_t p=primes[nthp]; // primes are int, so convert to 64 uint
 	uint64_t p2=p*p;
-	if(p2>n)
+	if(p2>n) // tested all primes <= sqrt(n)
 	  {
 	    printf("%lu passed.\n",n);
 	    break;
 	  }
-	if(test_bit(n-p2,sieve,bits))
+	if(square_full(n-p2,sieve,bits)) // this n fails at p because n-p2 is square_full
 	  break;
 	else
 	  continue;
