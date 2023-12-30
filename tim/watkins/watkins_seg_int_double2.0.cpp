@@ -249,6 +249,35 @@ void do_checks()
   return;
 }
 
+void do_hs()
+{
+  int16_t max_h=0;
+    for(uint64_t d=D_min+1;d<=D_max;d++)
+      if(counts[d]>=0)
+	if(counts[d]>max_h)
+	  max_h=counts[d];
+    int64_t *hs=(int64_t *) malloc(sizeof(int64_t)*(max_h+1));
+    int64_t *last_hs=(int64_t *) malloc(sizeof(int64_t)*(max_h+1));
+    for(int64_t h=0;h<=max_h;h++)
+      hs[h]=0;
+    for(uint64_t d=D_min+1;d<=D_max;d++)
+      {
+	int16_t h=counts[d];
+	if(h>=0)
+	  {
+	    last_hs[h]=d;
+	    if(hs[h]==0)
+	      printf("First h = %d is at d = -%lu.\n",h,d);
+	    hs[h]++;
+	  }
+      }
+    for(int64_t h=0;h<=max_h;h++)
+      if(hs[h]>0)
+	printf("There are %ld discriminants with class number %ld.\n",hs[h],h);
+    for(int64_t h=1;h<=max_h;h++)
+      if(last_hs[h]>0)
+	printf("Largest d with class number %ld was %ld.\n",h,last_hs[h]);    
+}
 
 int main(int argc, char** argv)
 {
@@ -439,6 +468,7 @@ int main(int argc, char** argv)
 
   do_checks();
 
+  do_hs();
   
   return 0;
 }
