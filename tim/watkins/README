@@ -4,11 +4,13 @@ arithmetic package (Lambov) which in turn uses crlibm.
 Note, int_double relies on setting the rounding mode for sse instructions to
 round down. It is essential that crlibm is built using -mfpmath=387 -frounding-math so that it uses the fpu and not sse.
 
-Equally, when compiling watkins_int_double1.0.cpp etc, we need
+Equally, when compiling watkins_int_double2.0.cpp etc, we need
 -msse2 -mfpmath=387 -frounding-math. I also restrict optimisation to -O1 -finline-functions -fomit-frame-pointer
 
 Finally, I compile against int_double12.0.h rather than the later versions, some of which seem iffy.
 
 watkins_seg.c contains an unfinished implementation using ARB
 
-watkins_seg_int_double1.0.cpp is the current version
+watkins_seg_int_double2.0.cpp is the current version
+
+note the current version has no 2 in the abs cos bit for H(a,b,c) as per Low but contradicting Watkins.

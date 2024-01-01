@@ -25,8 +25,9 @@ int64_t D_max,D_min;
 // S1s[d] = sum_Q (b_3+alpha^3(a,d)/6)/sqrt(a)
 // S2s[d] = sum_Q (b_5+alpha^5(a,d)/120)/sqrt(a)
 
-int16_t *counts;
+int64_t *counts;
 int_double *asqrts,*dsqrts,*dlogs,*alogs,*S0s,*Hs,*S1s,*S2s;
+int_double *tmp1,*tmp2,*tmp3,*tmp4,*tmp5,*tmp6;
 
 int_double S1(int_double al3)
 {
@@ -147,19 +148,18 @@ void do_sums(int64_t a, int64_t b, int64_t c, int64_t d, int mult)
 	  alogs[a]=log(aa);
 	}
 
-      int_double *tmp=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
-      dlogs=tmp-D_min;
-      tmp=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
-      dsqrts=tmp-D_min;
-      tmp=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
-      S0s=tmp-D_min;
-      tmp=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
-      Hs=tmp-D_min;
-      tmp=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
-     
-      S1s=tmp-D_min;
-      tmp=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
-      S2s=tmp-D_min;
+      tmp1=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
+      dlogs=tmp1-D_min;
+      tmp2=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
+      dsqrts=tmp2-D_min;
+      tmp3=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
+      S0s=tmp3-D_min;
+      tmp4=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
+      Hs=tmp4-D_min;
+      tmp5=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
+      S1s=tmp5-D_min;
+      tmp6=(int_double *)malloc(sizeof(int_double)*(D_max-D_min+1));
+      S2s=tmp6-D_min;
       for(uint64_t d=D_min;d<=D_max;d++)
 	if(counts[d]>=0)
 	  {
@@ -221,26 +221,26 @@ void do_checks()
       {
 	if(S0s[d].left<0.0)
 	  {
-	    printf("Failure in condition 1 with d = -%ld h = %d and sum = ",d,counts[d]);
+	    printf("Failure in condition 1 with d = -%ld h = %ld and sum = ",d,counts[d]);
 	    print_int_double(S0s[d]);
 	    printf("\n");
 	  }
 	int_double tmp=S0s[d]-Hs[d];
 	if(tmp.left<0.0)
 	  {
-	    printf("Failure in condition 2 with d = -%ld h = %d and sum = ",d,counts[d]);
+	    printf("Failure in condition 2 with d = -%ld h = %ld and sum = ",d,counts[d]);
 	    print_int_double(tmp);
 	    printf("\n");
 	  }
 	if(S1s[d].left<0.0)
 	  {
-	    printf("Failure of condition S1 with d = -%ld h = %d and S1 = ",d,counts[d]);
+	    printf("Failure of condition S1 with d = -%ld h = %ld and S1 = ",d,counts[d]);
 	    print_int_double(S1s[d]);
 	    printf("\n");
 	  }
 	if(S2s[d].left<0.0)
 	  {
-	    printf("Failure of condition S2 with d = -%ld h = %d and S2 = ",d,counts[d]);
+	    printf("Failure of condition S2 with d = -%ld h = %ld and S2 = ",d,counts[d]);
 	    print_int_double(S2s[d]);
 	    printf("\n");
 	  }
@@ -251,23 +251,22 @@ void do_checks()
 
 void do_hs()
 {
-  int16_t max_h=0;
+  int64_t max_h=0;
     for(uint64_t d=D_min+1;d<=D_max;d++)
-      if(counts[d]>=0)
-	if(counts[d]>max_h)
-	  max_h=counts[d];
+      if(counts[d]>max_h)
+	max_h=counts[d];
     int64_t *hs=(int64_t *) malloc(sizeof(int64_t)*(max_h+1));
     int64_t *last_hs=(int64_t *) malloc(sizeof(int64_t)*(max_h+1));
     for(int64_t h=0;h<=max_h;h++)
       hs[h]=0;
     for(uint64_t d=D_min+1;d<=D_max;d++)
       {
-	int16_t h=counts[d];
+	int64_t h=counts[d];
 	if(h>=0)
 	  {
 	    last_hs[h]=d;
 	    if(hs[h]==0)
-	      printf("First h = %d is at d = -%lu.\n",h,d);
+	      printf("First h = %ld is at d = -%lu.\n",h,d);
 	    hs[h]++;
 	  }
       }
@@ -310,8 +309,8 @@ int main(int argc, char** argv)
 
   _fpu_rndd();
   
-  int16_t *counts1;
-  counts1=(int16_t *)malloc(sizeof(int16_t)*(D_max-D_min+1));
+  int64_t *counts1;
+  counts1=(int64_t *)malloc(sizeof(int64_t)*(D_max-D_min+1));
   counts=counts1-D_min;
 
   int64_t a,b,c,A_max,B_max,C_max,ptr,b2,A_min,C_min;
@@ -319,6 +318,7 @@ int main(int argc, char** argv)
   // remove (most) non-FD
   for(uint64_t i=D_min;i<=D_max;i++)
     {
+      counts[i]=0;
       uint64_t res16=i&0xF;
       if((res16!=3)&&(res16!=4)&&(res16!=7)&&(res16!=8)&&(res16!=11)&&(res16!=15))
 	counts[i]=-1;
@@ -467,6 +467,14 @@ int main(int argc, char** argv)
   if(VERBOSE) printf("a=c case done.\n");
 
   do_checks();
+  free(asqrts);
+  free(alogs);
+  free(tmp1);
+  free(tmp2);
+  free(tmp3);
+  free(tmp4);
+  free(tmp5);
+  free(tmp6);
 
   do_hs();
   

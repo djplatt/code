@@ -105,7 +105,7 @@ int_double H(int64_t a, int64_t b, int64_t d, int_double sqrta)
   int_double cos_bit=my_cospi(int_double(b)/a);
   int_double exp_bit=exp(d_two_pi*k);
 
-  int_double res=(50*cos_bit+2*abs(cos_bit))/(25*sqrt(k)*exp_bit*sqrta);
+  int_double res=(50*cos_bit+abs(cos_bit))/(25*sqrt(k)*exp_bit*sqrta);
   
   //if(d==9999999043) print_int_double_str("H returning ",res);
   return res;
