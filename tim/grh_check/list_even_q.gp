@@ -15,11 +15,10 @@ do_q(q)=
    if(issquarefree(q1),if((q1%4)==1,printf("%d 8 ",q),printf("%d -8 ",q));print_facs(q1));
    return;
 };
-/*
-for(n=4,300000000,do_q(n));
-*/
 
-for(n=10^12-500000,10^12+500000,do_q(n));
+for(n=4,100,do_q(n));
+
+
 
 quit;
 

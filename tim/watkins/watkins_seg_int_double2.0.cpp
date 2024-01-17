@@ -258,7 +258,10 @@ void do_hs()
     int64_t *hs=(int64_t *) malloc(sizeof(int64_t)*(max_h+1));
     int64_t *last_hs=(int64_t *) malloc(sizeof(int64_t)*(max_h+1));
     for(int64_t h=0;h<=max_h;h++)
-      hs[h]=0;
+      {
+	hs[h]=0;
+	last_hs[h]=0;
+      }
     for(uint64_t d=D_min+1;d<=D_max;d++)
       {
 	int64_t h=counts[d];
