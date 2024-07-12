@@ -1,4 +1,17 @@
 # ignore various files
+briggs/parallel/parallel
+ethan/n_minus_prime_square/sieve
+maciej/maciej
+maciej/makefile
+maciej/do_one.sh
+tim/grh_check/first_zeros/
+tim/grh_check/hist.plt
+tim/watkins/do_3e8.sh
+tim/watkins/watkins_seg_int_double
+zero_stats/read_zeros
+*.log
+*.out
+*.aux
 *.gz
 *.dat
 a.out
