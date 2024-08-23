@@ -1,6 +1,6 @@
 #include "inttypes.h"
-#include "acb_dirichlet.h"
-#define MAX_Q (10000)
+#include <stdlib.h>
+#include "flint/acb_dirichlet.h"
 
 uint64_t gcd (uint64_t a, uint64_t b)
 /* Euclid algorithm gcd */
@@ -21,80 +21,104 @@ int co_prime(uint64_t a, uint64_t b)
 };
 
 
-int main()
+int main(int argc, char **argv)
 {
-  int64_t prec=200;
+  printf("Command line:-%s",argv[0]);
+  for(int i=1;i<argc;i++)
+    printf(" %s",argv[i]);
+  printf("\n");
+  if(argc!=3)
+    {
+      printf("Usage:- %s <q> <prec>.\n",argv[0]);
+      return 0;
+    }
+  uint64_t q =atoi(argv[1]);
+  if(q<3)
+    {
+      printf("q must be >=3.\n");
+      return 0;
+    }
+  if((q%4)==2)
+    {
+      printf("There are no primitive characters of modulus %lu\n",q);
+      return 0;
+    }
+      
+  int64_t prec=atoi(argv[2]);
+  if(prec<=0)
+    {
+      printf("Can't have non-positive precision.\n");
+      return 0;
+    }
   arb_t sqrt_q;
   dirichlet_group_t G;
   acb_dirichlet_hurwitz_precomp_t pre;
   acb_t tmp;
   acb_init(tmp);
   arb_set_d(acb_realref(tmp),0.5);
-  acb_dirichlet_hurwitz_precomp_init_num(pre,tmp,0,10000.0,prec);
+  //acb_dirichlet_hurwitz_precomp_init_num(pre,tmp,0,,prec);
   acb_clear(tmp);
   arb_init(sqrt_q);
 
+  acb_t *w,*v;
+  w=(acb_t *)malloc(sizeof(acb_t)*q);
+  v=(acb_t *)malloc(sizeof(acb_t)*q);
   
-  acb_t w[MAX_Q],v[MAX_Q];
-  
-  for(uint64_t i=0;i<MAX_Q;i++)
+  for(uint64_t i=0;i<q;i++)
     {
       acb_init(w[i]);
       acb_init(v[i]);
     }
 
-  /*
-  acb_set_d(w[0],0.5);
-  acb_set_d(w[1],0.25);
-  acb_dirichlet_hurwitz(w[2],w[0],w[1],prec);
-  printf("With hurwitz directly ");acb_printd(w[2],20);
-
-  acb_dirichlet_hurwitz_precomp_eval(w[2],pre,1,4,prec);
-  printf("\nWith pre-hurwitz ");acb_printd(w[2],20);
-  return 0;
-  */
+  printf("w,v initialised.\n");
+  
 
   dirichlet_char_t ch;
 
+  arb_sqrt_ui(sqrt_q,q,prec);
+  dirichlet_group_init(G,q);
+
+  printf("Dirichlet Group initialised.\n");
+
+  acb_t half,i_q;
+  acb_init(half);acb_init(i_q);
+  acb_set_d(half,0.5);
+  for(uint64_t i=1;i<q;i++)
+    if(co_prime(i,q))
+      {
+	acb_set_ui(i_q,i);
+	acb_div_ui(i_q,i_q,q,prec);
+	acb_dirichlet_hurwitz(v[i],half,i_q,prec);
+      }
+  acb_clear(half);
+  acb_clear(i_q);
   
-  for(uint64_t q=3;q<=MAX_Q;q++)
-    {
-      if((q%4)==2) continue;
-      arb_sqrt_ui(sqrt_q,q,prec);
-      dirichlet_group_init(G,q);
-
-
+  acb_dirichlet_dft((acb_ptr) w,(acb_srcptr) v,G,prec);
   
-      for(uint64_t i=1;i<q;i++)
-	if(co_prime(i,q))
-	  acb_dirichlet_hurwitz_precomp_eval(v[i],pre,i,q,prec);
-
-      acb_dirichlet_dft((acb_ptr) w,(acb_srcptr) v,G,prec);
-
-      dirichlet_char_init(ch,G);
-      dirichlet_char_first_primitive(ch,G);
-      while(1==1)
-	{
-	  uint64_t i=dirichlet_char_exp(G,ch);
-	  acb_div_arb(w[i],w[i],sqrt_q,prec);
-	  printf("%lu %lu: ",q,i);
-	  acb_printd(w[i],20);
-	  printf("\n");
-	  if(dirichlet_char_next_primitive(ch,G)<0)
-	    break;
-	}
-      dirichlet_char_clear(ch); 
-      dirichlet_group_clear(G);
-    }
-
-  for(uint64_t i=0;i<MAX_Q;i++)
+  dirichlet_char_init(ch,G);
+  dirichlet_char_first_primitive(ch,G);
+  while(1==1)
     {
-      acb_clear(w[i]);
-      acb_clear(v[i]);
+      uint64_t i=dirichlet_char_exp(G,ch);
+      acb_div_arb(w[i],w[i],sqrt_q,prec);
+      printf("%lu %lu: ",q,i);
+      acb_printd(w[i],20);
+      printf("\n");
+      if(dirichlet_char_next_primitive(ch,G)<0)
+	break;
     }
+  dirichlet_char_clear(ch); 
+  dirichlet_group_clear(G);
 
-  arb_clear(sqrt_q);
-  acb_dirichlet_hurwitz_precomp_clear(pre);  
+
+for(uint64_t i=0;i<q;i++)
+  {
+    acb_clear(w[i]);
+    acb_clear(v[i]);
+  }
+
+arb_clear(sqrt_q);
+//acb_dirichlet_hurwitz_precomp_clear(pre);  
   
   return 0;
 }

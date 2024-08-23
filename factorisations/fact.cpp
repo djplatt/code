@@ -3,10 +3,10 @@
 #include "stdio.h"
 #include "inttypes.h"
 #include "string.h"
-#include "acb_poly.h"
+#include "flint/acb_poly.h"
 #include "smalljac.h"
 #include "../andy_elliptic/pari.c"
-#include "../generic/defines.h"
+//#include "../generic/defines.h"
 
 #define g2_ell_arb_prec (100)
 #define MAX_EULER_FACTOR (100)

@@ -20,6 +20,8 @@
 // Handle F_hat[0] contains 0 properly.
 // add error term to F_hat[N-1]
 
+#include "math.h"
+#include "stdlib.h"
 #include "structs8.0.h"
 #include "acb_fft.h"
 #include "error8.0.h"

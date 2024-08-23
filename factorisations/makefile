@@ -1,4 +1,4 @@
-INCLUDE=-I/data/local/include -I${HOME}/primesieve-5.4.2/include
+INCLUDE=-I/data/local/include -I${HOME}/primesieve-5.4.2/include -I${HOME}/smalljac_v4.1.3
 LIBRARY=-L/data/local/lib -L${HOME}/primesieve-5.4.2/.libs
 INCLUDE_G2=-I${HOME}/local/include -I/data/local/include -I${HOME}/primesieve-5.4.2/include
 LIBRARY_G2=-L${HOME}/local/lib -L/data/local/lib -L${HOME}/primesieve-5.4.2/.libs
