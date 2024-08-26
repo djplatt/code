@@ -19,7 +19,7 @@ D.J.Platt 2018
 #include "stdio.h"
 #include "stdlib.h"
 #include "primesieve.h" // use Kim Walisch's primesieve
-#include "arb.h" // and Fredrik's arb
+#include "flint/arb.h" // and Fredrik's arb
 #include "pari.h"
 
 #define false (1==0)

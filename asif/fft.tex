@@ -38,13 +38,13 @@
 
 \section{Using the Discrete Fourier Transform (DFT) to compute sums over Dirichlet Characters}
 
-In $3.2.9$ of \cite{Platt2011}, a method of computing sums over Dirichlet Characters efficiently using the DFT. This note expands on that with some advice on how one might implement this in practice. In what follows, we adopt the 'C' convention that the first element of a vector $X$ is $X[0]$ and that we can consider a vector $X$ of length $l=\prod\limits{j=1}^d l_j$ as a $d$-dimensional vector $X[l_1,l_2,\ldots l_d]$.
+In $3.2.9$ of \cite{Platt2011}, a method of computing sums over Dirichlet Characters efficiently using the DFT. This note expands on that with some advice on how one might implement this in practice. In what follows, we adopt the 'C' convention that the first element of a vector $X$ is $X[0]$ and that we can consider a vector $X$ of length $l=\prod_{j=1}^d l_j$ as a $d$-dimensional vector $X[l_1,l_2,\ldots l_d]$.
 
 Thus, we wish to populate a length $\phi(q)$ vector of complex numbers $a_i$ in such a way that performing a (series of) DFT('s) on (portions of) that vector will compute
 $$
 S_\chi=\sum\limits_{i=1}^{q-1} \chi(i) a_i
 $$
-for each of the $\phi(q)$ Dirichlet characters mod $q$. For example, to compute $L_\chi(1/2)$) one would take the $a_i$ to be $\zeta(1/2,i/q)$.
+for each of the $\phi(q)$ Dirichlet characters mod $q$. For example, to compute $L_\chi(1/2)$ one would take the $a_i$ to be $\zeta(1/2,i/q)$.
 
 \subsection{Case 1}
 
@@ -132,7 +132,7 @@ $$
 $$
 29\equiv 2 \equiv 2^1 \Mod{9}
 $$
-so $a_{29}$ goes in $X[0,1,1]$. We then do $12$ length $2$ DFT's along dimension $1$, $8$ length $12$ DFT's along dimension $2$ and $4$ length $6$ DFT's along dimension $3$.
+so $a_{29}$ goes in $X[0,1,1]$. We then do $12$ length $2$ DFT's along dimension $1$, $12$ length $2$ DFT's along dimension $2$ and $4$ length $6$ DFT's along dimension $3$.
 
 \subsection{A note on complexity}
 
@@ -160,7 +160,7 @@ We will also want to be able to locate where the odd ($\chi(-1)=-1$) and even ($
 Taking our ???????????
 \subsection{A suitable FFT Algorithm}
 
-The most well known FFT algorithm (after Euler) requires the input vector be be of length $2^n$ for positive $n$. Most of the time, the DFT's we require will not be of such a convenient length. We employ a FFT known as Bluestein's algorithm or the Chirp-Z transform algorithm converts a DFT of arbitrary length $n$ into the circular convolution of two inputs of length $n$ and $2n-1$. As is well know, a circular convolution can be achieved via three DFT's. The advantage is the one \textbf{can} zero pad the input vecotors for a circular convolution so we can engineer it so that all the DFT's are of a convenient length ($2^{n'}$ with $2^{n'}>2n-1$).
+The most well known FFT algorithm (after Euler) requires the input vector be be of length $2^n$ for positive $n$. Most of the time, the DFT's we require will not be of such a convenient length. We employ a FFT known as Bluestein's algorithm or the Chirp-Z transform algorithm converts a DFT of arbitrary length $n$ into the circular convolution of two inputs of length $n$ and $2n-1$. As is well know, a circular convolution can be achieved via three DFT's. The advantage is the one \textbf{can} zero pad the input vectors for a circular convolution so we can engineer it so that all the DFT's are of a convenient length ($2^{n'}$ with $2^{n'}>2n-1$).
 
 A good online description of Bluestein can be found at \url{https://ccrma.stanford.edu/~jos/st/Bluestein_s_FFT_Algorithm.html}.
 
