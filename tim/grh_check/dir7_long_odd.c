@@ -3,7 +3,7 @@ Make up a degree 2 L-function by multiplying the quadratic character
 mod 3 and something else together.
 */
 #include "errno.h"
-#include <acb_poly.h>
+#include <flint/acb_poly.h>
 #include "glfunc.h"
 #include "glfunc_internals.h"
 
