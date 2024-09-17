@@ -38,7 +38,7 @@
 
 \section{Using the Discrete Fourier Transform (DFT) to compute sums over Dirichlet Characters}
 
-In $3.2.9$ of \cite{Platt2011}, a method of computing sums over Dirichlet Characters efficiently using the DFT. This note expands on that with some advice on how one might implement this in practice. In what follows, we adopt the 'C' convention that the first element of a vector $X$ is $X[0]$ and that we can consider a vector $X$ of length $l=\prod_{j=1}^d l_j$ as a $d$-dimensional vector $X[l_1,l_2,\ldots l_d]$.
+In $3.2.9$ of \cite{Platt2011} outlines a method of computing sums over Dirichlet Characters efficiently using the DFT. This note expands on that with some advice on how one might implement this in practice. In what follows, we adopt the 'C' convention that the first element of a vector $X$ is $X[0]$ and that we can consider a vector $X$ of length $l=\prod_{j=1}^d l_j$ as a $d$-dimensional vector $X[l_1,l_2,\ldots l_d]$.
 
 Thus, we wish to populate a length $\phi(q)$ vector of complex numbers $a_i$ in such a way that performing a (series of) DFT('s) on (portions of) that vector will compute
 $$
@@ -89,7 +89,7 @@ We perform $2$ length $q/4$ DFT's on the rows of $X$ and $q/4$ length $2$ DFT's 
 
 \subsection{Case 3}
 
-Now our $q$ is the product of more than one prime power with the power of $2$ (if present) equal to $4$.\footnote{We do not consider $q\equiv 2\Mod{4}$ as there are no primitive Dirichlet characters to worry about.} Given $d$ prime powers, we construct a $d$-dimensional matrix.  If the factorisation is
+Now our $q$ is the product of more than one prime power with the power of $2$ (if present) equal to $4$.\footnote{We do not consider $q\equiv 2\Mod{4}$. Why not?} Given $d$ prime powers, we construct a $d$-dimensional matrix.  If the factorisation is
 $$
 q=\prod_{j=1}^d p_j^{\alpha_j}
 $$
@@ -136,7 +136,7 @@ so $a_{29}$ goes in $X[0,1,1]$. We then do $12$ length $2$ DFT's along dimension
 
 \subsection{A note on complexity}
 
-There are implementations of the DFT that achieve time complexity $\mathcal{O}(n\log n)$, even when the length $n$ is prime. These are collectively known as Fast Fourier Transforms.
+There are implementations of the DFT that achieve time complexity $\mathcal{O}(n\log n)$, even when the length $n$ is prime (see \ref{sub:bluestein} below). These are collectively known as Fast Fourier Transforms.
 
 Thus in Case 1, a length $\phi(q)$ DFT results in computing $\phi(q)$ sums in time $\mathcal{O}(\phi(q)\log\phi(q))$, or $\mathcal{O}(q^\epsilon)$ on average per value. It turns out we achieve the same time complexity in the other two cases as well.
 
@@ -153,14 +153,14 @@ Let the dimensions of the matrix be $[l_1,l_2,\ldots l_d]$ corresponding to prim
 
 Let the dimensions of the matrix be $[2,2^{\alpha-2},l_1,l_2,\ldots l_d]$ corresponding to prime powers of $p_1,p_2,\ldots p_d]$ then any entry $[*,c,c_1,c_2,\ldots c_d]$ with $c\equiv 0 \Mod{2}$ or any $c_i\equiv 0 \Mod{p_i}$ is imprimitive.
 
-\subsection{A note on the parity of characters}
+%\subsection{A note on the parity of characters}
 
-We will also want to be able to locate where the odd ($\chi(-1)=-1$) and even ($\chi(-1)=1$) characters are hiding in our data structure. It turns out (proof anyone?) that if one sums the co-ordinates relating to the character of interest, that character is odd iff the sum is odd.  
+%We will also want to be able to locate where the odd ($\chi(-1)=-1$) and even ($\chi(-1)=1$) characters are hiding in our data structure. 
 
-Taking our ???????????
-\subsection{A suitable FFT Algorithm}
 
-The most well known FFT algorithm (after Euler) requires the input vector be be of length $2^n$ for positive $n$. Most of the time, the DFT's we require will not be of such a convenient length. We employ a FFT known as Bluestein's algorithm or the Chirp-Z transform algorithm converts a DFT of arbitrary length $n$ into the circular convolution of two inputs of length $n$ and $2n-1$. As is well know, a circular convolution can be achieved via three DFT's. The advantage is the one \textbf{can} zero pad the input vectors for a circular convolution so we can engineer it so that all the DFT's are of a convenient length ($2^{n'}$ with $2^{n'}>2n-1$).
+  \subsection{A suitable FFT Algorithm}\label{sub:bluestein}
+
+The most well known FFT algorithm (originally due to Gauss) requires the input vector be be of length $2^n$ for positive $n$. Most of the time, the DFT's we require will not be of such a convenient length. We employ a FFT known as Bluestein's algorithm or the Chirp-Z transform algorithm which converts a DFT of arbitrary length $n$ into the circular convolution of two inputs of length $n$ and $2n-1$. As is well known, a circular convolution can be achieved via three DFT's. The advantage is the one \textbf{can} zero pad the input vectors for a circular convolution so we can engineer it so that all the DFT's are of a convenient length ($2^{n'}$ with $2^{n'}>2n-1$).
 
 A good online description of Bluestein can be found at \url{https://ccrma.stanford.edu/~jos/st/Bluestein_s_FFT_Algorithm.html}.
 
