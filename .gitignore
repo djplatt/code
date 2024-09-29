@@ -97,3 +97,6 @@ flycheck_*.el
 
 # directory configuration
 .dir-locals.el
+arb_windowed_chiara_2024/arb_code
+arb_windowed_chiara_2024/arb_zeta
+ethan/check_first_zero
