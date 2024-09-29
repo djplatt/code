@@ -1,4 +1,5 @@
-#include "acb_dirichlet.h"
+#include "stdlib.h"
+#include "flint/acb_dirichlet.h"
 #include "inttypes.h"
 #include "stdbool.h"
 #define OP_ACC ((int64_t) 101)
