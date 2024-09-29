@@ -607,7 +607,7 @@ bool resolve_stat_point(arb_ptr tl, arb_ptr ftl, arb_ptr tm, arb_ptr ftm, arb_pt
       arb_init(sp_ft1);
     }
   dir_t dir1,dir2,dir3,dir4;
-  printf("In resolve_stat_points at %d %d %d.\n",left,left+1,left+2);
+  //printf("In resolve_stat_points at %d %d %d.\n",left,left+1,left+2);
   //arf_t t,ft;
   //arf_init(t);arf_init(ft);
   arb_set_ui(tl,left);
@@ -680,54 +680,8 @@ bool resolve_stat_point(arb_ptr tl, arb_ptr ftl, arb_ptr tm, arb_ptr ftm, arb_pt
     }
 }
 
-/*
-int zeros_st(acb_t *f_vec, int start, int end, int64_t prec)
-{
-  static bool init=false;
-  static arb_t tl,fl,tm,fm,tr,fr;
-  if(!init)
-    {
-      init=true;
-      arb_init(tl);
-      arb_init(fl);
-      arb_init(tm);
-      arb_init(fm);
-      arb_init(tr);
-      arb_init(fr);
-    }
-  long int i=start+1,count=0;
-  dir_t last_dir,this_dir;
-  sign_t last_sign,this_sign,res1_sign,res2_sign;
-  this_sign=sign(f_vec[start]);
-  this_dir=UNK;
-  for(;i<=end;i++)
-    {
-      last_sign=this_sign;
-      last_dir=this_dir;
-      this_sign=sign(f_vec[i]);
-      this_dir=dir(f_vec[i-1],f_vec[i]);
-      if((this_sign&last_sign)==0) // valid sign change
-	{
-	  count++;
-	  continue;
-	}
-      if((this_dir&last_dir)==0) // maximum or minimum
-	{
-	  if(((this_dir==UP)&&(this_sign==POS))||((this_dir==DOWN)&&(this_sign==NEG)))
-	    {
-	      //printf("Stat point found at %ld.\n",i);
-	      if(!resolve_stat_point(tl,fl,tm,fm,tr,fr,i-2,this_sign,f_vec,prec))
-		return(count);
-	      count++;
-	      count++;
-	    }
-	}
-    }
-  return(count);
-}
-*/
 
-int zeros_st(acb_t *f_vec, int start, int end, int64_t prec)
+int zeros_st(acb_t *f_vec, int start, double d_start, int end, int64_t prec)
 {
   static bool init=false;
   static arb_t tl,fl,tm,fm,tr,fr;
@@ -759,6 +713,7 @@ int zeros_st(acb_t *f_vec, int start, int end, int64_t prec)
       this_dir=dir(f_vec[i-1],f_vec[i]);
       if((this_sign&last_sign)==0) // valid sign change
 	{
+	  printf("Zero found at [%f,%f]\n",d_start+(i-1-start)*one_over_A,d_start+(i-start)*one_over_A);
 	  count++;
 	  last_sign=this_sign;
 	  last_dir=this_dir;
@@ -771,6 +726,7 @@ int zeros_st(acb_t *f_vec, int start, int end, int64_t prec)
 	      //printf("Stat point found at %ld.\n",i);
 	      if(!resolve_stat_point(tl,fl,tm,fm,tr,fr,i-2,this_sign,f_vec,prec))
 		return(count);
+	      printf("Two zeros found at [%f,%f]\n",d_start+(i-start-2)*one_over_A,d_start+(i-start)*one_over_A);
 	      last_dir=this_dir;
 	      count++;
 	      count++;
@@ -1107,7 +1063,7 @@ long int turing(acb_t *f_vec, long int a_ptr, double a, long int b_ptr, double b
 	}
     }
 
-  num_found=zeros_st(f_vec,a_ptr,b_ptr,prec); // go find zeros, using stat pts as well
+  num_found=zeros_st(f_vec,a_ptr,a,b_ptr,prec); // go find zeros, using stat pts as well
 
   if(num_exp==num_found)
     {
