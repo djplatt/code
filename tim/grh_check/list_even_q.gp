@@ -16,7 +16,7 @@ do_q(q)=
    return;
 };
 
-for(n=10^9-100,10^9,do_q(n));
+for(n=5,10^9,do_q(n));
 
 
 

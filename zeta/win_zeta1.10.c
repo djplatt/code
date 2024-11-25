@@ -41,6 +41,7 @@
 #define FALSE (1==0)
 #define FAILURE (1)
 #define bool int
+#define fatal_error(str) {printf("%s",str);exit(0);}
 int HI_PREC;
 /*
 // parameters for t0<=3*10^10
@@ -170,7 +171,7 @@ void set_err(mpfi_c_ptr z, double d)
 }
 
 // reverse skn_vec
-inline int conj_order(int i)
+int conj_order(int i)
 {
   return(N1-i);
 }
@@ -225,7 +226,7 @@ void mpfi_atan1(mpfi_ptr res, mpfi_ptr t)
 }
 
 // do sin and cos in high precision
-mpfi_sin_cos_hi(mpfi_ptr sin_res, mpfi_ptr cos_res, mpfi_ptr t)
+void mpfi_sin_cos_hi(mpfi_ptr sin_res, mpfi_ptr cos_res, mpfi_ptr t)
 {
   mpfi_sin(init_tmp,t);
   mpfi_set(sin_res,init_tmp);

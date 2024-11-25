@@ -1,8 +1,9 @@
 #ifndef MPFI_C
 #define MPFI_C
-#include "mpfi.h"
-#include "mpfi_io.h"
+//#include "mpfi.h"
+//#include "mpfi_io.h"
 #include "stdlib.h"
+#include "math.h"
 #define debug printf("Reached line %d.\n",__LINE__);
 #define mpfi_inc(x,y) mpfi_add(x,x,y)
 #define mpfi_inc_ui(x,y) mpfi_add_ui(x,x,y)
@@ -650,6 +651,7 @@ void mpfi_c_pow_i_c (mpfi_c_ptr res, mpfi_ptr x, mpfi_c_ptr z)
   mpfi_c_mul_i(res,res,pp_x_sigma);
 }
 
+/*
 void mpfi_atan2 (mpfi_ptr res, mpfi_ptr y, mpfi_ptr x)
 {
   mpfi_div(res,y,x);
@@ -662,7 +664,7 @@ void mpfi_atan2 (mpfi_ptr res, mpfi_ptr y, mpfi_ptr x)
 	mpfi_add(res,res,mpfi_pi);
     }
 }
-
+*/
 
 void mpfi_c_log (mpfi_c_ptr res, mpfi_c_ptr z)
 {

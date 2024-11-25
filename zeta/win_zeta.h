@@ -1,5 +1,3 @@
-#ifndef WIN_ZETA
-#define WIN_ZETA
 
 #include "inttypes.h"
 #define OP_ACC (101) // Output is correct to +/- 2^(-OP_ACC-1)
@@ -14,7 +12,7 @@ typedef int dir_t;
 #define UP (1)
 #define DOWN (2)
 
-inline sign_t mpfr_sign(mpfr_ptr x)
+sign_t mpfr_sign(mpfr_ptr x)
 {
   int s=mpfr_sgn(x);
   if(s<0)
@@ -24,7 +22,7 @@ inline sign_t mpfr_sign(mpfr_ptr x)
   return(UNK);
 }
 
-inline sign_t sign(mpfi_ptr x)
+sign_t sign(mpfi_ptr x)
 {
   if(mpfi_is_neg(x))
     return(NEG);
@@ -33,7 +31,7 @@ inline sign_t sign(mpfi_ptr x)
   return(UNK);
 }
 
-inline dir_t mpfr_dir(mpfr_ptr left, mpfr_ptr right)
+dir_t mpfr_dir(mpfr_ptr left, mpfr_ptr right)
 {
   int cp=mpfr_cmp(left,right);
   if(cp<0)
@@ -43,7 +41,7 @@ inline dir_t mpfr_dir(mpfr_ptr left, mpfr_ptr right)
   return(UNK);
 }
 
-inline dir_t dir(mpfi_ptr left, mpfi_ptr right)
+dir_t dir(mpfi_ptr left, mpfi_ptr right)
 {
   int cp=mpfi_cmp(left,right);
   if(cp<0)
@@ -127,4 +125,3 @@ void in_bytes(mpfi_ptr t, FILE *infile)
   mpfi_add_ui(t,t,a);
   mpfi_div_2ui(t,t,OP_ACC);
 }
-#endif 
