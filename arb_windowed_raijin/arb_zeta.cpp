@@ -14,8 +14,8 @@
 #include "stdint.h"
 #include "time.h"
 #include "mpfr.h"
-#include "arb.h"
-#include "acb.h"
+#include "flint/arb.h"
+#include "flint/acb.h"
 #include "arb_win_zeta.h"
 #include "arb_fft.h"
 

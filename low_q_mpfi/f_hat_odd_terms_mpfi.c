@@ -1,13 +1,14 @@
 #include "stdlib.h"
 #include "stdio.h"
+#include "math.h"
 #include "gmp.h"
 #include "mpfr.h"
-#include "../includes/mpfi.h"
-#include "../includes/mpfi_io.h"
+#include "mpfi.h"
+#include "mpfi_io.h"
 #include "../includes/mpfi_c.h"
 #include "./f_defs.h"
 
-
+double QT;
 
 void print_usage()
 {
@@ -31,7 +32,7 @@ double calc_eta(unsigned int q)
   return(1-7.03/(QT/q+30.0));
 }
 
-inline int gcd (unsigned int a, unsigned int b)
+int gcd (unsigned int a, unsigned int b)
 /* Euclid algorithm gcd */
 {
 	unsigned int c;
@@ -44,13 +45,13 @@ inline int gcd (unsigned int a, unsigned int b)
 	return(b);
 };
 
-inline int co_prime(unsigned int a, unsigned int b)
+int co_prime(unsigned int a, unsigned int b)
 {
 	return(gcd(a,b)==1);
 };
 
 
-inline unsigned int calc_M(double x, double log2byq, double cosetaetc)
+unsigned int calc_M(double x, double log2byq, double cosetaetc)
 {
   double b=log2byq+x*1.5;
   //printf("x=%e\nlog(2)-log(q)*0.75=%e\ncos(eta)=%e\n",x,log2byq,cosetaetc);
@@ -125,7 +126,7 @@ void F_hat_o_term(mpfi_c_ptr res, mpfi_c_ptr outer_exp, mpfi_c_ptr exp_2_u_x, un
   //printf("Returning- ");mpfi_c_print(res);exit(0);
 }
 
-inline unsigned int min(unsigned int x, unsigned int y)
+unsigned int min(unsigned int x, unsigned int y)
 {
   if(x<y) return(x);
   return(y);
@@ -156,6 +157,7 @@ int main(int argc, char **argv)
     print_usage();
   //printf("q=%d\n",q1);
   q=(unsigned int) q1;
+  QT=512.0*q;
   /*
   eta=atof(argv[3]);
   if((eta<=-1.0)||(eta>=1.0))
@@ -286,7 +288,7 @@ int main(int argc, char **argv)
       mpfi_add(outer_exp->re,outer_exp->re,log2);
       mpfi_sub(outer_exp->re,outer_exp->re,logq);
       M=calc_M(2.0*n*M_PI/B,log2byq,cosetaetc);
-      printf("M=%d\n",M);
+      printf("M=%ld\n",M);
       fwrite(&M,sizeof(unsigned int),1,outfile);
       //F_hat_err(err,x,pi_sindelta_by_q,mlog2byq,M);
       //mpfi_write_bin(outfile,err);
@@ -305,7 +307,7 @@ int main(int argc, char **argv)
 	    //printf("FFT=");mpfi_c_print(res);
 	    mpfi_write_bin(outfile,res->re);
 	    mpfi_write_bin(outfile,res->im);
-	    mpfi_c_print_str("Saved ",res);exit(0);
+	    mpfi_c_print_str("Saved ",res);
 	  }
     }
   fclose(outfile);

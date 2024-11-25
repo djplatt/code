@@ -1,9 +1,11 @@
 // arb_zeta.cpp
 // windowed zeta calculator
+// Looking for extremes of S(t)
 //
 // based on win_zeta1.10.c
 //
-// Created: 27th January 2017
+// Created: September 2024
+// Copyright DJ Platt 2024
 //
 // DJ Platt
 // University of Bristol
@@ -680,11 +682,89 @@ bool resolve_stat_point(arb_ptr tl, arb_ptr ftl, arb_ptr tm, arb_ptr ftm, arb_pt
     }
 }
 
-
-int zeros_st(acb_t *f_vec, int start, double d_start, int end, int64_t prec)
+arb_t S_of_t_plus,S_of_t_minus;
+void St(arb_t t, int64_t NNt,int64_t prec)
 {
   static bool init=false;
-  static arb_t tl,fl,tm,fm,tr,fr;
+  static arb_t t2,tmp1,tmp2,Nt;
+  static acb_t z,lng;
+  if(!init)
+    {
+      init=true;
+      arb_init(S_of_t_plus);
+      arb_init(S_of_t_minus);
+      arb_init(t2);
+      arb_init(tmp1);
+      arb_init(tmp2);
+      acb_init(z);
+      acb_init(lng);
+      arb_init(Nt);
+      arb_set_d(acb_realref(z),0.25);
+    }
+  arb_mul_2exp_si(t2,t,-1);
+  arb_set(acb_imagref(z),t2);
+  acb_lgamma(lng,z,prec);
+  arb_mul(tmp1,t2,arb_ln_pi,prec);
+  arb_sub(tmp2,acb_imagref(lng),tmp1,prec);
+  arb_div(tmp1,tmp2,arb_pi,prec);
+  arb_set_si(Nt,NNt);
+  arb_sub(tmp2,Nt,tmp1,prec);
+  printf("S+(t) = ");arb_printd(tmp2,20);printf("\n");
+  arb_sub_ui(tmp1,tmp2,1,prec);
+  printf("S-(t) = ");arb_printd(tmp1,20);printf("\n");
+  
+}
+
+// given left and right such that start+[left,right]
+// destroys left
+void arb_st(arb_t left, arb_t right, double dstart, long int zero, int64_t prec)
+{
+  static bool init=false;
+  static arb_t arb_one_over_A,astart;
+  if(!init)
+    {
+      init=true;
+      arb_init(arb_one_over_A);
+      arb_set_d(arb_one_over_A,one_over_A);
+      arb_init(astart);
+    }
+  //printf("In arb_st with:\n   left = ");
+  //arb_printd(left,30);printf("\n  right = ");
+  //arb_printd(right,30);printf("\n  start = ");
+  //arb_printd(start,30);
+  //printf("\n    1/A = %f\n",one_over_A);
+  
+  arb_set_d(astart,dstart);
+  arb_union(left,left,right,prec);
+  arb_mul(left,left,arb_one_over_A,prec);
+  arb_add(left,left,astart,prec);
+  // left now brackets zero number <zero>
+  St(left,zero,prec);
+  printf("Zero number %ld at ",zero);arb_printd(left,30);printf("\n");
+  //exit(0);
+}
+
+
+void int_st(int left, int right, double dstart, long int zero, int64_t prec)
+{
+  static bool init=false;
+  static arb_t aleft,aright;
+  if(!init)
+    {
+      init=true;
+      arb_init(aleft);
+      arb_init(aright);
+    }
+  arb_set_si(aleft,left);
+  arb_set_si(aright,right);
+  arb_st(aleft,aright,dstart,zero,prec);
+}
+
+
+int zeros_st(acb_t *f_vec, int start, double d_start, int end, long int zeros_to_date, int64_t prec)
+{
+  static bool init=false;
+  static arb_t tl,fl,tm,fm,tr,fr,arb_start;
   if(!init)
     {
       init=true;
@@ -694,7 +774,10 @@ int zeros_st(acb_t *f_vec, int start, double d_start, int end, int64_t prec)
       arb_init(fm);
       arb_init(tr);
       arb_init(fr);
+      arb_init(arb_start);
     }
+  printf("In zeros_st with dstart=%f\n",d_start);
+  
   long int i=start+1,count=0;
   dir_t last_dir,this_dir;
   sign_t last_sign,this_sign,res1_sign,res2_sign;
@@ -713,7 +796,8 @@ int zeros_st(acb_t *f_vec, int start, double d_start, int end, int64_t prec)
       this_dir=dir(f_vec[i-1],f_vec[i]);
       if((this_sign&last_sign)==0) // valid sign change
 	{
-	  printf("Zero found at [%f,%f]\n",d_start+(i-1-start)*one_over_A,d_start+(i-start)*one_over_A);
+	  int_st(i-start-1,i-start,d_start,zeros_to_date+count+1,prec);
+	  //printf("Zero %ld found at [%f,%f]\n",zeros_to_date+count+1,d_start+(i-1-start)*one_over_A,d_start+(i-start)*one_over_A);
 	  count++;
 	  last_sign=this_sign;
 	  last_dir=this_dir;
@@ -726,7 +810,21 @@ int zeros_st(acb_t *f_vec, int start, double d_start, int end, int64_t prec)
 	      //printf("Stat point found at %ld.\n",i);
 	      if(!resolve_stat_point(tl,fl,tm,fm,tr,fr,i-2,this_sign,f_vec,prec))
 		return(count);
-	      printf("Two zeros found at [%f,%f]\n",d_start+(i-start-2)*one_over_A,d_start+(i-start)*one_over_A);
+	      arb_sub_si(tl,tl,start,prec);
+	      arb_sub_si(tm,tm,start,prec);
+	      arb_sub_si(tr,tr,start,prec);
+	      printf("Stat Point:\n");
+	      arb_st(tl,tm,d_start,zeros_to_date+count+1,prec);
+	      arb_st(tm,tr,d_start,zeros_to_date+count+2,prec);
+	      //printf("looking between i=[%ld,%ld]\n",i-2,i);
+	      //printf("Zero %ld found at ",zeros_to_date+count+1);
+	      //arb_union(tl,tl,tm,prec);
+	      //arb_printd(tl,10);
+	      //printf("\nZero %ld found at ",zeros_to_date+count+2);
+	      //arb_union(tm,tm,tr,prec);
+	      //arb_printd(tm,10);
+	      //printf("\n");
+	      //printf("Zeros %ld and %ld found at [%f,%f]\n",zeros_to_date+count+1,zeros_to_date+count+2,d_start+(i-start-2)*one_over_A,d_start+(i-start)*one_over_A);
 	      last_dir=this_dir;
 	      count++;
 	      count++;
@@ -1063,7 +1161,7 @@ long int turing(acb_t *f_vec, long int a_ptr, double a, long int b_ptr, double b
 	}
     }
 
-  num_found=zeros_st(f_vec,a_ptr,a,b_ptr,prec); // go find zeros, using stat pts as well
+  num_found=zeros_st(f_vec,a_ptr,a,b_ptr,min_lo,prec); // go find zeros, using stat pts as well
 
   if(num_exp==num_found)
     {
