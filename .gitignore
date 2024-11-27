@@ -110,6 +110,7 @@ flycheck_*.el
 # directory configuration
 .dir-locals.el
 arb_windowed_chiara_2024/arb_code
+arb_windowed_chiara_2024/arb_code_v1
 arb_windowed_chiara_2024/arb_zeta
 arb_windowed_chiara_2024/data
 arb_windowed_chiara_2024/single_zero_S_T
