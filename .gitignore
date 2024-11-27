@@ -39,6 +39,8 @@ harald/apr_20/*.sh
 harald/apr_20/*.out
 harald/apr_20/test*
 harald/apr_20/*.lst
+harald/apr_20/read_residues
+harald/apr_20/residue_sum
 l-func-hi/print_zeros
 L1/L1.1
 L1/Louboutin
@@ -100,3 +102,4 @@ flycheck_*.el
 arb_windowed_chiara_2024/arb_code
 arb_windowed_chiara_2024/arb_zeta
 ethan/check_first_zero
+arb_windowed_raijin/arb_zeta
