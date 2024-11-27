@@ -6,6 +6,10 @@ maciej/makefile
 maciej/do_one.sh
 tim/grh_check/first_zeros/
 tim/grh_check/hist.plt
+tim/grh_check/dir_even_deriv
+tim/grh_check/dir_odd_deriv
+tim/grh_check/g_*
+
 tim/watkins/do_3e8.sh
 tim/watkins/watkins_seg_int_double
 zero_stats/read_zeros
@@ -41,6 +45,12 @@ harald/apr_20/test*
 harald/apr_20/*.lst
 harald/apr_20/read_residues
 harald/apr_20/residue_sum
+harald/nov_24/data
+harald/nov_24/residue_sums
+harald/nov_24/residue_sums.sh
+harald/nov_24/summary
+
+
 l-func-hi/print_zeros
 L1/L1.1
 L1/Louboutin
@@ -101,5 +111,9 @@ flycheck_*.el
 .dir-locals.el
 arb_windowed_chiara_2024/arb_code
 arb_windowed_chiara_2024/arb_zeta
+arb_windowed_chiara_2024/data
+arb_windowed_chiara_2024/single_zero_S_T
+arb_windowed_chiara_2024/test.sh
+
 ethan/check_first_zero
 arb_windowed_raijin/arb_zeta
