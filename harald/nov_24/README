@@ -1,0 +1,13 @@
+Copyright 2024 DJ Platt
+
+Sums for H Helfgott et al.
+
+sum 1-3  sum 0 < Im rho < t0 1/|rho|^i * 1/|zeta'(rho)|
+sum 1a-3a sum 0 < Im rho < t0/2 1/|rho|^i * 1/|zeta'(rho)|
+sum 1b-3b sum t0/2 < Im rho < t0 eta(gamma/(t0/2)) 1/|rho|^i * 1/|zeta'(rho)|
+
+where eta(t)=2-t for t in [1,2]
+
+
+residue_sums creates the sums over the zeros for a files of zeros 
+summary.c sums the outputs from residue_sums
