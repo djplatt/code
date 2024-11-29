@@ -16,6 +16,9 @@ arb_t big_st,little_st; // largest and smallest S(t) found
 int64_t big_zero,little_zero; // the respective zero numbers
 
 // Estimate S(t) just before and just after the z'th zero at 1/2+i gamma
+// S(t)=N(T)-1/pi Phi(t)-1
+// Phi(t)=-t log pi/2+Im log_gamma(1/4+it/2)
+// Im log_gamma(z)=Im[(z-1/2)log(z/e)]-Theta(1/(8Im z)) Booker 2006 
 void St(arb_t gamma, int64_t z, int64_t prec)
 {
   static acb_t ctmp1,ctmp2,ctmp3;
@@ -29,8 +32,8 @@ void St(arb_t gamma, int64_t z, int64_t prec)
       arb_init(t_2_log_pi);arb_init(err);
       arb_set_d(half,0.5);
       arb_const_pi(pi,prec);
-      arb_log(log_pi,pi,prec);
-      arb_inv(pi,pi,prec);
+      arb_log(log_pi,pi,prec); // log(pi)
+      arb_inv(pi,pi,prec); // 1/pi
       acb_init(ctmp1);acb_init(ctmp2);acb_init(ctmp3);
     }
   //printf("gamma = ");arb_printd(gamma,20);printf("\n");
@@ -51,7 +54,7 @@ void St(arb_t gamma, int64_t z, int64_t prec)
 
   //printf("Argument bit = ");arb_printd(rtmp2,20);printf("\n");
   
-  arb_set_ui(rtmp1,z-1);
+  arb_set_ui(rtmp1,z-1); // N(t)-1
   arb_sub(rtmp3,rtmp1,rtmp2,prec); // S(T) just after the zero
   arb_sub(rtmp1,big_st,rtmp3,prec);
   if(!arb_is_positive(rtmp1))
