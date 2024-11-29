@@ -88,7 +88,7 @@ zero_t get_zero(FILE *zfile)
 }
 
 // N_t is number of zeros not including this one
-// N(t)=arg gamma_r(s)+S(t)+1
+// N(t)=1/Pi arg gamma_r(s)+S(t)+1
 // gamma_r(s)=pi^{-s/2} gamma(s/2)
 int_double S(int_double t, uint64_t N_t)
 {
