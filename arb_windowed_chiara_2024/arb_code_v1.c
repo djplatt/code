@@ -140,6 +140,11 @@ int main(int argc, char**argv)
       for(int64_t z=0;z<n_zeros;z++) // check S(t) at each zero
 	St(zeros[z],z+st,prec);
       st+=n_zeros;
+      if((it%100)==0)
+	{
+	  printf("Processed zeros at %ld\n",st-1);
+	  fflush(stdout);
+	}
     }
 
   printf("Last zero processed was %ld\n",st-1);
