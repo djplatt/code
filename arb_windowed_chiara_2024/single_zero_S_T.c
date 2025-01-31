@@ -45,6 +45,7 @@ void St(arb_t gamma, int64_t z, int64_t prec)
   printf("S(t) just after zero %ld is ",z);arb_printd(rtmp3,20);printf("\n");
   arb_sub_ui(rtmp1,rtmp3,1,prec); // S(T) just before the zero
   printf("S(t) just before zero %ld is ",z);arb_printd(rtmp1,20);printf("\n");
+  printf("T = ");arb_printd(gamma,20);printf("\n");
 }
 
 
