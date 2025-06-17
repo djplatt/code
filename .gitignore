@@ -1,4 +1,5 @@
 # ignore various files
+Robin_2025/diff
 harald/jan_2025/ten_9_zero
 harald/jan_2025/data/
 harald/jan_2025/residue_sums_jan_2025
@@ -124,3 +125,5 @@ arb_windowed_chiara_2024/test.sh
 
 ethan/check_first_zero
 arb_windowed_raijin/arb_zeta
+
+*.s

@@ -20,7 +20,7 @@ D.J.Platt 2018
 #include "stdlib.h"
 #include "primesieve.h" // use Kim Walisch's primesieve
 #include "flint/arb.h" // and Fredrik's arb
-#include "pari.h"
+#include "pari/pari.h"
 
 #define false (1==0)
 #define true (0==0)
@@ -124,50 +124,26 @@ void eps_max(entry_t *ent, int64_t prec) // exponent > 1
 
 // rhs contains log n
 // lhs contains sigma(n)/n
-void check_Robin(arb_t lhs, arb_t rhs, int64_t prec, int verbosep)
+void diff(arb_t lhs, arb_t rhs, int64_t prec)
 {
   static int init=false;
-  static arb_t tmp1,tmp2,tmp3,egamma,last_delta;
+  static arb_t tmp1,tmp2,tmp3,egamma;
   if(!init)
     {
       init=true;
       arb_init(tmp1);
       arb_init(tmp2);
       arb_init(tmp3);
-      arb_init(last_delta);
-      arb_set_d(last_delta,-100.0);
       arb_init(egamma);
       arb_const_euler(tmp1,prec); // gamma
       arb_exp(egamma,tmp1,prec); // exp(gamma)
     }
-
   arb_log(tmp1,rhs,prec); // log log n
   arb_mul(tmp2,egamma,tmp1,prec); // exp(gamma) log log n
   arb_sub(tmp3,lhs,tmp2,prec);
-  /*
-  arb_sub(tmp2,last_delta,tmp3,prec);
-  if(!arb_is_positive(tmp2))
-    {
-      printf("delta decreased.\n");
-    }
-  arb_set(last_delta,tmp3);
-  */
-  if(verbosep)
-    {
-      printf("log log n = ");arb_printd(tmp1,20);printf(" lhs-rhs=");arb_printd(tmp3,20);printf("\n");fflush(stdout);
-    }
-  if(!arb_is_negative(tmp3))
-    {
-      printf("Robin check failed.\n");
-      arb_exp(tmp1,rhs,prec); // rhs contains log n, print n
-      printf("n = ");arb_printd(tmp1,30);printf("\n");
-      printf("sigma(n)/n= ");arb_printd(lhs,30);printf("\n");
-      printf("exp(gamma) log log n= ");arb_printd(tmp2,30);printf("\n");
-      printf("lhs-rhs=");
-      arb_printd(tmp3,30);
-      printf("\n");
-      exit(0);
-    }
+  arb_exp(tmp1,rhs,prec); // n
+  arb_mul(tmp2,tmp3,tmp1,prec); //
+  arb_printd(tmp2,30);printf("\n");
 }
 
 // find the largest epsilon in the database
@@ -373,10 +349,7 @@ int main(int argc, char **argv)
   // entries now set up, rhs contains log n, lhs constains sigma(n)/n
   for(uint64_t n=0;n<n_its;n++)
     {
-      if((n%report_its)==0)
-	{printf("%lu ",n);check_Robin(lhs,rhs,prec,1);} // verbose check
-      else
-	check_Robin(lhs,rhs,prec,0); // silent check
+      printf("%lu ",n);diff(lhs,rhs,prec);
       uint64_t ptr=find_biggest(ca.entries,ca.next_entry,prec); 
 
       if(ca.entries[ptr].p1==ca.entries[ptr].p2) // just increment exponent
