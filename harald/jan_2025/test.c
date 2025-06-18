@@ -210,7 +210,7 @@ int main(int argc, char **argv)
   rval=fread(&num_its,sizeof(long int),1,infile);
   //printf("Doing %ld iterations.\n",num_its);
   bool done=false;
-  for(it=0;it<num_its;it++)
+  for(it=0;it<1/*num_its*/;it++)
     {
       rval=fread(st,sizeof(double),2,infile); // starting/ending t, exact
       rval=fread(zs,sizeof(long int),1,infile); // starting zero number
@@ -220,13 +220,14 @@ int main(int argc, char **argv)
 	  continue;
 	}
       rval=fread(zs+1,sizeof(long int),1,infile); // ending zero number
-      //printf("processing zeros %ld to %ld inclusive\n",zs[0]+1,zs[1]);
+      printf("processing zeros %ld to %ld = %ld inclusive\n",zs[0]+1,zs[1],zs[1]-zs[0]);
       n_zeros+=zs[1]-zs[0];
       arb_set_d(gamma,st[0]);
       arb_set(t,gamma);
       //printf("doing t from %f to %f zeros from %ld to %ld\n",st[0],st[1],zs[0],zs[1]);
       for(z=zs[0]+1;z<=zs[1];z++)
 	{
+	  //printf("%ld\n",z);
 	  next_rho(del_t,infile,prec); // distance to next gamma
           if(arb_is_zero(del_t))
 	    {
@@ -243,8 +244,6 @@ int main(int argc, char **argv)
 
 	  arb_add(gamma,t,pm1,prec); // not exact
 	  do_rho(gamma,t0,prec); // do something with this zero
-	  if(z==(zs[0]+99))
-	    exit(0);
 	}
       if(done)
 	break;
