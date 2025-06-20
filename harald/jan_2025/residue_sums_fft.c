@@ -1373,11 +1373,11 @@ int main(int argc, char **argv)
 	}
       */
 
-      
+      /*
       last_max=turing(f_vec,N/2-int_step/2,t0-int_step/2*one_over_A,N/2+int_step/2,t0+int_step/2*one_over_A,last_max,prec);
       this_time=time(NULL);
       printf("Time to isolate zeros = %G seconds.\n",difftime(this_time,last_time));
-      
+      */
       last_time=this_time;
 
     }
