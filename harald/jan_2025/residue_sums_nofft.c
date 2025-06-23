@@ -7,6 +7,8 @@
 #define OP_ACC (101)
 #include "inttypes.h"
 
+#define ARB_PREC (140) // enough for 102 bits after dp of 10^10 size thing
+
 // read a 13 byte number from file
 // structured 8,4,1
 // read as if its exact
@@ -50,38 +52,12 @@ void next_rho(arb_t del_t, FILE *infile, int64_t prec)
 }
 
 
-void eta(arb_t res, arb_t t, int64_t prec)
-{
-  static bool init=false;
-  static arb_t tmp;
-  if(!init)
-    {
-      init=true;
-      arb_init(tmp);
-    }
-  arb_neg(tmp,t);
-  arb_add_ui(res,tmp,2,prec);
-}
-
-void et_gam(arb_t res, arb_t gamma, uint64_t t0_by_2, int64_t prec)
-{
-  static bool init=false;
-  static arb_t tmp;
-  if(!init)
-    {
-      init=true;
-      arb_init(tmp);
-    }
-  arb_div_ui(tmp,gamma,t0_by_2,prec);
-  eta(res,tmp,prec);
-}
-
 void varphi(acb_t res, acb_t x, int64_t prec)
 {
   static bool init=false;
   static arb_t pi2;
   static acb_t ctmp1,ctmp2;
-
+  
   if(!init)
     {
       init=true;
@@ -96,15 +72,15 @@ void varphi(acb_t res, acb_t x, int64_t prec)
   acb_mul(res,ctmp2,ctmp1,prec); // x pi/2 cot(x pi/2)
 }
 
-arb_t sum1,sum2,sum3,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
+arb_t sum1,sum2,sum3;//,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
 
 // compute 1/zeta'(s) for s=1/2+i gamma
 // checks that 1/2+i gamma is a zero of zeta
-void do_rho(arb_t gamma, uint64_t t0, int64_t prec)
+void do_rho(arb_t gamma, arb_t t0, int64_t prec)
 {
   static acb_struct *zeta;
   static acb_t s,ctmp1,ctmp2;
-  static arb_t tmp1,tmp2,tmp3,s_abs;
+  static arb_t tmp1,tmp2,tmp3,s_abs,t1,t2;
   static bool init=false;
   if(!init)
     {
@@ -114,11 +90,22 @@ void do_rho(arb_t gamma, uint64_t t0, int64_t prec)
       arb_set_d(acb_realref(s),0.5);
       arb_init(tmp1);arb_init(tmp2);arb_init(tmp3);
       arb_init(s_abs);
+      arb_init(t1);
+      arb_init(t2);
+      arb_mul_2exp_si(t1,t0,-1);
+      arb_div_ui(t2,t0,10,prec);
     }
 
+  prec=prec/2;
+  
   arb_set(acb_imagref(s),gamma);
   acb_abs(s_abs,s,prec);
-  acb_dirichlet_zeta_jet(zeta,s,0,2,prec/4);
+  acb_dirichlet_zeta_jet(zeta,s,0,2,prec);
+  //printf("zeros at ");arb_printd(gamma,20);
+  // acb_abs(tmp1,zeta,prec);
+  // printf("\n|zeta(t)| = ");arb_printd(tmp1,20);
+  acb_abs(tmp1,zeta+1,prec);
+  //printf("\n|zeta'(t)| = ");arb_printd(tmp1,20);printf("\n");
 
   if((!arb_contains_zero(acb_realref(zeta)))||(!arb_contains_zero(acb_imagref(zeta))))
     {
@@ -130,7 +117,7 @@ void do_rho(arb_t gamma, uint64_t t0, int64_t prec)
 
   acb_sub_ui(ctmp1,s,1,prec); // rho-1
   acb_div_onei(ctmp1,ctmp1); // (rho-1)/i
-  acb_div_ui(ctmp2,ctmp1,t0,prec); // (rho-1)/(t0 i)
+  acb_div_arb(ctmp2,ctmp1,t0,prec); // (rho-1)/(t0 i)
   // first with t0 into sum1
   varphi(ctmp1,ctmp2,prec);
   acb_abs(tmp1,ctmp1,prec);
@@ -140,10 +127,10 @@ void do_rho(arb_t gamma, uint64_t t0, int64_t prec)
   arb_add(sum1,sum1,tmp2,prec);
   //printf("Zero at ");arb_printd(gamma,10);printf(" contributed ");arb_printd(tmp3,10);printf(" with weight ");arb_printd(tmp1,10);printf("\n");
 
-  arb_sub_ui(tmp1,gamma,t0/2,prec);
+  arb_sub(tmp1,gamma,t1,prec);
   if(arb_is_positive(tmp1))
     return;
-  // now with t0/2 into sum2
+  // now with t1 into sum2
   acb_mul_2exp_si(ctmp2,ctmp2,1); // (rho-1)/(t0/2 i)
   varphi(ctmp1,ctmp2,prec);
   acb_abs(tmp1,ctmp1,prec);
@@ -152,7 +139,7 @@ void do_rho(arb_t gamma, uint64_t t0, int64_t prec)
   arb_div(tmp2,tmp1,tmp3,prec);
   arb_add(sum2,sum2,tmp2,prec);
 
-  arb_sub_ui(tmp1,gamma,t0/10,prec);
+  arb_sub(tmp1,gamma,t2,prec);
   if(arb_is_positive(tmp1))
     return;
   acb_mul_ui(ctmp2,ctmp2,5,prec); // (rho-1)/(t0/10 i)
@@ -167,37 +154,44 @@ void do_rho(arb_t gamma, uint64_t t0, int64_t prec)
 int main(int argc, char **argv)
 {
   uint64_t i;
+  uint64_t prec=ARB_PREC;
   printf("Command line:- ");
   for(i=0;i<argc;i++)
     printf("%s ",argv[i]);
   printf("\n");
   fflush(stdout);
-  if(argc!=4)
+  if(argc!=3)
     {
-      printf("Fatal error in %s: usage %s <prec> <zeros file> <t0>. Exiting.\n",argv[0],argv[0]);
+      printf("Fatal error in %s: usage %s <zeros file> <t0>. Exiting.\n",argv[0],argv[0]);
       exit(0);
     }
-  int64_t prec=atol(argv[1]);
-  //printf("ARB working precision set to %ld\n",prec);
-  FILE *infile=fopen(argv[2],"r");
+  FILE *infile=fopen(argv[1],"r");
   if(!infile)
     {
-      printf("Fatal error in %s: failed to open zeros file %s for binary input. Exiting.\n",argv[0],argv[2]);
+      printf("Fatal error in %s: failed to open zeros file %s for binary input. Exiting.\n",argv[0],argv[1]);
       exit(0);
     }
 
-  int64_t t0=atol(argv[3]);
+  int64_t t0=atol(argv[2]);
+  if(t0<=0)
+    {
+      printf("Need t0 > 0. Exiting.\n");
+      exit(0);
+    }
+  arb_t a_t0;
+  arb_init(a_t0);
+  arb_set_ui(a_t0,t0);
   
   arb_t gamma,pm1,del_t,t;
-  acb_t res;
+  //acb_t res;
 
-  arb_init(sum1);arb_init(sum1a);arb_init(sum1b);
-  arb_init(sum2);arb_init(sum2a);arb_init(sum2b);
-  arb_init(sum3);arb_init(sum3a);arb_init(sum3b);
+  arb_init(sum1);//arb_init(sum1a);arb_init(sum1b);
+  arb_init(sum2);//arb_init(sum2a);arb_init(sum2b);
+  arb_init(sum3);//arb_init(sum3a);arb_init(sum3b);
 
 
   arb_init(gamma);arb_init(pm1);arb_init(del_t);arb_init(t);
-  acb_init(res);
+  //acb_init(res);
   arb_set_ui(gamma,1);
   arb_mul_2exp_si(gamma,gamma,-OP_ACC-1); // 2^{-102}
   arb_zero(pm1);
@@ -210,7 +204,7 @@ int main(int argc, char **argv)
   rval=fread(&num_its,sizeof(long int),1,infile);
   //printf("Doing %ld iterations.\n",num_its);
   bool done=false;
-  for(it=0;it<1/*num_its*/;it++)
+  for(it=0;it<num_its;it++)
     {
       rval=fread(st,sizeof(double),2,infile); // starting/ending t, exact
       rval=fread(zs,sizeof(long int),1,infile); // starting zero number
@@ -220,13 +214,14 @@ int main(int argc, char **argv)
 	  continue;
 	}
       rval=fread(zs+1,sizeof(long int),1,infile); // ending zero number
-      //printf("processing zeros %ld to %ld inclusive\n",zs[0]+1,zs[1]);
+      printf("processing zeros %ld to %ld = %ld inclusive\n",zs[0]+1,zs[1],zs[1]-zs[0]);
       n_zeros+=zs[1]-zs[0];
       arb_set_d(gamma,st[0]);
       arb_set(t,gamma);
       //printf("doing t from %f to %f zeros from %ld to %ld\n",st[0],st[1],zs[0],zs[1]);
       for(z=zs[0]+1;z<=zs[1];z++)
 	{
+	  //printf("%ld\n",z);
 	  next_rho(del_t,infile,prec); // distance to next gamma
           if(arb_is_zero(del_t))
 	    {
@@ -242,18 +237,18 @@ int main(int argc, char **argv)
 	    }
 
 	  arb_add(gamma,t,pm1,prec); // not exact
-	  do_rho(gamma,t0,prec); // do something with this zero
+	  do_rho(gamma,a_t0,prec); // do something with this zero
 	}
       if(done)
 	break;
     }
-  printf("sum t0=%lu ",t0);arb_printd(sum1,20);
+  printf("sum t0=%f ",(double) t0);arb_printd(sum1,20);
   //printf("\nsum 1a ");arb_printd(sum1a,20);
   //printf("\nsum 1b ");arb_printd(sum1b,20);
-  printf("\nsum t0=%lu ",t0/2);arb_printd(sum2,20);
+  printf("\nsum t0=%f ",(double) t0 / 2.0);arb_printd(sum2,20);
   //printf("\nsum 2a ");arb_printd(sum2a,20);
   //printf("\nsum 2b ");arb_printd(sum2b,20);
-  printf("\nsum t0=%lu ",t0/10);arb_printd(sum3,20);
+  printf("\nsum t0=%f ",(double) t0 / 10.0);arb_printd(sum3,20);
   //printf("\nsum 3a ");arb_printd(sum3a,20);
   //printf("\nsum 3b ");arb_printd(sum3b,20);
   printf("\nWe processed %ld zeros.\n",n_zeros);
