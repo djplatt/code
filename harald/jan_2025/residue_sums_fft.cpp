@@ -574,6 +574,8 @@ void inter_sinc_cos(arb_ptr ress, arb_ptr resc, arb_ptr t, int64_t prec)
   arb_div(ress,msin,sinc_tmp,prec);
 }
 
+#define debug (false)
+
 // t is distance from t0 to t implied by f_ptr
 // if fd_res is NULL, don't calc differential
 void inter_point(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t, int f_ptr, int64_t prec)
@@ -591,9 +593,21 @@ void inter_point(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t, int f_p
   arb_set(ip_tmp1,acb_realref(f_vec[f_ptr]));
   inter_gaussian(ip_tmp2,t,prec);
   inter_sinc_cos(ip_tmp3,ip_tmp4,t,prec);
+  if(debug)
+    {
+      printf("Lambda(t) = ");arb_printd(ip_tmp1,20);
+      printf("\nGuassian = ");arb_printd(ip_tmp2,20);
+      printf("\nsinc = ");arb_printd(ip_tmp3,20);
+    }
   // compute f_res
   arb_mul(ip_tmp2,ip_tmp1,ip_tmp2,prec); //f*exp
   arb_mul(f_res,ip_tmp2,ip_tmp3,prec); //f*exp*sinc
+  if(debug)
+    {
+      printf("\n Inter_point returning ");
+      arb_printd(f_res,20);
+      printf("\n");
+    }
   // compute fd_res
   if(!fd_res)
     return;
@@ -627,25 +641,36 @@ void inter_t(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t_ptr, int64_t
       arb_init(inter_tmp2);
     }
   int i,j,nearest_t0;
-  //printf("In inter_t\n");
+  if(debug) printf("In inter_t\n");
   double t0_d=arb_get_d(t_ptr),dt0;
   arb_set_si(inter_tmp,t0_d);
   if(arb_equal(t_ptr,inter_tmp)) // t_ptr is integral so = a lattice pt
     nearest_t0=t0_d+1.5;
   else
     nearest_t0=t0_d+0.5;
-  //printf("Nearest t0=%ld\n",nearest_t0);
+  if(debug) printf("Nearest t0=%ld\n",nearest_t0);
   arb_zero(f_res);
   if (fd_res) arb_zero(fd_res);
   sincp=true;
   if(nearest_t0>t0_d) // start from right of t0
     {
+      if(debug) printf("Starting from right.\n");
       for(i=nearest_t0,j=0;j<Ns;i+=INTER_SPACING,j++)
 	{
 	  arb_sub_ui(inter_tmp,t_ptr,i,prec);
 	  arb_mul_d(inter_tmp,inter_tmp,-one_over_A,prec);
 	  inter_point(inter_tmp1,inter_tmp2,f_vec,inter_tmp,i,prec);
 	  arb_add(f_res,f_res,inter_tmp1,prec);
+	  if(debug)
+	    {
+	      printf("i=%d\nptr=",i);
+	      arb_printd(inter_tmp,20);
+	      printf("\nPoint returned ");
+	      arb_printd(inter_tmp1,20);
+	      printf("\nsum now ");
+	      arb_printd(f_res,20);
+	      printf("\n");
+	    }
 	  if (fd_res) arb_add(fd_res,fd_res,inter_tmp2,prec);
 	}
       sincp=true;
@@ -655,11 +680,22 @@ void inter_t(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t_ptr, int64_t
 	  arb_mul_d(inter_tmp,inter_tmp,-one_over_A,prec);
 	  inter_point(inter_tmp1,inter_tmp2,f_vec,inter_tmp,i,prec);
 	  arb_add(f_res,f_res,inter_tmp1,prec);
+	  if(debug)
+	    {
+	      printf("i=%d\nptr=",i);
+	      arb_printd(inter_tmp,20);
+	      printf("\nPoint returned ");
+	      arb_printd(inter_tmp1,20);
+	      printf("\nsum now ");
+	      arb_printd(f_res,20);
+	      printf("\n");
+	    }
 	  if (fd_res) arb_add(fd_res,fd_res,inter_tmp2,prec);
 	}
     }
   else // start from left
     {
+      if(debug) printf("Starting from left.\n");
       for(i=nearest_t0+INTER_SPACING,j=0;j<Ns;i+=INTER_SPACING,j++)
 	{
 	  //printf("Doing right tail with i=%d\n",i);
@@ -670,6 +706,16 @@ void inter_t(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t_ptr, int64_t
 	  inter_point(inter_tmp1,inter_tmp2,f_vec,inter_tmp,i,prec);
 	  //arf_printf("ip returned %.40Re\n",inter_tmp1);
 	  arb_add(f_res,f_res,inter_tmp1,prec);
+	  if(debug)
+	    {
+	      printf("i=%d\nptr=",i);
+	      arb_printd(inter_tmp,20);
+	      printf("\nPoint returned ");
+	      arb_printd(inter_tmp1,20);
+	      printf("\nsum now ");
+	      arb_printd(f_res,20);
+	      printf("\n");
+	    }
 	  //
 	  if (fd_res) arb_add(fd_res,fd_res,inter_tmp2,prec);
 	  //
@@ -681,6 +727,16 @@ void inter_t(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t_ptr, int64_t
 	  arb_mul_d(inter_tmp,inter_tmp,-one_over_A,prec);
 	  inter_point(inter_tmp1,inter_tmp2,f_vec,inter_tmp,i,prec);
 	  arb_add(f_res,f_res,inter_tmp1,prec);
+	  if(debug)
+	    {
+	      printf("i=%d\nptr=",i);
+	      arb_printd(inter_tmp,20);
+	      printf("\nPoint returned ");
+	      arb_printd(inter_tmp1,20);
+	      printf("\nsum now ");
+	      arb_printd(f_res,20);
+	      printf("\n");
+	    }
 	  if (fd_res) arb_add(fd_res,fd_res,inter_tmp2,prec);
 	}
     }
@@ -810,37 +866,127 @@ void varphi(acb_t res, acb_t x, int64_t prec)
     }
 
   acb_mul_arb(ctmp1,x,pi2,prec);
-  acb_cot(ctmp2,ctmp1,prec); // cot(x pi/2)
+  acb_coth(ctmp2,ctmp1,prec); // cot(x pi/2)
   acb_mul(res,ctmp2,ctmp1,prec); // x pi/2 cot(x pi/2)
 }
 
-arb_t sum1,sum2,sum3;//,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
+arb_t max_zetap,min_zetap,max_gamma,min_gamma;
 
-// compute 1/zeta'(s) for s=1/2+i gamma
-// checks that 1/2+i gamma is a zero of zeta
-void do_rho(arb_t gamma, arb_t lamd, arb_t t0, int64_t prec)
+void max_min_zetap(arb_t zetap, arb_t gamma, int64_t prec)
 {
-  static acb_struct *zeta;
-  static acb_t s,ctmp1,ctmp2;
-  static arb_t tmp1,tmp2,tmp3,s_abs,t1,t2;
   static bool init=false;
+  static arb_t tmp;
   if(!init)
     {
       init=true;
-      zeta=(acb_struct *)malloc(sizeof(acb_t)*2);
-      acb_init(zeta);acb_init(zeta+1);acb_init(s);acb_init(ctmp1);acb_init(ctmp2);
+      arb_init(tmp);
+      arb_init(max_zetap); // init to 0
+      arb_init(min_zetap);
+      arb_set_ui(min_zetap,UWORD_MAX); // very large
+      arb_init(max_gamma);
+      arb_init(min_gamma);
+    }
+  arb_sub(tmp,max_zetap,zetap,prec);
+  if(arb_is_negative(tmp))
+    {
+      arb_set(max_zetap,zetap);
+      arb_set(max_gamma,gamma);
+      return;
+    }
+  else
+    {
+      if(!arb_is_positive(tmp))
+	{
+	  printf("Warning. zetap = ");arb_printd(zetap,20);
+	  printf(" and max_zetap = ");arb_printd(max_zetap,20);
+	  printf(" overlap at gamma = ");arb_printd(gamma,20);printf("\n");
+	}
+    }
+  arb_sub(tmp,zetap,min_zetap,prec);
+  if(arb_is_negative(tmp))
+    {
+      arb_set(min_zetap,zetap);
+      arb_set(min_gamma,gamma);
+    }
+  else
+    {
+      if(!arb_is_positive(tmp))
+	{
+	  printf("Warning. zetap = ");arb_printd(zetap,20);
+	  printf(" and min_zetap = ");arb_printd(min_zetap,20);
+	  printf(" overlap at gamma = ");arb_printd(gamma,20);printf("\n");
+	}
+    }
+}  
+  
+arb_t sum1,sum2,sum3,sum4,sum5;//,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
+
+// 1/2+i gamma = rho
+// zetap = zeta'(rho)
+void do_rho(arb_t gamma, arb_t zetap, arb_t t0, int64_t prec)
+{
+  static acb_t s,z,ctmp1;
+  static arb_t tmp1,inv_s_abs,inv_zetap,den,varp,t1,t2;
+  static bool init=false;
+  if(!init)
+    {
+      init=true;acb_init(s);acb_init(z);acb_init(ctmp1);
       arb_set_d(acb_realref(s),0.5);
-      arb_init(tmp1);arb_init(tmp2);arb_init(tmp3);
-      arb_init(s_abs);
-      arb_init(t1);
-      arb_init(t2);
+      arb_init(tmp1);arb_init(inv_s_abs);arb_init(den);arb_init(varp);
+      arb_init(inv_zetap);arb_init(t1);arb_init(t2);
       arb_mul_2exp_si(t1,t0,-1);
       arb_div_ui(t2,t0,10,prec);
       arb_init(sum1);
       arb_init(sum2);
       arb_init(sum3);
+      arb_init(sum4);
+      arb_init(sum5);
     }
 
+
+  max_min_zetap(zetap,gamma,prec);
+  
+  arb_set(acb_imagref(s),gamma);
+  acb_abs(tmp1,s,prec);
+  arb_inv(inv_s_abs,tmp1,prec); // |1/rho|
+  
+  arb_inv(inv_zetap,zetap,prec); // 1/|zeta'|
+  arb_add(sum4,sum4,inv_zetap,prec);
+  arb_mul(den,inv_zetap,inv_s_abs,prec); // 1/|zeta'(rho) rho|
+  arb_add(sum5,sum5,den,prec);
+  
+  acb_sub_ui(ctmp1,s,1,prec); // rho-1
+  acb_div_onei(ctmp1,ctmp1); // (rho-1)/i
+  acb_div_arb(z,ctmp1,t0,prec); // (rho-1)/(t0 i)
+  
+  // first with t0 into sum1
+  varphi(ctmp1,z,prec);
+  acb_abs(varp,ctmp1,prec); // |varphi(z)|
+  arb_mul(tmp1,varp,den,prec); // 1/|zeta' rho|
+  arb_add(sum1,sum1,tmp1,prec);
+
+  arb_sub(tmp1,gamma,t1,prec);
+  if(arb_is_positive(tmp1))
+    return;
+
+  // now with t1 into sum2
+  acb_mul_2exp_si(z,z,1); // (rho-1)/(t0/2 i)
+  varphi(ctmp1,z,prec);
+  acb_abs(varp,ctmp1,prec); // |varphi(z)|
+  arb_mul(tmp1,varp,den,prec); // 1/|zeta' rho|
+  arb_add(sum2,sum2,tmp1,prec);
+
+  arb_sub(tmp1,gamma,t2,prec);
+  if(arb_is_positive(tmp1))
+    return;
+  acb_mul_ui(z,z,5,prec); // (rho-1)/(t0/10 i)
+  varphi(ctmp1,z,prec);
+  acb_abs(varp,ctmp1,prec); // |varphi(z)|
+  arb_mul(tmp1,varp,den,prec); // 1/|zeta' rho|
+  arb_add(sum3,sum3,tmp1,prec);
+
+  
+  /*
   prec=prec/2;
   arb_set(acb_imagref(s),gamma);
   acb_abs(s_abs,s,prec);
@@ -851,8 +997,7 @@ void do_rho(arb_t gamma, arb_t lamd, arb_t t0, int64_t prec)
   // first with t0 into sum1
   varphi(ctmp1,ctmp2,prec);
   acb_abs(tmp1,ctmp1,prec);
-  arb_abs(tmp2,lamd);
-  arb_mul(tmp3,tmp2,s_abs,prec);
+  arb_mul(tmp3,zetad,s_abs,prec);
   arb_div(tmp2,tmp1,tmp3,prec);
   arb_add(sum1,sum1,tmp2,prec);
   //printf("Zero at ");arb_printd(gamma,10);printf(" contributed ");arb_printd(tmp3,10);printf(" with weight ");arb_printd(tmp1,10);printf("\n");
@@ -863,9 +1008,9 @@ void do_rho(arb_t gamma, arb_t lamd, arb_t t0, int64_t prec)
   // now with t1 into sum2
   acb_mul_2exp_si(ctmp2,ctmp2,1); // (rho-1)/(t0/2 i)
   varphi(ctmp1,ctmp2,prec);
+  //printf("varphi returned ");acb_printd(ctmp1,20);printf("\n");
   acb_abs(tmp1,ctmp1,prec);
-  acb_abs(tmp2,zeta+1,prec);
-  arb_mul(tmp3,tmp2,s_abs,prec);
+  arb_mul(tmp3,zetad,s_abs,prec);
   arb_div(tmp2,tmp1,tmp3,prec);
   arb_add(sum2,sum2,tmp2,prec);
 
@@ -875,10 +1020,10 @@ void do_rho(arb_t gamma, arb_t lamd, arb_t t0, int64_t prec)
   acb_mul_ui(ctmp2,ctmp2,5,prec); // (rho-1)/(t0/10 i)
   varphi(ctmp1,ctmp2,prec);
   acb_abs(tmp1,ctmp1,prec);
-  acb_abs(tmp2,zeta+1,prec);
-  arb_mul(tmp3,tmp2,s_abs,prec);
+  arb_mul(tmp3,zetad,s_abs,prec);
   arb_div(tmp2,tmp1,tmp3,prec);
   arb_add(sum3,sum3,tmp2,prec);
+  */
 }
 
 
@@ -931,11 +1076,8 @@ int main(int argc, char **argv)
   arb_init(gamma);arb_init(a_t);arb_init(del_t);
   arb_init(res);arb_init(ptr);arb_init(pm1);
   arb_init(resd);
-  bool done=false;
   for(i=0,t=one_over_A;i<int_step/2+Ns*INTER_SPACING;t+=one_over_A,i++)
     {
-      if(!done)
-	break;
       arb_init(exps1[i]);
       arb_set_d(exps1[i],t);
       arb_div_d(exps1[i],exps1[i],h,prec);
@@ -943,9 +1085,12 @@ int main(int argc, char **argv)
       arb_mul_2exp_si(exps1[i],exps1[i],-1);
       arb_exp(exps1[i],exps1[i],prec);
     }
-  
+
+  bool done=false;
   for(long int it=0;it<num_its;it++)
     {
+      if(done)
+	break;
       rval=fread(st,sizeof(double),2,zfile); // starting/ending t, exact
       rval=fread(zs,sizeof(long int),1,zfile); // starting zero number
       if(st[0]==0.0)
@@ -956,7 +1101,7 @@ int main(int argc, char **argv)
 
       
       rval=fread(zs+1,sizeof(long int),1,zfile); // ending zero number
-      printf("processing zeros %ld to %ld inclusive\n",zs[0]+1,zs[1]);
+      //printf("processing zeros %ld to %ld inclusive\n",zs[0]+1,zs[1]);
       //printf("doing t from %f to %f zeros from %ld to %ld\n",st[0],st[1],zs[0],zs[1]);
       t0=st[0];
       if(t0<T0_MIN)
@@ -1077,30 +1222,10 @@ int main(int argc, char **argv)
       
       arb_div_d(acb_realref(f_vec[N/2]),acb_realref(f_vec[N/2]),B,prec);
       arb_add(acb_realref(f_vec[N/2]),acb_realref(f_vec[N/2]),acb_realref(ftwiderr),prec);
-      /*
-      for(i=0;i<10;i++)
-	{
-	  printf("t=%20.18e ",t0+(double)(i-int_step/2)*one_over_A);
-	  arb_printd(acb_realref(f_vec[N/2+i-int_step/2]),20);
-	  printf("\n");
-	}
-      printf("\nt=%20.18e ",t0);
-      arb_printd(acb_realref(f_vec[N/2]),20);
-      printf("\n\n");
 
-      for(i=0;i<10;i++)
-	{
-	  printf("t=%20.18e ",t0+(double)(i+int_step/2)*one_over_A);
-	  arb_printd(acb_realref(f_vec[N/2+i+int_step/2]),20);
-	  printf("\n");
-	}
-      */
-
-      /*
-      last_max=turing(f_vec,N/2-int_step/2,t0-int_step/2*one_over_A,N/2+int_step/2,t0+int_step/2*one_over_A,last_max,prec);
-      this_time=time(NULL);
-      printf("Time to isolate zeros = %G seconds.\n",difftime(this_time,last_time));
-      */
+      // f_vec now contains Lam(t) = Pi^(-it/2) Gamma(1/4+it/2) zeta(1/2+it)
+      // with t =n/A+t0, n=-N/2..N/2-1
+      // so f_vec[N/2] contains Lam(t0)
 
       arb_set_d(a_t,st[0]);
       for(long int z=zs[0]+1;z<=zs[1];z++)
@@ -1131,12 +1256,13 @@ int main(int argc, char **argv)
 	  if(!arb_contains_zero(res))
 	    {
 	      printf("Interpolation returned non-zero. Exiting.\n");
-	      printf("Zero at ");arb_printd(a_t,50);
+	      printf("Zero %ld at ",z);arb_printd(gamma,70);
 	      printf("\npointer set to ");arb_printd(ptr,20);
 	      printf("\nLambda = ");arb_printd(resd,20);printf("\n");
 	      return 0;
 	    }
 	  lam_to_zeta(res,resd,gamma,prec);
+	  arb_abs(res,res);
 	  do_rho(gamma,res,arb_T0,prec);
 	  //printf("\nzeta'(t) ");arb_printd(res,20);printf("\n");
 	}
@@ -1146,28 +1272,27 @@ int main(int argc, char **argv)
 
   fclose(zfile);
 
-    printf("sum t0=%f ",(double) t0);arb_printd(sum1,20);
+  printf("sum (t0=%f) ",(double) T0);arb_printd(sum1,20);
   //printf("\nsum 1a ");arb_printd(sum1a,20);
   //printf("\nsum 1b ");arb_printd(sum1b,20);
-  printf("\nsum t0=%f ",(double) t0 / 2.0);arb_printd(sum2,20);
+  printf("\nsum (t0=%f) ",(double) T0 / 2.0);arb_printd(sum2,20);
   //printf("\nsum 2a ");arb_printd(sum2a,20);
   //printf("\nsum 2b ");arb_printd(sum2b,20);
-  printf("\nsum t0=%f ",(double) t0 / 10.0);arb_printd(sum3,20);
-  //printf("\nsum 3a ");arb_printd(sum3a,20);
-  //printf("\nsum 3b ");arb_printd(sum3b,20);
+  printf("\nsum (t0=%f) ",(double) T0 / 10.0);arb_printd(sum3,20);
+  printf("\nsum 1/|zeta'| ");arb_printd(sum4,20);
+  printf("\nsum 1/|rho zeta'| ");arb_printd(sum5,20);
+  printf("\nMax zeta' = ");arb_printd(max_zetap,20);
+  printf(" seen at ");arb_printd(max_gamma,20);printf("\n");
+  printf("Min zeta' = ");arb_printd(min_zetap,20);
+  printf(" seen at ");arb_printd(min_gamma,20);printf("\n");
+  printf("\n");
+
   arb_dump_file(stdout,sum1);printf("\n");
-  //arb_dump_file(stdout,sum1a);printf("\n");
-  //arb_dump_file(stdout,sum1b);printf("\n");
   arb_dump_file(stdout,sum2);printf("\n");
-  //arb_dump_file(stdout,sum2a);printf("\n");
-  //arb_dump_file(stdout,sum2b);printf("\n");
   arb_dump_file(stdout,sum3);printf("\n");
-  //arb_dump_file(stdout,sum3a);printf("\n");
-  //arb_dump_file(stdout,sum3b);printf("\n");
-
-
-
-
+  arb_dump_file(stdout,sum4);printf("\n");
+  arb_dump_file(stdout,sum5);printf("\n");
+  
   
   return 0;
 }
