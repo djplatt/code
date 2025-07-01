@@ -8,6 +8,8 @@ harald/jan_2025/unweighted
 harald/jan_2025/test
 harald/jan_2025/residue_sums_nofft
 harald/jan_2025/residue_sums_fft
+harald/jan_2025/data_no_fft
+harald/jan_2025/*.sh
 briggs/parallel/parallel
 ethan/n_minus_prime_square/sieve
 maciej/maciej
