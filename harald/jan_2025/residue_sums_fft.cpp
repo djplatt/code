@@ -52,6 +52,7 @@ int HI_PREC;
 #define H ((double) 2089.0/16384.0) // Gaussian width for upsampling
 #define INTER_SPACING (5) // Use every 5th sample
 #define intererr_d ((double) 5.0e-41)
+#define interderr_d ((double) 2.9e-39)
 #define INTER_A ((double) INTER_SPACING*one_over_A)
 
 /*
@@ -180,7 +181,7 @@ arb_t arb_pi,arb_ln_pi,arb_2_pi,A,A1,two_pi_t[N1],s_vec[M],sk_vec[M],exps[N1],sq
 acb_t g_vec[N1],G_vec[N1],f_vec[N],skn_vec[N1],ws_r[N/4],ws1_r[N1/2],ws1_f[N1/2],n_vec[M];
 acb_t gtwiderr,Gtwiderr,c_tmp,fhatsumerr,fhattwiderr,ftwiderr,tayerr,Fmaxerr;
 int buck[M]; // which bucket does log(nsqrt(Pi)/2pi) go in.
-arb_t intererr;
+arb_t intererr,interderr;
 arf_t ip_tmp1,ip_tmp2,ip_tmp3,ip_tmp4;
 arf_t two_101,offset;
 arb_t msinc_tmp,arb_two_pi_B,mip_tmp,minter_tmp,minter_tmp1;
@@ -388,6 +389,7 @@ void init(double t0,int64_t prec)
   set_err(tayerr,tayerr_d);
   set_err(Fmaxerr,Fmaxerr_d);
   set_err(intererr,intererr_d);
+  set_err(interderr,interderr_d);
 
   arb_set_ui(A,M);
   arb_sqrt(A,A,prec);
@@ -741,6 +743,7 @@ void inter_t(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t_ptr, int64_t
 	}
     }
   arb_add_error(f_res,intererr);
+  if (fd_res) arb_add_error(fd_res,interderr);
 }
 
 void inter_t(arb_ptr f_res, acb_t *f_vec, arb_ptr t_ptr, int64_t prec)
@@ -866,7 +869,7 @@ void varphi(acb_t res, acb_t x, int64_t prec)
     }
 
   acb_mul_arb(ctmp1,x,pi2,prec);
-  acb_coth(ctmp2,ctmp1,prec); // cot(x pi/2)
+  acb_cot(ctmp2,ctmp1,prec); // cot(x pi/2)
   acb_mul(res,ctmp2,ctmp1,prec); // x pi/2 cot(x pi/2)
 }
 
@@ -919,7 +922,7 @@ void max_min_zetap(arb_t zetap, arb_t gamma, int64_t prec)
     }
 }  
   
-arb_t sum1,sum2,sum3,sum4,sum5;//,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
+arb_t sum1,sum2,sum3,sum4,sum5,sum6;//,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
 
 // 1/2+i gamma = rho
 // zetap = zeta'(rho)
@@ -941,10 +944,12 @@ void do_rho(arb_t gamma, arb_t zetap, arb_t t0, int64_t prec)
       arb_init(sum3);
       arb_init(sum4);
       arb_init(sum5);
+      arb_init(sum6);
     }
 
 
   max_min_zetap(zetap,gamma,prec);
+
   
   arb_set(acb_imagref(s),gamma);
   acb_abs(tmp1,s,prec);
@@ -954,6 +959,8 @@ void do_rho(arb_t gamma, arb_t zetap, arb_t t0, int64_t prec)
   arb_add(sum4,sum4,inv_zetap,prec);
   arb_mul(den,inv_zetap,inv_s_abs,prec); // 1/|zeta'(rho) rho|
   arb_add(sum5,sum5,den,prec);
+  arb_mul(tmp1,den,inv_s_abs,prec); // 1/|zeta'(rho) rho^2|
+  arb_add(sum6,sum6,tmp1,prec);
   
   acb_sub_ui(ctmp1,s,1,prec); // rho-1
   acb_div_onei(ctmp1,ctmp1); // (rho-1)/i
@@ -1042,6 +1049,7 @@ int main(int argc, char **argv)
   for(uint64_t i=0;i<argc;i++)
     printf(" %s",argv[i]);
   printf("\n");
+  fflush(stdout);
   if(argc!=4)
     {
       printf("Usage:- %s <zeros file> <T0> <prec>\nExiting.\n",argv[0]);
@@ -1239,7 +1247,7 @@ int main(int argc, char **argv)
 	  arb_add(a_t,a_t,del_t,prec); // exact
 	  if(!arb_is_exact(a_t))
 	    {
-	      printf("Insufficient precision to hold zeros to +/-2^-%lu. Exiting.\n",OP_ACC+1);
+	      printf("Insufficient precision to hold zeros to +/-2^-%u. Exiting.\n",OP_ACC+1);
 	      printf("\nzero centred at ");arb_printd(a_t,20);printf("\n");
 	      return 0;
 	    }
@@ -1281,6 +1289,7 @@ int main(int argc, char **argv)
   printf("\nsum (t0=%f) ",(double) T0 / 10.0);arb_printd(sum3,20);
   printf("\nsum 1/|zeta'| ");arb_printd(sum4,20);
   printf("\nsum 1/|rho zeta'| ");arb_printd(sum5,20);
+  printf("\nsum 1/|rho^2 zeta'| ");arb_printd(sum6,20);
   printf("\nMax zeta' = ");arb_printd(max_zetap,20);
   printf(" seen at ");arb_printd(max_gamma,20);printf("\n");
   printf("Min zeta' = ");arb_printd(min_zetap,20);
@@ -1292,6 +1301,7 @@ int main(int argc, char **argv)
   arb_dump_file(stdout,sum3);printf("\n");
   arb_dump_file(stdout,sum4);printf("\n");
   arb_dump_file(stdout,sum5);printf("\n");
+  arb_dump_file(stdout,sum6);printf("\n");
   
   
   return 0;

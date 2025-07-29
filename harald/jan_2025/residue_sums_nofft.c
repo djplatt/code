@@ -68,7 +68,7 @@ void varphi(acb_t res, acb_t x, int64_t prec)
     }
 
   acb_mul_arb(ctmp1,x,pi2,prec);
-  acb_coth(ctmp2,ctmp1,prec); // coth(x pi/2)
+  acb_cot(ctmp2,ctmp1,prec); // cot(x pi/2)
   acb_mul(res,ctmp2,ctmp1,prec); // x pi/2 cot(x pi/2)
 }
 
@@ -123,7 +123,7 @@ void max_min_zetap(arb_t zetap, arb_t gamma, int64_t prec)
 }  
 
 
-arb_t sum1,sum2,sum3,sum4,sum5;//,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
+arb_t sum1,sum2,sum3,sum4,sum5,sum6;//,sum1a,sum2a,sum3a,sum1b,sum2b,sum3b;
 
 // compute 1/zeta'(s) for s=1/2+i gamma
 // checks that 1/2+i gamma is a zero of zeta
@@ -171,6 +171,9 @@ void do_rho(arb_t gamma, arb_t t0, int64_t prec)
   arb_add(sum4,sum4,inv_zetap,prec);
   arb_mul(den,inv_zetap,inv_s_abs,prec); // 1/|zeta'(rho) rho|
   arb_add(sum5,sum5,den,prec);
+  arb_mul(tmp1,den,inv_s_abs,prec); // 1/|zeta'(rho) rho^2|
+  arb_add(sum6,sum6,tmp1,prec);
+
   
   acb_sub_ui(ctmp1,s,1,prec); // rho-1
   acb_div_onei(ctmp1,ctmp1); // (rho-1)/i
@@ -180,7 +183,7 @@ void do_rho(arb_t gamma, arb_t t0, int64_t prec)
   varphi(ctmp1,z,prec);
   acb_abs(varp,ctmp1,prec); // |varphi(z)|
   //printf("|varphi| = ");arb_printd(varp,20);printf("\n");
-  arb_mul(tmp1,varp,den,prec); // 1/|zeta' rho|
+  arb_mul(tmp1,varp,den,prec); // varp/|zeta' rho|
   arb_add(sum1,sum1,tmp1,prec);
 
   arb_sub(tmp1,gamma,t1,prec);
@@ -243,6 +246,7 @@ int main(int argc, char **argv)
   arb_init(sum3);//arb_init(sum3a);arb_init(sum3b);
   arb_init(sum4);// sum 1/zeta'(rho)
   arb_init(sum5);// sum 1/|rho zeta'(rho)|
+  arb_init(sum6);
   
   arb_init(gamma);arb_init(pm1);arb_init(del_t);arb_init(t);
   //acb_init(res);
@@ -305,6 +309,7 @@ int main(int argc, char **argv)
   printf("\nsum (t0=%f) ",(double) t0 / 10.0);arb_printd(sum3,20);
   printf("\nsum 1/|zeta'| ");arb_printd(sum4,20);
   printf("\nsum 1/|rho zeta'| ");arb_printd(sum5,20);
+  printf("\nsum 1/|rho^2 zeta'| ");arb_printd(sum6,20);
   printf("\nMax zeta' = ");arb_printd(max_zetap,20);
   printf(" seen at ");arb_printd(max_gamma,20);printf("\n");
   printf("Min zeta' = ");arb_printd(min_zetap,20);
@@ -323,6 +328,7 @@ int main(int argc, char **argv)
   arb_dump_file(stdout,sum3);printf("\n");
   arb_dump_file(stdout,sum4);printf("\n");
   arb_dump_file(stdout,sum5);printf("\n");
+  arb_dump_file(stdout,sum6);printf("\n");
   //arb_dump_file(stdout,sum3a);printf("\n");
   //arb_dump_file(stdout,sum3b);printf("\n");
 
