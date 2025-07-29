@@ -301,11 +301,7 @@ int main(int argc, char **argv)
 	}
     }
   printf("sum (t0=%f) ",(double) t0);arb_printd(sum1,20);
-  //printf("\nsum 1a ");arb_printd(sum1a,20);
-  //printf("\nsum 1b ");arb_printd(sum1b,20);
   printf("\nsum (t0=%f) ",(double) t0 / 2.0);arb_printd(sum2,20);
-  //printf("\nsum 2a ");arb_printd(sum2a,20);
-  //printf("\nsum 2b ");arb_printd(sum2b,20);
   printf("\nsum (t0=%f) ",(double) t0 / 10.0);arb_printd(sum3,20);
   printf("\nsum 1/|zeta'| ");arb_printd(sum4,20);
   printf("\nsum 1/|rho zeta'| ");arb_printd(sum5,20);
@@ -316,21 +312,13 @@ int main(int argc, char **argv)
   printf(" seen at ");arb_printd(min_gamma,20);printf("\n");
   printf("\n");
 
-  //printf("\nsum 3a ");arb_printd(sum3a,20);
-  //printf("\nsum 3b ");arb_printd(sum3b,20);
   printf("\nWe processed %ld zeros.\n",n_zeros);
   arb_dump_file(stdout,sum1);printf("\n");
-  //arb_dump_file(stdout,sum1a);printf("\n");
-  //arb_dump_file(stdout,sum1b);printf("\n");
   arb_dump_file(stdout,sum2);printf("\n");
-  //arb_dump_file(stdout,sum2a);printf("\n");
-  //arb_dump_file(stdout,sum2b);printf("\n");
   arb_dump_file(stdout,sum3);printf("\n");
   arb_dump_file(stdout,sum4);printf("\n");
   arb_dump_file(stdout,sum5);printf("\n");
   arb_dump_file(stdout,sum6);printf("\n");
-  //arb_dump_file(stdout,sum3a);printf("\n");
-  //arb_dump_file(stdout,sum3b);printf("\n");
 
   
   return 0;
