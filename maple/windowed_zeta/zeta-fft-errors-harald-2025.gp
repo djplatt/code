@@ -5,8 +5,8 @@
    windowed FFT based Zeta calculator
 */
 
-MIN_T0=5000
 MIN_T01=1000 /* used in inter error calc because MIN_T0 causes underflow */
+MIN_T0=5000
 /* x is maximum width of approximation = 1/(2B)
    h
    k
@@ -14,14 +14,14 @@ MIN_T01=1000 /* used in inter error calc because MIN_T0 causes underflow */
 
 lngerr(m,z)=abs(bernfrac(2*m))*2^m/(2*m*(2*m-1)*abs(z)^(2*m-1))
 
-tayerr(x,h,k)=
+tayerr(x,h,k,M)=
 {
-   return(2^((k+5)/2)*Pi^(k+1/2)*h^(k+1)*x^k/gamma((k+2)/2))
+   return((2*sqrt(M)-1)*2^((k+5)/2)*Pi^(k+1/2)*h^(k+1)*x^k/gamma((k+2)/2))
 }
 
 /* Don't call this with very large sig */
 
-C(sig,t0,h,k)=
+C1(sig,t0,h,k)=
 {
    local(s3,s2,c1,sm,tm,m);
 
@@ -38,24 +38,42 @@ C(sig,t0,h,k)=
    return(c1*sm);
 }
 
+/* as per math comp paper */
+CC(sig,t0,h,k)=
+{
+  local(X,Y);
+
+  Y=2^((6*k+5-sig)/4)*Pi^k*exp((1+2*sqrt(2))/(6*t0))*(sig+1/2)^k*(sig+1/2+t0)^((sig-1)/2)*h;
+  X=sum(l=0,(sig-1)/2,binomial((sig-1)/2,l)*2^((k+l-1)/2)*h^(k+l+1)+t0^((sig-1-l-l)/2)*incgam((k+l+1)/2,(sig+1/2)^2/2/h^2));
+  return(Y+X*2^((6*k+7-sig)/4)*Pi^((2*k-1)/2)*exp((1+2*sqrt(2))/(6*t0)));
+}
+
+/* As per TST 19/5/17 */
+C(sig,t0,h,k)=
+{
+  local(X,Y);
+
+  Y=2^((1-sig)/4)*2^((6*k+5-sig)/4)*Pi^k*exp((1+2*sqrt(2))/(6*t0))*(sig+1/2)^k*(sig+1/2+t0)^((sig-1)/2)*h;
+  X=2^((1-sig)/4)*sum(l=0,(sig-1)/2,binomial((sig-1)/2,l)*2^((k+l-1)/2)*h^(k+l+1)+t0^((sig-1-l-l)/2)*incgam((k+l+1)/2,(sig+1/2)^2/2/h^2));
+  return(Y+X*2^((6*k+7-sig)/4)*Pi^((2*k-1)/2)*exp(sig^2/t0^2+(1+2*sqrt(2))/(6*t0)));
+}
+
 
 /* returns error/k! */
+/* should we use t0-B/2 in place of MIN_T0? */
 Gtwiderr(A,sig,t0,h,k)=
 {
-  local(s2,s3);
+  local(S,s2,s3);
 
   s2=sig+sig-1;
   s3=sig+sig+1;
 
   l=0;
-  tm=0.0;
-  while(l<=(sig-1)/2,
-     tm=tm+(1+1/(A*Pi*(4*l+1)))*((4*l+1)^2+t0^2)^(k/2)/l!*exp((4*l+1)^2/(8*h*h)-A*Pi*(4*l+1)/2);
-     l=l+1);
-  tm=tm*2^(k+3)*Pi^(k+1);
-  tm=exp(log(tm)-MIN_T0*MIN_T0/(2*h^2));
+  S=sum(l=0,(sig-1)/2,(1+1/(A*Pi*(2*l+1)))*((4*l+1)^2+t0^2)^(k/2)/l!*exp((4*l+1)^2/(8*h*h)-A*Pi*(4*l+1)/2));
+  S=S*2^(k+3)*Pi^(k+1);
+  S=myexp(log(S)-MIN_T0*MIN_T0/(2*h^2));
 
-  return((2*(1+1/(A*Pi*s2))*C(sig,t0,h,k)*exp(s3^2/(8*h^2)-A*Pi*s2/2)+tm)/k!);
+  return((2*(1+1/(A*Pi*s2))*C(sig,t0,h,k)*exp(s3^2/(8*h^2)-A*Pi*s2/2)+S)/gamma(k+1));
 }
 
 
@@ -66,8 +84,8 @@ maxGtwiderr(A,t0,h,K)=
    for(k=0,K-1,
       sig=3;
       tp=Gtwiderr(A,3,t0,h,k);
-      while((sig < 99),
-         sig=sig+2;
+      while((sig < 999),
+         sig=sig+20;
 /*         print("in maxGtwiderr with sig=",sig); */
          ttp=Gtwiderr(A,sig,t0,h,k);
          if(ttp<tp,tp=ttp););
@@ -100,13 +118,15 @@ maxgtwiderr(B,h,K)=
    return(mx);
 }
 
+myexp(x)=if(x<-1000,5.1e-435,exp(x));
+
 /* error taking M terms in sum for f^ */
 fhatsumerr(M,sig,t0,h)=
 {
    local(s2,resid);
 
    s2=sig+sig-1;
-   resid=2*Pi^1.25*exp(1/(8*h^2)-MIN_T0*MIN_T0/(2*h^2));
+   resid=2*Pi^1.25*myexp(1/(8*h^2)-MIN_T0*MIN_T0/(2*h^2));
 
    return(resid+C(sig,t0,h,0)*exp(s2^2/(8*h^2))*Pi^(s2*(-0.25))*M^(1-sig)/(sig-1));
 }
@@ -114,11 +134,11 @@ fhatsumerr(M,sig,t0,h)=
 bestfhatsumerr(M,t0,h)=
 {
    local(sig,best_err,err);
-
+   /*printf("In bestfhatsumerr with M=%d t0=%d h=%d\n",M,t0,h);*/
    sig=3;
    best_err=fhatsumerr(M,sig,t0,h);
-   while(sig<5000,
-         sig=sig+100;
+   while(sig<2000,
+         sig=sig+20;
          err=fhatsumerr(M,sig,t0,h);
          if(err<best_err,best_err=err););
    return(best_err);
@@ -129,7 +149,7 @@ fhattwiderr(sig,t0,h,A)=
   local(ts);
   ts=sig+sig-1;
 
-  return(4*Pi^1.25*exp((1-4*MIN_T0*MIN_T0)/(8*h^2)-Pi*A/2)*(1+1/(Pi*A))+2*zeta(sig)*Pi^(-ts/4)*C(sig,t0,h,0)*exp(ts^2/(8*h^2)-A*Pi*ts/2)*(1+1/(A*Pi*ts)));
+  return(4*Pi^1.25*myexp((1-4*MIN_T0*MIN_T0)/(8*h^2)-Pi*A/2)*(1+1/(Pi*A))+2*zeta(sig)*Pi^(-ts/4)*C(sig,t0,h,0)*exp(ts^2/(8*h^2)-A*Pi*ts/2)*(1+1/(A*Pi*ts)));
 }
 
 myerfc(x)=
@@ -157,7 +177,7 @@ inter_err1(Ns,A,t0,H)=
    if(t0<100,print("I use t0=100 in int_err1."));
    if(t0<=exp(exp(1)),print("t0 too small in inter_err1."));
    if(Ns/A>t0,print("t0 too small in inter_err1."));
-   bet=1/6+log(log(t0))/log(t0)-1/4;
+   bet=log(log(t0))/log(t0);
    /*print("beta="bet);*/
    if(Ns/A<bet*H*H/t0,print("Ns/A too small in inter_err1."));
    X=A/Ns*(Ns/A+t0)^bet*exp(-Ns*Ns/(2*A^2*H^2));
@@ -167,7 +187,7 @@ inter_err1(Ns,A,t0,H)=
    /*print("Y=",Y);*/
    Z=2^(bet/2)*H^bet*incgam(bet/2,MIN_T01*MIN_T01/H^2);
    /*print("Z=",Z);*/
-   return(6/Pi*(X+2^(bet-1)*(Y+Z)));
+   return(24/Pi*(X+2^(bet-1)*(Y+Z)));
 }
 
 
@@ -183,6 +203,19 @@ inter_err2(sig,t0,A,H)=
 inter_err(sig,Ns,A,t0,H)=
 {
    return(inter_err1(Ns,A,t0,H)+inter_err2(sig,t0,A,H));
+}
+
+inter_derr2(sig,t0,A,H)=
+{
+   local(ts);
+
+   ts=sig+sig-1;
+   return((2*(2*A*sig-A)*Pi)/(4*sig-2)*Pi*4*zeta(sig)/ts*Pi^((-3-sig-sig)/4)*C(sig,t0,H,0)*exp(ts^2/(8*H^2)-ts*Pi*A/2)+(A*Pi*2)/(2*Pi)*8*Pi^0.25*exp((1-4*MIN_T01*MIN_T01)/(8*H^2)-Pi*A/2));
+}
+
+inter_derr(sig,Ns,A,t0,H)=
+{
+   return(2*inter_err1(Ns,A,t0,H)+inter_derr2(sig,t0,A,H));
 }
 
 Fmax(x,sig,t0,h)=
@@ -205,62 +238,46 @@ printpars()=
    print("M sigma=",msig);
 }
 
-main(A,N,upsam,t0,K,inter_step,Ns,H,M)=
+lgerr=70;
+
+output_dr(str,val)={local(v,e);if(val<1e-307,printf("#define %s ((double) 1e-307)\n",str),e=floor(log(val)/log(10));v=val*10^(-e);printf("#define %s ((double) %4.2fe%d)\n",str,v+0.01,e))};
+output_i(str,val)=printf("#define %s ((int) %d)\n",str,val);
+output_d(str,val)={local(v,e);e=floor(log(val)/log(10));v=val*10^(-e);printf("#define %s ((double) %10fe%d)\n",str,v,e)};
+
+main(one_over_A,N,upsam,t0,K,inter_step,Ns,H,M,h)=
 {
-   local(A1,h,B,N1);
-
-   /*upsam=32;*/
-   /*A=4096/21;*/
-   A1=A/upsam;
-   if(t0<MIN_T0,print("t0 must be at least ",MIN_T0));
-   print("minimum T0 = ",MIN_T0);
-   /*N=2^20;*/
-   while(N<=2^20,
-      N1=N/upsam;
-      B=N1/A1;
-      print("A out=",A);
-      print("A (g)=",A1);
-      print("B=",B);
-      print("N (g)=",N1);
-      print("N out=",N);
-      print("t0=",t0);
-/*
-      h=solve(h=B/100,B,log(ftwiderr(B,t0,h))+200);
-*/
-      h=176431.0/2048.0;
-
-      print("h=",h);
-      print("B/h=",B/h);
-      print("f~ error=",ftwiderr(B,t0,h));
-      print("f^~ error=",fhattwiderr(99,t0,h,A));
-/*
-      M=103000;
-*/
-      print("M=",M);
-      print("f^ sum error=",bestfhatsumerr(M,t0,h));
-/*
-      K=solve(k=1,100,log(tayerr(1/2/B,h,k))+130);
-      K=ceil(K);
-*/
-      print("K=",K);
-      print("Taylor error=",tayerr(1/2/B,h,K));
-      if(B<=h*sqrt(K),print("B needs to be larger"));
-      print("g~ error=",maxgtwiderr(B,h,K));
-      print("G~ error=",maxGtwiderr(A1,t0,h,K));
-      print("Fmax=",Fmax(N1/2/B,99,t0,h));
-      print("******************************************************");
-      N=N+N;);
-
-   AI=A/inter_step;
-   print("A for Interpolation=",AI);
-   /*H= 2089.0/16384.0;*/
-   print("H=",H);
-   /*Ns=70;*/
-   print("Ns=",Ns);
-   print("Inter err=",inter_err(3,Ns,AI,t0,H));
-   print("******************************************************");
+   local(A,A1,B,N1);
+  output_d("T0_MAX",t0);
+  output_d("T0_MIN",MIN_T0);
+  output_i("UPSAM",upsam);
+  output_i("N",N);
+  output_d("one_over_A",one_over_A*1.0);
+  A=1.0/one_over_A;
+  A1=A/upsam;
+  if(t0<MIN_T0,print("t0 must be at least ",MIN_T0);return(0));
+  N1=N/upsam;
+  B=N1/A1;
+  output_d("h",h);
+  et=1/(2*B);
+  output_dr("ftwiderr_d",ftwiderr(B,t0,h));
+  output_dr("fhattwiderr_d",fhattwiderr(99,t0,h,A));
+  output_i("M",M);
+  output_dr("fhatsumerr_d",bestfhatsumerr(M,t0,h));
+  output_i("K",K);
+  te=tayerr(1/2/B,h,K,M);
+  output_dr("tayerr_d",te);
+  if(B<=h*sqrt(K),print("B needs to be larger");return(0));
+  gt=maxgtwiderr(B,h,K);
+  output_dr("gtwiderr_d",gt);
+  output_dr("Gtwiderr_d",maxGtwiderr(A1,t0,h,K));
+  output_dr("Fmaxerr_d",Fmax(N1/2/B,99,t0,h));
+  output_i("INTER_SPACING",inter_step);
+  AI=A/inter_step;
+  output_d("H",H);
+  output_i("Ns",Ns);
+  output_dr("intererr_d",inter_err(3,Ns,AI,t0,H));
+  output_dr("interderr_d",inter_derr(3,Ns,AI,t0,H));
+  printf("//************************************\n");
 }
 
-
-main(4096/21,2^20,32,3.062*10^10,44,5,70,2089.0/16384.0,104000);
 
