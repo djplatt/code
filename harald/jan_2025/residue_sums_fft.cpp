@@ -11,7 +11,6 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "stdint.h"
-#include "time.h"
 #include "mpfr.h"
 #include "flint/arb.h"
 #include "flint/acb.h"
@@ -95,14 +94,24 @@ arb_t misin;
 
 // note (sign&&sign)==0 <=> signs different and known 
 
+void acb_add_error(acb_t x, acb_t err)
+{
+  arb_add_error(acb_realref(x),acb_realref(err));
+  arb_add_error(acb_imagref(x),acb_imagref(err));
+}
+
+void acb_add_error(acb_t x, arb_t err)
+{
+  arb_add_error(acb_realref(x),err);
+  arb_add_error(acb_imagref(x),err);
+}
 
 // inits and sets z to [-d,d]+[-d,d]i
 void set_err(acb_t z, double d)
 {
   acb_init(z);
   arb_set_d(acb_realref(z),d);
-  arb_add_error(acb_imagref(z),acb_realref(z));
-  arb_set(acb_realref(z),acb_imagref(z));
+  arb_set(acb_imagref(z),acb_realref(z));
 }
 
 void set_err(arb_t x, double d)
@@ -114,9 +123,8 @@ void set_err(arb_t x, double d)
       init=true;
       arb_init(tmp);
     }
-  arb_set_d(tmp,d);
   arb_init(x);
-  arb_add_error(x,tmp);
+  arb_set_d(x,d);
 }
 
 // reverse skn_vec
@@ -139,26 +147,19 @@ void calc_buck(int64_t prec)
     }
   int i;
   double x;
-  //printf("s_vec[0]=");arb_printd(s_vec[0],10);printf("\n");
   for(i=0;i<M;i++)
     {
       buck[i]=arb_get_d(s_vec[i])*B+0.5;
       arb_set_ui(tmp,buck[i]);
       arb_div(tmp,tmp,arb_B,prec);
-      //printf("n=%d goes in bucket %d\n",i+1,buck[i]);
       arb_sub(s_vec[i],s_vec[i],tmp,prec);
     }
-  //printf("Before shuffle, n=1 term is in bucket %d\n",buck[0]);
   if(buck[0]<=0) // keep conj_order simple
     fatal_error("buck[0]<=0.");
-  //printf("Final bucket used is at %d.\n",buck[M-1]);
   if(buck[M-1]>=N1/2) // ditto
     fatal_error("buck[M-1]>=N/2.");
   for(i=0;i<M;i++)
     buck[i]=conj_order(buck[i]);
-  //printf("buck[0]=%d\nbuck[M-1]=%d\n",buck[0],buck[M-1]);
-  //printf("n=1 term is in bucket %d\n",buck[0]);
-  arb_clear(tmp);
 }
 
 arb_t atan1_tmp1,atan1_tmp2,im_1,im_2,im_t,im_err;
@@ -188,7 +189,6 @@ void gamma_factor(acb_ptr res, arb_ptr gaussian, double t,int64_t prec)
   arb_add(acb_realref(tmp),acb_realref(tmp),tmp1,prec); // 
   arb_sub(acb_realref(tmp),acb_realref(tmp),gaussian,prec); // 
   acb_exp(res,tmp,prec);
-  //printf("gamma_factor(%f) returning ",t);acb_printd(res,20);printf("\n");
 }
 
 // initialise stuff
@@ -268,7 +268,6 @@ void init(double t0,int64_t prec)
       arb_mul_ui(logisqrtpi[i],sqrt_pi,i+1,HI_PREC); // n*sqrt(Pi)
       arb_log(logisqrtpi[i],logisqrtpi[i],HI_PREC);        // log (n*sqrt(Pi))
       arb_set(s_vec[i],logisqrtpi[i]);
-      //printf("s_vec[%ld] = ",i);arb_printd(s_vec[i],20);printf("\n");
       arb_mul_d(init_tmp1,logisqrtpi[i],-t0,HI_PREC); // -t0*log(n*sqrt(Pi))
       arb_sin_cos(acb_imagref(n_vec[i]),acb_realref(n_vec[i]),init_tmp1,HI_PREC);
       arb_set_ui(A,1);
@@ -351,14 +350,17 @@ void G_k(int k, int64_t prec)
   double t,max_t;
 
   for(i=0;i<N1;i++)
-    acb_add(G_vec[i],g_vec[i],gtwiderr,prec); // G=g~
-
+    {
+      acb_set(G_vec[i],g_vec[i]);
+      acb_add_error(G_vec[i],gtwiderr); // G=g~
+    }
+  
   fft(G_vec,N1,ws1_f,prec);
 
   for(i=0;i<=N1/2;i++)
     {
       acb_div_arb(G_vec[i],G_vec[i],A1,prec);
-      acb_add(G_vec[i],G_vec[i],Gtwiderr,prec);
+      acb_add_error(G_vec[i],Gtwiderr);
       if(i&1)
 	acb_neg(G_vec[i],G_vec[i]);
     }
@@ -411,10 +413,12 @@ void make_skn(int k,int64_t prec)
     }
 }
 
+// convolve v1 with v2 into res
+// on exit v1 and v2 contain fft of input
 void my_convolve (acb_t *res, acb_t *v1, acb_t *v2, uint64_t n, acb_t *ws_r, acb_t *ws_f,int64_t prec)
 {
   int i;
-  fft(v1,n,ws_r,prec);
+  fft(v1,n,ws_r,prec); 
   fft(v2,n,ws_r,prec);
   for(i=0;i<n;i++)
     acb_mul(res[i],v1[i],v2[i],prec);
@@ -443,12 +447,10 @@ void do_conv (int k, int64_t prec)
 // compute exp(-t^2/2H^2)
 void inter_gaussian(arb_ptr res, arb_ptr t, int64_t prec)
 {
-  //arf_printf("inter_gaussian called with t=%.40Re\n",t);
   arb_div_d(res,t,H,prec);
   arb_mul(res,res,res,prec);
   arb_div_d(res,res,-2.0,prec);
   arb_exp(res,res,prec);
-  //arf_printf("inter_gaussian returning %.40Re\n",res);
 }
 
 bool sincp;
@@ -668,7 +670,7 @@ void t_to_ptr(arb_ptr ptr, arb_ptr t, double t0, int64_t prec)
   arb_add_ui(ptr,ptr,N/2,prec); // N/2+A(t-t0)
 }
 
-
+/*
 // NB destroys old_guess
 // on entry left and right bracket the zero
 // on exit new_guess = improved estimate
@@ -691,6 +693,7 @@ void newton(arb_ptr new_guess, arb_ptr old_guess, acb_t *f_vec, int num_its, int
     }
   arb_set(new_guess,old_guess);
 }
+*/
 
 // read a 13 byte number from file
 // structured 8,4,1
@@ -854,7 +857,6 @@ void do_rho(arb_t gamma, arb_t zetap, arb_t t0, int64_t prec)
 
 
   max_min_zetap(zetap,gamma,prec);
-
   
   arb_set(acb_imagref(s),gamma);
   acb_abs(tmp1,s,prec);
@@ -898,44 +900,6 @@ void do_rho(arb_t gamma, arb_t zetap, arb_t t0, int64_t prec)
   arb_add(sum3,sum3,tmp1,prec);
 
   
-  /*
-  prec=prec/2;
-  arb_set(acb_imagref(s),gamma);
-  acb_abs(s_abs,s,prec);
-  
-  acb_sub_ui(ctmp1,s,1,prec); // rho-1
-  acb_div_onei(ctmp1,ctmp1); // (rho-1)/i
-  acb_div_arb(ctmp2,ctmp1,t0,prec); // (rho-1)/(t0 i)
-  // first with t0 into sum1
-  varphi(ctmp1,ctmp2,prec);
-  acb_abs(tmp1,ctmp1,prec);
-  arb_mul(tmp3,zetad,s_abs,prec);
-  arb_div(tmp2,tmp1,tmp3,prec);
-  arb_add(sum1,sum1,tmp2,prec);
-  //printf("Zero at ");arb_printd(gamma,10);printf(" contributed ");arb_printd(tmp3,10);printf(" with weight ");arb_printd(tmp1,10);printf("\n");
-
-  arb_sub(tmp1,gamma,t1,prec);
-  if(arb_is_positive(tmp1))
-    return;
-  // now with t1 into sum2
-  acb_mul_2exp_si(ctmp2,ctmp2,1); // (rho-1)/(t0/2 i)
-  varphi(ctmp1,ctmp2,prec);
-  //printf("varphi returned ");acb_printd(ctmp1,20);printf("\n");
-  acb_abs(tmp1,ctmp1,prec);
-  arb_mul(tmp3,zetad,s_abs,prec);
-  arb_div(tmp2,tmp1,tmp3,prec);
-  arb_add(sum2,sum2,tmp2,prec);
-
-  arb_sub(tmp1,gamma,t2,prec);
-  if(arb_is_positive(tmp1))
-    return;
-  acb_mul_ui(ctmp2,ctmp2,5,prec); // (rho-1)/(t0/10 i)
-  varphi(ctmp1,ctmp2,prec);
-  acb_abs(tmp1,ctmp1,prec);
-  arb_mul(tmp3,zetad,s_abs,prec);
-  arb_div(tmp2,tmp1,tmp3,prec);
-  arb_add(sum3,sum3,tmp2,prec);
-  */
 }
 
 
@@ -949,7 +913,6 @@ int main(int argc, char **argv)
   arb_t tmp;
   bool first=true;
   acb_t omega;
-  time_t last_time=time(NULL),this_time;
   printf("Command line:-");
   for(uint64_t i=0;i<argc;i++)
     printf(" %s",argv[i]);
@@ -1015,76 +978,55 @@ int main(int argc, char **argv)
       
       rval=fread(zs+1,sizeof(long int),1,zfile); // ending zero number
       //printf("processing zeros %ld to %ld inclusive\n",zs[0]+1,zs[1]);
-      //printf("doing t from %f to %f zeros from %ld to %ld\n",st[0],st[1],zs[0],zs[1]);
+      //printf("doing t from %f to %f zeros from %ld to %ld\n",st[0],st[1],zs[0],zs[1]);fflush(stdout);
       t0=st[0];
       if(t0<T0_MIN)
 	fatal_error("t0 outside limits.");
-      if(step!=st[1]-st[0])
-	{
-	  printf("Error, expected each block to be %f wide. Exiting.\n",step);
-	  return 0;
-	}
-      if((t0+step*num_its)>T0_MAX)
+      double this_step=st[1]-st[0];
+      t0=t0+this_step/2.0;
+      if(t0>T0_MAX)
 	fatal_error("t0 outside limits.");
-
-      t0=t0+step/2.0;
+	
 
 
       HI_PREC=prec+EXTRA_PREC;
       
-      //printf("Running centred at t0=%f.\n",t0);
+      //printf("Running centred at t0=%f.\n",t0);fflush(stdout);
       if(first)
 	{
 	  first=false;
-	  //printf("Calling init.\n");
-	  //system("date");
 	  init(t0,prec);
 	  arb_init(tmp);
 	  acb_init(omega);
 	  arb_div_ui(tmp,arb_2_pi,N,prec);
 	  arb_sin_cos(acb_imagref(omega),acb_realref(omega),tmp,prec);
 	  arb_clear(tmp);
-	  //acb_printd(omega,20);printf("\n");exit(0);
-	  //printf("Init finished.\n");
-	  //system("date");
 	}
       else
 	{
-	  //printf("Calling re-init.\n");
-	  //system("date");
 	  re_init(t0,prec);
-	  //printf("re-init finished.\n");
-	  //system("date");
 	}
 
-      //this_time=time(NULL);
-      //printf("Time to (re-)initialise = %G seconds.\n",difftime(this_time,last_time));
-      last_time=this_time;
-
+      // do K convolutions
       for(k=0;k<K;k++)
 	{
 	  G_k(k,prec);
 	  do_conv(k,prec);
 
 	}
-      //this_time=time(NULL);
-      //printf("Time to convolve = %G seconds.\n",difftime(this_time,last_time));
-      //last_time=this_time;
-
-
-
-      //printf("convolutions finished\n");
-      //system("date");
 
       // upsample by "zero" padding
       for(i=N1/2;i<=N/2;i++)
-	acb_set(f_vec[i],Fmaxerr);
+	{
+	  acb_zero(f_vec[i]);
+	  acb_add_error(f_vec[i],Fmaxerr);
+	}
 
       for(i=0;i<=N/2;i++)
 	{
-	  acb_add(f_vec[i],f_vec[i],fhatsumerr,prec);
-	  acb_add(f_vec[i],f_vec[i],tayerr,prec);
-	  acb_add(f_vec[i],f_vec[i],fhattwiderr,prec);
+	  acb_add_error(f_vec[i],fhatsumerr);
+	  acb_add_error(f_vec[i],tayerr);
+	  acb_add_error(f_vec[i],fhattwiderr);
 	}
 
       // f is real so use conjugate symmetry
@@ -1094,47 +1036,26 @@ int main(int argc, char **argv)
 
       for(i=1;i<N;i+=2)
 	acb_neg(f_vec[i],f_vec[i]);
-      /*
-      for(i=0;i<50;i++)
-	{
-	  arb_printd(acb_realref(f_vec[i]),20);
-	  printf("\n");
-	}
-      */
 
-      //printf("Final iFFT\n");
+      //Final iFFT
       hermidft(f_vec,N/2,ws_r,omega,prec);
-      /*
-      for(i=0;i<50;i++)
-	{
-	  arb_printd(acb_realref(f_vec[i+N/2]),20);
-	  printf("\n");
-	}
-      */
-      //this_time=time(NULL);
-      //printf("Time for final iFFT = %G seconds.\n",difftime(this_time,last_time));
-      last_time=this_time;
-
-
-      //printf("Final iFFT finished.\n");
-      //system("date");
 
       // remove the Gaussian from the region of interest
       for(j=0,i=N/2+1;i<=N/2+int_step/2+INTER_SPACING*Ns;j++,i++)
 	{
 	  arb_div_d(acb_realref(f_vec[i]),acb_realref(f_vec[i]),B,prec);
-	  arb_add(acb_realref(f_vec[i]),acb_realref(f_vec[i]),acb_realref(ftwiderr),prec);
+	  arb_add_error(acb_realref(f_vec[i]),acb_realref(ftwiderr));
 	  arb_mul(acb_realref(f_vec[i]),acb_realref(f_vec[i]),exps1[j],prec);
 	}
       for(j=0,i=N/2-1;i>=N/2-int_step/2-INTER_SPACING*Ns;j++,i--)
 	{
 	  arb_div_d(acb_realref(f_vec[i]),acb_realref(f_vec[i]),B,prec);
-	  arb_add(acb_realref(f_vec[i]),acb_realref(f_vec[i]),acb_realref(ftwiderr),prec);
+	  arb_add_error(acb_realref(f_vec[i]),acb_realref(ftwiderr));
 	  arb_mul(acb_realref(f_vec[i]),acb_realref(f_vec[i]),exps1[j],prec);
 	}
       
       arb_div_d(acb_realref(f_vec[N/2]),acb_realref(f_vec[N/2]),B,prec);
-      arb_add(acb_realref(f_vec[N/2]),acb_realref(f_vec[N/2]),acb_realref(ftwiderr),prec);
+      arb_add_error(acb_realref(f_vec[N/2]),acb_realref(ftwiderr));
 
       // f_vec now contains Lam(t) = Pi^(-it/2) Gamma(1/4+it/2) zeta(1/2+it)
       // with t =n/A+t0, n=-N/2..N/2-1
@@ -1179,18 +1100,13 @@ int main(int argc, char **argv)
 	  do_rho(gamma,res,arb_T0,prec);
 	  //printf("\nzeta'(t) ");arb_printd(res,20);printf("\n");
 	}
-      last_time=this_time;
 
     }
 
   fclose(zfile);
 
   printf("sum (t0=%f) ",(double) T0);arb_printd(sum1,20);
-  //printf("\nsum 1a ");arb_printd(sum1a,20);
-  //printf("\nsum 1b ");arb_printd(sum1b,20);
   printf("\nsum (t0=%f) ",(double) T0 / 2.0);arb_printd(sum2,20);
-  //printf("\nsum 2a ");arb_printd(sum2a,20);
-  //printf("\nsum 2b ");arb_printd(sum2b,20);
   printf("\nsum (t0=%f) ",(double) T0 / 10.0);arb_printd(sum3,20);
   printf("\nsum 1/|zeta'| ");arb_printd(sum4,20);
   printf("\nsum 1/|rho zeta'| ");arb_printd(sum5,20);
