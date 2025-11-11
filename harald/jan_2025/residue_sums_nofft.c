@@ -1,3 +1,5 @@
+#include "flint/arb.h"
+#include "flint/acb.h"
 #include "flint/acb_dirichlet.h"
 
 #include <stdio.h>
