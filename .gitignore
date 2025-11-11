@@ -1,4 +1,5 @@
 # ignore various files
+
 Robin_2025/diff
 briggs/ca2
 harald/jan_2025/ten_9_zero
@@ -23,6 +24,8 @@ tim/grh_check/hist.plt
 tim/grh_check/dir_even_deriv
 tim/grh_check/dir_odd_deriv
 tim/grh_check/g_*
+tim/grh_check/dir_long_odd
+tim/grh_check/dir_long
 
 tim/watkins/do_3e8.sh
 tim/watkins/watkins_seg_int_double
