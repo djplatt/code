@@ -14,11 +14,17 @@ harald/jan_2025/data_fft
 harald/jan_2025/1e7
 harald/jan_2025/1e8
 harald/jan_2025/*.sh
+harald/jan_2025/results
+
 briggs/parallel/parallel
+briggs/test.fac
+
 ethan/n_minus_prime_square/sieve
+
 maciej/maciej
 maciej/makefile
 maciej/do_one.sh
+
 tim/grh_check/first_zeros/
 tim/grh_check/hist.plt
 tim/grh_check/dir_even_deriv

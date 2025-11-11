@@ -1,5 +1,3 @@
-#include "flint/arb.h"
-#include "flint/acb.h"
 #include "flint/acb_dirichlet.h"
 
 #include <stdio.h>
@@ -230,7 +228,7 @@ int main(int argc, char **argv)
       exit(0);
     }
 
-  int64_t t0=atol(argv[2]);
+  double t0=atof(argv[2]);
   if(t0<=0)
     {
       printf("Need t0 > 0. Exiting.\n");
@@ -238,7 +236,7 @@ int main(int argc, char **argv)
     }
   arb_t a_t0;
   arb_init(a_t0);
-  arb_set_ui(a_t0,t0);
+  arb_set_d(a_t0,t0);
   
   arb_t gamma,pm1,del_t,t;
   //acb_t res;
@@ -291,7 +289,7 @@ int main(int argc, char **argv)
 	      exit(0);
 	    }
 	  arb_add(t,t,del_t,prec); // exact, used to avoid accumulation of +/- 2^-(OP_ACC+1)
-	  arb_sub_ui(gamma,t,t0,prec);
+	  arb_sub(gamma,t,a_t0,prec);
 	  if(arb_is_positive(gamma)) // gamma exceeds t0
 	    {
 	      done=true;
