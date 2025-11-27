@@ -1,0 +1,5 @@
+Residues of 1/zeta at 1/2+igamma for gamma in [0,10946000]
+
+files contain gamma, Re 1/zeta'(1/2+igamma), Im 1/zeta'(1/2+igamma)
+written by arb_dump_file
+

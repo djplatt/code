@@ -18,6 +18,10 @@ harald/jan_2025/1e8
 harald/jan_2025/*.sh
 harald/jan_2025/results
 
+harald/residue_sums/arb_load_sum
+harald/residue_sums/data
+harald/residue_sums/residue_sums_nofft
+
 briggs/parallel/parallel
 briggs/test.fac
 
