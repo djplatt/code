@@ -1,7 +1,12 @@
 # ignore various files
 
 Robin_2025/diff
+
 briggs/ca2
+
+zeros_of_zetap/test_zeta
+zeros_of_zetap/zetap
+
 harald/jan_2025/ten_9_zero
 harald/jan_2025/data/
 harald/jan_2025/residue_sums_jan_2025
