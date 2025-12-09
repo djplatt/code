@@ -1,0 +1,35 @@
+File to count and locate zeros of zeta'
+
+NB THIS IS A NON-RIGOROUS IMPLEMENTATION
+
+molin.c uses the rigorous quadrature method of Molin but without error bounds to
+compute 1/2pi i int zeta''/zeta'(s) ds around boxes specified by left right bottom and bottom+step, moving up by step each time and doing <its> iterations.
+
+<N> is the number of points used in the quadrature routine
+<prec> is how many bits of precision to use.
+
+newton.c uses Newton-Raphson on a grid of points in each box to try and locate the zeros of zeta' therein.
+newton1.c does the same but on a finer mesh.
+
+Ideally the number of zeros found by newton(1) would match the prediction from Molin but is sometimes doesn't, I think because of zeros of zeta' close to the contour of the integration. However, over the long run, these errors seem to cancel out.
+
+The zeros found by count were
+
+127038 all_results.uni
+  11246 res_10000_20000.uni
+   8501 res_1000_10000.uni
+  12079 res_20000_30000.uni
+    540 res_20_1000.uni
+  12620 res_30000_40000.uni
+  13021 res_40000_50000.uni
+  13341 res_50000_60000.uni
+  13609 res_60000_70000.uni
+  13837 res_70000_80000.uni
+  14036 res_80000_90000.uni
+  14213 res_90000_100000.uni
+     72 res_93550_93600.uni
+     72 res_94330_94380.uni
+     72 res_98090_98140.uni
+
+the final 3 used newton1 to find 3 missing zeros from original trawl of 90,000-100,000 where newton only found 14210.
+

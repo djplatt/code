@@ -4,8 +4,7 @@ Robin_2025/diff
 
 briggs/ca2
 
-zeros_of_zetap/test_zeta
-zeros_of_zetap/zetap
+zeros_of_zetap/data
 
 harald/jan_2025/ten_9_zero
 harald/jan_2025/data/
@@ -43,6 +42,7 @@ tim/grh_check/dir_odd_deriv
 tim/grh_check/g_*
 tim/grh_check/dir_long_odd
 tim/grh_check/dir_long
+tim/grh_check/data
 
 tim/watkins/do_3e8.sh
 tim/watkins/watkins_seg_int_double
