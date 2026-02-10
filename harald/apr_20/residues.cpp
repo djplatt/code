@@ -1,4 +1,4 @@
-#include "acb_dirichlet.h"
+#include "flint/acb_dirichlet.h"
 
 #include "stdio.h"
 #include "stdlib.h"
@@ -133,7 +133,7 @@ int main(int argc, char **argv)
   int rval;
   rval=fread(&num_its,sizeof(long int),1,infile);
   //printf("Doing %ld iterations.\n",num_its);
-  for(it=0;it<num_its;it++)
+  for(it=0;it<1/*num_its*/;it++)
     {
       rval=fread(st,sizeof(double),2,infile); // starting/ending t, exact
       rval=fread(zs,sizeof(long int),1,infile); // starting zero number

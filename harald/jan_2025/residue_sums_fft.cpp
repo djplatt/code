@@ -557,7 +557,7 @@ void inter_t(arb_ptr f_res, arb_ptr fd_res, acb_t *f_vec, arb_ptr t_ptr, int64_t
     nearest_t0=t0_d+1.5;
   else
     nearest_t0=t0_d+0.5;
-  if(debug) printf("Nearest t0=%ld\n",nearest_t0);
+  if(debug) printf("Nearest t0=%d\n",nearest_t0);
   arb_zero(f_res);
   if (fd_res) arb_zero(fd_res);
   sincp=true;
@@ -1095,8 +1095,12 @@ int main(int argc, char **argv)
 	      printf("\nLambda = ");arb_printd(resd,20);printf("\n");
 	      return 0;
 	    }
+	  
+	  //printf("lam' = ");arb_printd(resd,20);printf("\n");
 	  lam_to_zeta(res,resd,gamma,prec);
 	  arb_abs(res,res);
+	  //printf("|residue| = ");arb_printd(res,20);printf("\n");
+	  //return 0;
 	  do_rho(gamma,res,arb_T0,prec);
 	  //printf("\nzeta'(t) ");arb_printd(res,20);printf("\n");
 	}

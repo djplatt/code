@@ -262,7 +262,7 @@ int main(int argc, char **argv)
   rval=fread(&num_its,sizeof(long int),1,infile);
   //printf("Doing %ld iterations.\n",num_its);
   bool done=false;
-  for(it=0;it<num_its;it++)
+  for(it=0;it<1;it++)
     {
       if(done)
 	break;

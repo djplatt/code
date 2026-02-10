@@ -10,7 +10,7 @@
 
 #include "inttypes.h"
 #include "gmp.h"
-#include "pari.h"
+#include "pari/pari.h"
 
 // This is how far Binary Goldbach has been checked
 #define STEP_SIZE (4000000000000000000L)
