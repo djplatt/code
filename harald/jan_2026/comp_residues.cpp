@@ -14,6 +14,7 @@
 #include "mpfr.h"
 #include "flint/arb.h"
 #include "flint/acb.h"
+#include "flint/acb_dirichlet.h"
 #include "../../arb_windowed/arb_win_zeta.h"
 #include "../../arb_windowed/arb_fft.h"
 
@@ -837,7 +838,18 @@ int main(int argc, char **argv)
     }
 
   bool done=false;
-  for(long int it=0;it<num_its;it++)
+
+  /*
+  acb_t s;
+  acb_struct *zeta;
+  zeta=(acb_struct *)malloc(sizeof(acb_struct)*2);
+  acb_init(s);
+  acb_init(zeta);
+  acb_init(zeta+1);
+  arb_set_d(acb_realref(s),0.5);
+  */
+  
+  for(long int it=0;it<10/*num_its*/;it++)
     {
       if(done)
 	break;
@@ -865,7 +877,7 @@ int main(int argc, char **argv)
 
       HI_PREC=prec+EXTRA_PREC;
       
-      //printf("Running centred at t0=%f.\n",t0);fflush(stdout);
+      printf("Running centred at t0=%f.\n",t0);fflush(stdout);
       if(first)
 	{
 	  first=false;
@@ -935,6 +947,8 @@ int main(int argc, char **argv)
       // with t =n/A+t0, n=-N/2..N/2-1
       // so f_vec[N/2] contains Lam(t0)
 
+      //printf("Lam(t) computed.\n");fflush(stdout);
+
       arb_set_d(a_t,st[0]);
       for(long int z=zs[0]+1;z<=zs[1];z++)
 	{
@@ -954,6 +968,7 @@ int main(int argc, char **argv)
 	  
 	  arb_set(gamma,a_t);
 	  arb_add_error_2exp_si(gamma,-1-OP_ACC);
+	  //printf("Doing zero ");arb_printd(gamma,20);printf("\n");
 	  t_to_ptr(ptr,gamma,t0,prec);
 	  inter_t(res,resd,f_vec,ptr,prec);
 	  if(!arb_contains_zero(res))
@@ -966,12 +981,26 @@ int main(int argc, char **argv)
 	    }
 
 	  lamp_to_res(residue,resd,gamma,prec);
-	  arb_dump_file(outfile,gamma);
-	  fprintf(outfile,"\n");  
-	  arb_dump_file(outfile,acb_realref(residue));
-	  fprintf(outfile,"\n");
-	  arb_dump_file(outfile,acb_imagref(residue));
-	  fprintf(outfile,"\n");
+	  /*
+	  arb_set(acb_imagref(s),gamma);
+	  acb_dirichlet_zeta_jet(zeta,s,0,2,135);
+	  acb_inv(zeta+1,zeta+1,prec);
+	  acb_sub(zeta,zeta+1,residue,prec);
+	  if(!acb_contains_zero(zeta))
+	    {
+	      printf("Error, residues differ:-\n");
+	      acb_printd(residue,20);
+	      printf("\n");
+	      acb_printd(zeta+1,20);
+	      printf("\n");
+	    }
+	  */
+	  //arb_dump_file(outfile,gamma);
+	  //fprintf(outfile,"\n");  
+	  //arb_dump_file(outfile,acb_realref(residue));
+	  //fprintf(outfile,"\n");
+	  //arb_dump_file(outfile,acb_imagref(residue));
+	  //fprintf(outfile,"\n");
 	  //return 0;
 	}
 

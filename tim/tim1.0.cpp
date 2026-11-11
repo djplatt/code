@@ -61,6 +61,10 @@ void doit(uint64_t k, uint64_t d, uint64_t ed)
       W[ptr]++;
     }
 
+  printf("W initially set to [");
+  for(uint64_t i=0;i<d-1;i++)
+    printf("%d,",W[i]);
+  printf("%d]\n",W[d-1]);
   // now do W_2..W_K
   for(uint64_t i=2;i<=k;i++)
     {
@@ -70,7 +74,7 @@ void doit(uint64_t k, uint64_t d, uint64_t ed)
       //
       // now rotate Wk by 2,6,14,30... and add into W
       //
-      for(uint64_t rl=2,drl=4,e=1;e<ed;e++)
+      for(uint64_t rl=2,drl=4%d,e=1;e<ed;e++)
 	{
 	  rotate_and_add(W,Wk,rl,d);
 	  rl+=drl;

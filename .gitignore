@@ -165,3 +165,8 @@ ethan/check_first_zero
 arb_windowed_raijin/arb_zeta
 
 *.s
+
+ng/comp_residues
+ng/comp_zeta_two_rho
+ng/*.lst
+ng/sums
